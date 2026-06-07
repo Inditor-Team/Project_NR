@@ -37,21 +37,21 @@ public class EnemyController : MonoBehaviour
         detectScope.OnScopeTriggerStay -= OnScopeStay;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (isPatrol)
-        {
-            patrolNextPosition = patrolPoints[currentPatrolIndex];
-            Vector2 dir = patrolNextPosition.position - transform.position;
-            Vector2 nextvec = dir.normalized * speed * Time.fixedDeltaTime;
-            
-            rigid.MovePosition(rigid.position + nextvec);
-            rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
+        if (!isPatrol)
+            return;
+        
+        patrolNextPosition = patrolPoints[currentPatrolIndex];
+        Vector2 dir = patrolNextPosition.position - transform.position;
+        Vector2 nextvec = dir.normalized * speed * Time.fixedDeltaTime;
+        
+        rigid.MovePosition(rigid.position + nextvec);
+        rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
 
-            if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
-            {
-                currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-            }
+        if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
+        {
+            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
         }
     }
     
