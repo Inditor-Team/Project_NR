@@ -6,22 +6,23 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
-    SpriteRenderer model;
 
     Vector2 moveInput;
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float rollSpeed = 10f;
     [SerializeField] float rollDuration = 0.2f;
+    [SerializeField] float attackDuration = 0.1f;
 
     float rollTimer;
+    float attackTimer;
 
     enum PlayerState
     {
         Idle,
         Move,
-        PrimaryAttack,
-        SecondaryAttack,
+        PrimaryAttack, //Sword
+        SecondaryAttack, //Gun
         Roll
     }
 
@@ -32,7 +33,6 @@ public class PlayerController : MonoBehaviour
         input = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        model = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -62,6 +62,40 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+
+    /// <summary>
+    /// FSM 상태 변경 & 애니메이션 제어
+    /// </summary>
+    /// <param name="newState"></param>
+    void ChangeState(PlayerState newState)
+    {
+        currentState = newState;
+
+        switch (newState)
+        {
+            case PlayerState.Idle:
+                break;
+
+            case PlayerState.Move:
+                break;
+
+            case PlayerState.Roll:
+                anim.SetBool("IsRoll", true);
+                rollTimer = rollDuration;
+                break;
+
+            case PlayerState.PrimaryAttack:
+                anim.SetBool("IsSword", true);
+                attackTimer = attackDuration;
+                break;
+
+            case PlayerState.SecondaryAttack:
+                anim.SetBool("IsGun", true);
+                attackTimer = attackDuration;
+                break;
+        }
+    }
+
     /// <summary>
     /// FSM 상태 전이 조건 처리
     /// </summary>
@@ -82,46 +116,28 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Roll:
                 rollTimer -= Time.deltaTime;
                 if (rollTimer <= 0)
+                {
                     ChangeState(PlayerState.Idle);
+                    anim.SetBool("IsRoll", false);
+                }
                 break;
 
             case PlayerState.PrimaryAttack:
-                //애니메이션 이벤트를 통해 종료됩니다
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0)
+                {
+                    ChangeState(PlayerState.Idle);
+                    anim.SetBool("IsSword", false);
+                }
                 break;
 
             case PlayerState.SecondaryAttack:
-                //애니메이션 이벤트를 통해 종료됩니다
-                break;
-        }
-    }
-
-    /// <summary>
-    /// FSM 상태 변경
-    /// </summary>
-    /// <param name="newState"></param>
-    void ChangeState(PlayerState newState)
-    {
-        currentState = newState;
-
-        switch (newState)
-        {
-            case PlayerState.Idle:
-                break;
-
-            case PlayerState.Move:
-                break;
-
-            case PlayerState.Roll:
-                rollTimer = rollDuration;
-                anim.Play("Roll");
-                break;
-
-            case PlayerState.PrimaryAttack:
-                anim.Play("PrimaryAttack");
-                break;
-
-            case PlayerState.SecondaryAttack:
-                anim.Play("SecondaryAttack");
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0)
+                {
+                    ChangeState(PlayerState.Idle);
+                    anim.SetBool("IsGun", false );
+                }
                 break;
         }
     }
@@ -162,16 +178,13 @@ public class PlayerController : MonoBehaviour
             speed = rollSpeed;
 
         rb.linearVelocity = moveInput * speed;
-
-        if (moveInput.x > 0)
-            model.flipX = false;
-        else if (moveInput.x < 0)
-            model.flipX = true;
     }
 
     void UpdateAnimator()
     {
         float speed = moveInput.magnitude;
+        anim.SetFloat("DirX", moveInput.x);
+        anim.SetFloat("DirY", moveInput.y);
         anim.SetFloat("Speed", speed);
     }
 
