@@ -1,5 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+/// <summary>
+/// 플레이어의 입력에 따른 플레이어블 캐릭터의 움직임과 애니메이션 제어
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     PlayerInputActions input;
@@ -16,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     float rollTimer;
     float attackTimer;
+
+    Vector2 mousePosition;
 
     enum PlayerState
     {
@@ -142,34 +148,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    /// <summary>
+    /// 검 공격 시도. Roll 과 Gun 도중 불가
+    /// </summary>
     void TryPrimaryAttack()
     {
         if (currentState == PlayerState.Roll) return;
-        if (currentState == PlayerState.PrimaryAttack) return;
         if (currentState == PlayerState.SecondaryAttack) return;
 
         ChangeState(PlayerState.PrimaryAttack);
     }
 
+    /// <summary>
+    /// 총 공격 시도. Roll 과 Sword 도중 불가
+    /// </summary>
     void TrySecondaryAttackAttack()
     {
         if (currentState == PlayerState.Roll) return;
         if (currentState == PlayerState.PrimaryAttack) return;
-        if (currentState == PlayerState.SecondaryAttack) return;
 
         ChangeState(PlayerState.SecondaryAttack);
     }
 
+    /// <summary>
+    /// 구르기 시도. Gun 과 Sword 도중 불가
+    /// </summary>
     void TryRoll()
     {
-        if (currentState == PlayerState.Roll) return;
         if (currentState == PlayerState.PrimaryAttack) return;
         if (currentState == PlayerState.SecondaryAttack) return;
 
         ChangeState(PlayerState.Roll);
     }
 
+    /// <summary>
+    /// 캐릭터 이동. Roll 상태에선 이속 증가
+    /// </summary>
     void Move()
     {
         float speed = moveSpeed;
@@ -180,22 +194,27 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = moveInput * speed;
     }
 
+    /// <summary>
+    /// 플레이어 입력에 따라 애니메이션 파타미터를 업데이트
+    /// </summary>
     void UpdateAnimator()
     {
+        //키보드 입력에 따라 애니메이터에서 캐릭터의 Run 방향 변경
         float speed = moveInput.magnitude;
         anim.SetFloat("DirX", moveInput.x);
         anim.SetFloat("DirY", moveInput.y);
         anim.SetFloat("Speed", speed);
+
+        //마우스 위치에 따라 애니메이터에서 캐릭터의 Idle 방향 변경
+        Vector2 mouseScreen = Mouse.current.position.ReadValue();
+
+        Vector3 mouseScreen3D = new Vector3(mouseScreen.x, mouseScreen.y, -Camera.main.transform.position.z);
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen3D);
+
+        Vector2 aim = (mouseWorld - transform.position);
+
+        anim.SetFloat("AimX", aim.x);
+        anim.SetFloat("AimY", aim.y);
     }
 
-    /// <summary>
-    /// 공격 애니메이션의 마지막 프레임에서 호출되는 애니메이션 이벤트 함수입니다.
-    /// </summary>
-    public void EndAttack()
-    {
-        if (moveInput.magnitude > 0)
-            ChangeState(PlayerState.Move);
-        else
-            ChangeState(PlayerState.Idle);
-    }
 }
