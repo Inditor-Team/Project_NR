@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf01f0a-1da8-4615-83f6-a6234508421f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="dcf01f0a-1da8-4615-83f6-a6234508421f" name="Changes" comment="[Resource] enemy 리소스 추가">
       <change beforePath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,13 +16,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scene/Test_Scene_ksh.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyScope.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/LEJ/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/ProjectSettings/EditorBuildSettings.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -104,6 +100,7 @@
       <workItem from="1780719015389" duration="908000" />
       <workItem from="1780823465284" duration="5307000" />
       <workItem from="1781146569240" duration="1029000" />
+      <workItem from="1781440718103" duration="284000" />
     </task>
     <task id="LOCAL-00001" summary="[Feat] enemy 감지 설정">
       <option name="closed" value="true" />
@@ -129,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780833754800</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[Resource] enemy 리소스 추가">
+      <option name="closed" value="true" />
+      <created>1781440862132</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1781440862132</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +153,7 @@
     <MESSAGE value="[Feat] enemy 감지 설정" />
     <MESSAGE value="[Feat] 적 NPC 순찰 기능 구현" />
     <MESSAGE value="[Style] update 내부 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Style] update 내부 수정" />
+    <MESSAGE value="[Resource] enemy 리소스 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Resource] enemy 리소스 추가" />
   </component>
 </project>
