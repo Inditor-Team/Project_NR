@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf01f0a-1da8-4615-83f6-a6234508421f" name="Changes" comment="[Feat] 적 NPC 순찰 기능 구현" />
+    <list default="true" id="dcf01f0a-1da8-4615-83f6-a6234508421f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +18,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyScope.cs" root0="FORCE_HIGHLIGHTING" />
@@ -31,19 +36,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/enemy",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/enemy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.12f1\Editor\Unity.exe" />
@@ -97,7 +102,8 @@
       <option name="presentableId" value="Default" />
       <updated>1780719011957</updated>
       <workItem from="1780719015389" duration="908000" />
-      <workItem from="1780823465284" duration="4994000" />
+      <workItem from="1780823465284" duration="5307000" />
+      <workItem from="1781146569240" duration="1029000" />
     </task>
     <task id="LOCAL-00001" summary="[Feat] enemy 감지 설정">
       <option name="closed" value="true" />
@@ -115,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780833337036</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[Style] update 내부 수정">
+      <option name="closed" value="true" />
+      <created>1780833754800</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780833754800</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +147,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="[Feat] enemy 감지 설정" />
     <MESSAGE value="[Feat] 적 NPC 순찰 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Feat] 적 NPC 순찰 기능 구현" />
+    <MESSAGE value="[Style] update 내부 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Style] update 내부 수정" />
   </component>
 </project>

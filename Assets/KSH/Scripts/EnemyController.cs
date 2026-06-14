@@ -11,6 +11,12 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
+    // 스프라이트 적용
+    private SpriteRenderer sprite;
+    private Animator anim;
+    public Vector2 nextvec;
+    
+    
     public float speed = 0.5f;
     private bool isPatrol; // 순찰(패트롤) 상태인지 판단 여부
     private int currentPatrolIndex; // 순찰 지점 인덱스
@@ -21,6 +27,8 @@ public class EnemyController : MonoBehaviour
     {
         isPatrol = true;
         rigid = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -44,7 +52,7 @@ public class EnemyController : MonoBehaviour
         
         patrolNextPosition = patrolPoints[currentPatrolIndex];
         Vector2 dir = patrolNextPosition.position - transform.position;
-        Vector2 nextvec = dir.normalized * speed * Time.fixedDeltaTime;
+        nextvec = dir.normalized * speed * Time.fixedDeltaTime;
         
         rigid.MovePosition(rigid.position + nextvec);
         rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
@@ -54,7 +62,18 @@ public class EnemyController : MonoBehaviour
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
         }
     }
-    
+
+    private void LateUpdate()
+    {
+        if (!isPatrol)
+            return;
+        
+        if (nextvec.x != 0)
+        {
+            sprite.flipX = nextvec.x < 0;
+        }
+    }
+
     private void OnScopeEnter(Collider2D other) // 추적 시작
     { 
         if (!other.CompareTag("Player"))
