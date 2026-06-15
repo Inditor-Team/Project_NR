@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
     [SerializeField] private EnemyScope detectScope;
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private EnemyShooter enemyShooter;
 
     [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
@@ -80,6 +80,8 @@ public class EnemyController : MonoBehaviour
             return;
 
         isPatrol = false;
+        
+        enemyShooter.SetPosition(target.transform.position);
         
         Debug.Log("Scope Enter");
     }
