@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     public Vector2 nextvec;
+    private const float MinDirectionMagnitude = 0.05f;
     
     public float speed = 0.5f;
     private bool isPatrol; // 순찰(패트롤) 상태인지 판단 여부
@@ -51,28 +52,22 @@ public class EnemyController : MonoBehaviour
         
         patrolNextPosition = patrolPoints[currentPatrolIndex];
         Vector2 dir = patrolNextPosition.position - transform.position;
-        nextvec = dir.normalized * speed * Time.fixedDeltaTime;
+        // nextvec = dir.normalized * speed * Time.fixedDeltaTime;
+        Vector2 normalizedDir = dir.normalized; // 애니메이션용 벡터
+
+        nextvec = normalizedDir * speed * Time.fixedDeltaTime; // 이동용
         
         rigid.MovePosition(rigid.position + nextvec);
         rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
+        
+        UpdateDirection(normalizedDir); // 스프라이트 업데이트, 이동용
 
         if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
         }
     }
-
-    private void LateUpdate()
-    {
-        if (!isPatrol)
-            return;
-        
-        if (nextvec.x != 0)
-        {
-            sprite.flipX = nextvec.x < 0;
-        }
-    }
-
+    
     private void OnScopeEnter(Collider2D other) // 추적 시작
     { 
         if (!other.CompareTag("Player"))
@@ -81,6 +76,9 @@ public class EnemyController : MonoBehaviour
         isPatrol = false; // 전투 상태
         
         enemyShooter.StartShooting(other.transform);
+        
+        Vector2 dirToPlayer = (Vector2)other.transform.position - (Vector2)transform.position;
+        UpdateDirection(dirToPlayer); // 스프라이트 업데이트, 전투용
         
         Debug.Log("Scope Enter");
     }
@@ -99,7 +97,34 @@ public class EnemyController : MonoBehaviour
     
     private void OnScopeStay(Collider2D other) // 횡 이동
     {
-        /*if (!other.CompareTag("Player"))
-            return;*/
+        if (!other.CompareTag("Player"))
+            return;
+        
+        Vector2 dirToPlayer = (Vector2)other.transform.position - (Vector2)transform.position;
+        UpdateDirection(dirToPlayer); // 스프라이트 업데이트, 전투용
+    }
+    
+    // 애니메이션 관련
+    public void UpdateDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude < MinDirectionMagnitude * MinDirectionMagnitude) // 방향 업데이트 여부 계산
+            return;
+
+        direction.Normalize();
+        
+        // TODO: sprite가 정면이나 후면이면 flip 안하도록
+        sprite.flipX = direction.x < 0f;
+
+        anim.SetFloat("moveX", Mathf.Abs(direction.x));
+        anim.SetFloat("moveY", direction.y);
+    }
+
+    [ContextMenu("SetDead")] // 테스트용
+    public void SetDead()
+    {
+        isPatrol = false;
+        enemyShooter.StopShooting();
+        anim.SetTrigger("isDead");
+        // destroy ?
     }
 }
