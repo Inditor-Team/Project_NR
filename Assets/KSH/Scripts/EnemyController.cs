@@ -9,13 +9,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyScope detectScope;
     [SerializeField] private EnemyShooter enemyShooter;
 
-    [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
+    // [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
     // 스프라이트 적용
     private SpriteRenderer sprite;
     private Animator anim;
     public Vector2 nextvec;
-    
     
     public float speed = 0.5f;
     private bool isPatrol; // 순찰(패트롤) 상태인지 판단 여부
@@ -79,9 +78,9 @@ public class EnemyController : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        isPatrol = false;
+        isPatrol = false; // 전투 상태
         
-        enemyShooter.SetPosition(target.transform.position);
+        enemyShooter.StartShooting(other.transform);
         
         Debug.Log("Scope Enter");
     }
@@ -91,7 +90,9 @@ public class EnemyController : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        isPatrol = true;
+        isPatrol = true; // 순찰 상태
+        
+        enemyShooter.StopShooting();
         
         Debug.Log("Scope Exit");
     }

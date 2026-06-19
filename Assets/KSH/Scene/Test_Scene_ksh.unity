@@ -703,8 +703,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d7068b5188e7646a9074b3a7cb17cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  bullet: {fileID: 4818792704162302796, guid: ae8ae0503f4a60d468c0f2ca00a2000c, type: 3}
+  bulletPrefab: {fileID: 4818792704162302796, guid: ae8ae0503f4a60d468c0f2ca00a2000c, type: 3}
   shootSpeed: 10
+  shootInterval: 1
 --- !u!212 &822049894
 SpriteRenderer:
   serializedVersion: 2
@@ -1248,7 +1249,6 @@ MonoBehaviour:
   - {fileID: 1472073697}
   detectScope: {fileID: 304336821}
   enemyShooter: {fileID: 822049893}
-  target: {fileID: 427930162}
   nextvec: {x: 0, y: 0}
   speed: 0.5
 --- !u!95 &2141810568
