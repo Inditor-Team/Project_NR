@@ -1,4 +1,3 @@
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +6,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    #region Variables
     PlayerInputActions input;
 
     Rigidbody2D rb;
@@ -30,8 +30,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("캐릭터 오브젝트")]
     [SerializeField] SpriteRenderer model;
-    [SerializeField] Transform gun;
-    [SerializeField] Transform sword;
+    [SerializeField] WeaponBase primaryWeapon;
+    [SerializeField] WeaponBase secondaryWeapon;
+    GameObject gun;
+    GameObject sword;
     SpriteRenderer gunSprite;
     SpriteRenderer swordSprite;
     Camera mainCam;
@@ -46,7 +48,9 @@ public class PlayerController : MonoBehaviour
     }
 
     PlayerState currentState;
+    #endregion
 
+    #region Cycle
     void Awake()
     {
         input = new PlayerInputActions();
@@ -54,8 +58,11 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         mainCam = Camera.main;
-        gunSprite = gun.GetComponent<SpriteRenderer>();
-        swordSprite = sword.GetChild(0).GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        GetWeaponComponent();
     }
 
     void OnEnable()
@@ -89,7 +96,9 @@ public class PlayerController : MonoBehaviour
     {
         SetWeaponPos();
     }
+    #endregion
 
+    #region FSM
     /// <summary>
     /// FSM 상태 변경 & 애니메이션 제어
     /// </summary>
@@ -174,7 +183,9 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+    #endregion
 
+    #region Act
     /// <summary>
     /// 검 공격 시도. Roll 과 Gun 도중 불가
     /// </summary>
@@ -184,6 +195,9 @@ public class PlayerController : MonoBehaviour
         if (currentState == PlayerState.SecondaryAttack) return;
 
         ChangeState(PlayerState.PrimaryAttack);
+
+        if (primaryWeapon != null)
+            primaryWeapon.TryAttack();
     }
 
     /// <summary>
@@ -195,6 +209,9 @@ public class PlayerController : MonoBehaviour
         if (currentState == PlayerState.PrimaryAttack) return;
 
         ChangeState(PlayerState.SecondaryAttack);
+
+        if (secondaryWeapon != null)
+            secondaryWeapon.TryAttack();
     }
 
     /// <summary>
@@ -220,7 +237,9 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = moveInput * speed;
     }
+    #endregion
 
+    #region Animate 
     /// <summary>
     /// 플레이어 입력에 따라 애니메이션 파타미터를 업데이트
     /// </summary>
@@ -256,23 +275,69 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void SetWeaponPos()
     {
+        //사용자 마우스 위치 받아서 좌표 계산
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
         Vector3 mouseScreen3D = new Vector3(mouseScreen.x, mouseScreen.y, -mainCam.transform.position.z);
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen3D);
         Vector2 aim = (mouseWorld - transform.position).normalized;
         float gunAngle = Mathf.Atan2(-aim.y, -aim.x) * Mathf.Rad2Deg;
 
-        gun.rotation = Quaternion.Euler(0, 0, gunAngle);
-        gun.position = (Vector2)transform.position + aim * 0.5f; //총이 캐릭터에서 약간 떨어지도록 위치 조정
+        if (gun != null)
+        {
+            gun.transform.rotation = Quaternion.Euler(0, 0, gunAngle);
+            gun.transform.position = (Vector2)transform.position + aim * 0.5f; //총이 캐릭터에서 약간 떨어지도록 위치 조정
 
-        //총이 캐릭터보다 왼쪽에 있을 때 총을 뒤집어서 보이도록 처리
-        gunSprite.flipY = (aim.x > 0) ? true : false;
-
-        //칼을 캐릭터 flip 에 맞춰 좌우 반전
-        swordSprite.flipX = model.flipX ? true : false;
-        //칼 위치는 swordHoldPoint 에 고정하되, 캐릭터가 flip 될 때 칼도 같이 좌우 반전되도록 처리
-        sword.transform.localPosition = swordHoldPos + swordHoldPos.x * (model.flipX ? Vector3.left * 2 : Vector3.zero);
-        sword.transform.rotation = (model.flipX ? Quaternion.Inverse(swordHoldRot) : swordHoldRot);
+            //총이 캐릭터보다 왼쪽에 있을 때 총을 뒤집어서 보이도록 처리
+            gunSprite.flipY = (aim.x > 0) ? true : false;
+        }
+        if (sword != null)
+        {
+            //칼을 캐릭터 flip 에 맞춰 좌우 반전
+            swordSprite.flipX = model.flipX ? true : false;
+            //칼 위치는 swordHoldPoint 에 고정하되, 캐릭터가 flip 될 때 칼도 같이 좌우 반전되도록 처리
+            sword.transform.localPosition = swordHoldPos + swordHoldPos.x * (model.flipX ? Vector3.left * 2 : Vector3.zero);
+            sword.transform.rotation = (model.flipX ? Quaternion.Inverse(swordHoldRot) : swordHoldRot);
+        }
     }
+    #endregion
 
+    #region State
+    /// <summary>
+    /// 총과 검 키 입력 변경을 대응하기 위함
+    /// TO DO : 왜 이렇게 짰더라 걍 키 바인딩 바꾸면 되는데
+    /// </summary>
+    private void GetWeaponComponent()
+    {
+        if (primaryWeapon != null)
+        {
+            WeaponBase primaryWeapon = this.primaryWeapon as WeaponBase;
+
+            if (primaryWeapon as Gun)
+            {
+                gun = primaryWeapon.gameObject;
+                gunSprite = gun.GetComponent<SpriteRenderer>();
+            }
+            else if (primaryWeapon as Sword)
+            {
+                sword = primaryWeapon.gameObject;
+                swordSprite = sword.GetComponent<SpriteRenderer>();
+            }
+        }
+        if (secondaryWeapon != null)
+        {
+            WeaponBase secondaryWeapon = this.secondaryWeapon as WeaponBase;
+
+            if (secondaryWeapon as Gun)
+            {
+                gun = secondaryWeapon.gameObject;
+                gunSprite = gun.GetComponent<SpriteRenderer>();
+            }
+            else if (secondaryWeapon as Sword)
+            {
+                sword = secondaryWeapon.gameObject;
+                swordSprite = sword.GetComponent<SpriteRenderer>();
+            }
+        }
+    }
+    #endregion
 }
