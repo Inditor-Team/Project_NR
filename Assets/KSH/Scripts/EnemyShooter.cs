@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -5,12 +6,20 @@ using UnityEngine.Serialization;
 public class EnemyShooter : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float shootSpeed = 10f;
-    [SerializeField] private float shootInterval = 1f; // 몇 초 간격으로 shoot
+    [SerializeField] private Transform[] gunTransform;
+    
+    
+    
+    private float shootSpeed = 10f;
+    private float fireInterval = 0.2f; // 발사 간격, 0.2
+    private float shootTimeInterval = 2f; // 1회 간격, 2
 
     private Transform target; // 플레이어
     private Coroutine shootRoutine;
-    
+
+    private int fireCount = 10;
+    private int shootTimeCount = 5;
+
     public void StartShooting(Transform playerTransform) // 아예 플레이어 transform를 참조하기, 변동되는 position 따라 잡기 위해
     {
         target = playerTransform;
@@ -31,18 +40,24 @@ public class EnemyShooter : MonoBehaviour
 
     private IEnumerator ShootRoutine()
     {
-        while (true)
+        for (int i = 0; i < shootTimeCount; i++)
         {
-            Shoot();
-            yield return new WaitForSeconds(shootInterval); // n초 대기
+            for (int j = 0; j < fireCount; j++)
+            {
+                Shoot(gunTransform[j%2]);
+                yield return new WaitForSeconds(fireInterval);
+            }
+            yield return new WaitForSeconds(shootTimeInterval);
         }
+        
+        // TODO: 재장전
     }
 
-    private void Shoot()
+    private void Shoot(Transform gun)
     {
         if (target == null) return;
 
-        Vector2 spawnPos = transform.position;
+        Vector2 spawnPos = gun.position;
         Vector2 direction = ((Vector2)target.position - spawnPos).normalized;
 
         GameObject enemyBullet = Instantiate(bulletPrefab, spawnPos, Quaternion.identity); // TODO: 추후 오브젝트 풀링 적용

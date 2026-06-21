@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     [SerializeField] private Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
     [SerializeField] private EnemyScope detectScope;
@@ -45,6 +45,11 @@ public class EnemyController : MonoBehaviour
         detectScope.OnScopeTriggerStay -= OnScopeStay;
     }
 
+    public void TakeDamage(float damage)
+    {
+        Debug.Log($"Take Damage {damage} !");
+    }
+
     private void FixedUpdate()
     {
         if (!isPatrol)
@@ -83,14 +88,11 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Scope Enter");
     }
     
+    // 추후 삭제
     private void OnScopeExit(Collider2D other) // 계속 추적하며 공격 혹은 순찰 상태 복귀
     {
         if (!other.CompareTag("Player"))
             return;
-
-        isPatrol = true; // 순찰 상태
-        
-        enemyShooter.StopShooting();
         
         Debug.Log("Scope Exit");
     }
