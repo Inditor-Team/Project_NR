@@ -34,14 +34,12 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         detectScope.OnScopeTriggerEnter += OnScopeEnter;
-        detectScope.OnScopeTriggerExit += OnScopeExit;
         detectScope.OnScopeTriggerStay += OnScopeStay;
     }
 
     private void OnDisable()
     {
         detectScope.OnScopeTriggerEnter -= OnScopeEnter;
-        detectScope.OnScopeTriggerExit -= OnScopeExit;
         detectScope.OnScopeTriggerStay -= OnScopeStay;
     }
 
@@ -57,7 +55,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         
         patrolNextPosition = patrolPoints[currentPatrolIndex];
         Vector2 dir = patrolNextPosition.position - transform.position;
-        // nextvec = dir.normalized * speed * Time.fixedDeltaTime;
         Vector2 normalizedDir = dir.normalized; // 애니메이션용 벡터
 
         nextvec = normalizedDir * speed * Time.fixedDeltaTime; // 이동용
@@ -84,17 +81,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         
         Vector2 dirToPlayer = (Vector2)other.transform.position - (Vector2)transform.position;
         UpdateDirection(dirToPlayer); // 스프라이트 업데이트, 전투용
-        
-        Debug.Log("Scope Enter");
-    }
-    
-    // 추후 삭제
-    private void OnScopeExit(Collider2D other) // 계속 추적하며 공격 혹은 순찰 상태 복귀
-    {
-        if (!other.CompareTag("Player"))
-            return;
-        
-        Debug.Log("Scope Exit");
     }
     
     private void OnScopeStay(Collider2D other) // 횡 이동

@@ -77,14 +77,10 @@ public class EnemyShooter : MonoBehaviour
         Vector2 spawnPos = gun.position;
         Vector2 direction = ((Vector2)target.position - spawnPos).normalized;
         
-        // GameObject enemyBullet = Instantiate(bulletPrefab, spawnPos, Quaternion.identity); // TODO: 추후 오브젝트 풀링 적용
         GameObject enemyBullet = bulletPool.Get();
         enemyBullet.transform.position = spawnPos;
         
         enemyBullet.GetComponent<EnemyBullet>().Launch(direction, shootSpeed);
-        
-        // Rigidbody2D rb = enemyBullet.GetComponent<Rigidbody2D>(); // TODO: 오브젝트 풀링 적용할 때 rigidbody도 캐싱하기
-        // rb.AddForce(direction * shootSpeed, ForceMode2D.Impulse); // Impulse = 일정 속도로 AddForce 적용
     }
     
     // 오브젝트 풀링
