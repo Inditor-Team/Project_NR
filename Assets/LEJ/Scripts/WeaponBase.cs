@@ -10,6 +10,7 @@ public class WeaponBase : MonoBehaviour
     /// </summary>
     public virtual void TryAttack()
     {
+        
     }
 
     /// <summary>

@@ -416,6 +416,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 191859428687422436, guid: f109223239c857c4bbceb68c9dac99d8, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 191859428687422436, guid: f109223239c857c4bbceb68c9dac99d8, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 191859428687422436, guid: f109223239c857c4bbceb68c9dac99d8, type: 3}
+      propertyPath: attackAnimClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 4289ffcc9d868bc49ab4b87b746d1cf0, type: 2}
+    - target: {fileID: 4267708692713136104, guid: f109223239c857c4bbceb68c9dac99d8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5153064809183675560, guid: f109223239c857c4bbceb68c9dac99d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

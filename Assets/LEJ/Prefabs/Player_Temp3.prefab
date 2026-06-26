@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4267708692713136104}
   - component: {fileID: 191859428687422436}
   - component: {fileID: 3596119184764505747}
+  - component: {fileID: 8036503959714155267}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -27,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045827258279987599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5153064809183675560}
+  m_Father: {fileID: 3890825540181309657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4267708692713136104
 BoxCollider2D:
@@ -92,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606344f926566f7428195e5a64d1fd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sword
+  attackRate: 0.5
+  swordModelAnim: {fileID: 8036503959714155267}
 --- !u!212 &3596119184764505747
 SpriteRenderer:
   serializedVersion: 2
@@ -151,6 +154,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &8036503959714155267
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045827258279987599}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14c5512a70e15434b966a6f3addba9c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4559295411213266186
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,13 +202,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4559295411213266186}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7578233766691705864}
-  m_Father: {fileID: 5153064809183675560}
+  m_Father: {fileID: 802024319854889374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &429543818777928026
 MonoBehaviour:
@@ -296,8 +321,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2392054080412248351}
-  - {fileID: 2413702503691992040}
-  - {fileID: 4457557595487093690}
+  - {fileID: 3890825540181309657}
+  - {fileID: 802024319854889374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1664649841789940043
@@ -317,8 +342,10 @@ MonoBehaviour:
   rollDuration: 0.2
   attackDuration: 0.1
   model: {fileID: 3911881215000518186}
-  primaryWeapon: {fileID: 191859428687422436}
-  secondaryWeapon: {fileID: 429543818777928026}
+  sword: {fileID: 191859428687422436}
+  swordHoldPoint: {fileID: 3890825540181309657}
+  gun: {fileID: 429543818777928026}
+  gunHoldPoint: {fileID: 802024319854889374}
 --- !u!50 &4790605128799926744
 Rigidbody2D:
   serializedVersion: 5
@@ -466,6 +493,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4457557595487093690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7139082166314665358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3890825540181309657}
+  m_Layer: 0
+  m_Name: SwordHoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3890825540181309657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139082166314665358}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2413702503691992040}
+  m_Father: {fileID: 5153064809183675560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7389360230089544300
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,3 +616,35 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &7825374538935133927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802024319854889374}
+  m_Layer: 0
+  m_Name: GunHoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802024319854889374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825374538935133927}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4457557595487093690}
+  m_Father: {fileID: 5153064809183675560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
