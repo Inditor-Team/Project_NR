@@ -991,7 +991,6 @@ MonoBehaviour:
   gunTransform:
   - {fileID: 822049892}
   - {fileID: 1953515240}
-  shootSpeed: 10
 --- !u!1 &1809855389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,8 +1552,9 @@ MonoBehaviour:
   - {fileID: 1472073697}
   detectScope: {fileID: 304336821}
   enemyShooter: {fileID: 1738841717}
+  target: {fileID: 1371458146}
   nextvec: {x: 0, y: 0}
-  speed: 0.5
+  speed: 1
 --- !u!95 &2141810568
 Animator:
   serializedVersion: 7

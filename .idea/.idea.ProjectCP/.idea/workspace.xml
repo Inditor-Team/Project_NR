@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf01f0a-1da8-4615-83f6-a6234508421f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSH/Resources/SampleBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Resources/SampleBullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyScope.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyShooter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +23,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5fbef2e591e14a4c91f3c5e34508b853212600/79/9e7cb1dc/IObjectPool`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSH/Scripts/EnemyScope.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyScope.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/_Game Dev/unityGame/ProjectCP/Assets/KSH/Scripts/EnemyShooter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -108,7 +112,10 @@
       <workItem from="1781839063394" duration="8317000" />
       <workItem from="1782043691666" duration="2740000" />
       <workItem from="1782048212226" duration="422000" />
-      <workItem from="1782132447066" duration="1604000" />
+      <workItem from="1782132447066" duration="1708000" />
+      <workItem from="1782218789179" duration="2318000" />
+      <workItem from="1782305437084" duration="2809000" />
+      <workItem from="1782521978479" duration="450000" />
     </task>
     <task id="LOCAL-00001" summary="[Feat] enemy 감지 설정">
       <option name="closed" value="true" />
@@ -166,7 +173,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782045942894</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[Feat] 에너미 총알 오브젝트 풀링 적용">
+      <option name="closed" value="true" />
+      <created>1782134140009</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1782134140009</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[Style] 안쓰는 코드 삭제">
+      <option name="closed" value="true" />
+      <created>1782219368556</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1782219368557</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +212,8 @@
     <MESSAGE value="[Feat] 총알 발사 간단 구현" />
     <MESSAGE value="[fix] 총알 발사 수정" />
     <MESSAGE value="[Feat] 양손 공격" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Feat] 양손 공격" />
+    <MESSAGE value="[Feat] 에너미 총알 오브젝트 풀링 적용" />
+    <MESSAGE value="[Style] 안쓰는 코드 삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Style] 안쓰는 코드 삭제" />
   </component>
 </project>

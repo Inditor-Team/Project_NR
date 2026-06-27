@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -9,7 +10,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private EnemyScope detectScope;
     [SerializeField] private EnemyShooter enemyShooter;
 
-    // [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
+    [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
     // 스프라이트 적용
     private SpriteRenderer sprite;
@@ -22,6 +23,12 @@ public class EnemyController : MonoBehaviour, IDamageable
     private int currentPatrolIndex; // 순찰 지점 인덱스
     private Transform patrolNextPosition;
     private Rigidbody2D rigid;
+    
+    // 횡 이동
+    private float turnAboutTime = 3f; // 횡이동 방향 전환 시간
+    private bool isRightSide = true;
+    private bool isSideWalkStart = false;
+    private Coroutine sideWalkRoutine;
 
     private void Start()
     {
@@ -34,13 +41,13 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         detectScope.OnScopeTriggerEnter += OnScopeEnter;
-        detectScope.OnScopeTriggerStay += OnScopeStay;
+        isRightSide = true;
+        isSideWalkStart = false;
     }
 
     private void OnDisable()
     {
         detectScope.OnScopeTriggerEnter -= OnScopeEnter;
-        detectScope.OnScopeTriggerStay -= OnScopeStay;
     }
 
     public void TakeDamage(float damage)
@@ -50,23 +57,52 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        if (!isPatrol)
-            return;
-        
-        patrolNextPosition = patrolPoints[currentPatrolIndex];
-        Vector2 dir = patrolNextPosition.position - transform.position;
-        Vector2 normalizedDir = dir.normalized; // 애니메이션용 벡터
-
-        nextvec = normalizedDir * speed * Time.fixedDeltaTime; // 이동용
-        
-        rigid.MovePosition(rigid.position + nextvec);
-        rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
-        
-        UpdateDirection(normalizedDir); // 스프라이트 업데이트, 이동용
-
-        if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
+        // TODO: 상태 머신 적용
+        if (isPatrol) // 순찰
         {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+            patrolNextPosition = patrolPoints[currentPatrolIndex];
+            Vector2 dir = patrolNextPosition.position - transform.position;
+            Vector2 normalizedDir = dir.normalized; // 애니메이션용 벡터
+    
+            nextvec = normalizedDir * speed * Time.fixedDeltaTime; // 이동용
+            
+            rigid.MovePosition(rigid.position + nextvec);
+            rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
+            
+            UpdateDirection(normalizedDir); // 스프라이트 업데이트, 이동용
+    
+            if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
+            {
+                currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+            }
+        }
+        else // 전투 상태, 횡 이동
+        {
+            // TODO: 플레이어 간격 5미터
+            Vector2 dirToPlayer = (Vector2)target.transform.position - (Vector2)transform.position;
+            Vector2 normalizedDir = dirToPlayer.normalized;
+            
+            Vector2 movePos = isRightSide ? 
+                new Vector2(normalizedDir.y, -normalizedDir.x) : new Vector2(-normalizedDir.y, normalizedDir.x);
+            
+            nextvec = movePos * speed * Time.fixedDeltaTime; // 이동용
+            
+            rigid.MovePosition(rigid.position + nextvec);
+            rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
+            
+            UpdateDirection(normalizedDir); // 스프라이트 업데이트, 전투용
+        }
+    }
+
+    private IEnumerator StartSideWalk()
+    {
+        yield return new WaitForSeconds(turnAboutTime/2);
+        isRightSide = !isRightSide;
+        
+        while (true)
+        {
+            yield return new WaitForSeconds(turnAboutTime);
+            isRightSide = !isRightSide;
         }
     }
     
@@ -81,15 +117,9 @@ public class EnemyController : MonoBehaviour, IDamageable
         
         Vector2 dirToPlayer = (Vector2)other.transform.position - (Vector2)transform.position;
         UpdateDirection(dirToPlayer); // 스프라이트 업데이트, 전투용
-    }
-    
-    private void OnScopeStay(Collider2D other) // 횡 이동
-    {
-        if (!other.CompareTag("Player"))
-            return;
-        
-        Vector2 dirToPlayer = (Vector2)other.transform.position - (Vector2)transform.position;
-        UpdateDirection(dirToPlayer); // 스프라이트 업데이트, 전투용
+
+        if(!isSideWalkStart && sideWalkRoutine == null)
+            sideWalkRoutine = StartCoroutine(StartSideWalk());
     }
     
     // 애니메이션 관련
@@ -113,6 +143,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         isPatrol = false;
         enemyShooter.StopShooting();
         anim.SetTrigger("isDead");
+
+        if (sideWalkRoutine != null)
+        {
+            StopCoroutine(sideWalkRoutine);
+            sideWalkRoutine = null;
+        }
         // destroy ?
     }
 }

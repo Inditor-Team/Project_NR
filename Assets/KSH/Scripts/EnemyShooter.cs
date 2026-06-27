@@ -17,6 +17,7 @@ public class EnemyShooter : MonoBehaviour
     private float shootSpeed = 10f;
     private float fireInterval = 0.2f; // 발사 간격, 0.2
     private float shootTimeInterval = 2f; // 1회 간격, 2
+    private float reloadTime = 5f;
 
     private Transform target; // 플레이어
     private Coroutine shootRoutine;
@@ -67,9 +68,18 @@ public class EnemyShooter : MonoBehaviour
             yield return new WaitForSeconds(shootTimeInterval);
         }
         
-        // TODO: 재장전
+        StartCoroutine(Reload()); // TODO: 변수 만들어서 null 처리
     }
 
+    private IEnumerator Reload()
+    {
+        StopShooting();
+        Debug.Log("재장전");
+        yield return new WaitForSeconds(reloadTime);
+
+        StartShooting(target);
+    }
+    
     private void Shoot(Transform gun)
     {
         if (target == null) return;
