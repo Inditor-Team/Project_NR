@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Idle:
+                anim.SetBool("IsMove", false);
                 if (moveInput.magnitude > 0)
                 {
                     anim.SetBool("IsMove", true);
