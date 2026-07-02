@@ -20,15 +20,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rollDuration = 0.2f;
     [SerializeField] float attackDuration = 0.1f;
 
+    [Header("캐릭터 프로토콜")]
+    [SerializeField] ProtocolBase protocol;
+
     float rollTimer;
     float attackTimer;
-
-    Vector2 mousePosition;
 
     Quaternion swordHoldRot = Quaternion.Euler(0f, 0f, 0.25f);
 
     [Header("캐릭터 오브젝트")]
     [SerializeField] SpriteRenderer model;
+    public SpriteRenderer Model => model;
     [SerializeField] WeaponBase sword;
     [SerializeField] Transform swordHoldPoint;
     [SerializeField] WeaponBase gun;
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
         input.Player.PrimaryAttack.performed += _ => TryPrimaryAttack();
         input.Player.SecondaryAttack.performed += _ => TrySecondaryAttack();
         input.Player.Roll.performed += _ => TryRoll();
+        input.Player.SpecialSkill.performed += _ => TrySpecialSkill();
     }
 
     void OnDisable()
@@ -213,6 +216,14 @@ public class PlayerController : MonoBehaviour
 
         if (gun != null)
             gun.TryAttack();
+    }
+
+    /// <summary>
+    /// 프로토콜 스킬 시도
+    /// </summary>
+    void TrySpecialSkill()
+    {
+        protocol.TryProtocol();
     }
 
     /// <summary>

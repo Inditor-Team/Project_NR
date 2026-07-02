@@ -36,7 +36,7 @@ public class BulletBase : MonoBehaviour
             return;
 
         //기본 총알 이동
-        transform.Translate(dir * speed * Time.fixedDeltaTime, Space.World);
+        transform.Translate(dir * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale, Space.World);
     }
 
     public virtual void OnFire(Vector2 dir)

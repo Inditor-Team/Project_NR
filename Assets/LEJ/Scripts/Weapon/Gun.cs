@@ -50,8 +50,6 @@ public class Gun : WeaponBase
 
     public override void TryAttack()
     {
-        base.TryAttack();
-
         if (Time.time - lastFireTime < fireRate) 
             return;
 
@@ -61,7 +59,6 @@ public class Gun : WeaponBase
 
     internal override void Attack()
     {
-        base.Attack();
         bulletPool[bulletIndex].transform.position = firePoint.position; //총알 위치 초기화
         bulletPool[bulletIndex].gameObject.SetActive(true); //총알 활성화
         bulletPool[bulletIndex].OnFire(-firePoint.right);

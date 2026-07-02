@@ -28,8 +28,6 @@ public class Sword : WeaponBase
 
     public override void TryAttack()
     {
-        base.TryAttack();
-
         if (Time.time - lastAttackTime < attackRate)
             return;
 
@@ -39,7 +37,6 @@ public class Sword : WeaponBase
 
     internal override void Attack()
     {
-        base.Attack();
         anim.speed = speed;
         anim.Play("Sword_Attack");
     }
