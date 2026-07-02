@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -25,24 +26,28 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Rigidbody2D rigid;
     
     // 횡 이동
-    private float turnAboutTime = 3f; // 횡이동 방향 전환 시간
     private bool isRightSide = true;
-    private bool isSideWalkStart = false;
-    private Coroutine sideWalkRoutine;
+    private Vector2 startPos;
+    private float sideLimit = 3f; // 몇 만큼 횡 이동 하는 지
+    
+    // 플레이어와의 간격 유지
+    public float targetDist = 5f; // 플레이어와 떨어진 간격
+    public float correctionFactor = 0.5f; // 보정 계수
 
     private void Start()
     {
-        isPatrol = true;
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        startPos = transform.position;
     }
 
     private void OnEnable()
     {
         detectScope.OnScopeTriggerEnter += OnScopeEnter;
+        isPatrol = true;
         isRightSide = true;
-        isSideWalkStart = false;
     }
 
     private void OnDisable()
@@ -78,31 +83,33 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
         else // 전투 상태, 횡 이동
         {
-            // TODO: 플레이어 간격 5미터
-            Vector2 dirToPlayer = (Vector2)target.transform.position - (Vector2)transform.position;
-            Vector2 normalizedDir = dirToPlayer.normalized;
+            // 목표 거리 계산
+            Vector2 dirToPlayer = (Vector2)target.transform.position - (Vector2)transform.position; // 위치 차이를 나타내는 벡터
+            float currentDist = dirToPlayer.magnitude - targetDist; // 현재 거리 차이, 음수면 가깝고 양수면 멀음
+            Vector2 normalizedDir = dirToPlayer.normalized; // 방향만
             
-            Vector2 movePos = isRightSide ? 
-                new Vector2(normalizedDir.y, -normalizedDir.x) : new Vector2(-normalizedDir.y, normalizedDir.x);
+            // 간격 보정 벡터
+            Vector2 gapVector = normalizedDir * currentDist * correctionFactor; // 마지막은 보정 계수(임시로 0.5로 설정)
+
+            Vector2 sideAxis = new Vector2(normalizedDir.y, -normalizedDir.x);
             
-            nextvec = movePos * speed * Time.fixedDeltaTime; // 이동용
+            Vector2 displacement = (Vector2)transform.position - startPos; // 시작과 비교하여 얼마나 이동하였는지
+            float sideDist = Vector2.Dot(displacement, sideAxis); 
             
-            rigid.MovePosition(rigid.position + nextvec);
-            rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
+            if (sideDist > sideLimit || sideDist < -sideLimit)
+            {
+                isRightSide = !isRightSide;
+                startPos = transform.position; // 기준점 갱신
+            }
+            
+            Vector2 sideVec = isRightSide ? sideAxis : -sideAxis;
+            
+            Vector2 finalMove = (sideVec + gapVector).normalized * speed * Time.fixedDeltaTime;
+            
+            // rigid.linearVelocity = Vector2.zero; -> rigidbody bodytype을 kinematic으로 변경
+            rigid.MovePosition(rigid.position + finalMove);
             
             UpdateDirection(normalizedDir); // 스프라이트 업데이트, 전투용
-        }
-    }
-
-    private IEnumerator StartSideWalk()
-    {
-        yield return new WaitForSeconds(turnAboutTime/2);
-        isRightSide = !isRightSide;
-        
-        while (true)
-        {
-            yield return new WaitForSeconds(turnAboutTime);
-            isRightSide = !isRightSide;
         }
     }
     
@@ -112,14 +119,12 @@ public class EnemyController : MonoBehaviour, IDamageable
             return;
 
         isPatrol = false; // 전투 상태
+        startPos = transform.position;
         
         enemyShooter.StartShooting(other.transform);
         
         Vector2 dirToPlayer = (Vector2)other.transform.position - (Vector2)transform.position;
         UpdateDirection(dirToPlayer); // 스프라이트 업데이트, 전투용
-
-        if(!isSideWalkStart && sideWalkRoutine == null)
-            sideWalkRoutine = StartCoroutine(StartSideWalk());
     }
     
     // 애니메이션 관련
@@ -143,12 +148,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         isPatrol = false;
         enemyShooter.StopShooting();
         anim.SetTrigger("isDead");
-
-        if (sideWalkRoutine != null)
-        {
-            StopCoroutine(sideWalkRoutine);
-            sideWalkRoutine = null;
-        }
         // destroy ?
     }
 }

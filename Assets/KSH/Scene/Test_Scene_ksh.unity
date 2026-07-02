@@ -385,8 +385,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.9992648
+    width: 0.99901676
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1403,7 +1403,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141810562}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1420,7 +1420,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &2141810564
 CapsuleCollider2D:
@@ -1555,6 +1555,8 @@ MonoBehaviour:
   target: {fileID: 1371458146}
   nextvec: {x: 0, y: 0}
   speed: 1
+  targetDist: 5
+  correctionFactor: 0.5
 --- !u!95 &2141810568
 Animator:
   serializedVersion: 7
