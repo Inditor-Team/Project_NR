@@ -14,6 +14,8 @@ public class Sword : WeaponBase
     Animator anim;
     HashSet<IDamageable> hitTargets = new(); //하나의 적이 여러 번 공격 인정 되는 것을 방지
 
+    GameObject owner;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -21,8 +23,9 @@ public class Sword : WeaponBase
         DisableAttackCollider();
     }
 
-    private void Start()
+    public override void SetOwner(GameObject owner)
     {
+        this.owner = owner;
         lastAttackTime = -attackRate; //처음에 바로 공격할 수 있도록 초기화
     }
 
@@ -45,9 +48,11 @@ public class Sword : WeaponBase
     {
         IDamageable target = collision.GetComponent<IDamageable>();
 
-        if (target == null)
+        //데미지를 안 받는 오브젝트거나 공격자 자신이면 무시
+        if (target == null || collision.gameObject == owner)
             return;
-
+        
+        //콜리젼에 여러 번 들어오는 것을 방지하기 위한 중복 체크
         if (hitTargets.Contains(target))
             return;
 
@@ -72,6 +77,5 @@ public class Sword : WeaponBase
         col.enabled = false;
         anim.speed = animOriginSpeed;
     }
-
 
 }
