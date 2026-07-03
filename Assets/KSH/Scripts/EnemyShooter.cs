@@ -25,6 +25,9 @@ public class EnemyShooter : MonoBehaviour
     private int fireCount = 10;
     private int shootTimeCount = 5;
     
+    public event Action OnReloadStart;
+    public event Action OnReloadEnd;
+    
     void Awake()
     {
         bulletPool = new ObjectPool<GameObject>(
@@ -74,10 +77,13 @@ public class EnemyShooter : MonoBehaviour
     private IEnumerator Reload()
     {
         StopShooting();
+        OnReloadStart?.Invoke();
+        
         Debug.Log("재장전");
         yield return new WaitForSeconds(reloadTime);
 
         StartShooting(target);
+        OnReloadEnd?.Invoke();
     }
     
     private void Shoot(Transform gun)

@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectCP/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scene/Test_Scene_ksh.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSH/Scripts/EnemyShooter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +115,7 @@
       <workItem from="1782521978479" duration="3424000" />
       <workItem from="1782645717564" duration="3966000" />
       <workItem from="1782980354086" duration="5319000" />
+      <workItem from="1783081418987" duration="5332000" />
     </task>
     <task id="LOCAL-00001" summary="[Feat] enemy 감지 설정">
       <option name="closed" value="true" />
