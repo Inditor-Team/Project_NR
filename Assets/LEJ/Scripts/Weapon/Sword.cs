@@ -44,6 +44,12 @@ public class Sword : WeaponBase
         anim.Play("Sword_Attack");
     }
 
+    internal void Attack(float speed)
+    {
+        anim.speed = speed;
+        anim.Play("Sword_Attack");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable target = collision.GetComponent<IDamageable>();
