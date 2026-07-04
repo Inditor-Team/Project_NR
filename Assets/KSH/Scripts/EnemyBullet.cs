@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 public class EnemyBullet : MonoBehaviour
 {
-    
+    public Vector2 Velocity; //추가
     private IObjectPool<GameObject> pool;
     private Rigidbody2D rigid; // 캐싱
     private bool isReleased;
@@ -17,7 +17,8 @@ public class EnemyBullet : MonoBehaviour
     public void Launch(Vector2 direction, float speed)
     {
         isReleased = false; // 발사될 때 반납 상태 초기화
-        rigid.AddForce(direction * speed, ForceMode2D.Impulse);
+        rigid.AddForce(direction * speed * GameTime.WorldTimeScale, ForceMode2D.Impulse);
+        Velocity = rigid.linearVelocity; //추가
     }
     
     public void SetPool(IObjectPool<GameObject> pool)

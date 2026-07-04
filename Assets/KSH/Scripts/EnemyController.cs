@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             Vector2 dir = patrolNextPosition.position - transform.position;
             Vector2 normalizedDir = dir.normalized; // 애니메이션용 벡터
     
-            nextvec = normalizedDir * speed * Time.fixedDeltaTime; // 이동용
+            nextvec = normalizedDir * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale; // 이동용
             
             rigid.MovePosition(rigid.position + nextvec);
             rigid.linearVelocity = Vector2.zero; // 유니티6는 velocity에서 linearVelocity로 변경, 추후 찾아보기
@@ -104,7 +104,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             
             Vector2 sideVec = isRightSide ? sideAxis : -sideAxis;
             
-            Vector2 finalMove = (sideVec + gapVector).normalized * speed * Time.fixedDeltaTime;
+            Vector2 finalMove = (sideVec + gapVector).normalized * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
             
             // rigid.linearVelocity = Vector2.zero; -> rigidbody bodytype을 kinematic으로 변경
             rigid.MovePosition(rigid.position + finalMove);
