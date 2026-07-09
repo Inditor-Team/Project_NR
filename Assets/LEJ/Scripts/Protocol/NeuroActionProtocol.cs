@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeuroAction : ProtocolBase
+/// <summary>
+/// 빠르게 움직여 월드 시간을 느리게 보이게 하는 프로토콜
+/// </summary>
+public class NeuroActionProtocol : ProtocolBase
 {
+    [SerializeField] GameObject debug_effect; //임시 시각 효과
+
     [Header("임시 능력치")]
     [SerializeField] private float newTimeScale = 0.05f;
     [SerializeField] private float newTimeScaleDuration = 5f;
@@ -47,6 +52,9 @@ public class NeuroAction : ProtocolBase
 
     internal override void DoProtocol()
     {
+        debug_effect.SetActive(true);
+        isActive = true;
+
         Debug.Log("Player: NeuroAction Protocol! ");
         
         if (protocolRoutine == null)
@@ -79,7 +87,10 @@ public class NeuroAction : ProtocolBase
 
     internal override void EndProtocol()
     {
+        debug_effect.SetActive(false);
+
         GameTime.SetTimeScale(1f);
+        isActive = false;
     }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)

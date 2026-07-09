@@ -5,6 +5,7 @@ using UnityEngine;
 /// </summary>
 public class BulletBase : MonoBehaviour
 {
+    private GameObject owner;
     private float damage;
     private float speed;
     private Vector2 dir;
@@ -20,6 +21,13 @@ public class BulletBase : MonoBehaviour
     {
         this.damage = damage;
         this.speed = speed;
+    }
+
+    public virtual void Init(float damage, float speed, GameObject owner)
+    {
+        this.damage = damage;
+        this.speed = speed;
+        this.owner = owner;
     }
 
     private void Update()
@@ -41,6 +49,15 @@ public class BulletBase : MonoBehaviour
 
     public virtual void OnFire(Vector2 dir)
     {
+        gameObject.SetActive(true);
+        this.dir = dir.normalized;
+        timer = 0;
+    }
+
+    public void OnFire(Vector2 dir, float speed)
+    {
+        this.speed = speed;
+        gameObject.SetActive(true);
         this.dir = dir.normalized;
         timer = 0;
     }
@@ -51,6 +68,10 @@ public class BulletBase : MonoBehaviour
 
         if (target != null)
         {
+            //총알 발사자가 설정 되었고, 발사자와 충돌한 경우
+            if (owner != null && collision.gameObject == owner) 
+                return;
+
             DestroyBullet();
             target.TakeDamage(damage); //데미지 전달
         }
@@ -58,6 +79,10 @@ public class BulletBase : MonoBehaviour
 
     private void DestroyBullet()
     {
+        //소유자가 없으면 오브젝트 풀 내 총알이 아니라고 판단, 그대로 destroy
+        if (owner == null)
+            Destroy(gameObject);
+
         gameObject.SetActive(false); //오브젝트 풀 내 자신 비활성화
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// 플레이어의 입력에 따른 플레이어블 캐릭터의 움직임과 애니메이션 제어
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     #region Variables
     PlayerInputActions input;
@@ -57,6 +57,9 @@ public class PlayerController : MonoBehaviour
         input = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        (sword as Sword).SetOwner(gameObject); //검 Init
+        (gun as Gun).SetOwner(gameObject); //총 Init
 
         mainCam = Camera.main;
     }
@@ -223,6 +226,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void TrySpecialSkill()
     {
+        if (protocol.IsActive)
+            return;
+
         protocol.TryProtocol();
     }
 
@@ -243,7 +249,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        float speed = moveSpeed;
+        //프로토콜 스킬에 따른 이속 변화 존재(기본 값은 1)
+        float speed = protocol.IsActive ? moveSpeed * protocol.SpeedMultiplier: moveSpeed; 
 
         if (currentState == PlayerState.Roll)
             speed = rollSpeed;
@@ -303,6 +310,13 @@ public class PlayerController : MonoBehaviour
         {
             swordSprite = sword.GetComponent<SpriteRenderer>();
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        //프로토콜이 실행 중이고 해당 프로토콜이 무적 상태라면 데미지 무시
+        if (protocol.IsActive && protocol.isInvincible)
+            return;
     }
     #endregion
 }

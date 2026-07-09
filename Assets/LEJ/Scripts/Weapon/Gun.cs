@@ -22,6 +22,7 @@ public class Gun : WeaponBase
         set { _bulletIndex = value % bulletPoolSize; }
     }
 
+    GameObject owner; //총의 소유자
     private SpriteRenderer sprite;
 
     private void Awake()
@@ -29,8 +30,17 @@ public class Gun : WeaponBase
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
+    /// <summary>
+    /// Init 을 호출 해 총의 소유자를 설정하고 총이 작동될 수 있게 합니다
+    /// </summary>
+    /// <param name="owner"></param>
+    public override void SetOwner(GameObject owner)
     {
+        this.owner = owner;
+
+        if (bulletPool != null)
+            return;
+
         MakeBulletPool();
         lastFireTime = -fireRate; //처음에 바로 발사할 수 있도록 초기화
     }
@@ -43,7 +53,7 @@ public class Gun : WeaponBase
         {
             BulletBase bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             bulletPool[i] = bullet;
-            bullet.Init(damage, speed); //총알 초기화
+            bullet.Init(damage, speed, owner); //총알 초기화
             bullet.gameObject.SetActive(false); 
         }
     }
@@ -60,7 +70,6 @@ public class Gun : WeaponBase
     internal override void Attack()
     {
         bulletPool[bulletIndex].transform.position = firePoint.position; //총알 위치 초기화
-        bulletPool[bulletIndex].gameObject.SetActive(true); //총알 활성화
         bulletPool[bulletIndex].OnFire(-firePoint.right);
         bulletIndex++;
     }
