@@ -15,9 +15,10 @@ public class EnemyShooter : MonoBehaviour
     private int maxPoolSize = 20;
     
     private float shootSpeed = 10f;
+    
     private float fireInterval = 0.2f; // 발사 간격, 0.2
     private float shootTimeInterval = 2f; // 1회 간격, 2
-    private float reloadTime = 5f;
+    private float reloadTime = 20f;
 
     private Transform target; // 플레이어
     private Coroutine shootRoutine;
@@ -44,7 +45,7 @@ public class EnemyShooter : MonoBehaviour
     public void StartShooting(Transform playerTransform) // 아예 플레이어 transform를 참조하기, 변동되는 position 따라 잡기 위해
     {
         target = playerTransform;
-
+        
         if (shootRoutine == null)
             shootRoutine = StartCoroutine(ShootRoutine());
     }
@@ -76,13 +77,8 @@ public class EnemyShooter : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        StopShooting();
         OnReloadStart?.Invoke();
-        
-        Debug.Log("재장전");
         yield return new WaitForSeconds(reloadTime);
-
-        StartShooting(target);
         OnReloadEnd?.Invoke();
     }
     
