@@ -18,7 +18,7 @@ public class EnemyShooter : MonoBehaviour
     
     private float fireInterval = 0.2f; // 발사 간격, 0.2
     private float shootTimeInterval = 2f; // 1회 간격, 2
-    private float reloadTime = 20f;
+    private float reloadTime = 5f;
 
     private Transform target; // 플레이어
     private Coroutine shootRoutine;

@@ -122,7 +122,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         Vector2 dir = patrolNextPosition.position - transform.position;
         Vector2 normalizedDir = dir.normalized; // 애니메이션용 벡터
     
-        nextvec = normalizedDir * defaultSpeed * GameTime.WorldTimeScale; // 이동용
+        nextvec = normalizedDir * defaultSpeed * Time.fixedDeltaTime * GameTime.WorldTimeScale; // 이동용
             
         rigid.MovePosition(rigid.position + nextvec);
             
@@ -162,7 +162,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             sideVec = isRightSide ? sideAxis : -sideAxis;
         }
         
-        Vector2 finalMove = (sideVec + gapVector).normalized * speed * GameTime.WorldTimeScale;
+        Vector2 finalMove = (sideVec + gapVector).normalized * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
         
         rigid.MovePosition(rigid.position + finalMove);
             
