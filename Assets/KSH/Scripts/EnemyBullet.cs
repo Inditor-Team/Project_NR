@@ -2,21 +2,32 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : PoolObjectBase
 {
     public Vector2 velocity; 
-    private IObjectPool<GameObject> pool;
     private Rigidbody2D rigid; // 캐싱
     private bool isReleased;
     
     private Vector2 direction;
     private float speed;
+    
+    private GameObject originPrefab; // 오리진 프리팹
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
     }
-    
+
+    private void OnEnable()
+    {
+        rigid.linearVelocity = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        rigid.linearVelocity = Vector2.zero;
+    }
+
     public void Launch(Vector2 direction, float speed)
     {
         this.direction = direction;
@@ -32,9 +43,9 @@ public class EnemyBullet : MonoBehaviour
         rigid.linearVelocity = direction * speed * GameTime.WorldTimeScale;
     }
 
-    public void SetPool(IObjectPool<GameObject> pool)
+    public override void SetOriginPrefab(GameObject prefab)
     {
-        this.pool = pool;
+        originPrefab = prefab;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,6 +56,6 @@ public class EnemyBullet : MonoBehaviour
         if (isReleased) return;
         isReleased = true;
         
-        pool.Release(gameObject); // 반납하면 OnReturnedToPool에서 SetActive를 false
+        PoolManager.Instance.Release(originPrefab, this.gameObject);
     }
 }
