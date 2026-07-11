@@ -563,9 +563,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.048780486
+    y: 0.05140187
     width: 1
-    height: 0.90034294
+    height: 0.90157706
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1590,8 +1590,8 @@ MonoBehaviour:
   - {fileID: 1472073697}
   detectScope: {fileID: 304336821}
   enemyShooter: {fileID: 1738841717}
+  data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
   target: {fileID: 468378176}
-  defaultSpeed: 0.5
 --- !u!95 &2141810568
 Animator:
   serializedVersion: 7

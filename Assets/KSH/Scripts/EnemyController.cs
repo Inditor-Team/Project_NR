@@ -7,7 +7,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
     [SerializeField] private EnemyScope detectScope;
     [SerializeField] private EnemyShooter enemyShooter;
-
+    [SerializeField] private EnemyDataBase data;
+    
     [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
     // 스프라이트 관련
@@ -15,9 +16,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Animator anim;
     private Vector2 nextvec;
     private const float MinDirectionMagnitude = 0.05f;
-    
-    public float defaultSpeed = 0.5f;
-    private float reloadSpeed = 1f;
     
     private int currentPatrolIndex; // 순찰 지점 인덱스
     private Transform patrolNextPosition;
@@ -28,12 +26,17 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Vector2 startPos;
     private float sideLimit = 3f; // 몇 만큼 횡 이동 하는 지
     
-    // 플레이어와의 간격 유지
-    private float combatTargetDist = 5f; // 플레이어와 떨어진 간격
+    // 재장전
+    private float reloadSpeed;
     private float reloadTargetDist = 10f;
+    
     private float correctionFactor = 0.5f; // 보정 계수
 
-    private float health = 10f;
+    // EnemyDataBase 관련 변수
+    private float defaultSpeed;
+    private float combatTargetDist; // 플레이어와 떨어진 간격
+    private float health;
+    private float damage;
 
     // FSM 관련 변수
     private enum EnemyStat
@@ -52,6 +55,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         anim = GetComponent<Animator>();
 
         startPos = transform.position;
+        defaultSpeed = data.moveSpeed;
+        combatTargetDist = data.combatTargetDist; // 플레이어와 떨어진 간격
+        health = data.health;
+        damage = data.damage;
+        
+        enemyShooter.SetDamage(damage);
         reloadSpeed = defaultSpeed * 3f;
     }
 

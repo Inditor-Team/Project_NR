@@ -10,6 +10,7 @@ public class EnemyBullet : PoolObjectBase
     
     private Vector2 direction;
     private float speed;
+    private float damage;
     
     private GameObject originPrefab; // 오리진 프리팹
 
@@ -27,11 +28,12 @@ public class EnemyBullet : PoolObjectBase
     {
         rigid.linearVelocity = Vector2.zero;
     }
-
-    public void Launch(Vector2 direction, float speed)
+    
+    public void Launch(Vector2 direction, float speed, float damage)
     {
         this.direction = direction;
         this.speed = speed;
+        this.damage = damage;
         isReleased = false; // 발사될 때 반납 상태 초기화
         rigid.AddForce(direction * speed * GameTime.WorldTimeScale, ForceMode2D.Impulse);
         
@@ -55,6 +57,11 @@ public class EnemyBullet : PoolObjectBase
         
         if (isReleased) return;
         isReleased = true;
+        
+        IDamageable target = other.GetComponent<IDamageable>();
+
+        if (target != null)
+            target.TakeDamage(damage);
         
         PoolManager.Instance.Release(originPrefab, this.gameObject);
     }

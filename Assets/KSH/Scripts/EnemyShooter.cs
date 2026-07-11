@@ -21,15 +21,21 @@ public class EnemyShooter : MonoBehaviour
 
     private int fireCount = 10;
     private int shootTimeCount = 5;
+    private float damage;
     
     public event Action OnReloadStart;
     public event Action OnReloadEnd;
     
     private void Start()
     {
-        PoolManager.Instance.PoolInit(bulletPrefab);
+        PoolManager.Instance.PoolInit(bulletPrefab, defaultCapacity, maxPoolSize);
     }
 
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
+    
     public void StartShooting(Transform playerTransform) // 아예 플레이어 transform를 참조하기, 변동되는 position 따라 잡기 위해
     {
         target = playerTransform;
@@ -80,6 +86,6 @@ public class EnemyShooter : MonoBehaviour
         GameObject enemyBullet = PoolManager.Instance.Get(bulletPrefab); // bulletPool.Get();
         enemyBullet.transform.position = spawnPos;
         
-        enemyBullet.GetComponent<EnemyBullet>().Launch(direction, shootSpeed);
+        enemyBullet.GetComponent<EnemyBullet>().Launch(direction, shootSpeed, damage);
     }
 }
