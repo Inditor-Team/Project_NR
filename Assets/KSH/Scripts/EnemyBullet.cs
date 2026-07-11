@@ -35,7 +35,6 @@ public class EnemyBullet : PoolObjectBase
         this.speed = speed;
         this.damage = damage;
         isReleased = false; // 발사될 때 반납 상태 초기화
-        rigid.AddForce(direction * speed * GameTime.WorldTimeScale, ForceMode2D.Impulse);
         
         velocity = rigid.linearVelocity; //추가
     }
