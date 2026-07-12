@@ -109,3 +109,18 @@ InitTestScene*.unity*
 Assets/LEJ/Imports/8bit Adventure (1489)/
 Assets/LEJ/Imports/8bit Adventure (1489).meta
 Assets/KSH/Imports/
+
+Assets/Imports/ExternalAssets/**/*.png
+Assets/Imports/ExternalAssets/**/*.jpg
+Assets/Imports/ExternalAssets/**/*.jpeg
+Assets/Imports/ExternalAssets/**/*.psd
+Assets/Imports/ExternalAssets/**/*.fbx
+Assets/Imports/ExternalAssets/**/*.wav
+Assets/Imports/ExternalAssets/**/*.mp3
+Assets/Imports/ExternalAssets/**/*.ogg
+Assets/Imports/ExternalAssets/**/*.tga
+Assets/Imports/ExternalAssets/**/*.mat
+Assets/Imports/ExternalAssets/**/*.anim
+Assets/Imports/ExternalAssets/**/*.controller
+Assets/Imports/ExternalAssets/**/*.prefab
+Assets/Imports/ExternalAssets/**/*.asset
