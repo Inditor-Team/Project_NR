@@ -48,9 +48,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,14 +106,7133 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: _indoor_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa8cddefb19c3e41b84846ac91b174a
+      internalID: 1052550706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78c55ceda0bac14c8de374987f870b3
+      internalID: 1331006906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 327a78e41d77e0b489511e38e7e0b369
+      internalID: 79601200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c231a5d3d727f6f4293ec148415b44c7
+      internalID: -1604521913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ac2c204b945084a9cfb0c6dd74f402
+      internalID: -1448411146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f3133de374ff446a8ff2c836eeb090
+      internalID: 1466395328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9add835ce40e0294a9b18759eb9d43a5
+      internalID: 57201919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc6a8d54f4c25c48a0b2c4a403863b9
+      internalID: -1865292726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3320a0c454ea07d4ebedc94cda901c0c
+      internalID: -1000091607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d3d6522724adf4ba39ec6890353a26
+      internalID: -7077325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50d187f6dd5472143898419ebbcc7827
+      internalID: -877027560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_11
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32b5f80237977d48b674249355b4916
+      internalID: 304790094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_12
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00de72e8d1470e5408680c08eb94b565
+      internalID: -367252709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_13
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab865b527fab924188e15960f29f43b
+      internalID: 605857448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_14
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb4be167da0b6d4eb3680f1e6b021d8
+      internalID: -708871179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_15
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5d4ba89047b6c4bb45d4a14dbea3c4
+      internalID: 1921009329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_16
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 362
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e318c23c8e0aa4d83f658b21073702
+      internalID: 2117182369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f4f7e5c01e48254d994d010b1b34005
+      internalID: 1340491454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_18
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0621c3930150740b2be706fcd010ef
+      internalID: -538815244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_19
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6359ce31548b8c45b756eda0e1ec5cc
+      internalID: -1062048503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_20
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 562982967b665cd418bbef19a1f536b5
+      internalID: 1456702601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_21
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc7919924133b54395b3832b2928583
+      internalID: -776537499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_22
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908ba99cfc33f984bb4e74a179c03087
+      internalID: -649583454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_23
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e213e1c9e24e7b46985ec60bbbc5286
+      internalID: 570434487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_24
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be09d48d0dabbb84198e32fa8ca01abd
+      internalID: -1038087182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_25
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b645022cffc5594e94ca5ada402c3df
+      internalID: 2078684936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_26
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40fbeeb1193f54b4aa8cf5f3459db094
+      internalID: 290009115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_27
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4599477a43539bc4a89029699bfe170d
+      internalID: 706924619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_28
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2fb6f5e4a887749a443914c42cb61c
+      internalID: -1193269481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_29
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778948d6f2a2c124f99b72db1c026d2e
+      internalID: 270921486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_30
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e88e583b4fcbef4d92571d457510783
+      internalID: -335615048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_31
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9f42c08da8c14438388a6ca2aacc75
+      internalID: -1720659785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_32
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b855ad57b37a2a449aad3c828f8e252
+      internalID: 1621811066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_33
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 344
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061135a156ca66b46a463251b6bff722
+      internalID: -1947068848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb2f2f2a1e0777458f48a1acb749117
+      internalID: 1192036165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_35
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006bcbf03fb686c4b987e380c98944f2
+      internalID: -259397056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_36
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39bf286aaaf13e3468f6e2c02a132232
+      internalID: -954759279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_37
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b67b11bf4f23448a2ad6cb9230d903
+      internalID: 1816719584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_38
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb7a59ba274edf4589f2410e1e0fbbb
+      internalID: -878498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_39
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e431636d75d6454bb41ca857b216751
+      internalID: 56352032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_40
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddaf8a55f15cfaf4d947753b016c4aa9
+      internalID: -1099056953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_41
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c7a9e9c0c77de44a6043a1ef02b31a
+      internalID: -25967650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_42
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4777394c514718945802b59cd37879b2
+      internalID: -1965979931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_43
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39e34bbd2ab5f246ba062948edaed12
+      internalID: -1354382824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_44
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38132e5802c45f5459b7812f8d965b1d
+      internalID: -1396338642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_45
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460141851537518429ce84410d02f13f
+      internalID: -203209177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_46
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4a096630e01594ab3e68c09a34152d
+      internalID: -1069184361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_47
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5513291141c583b4889bbc7b332040df
+      internalID: -1871141946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_48
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168a382b4e993bf4c87d536f7474a993
+      internalID: -2046272158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_49
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 326
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8ed5ab695acc043a54032aa4365eac
+      internalID: -906308696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d3ff58a42799514393b1e94b56b69ce
+      internalID: -248716149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_51
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406ffe112e09fc44ba178e4295917bf1
+      internalID: 565756456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_52
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355eed1895c57fd47bc6b1f6fddf8a3b
+      internalID: -1140110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_53
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa4a809969fa354bb492a3fabb3447b
+      internalID: -1186732198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_54
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 918fd69d0766ed2409a4fa71539f17d0
+      internalID: -1182909416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_55
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41dfd7c6ea2412641932dd8c571a816f
+      internalID: -646594462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_56
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e3102ae2aaf4440a1549b250158c68
+      internalID: -1458807330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_57
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6602f12b58cd34e9d7090e8471f1c3
+      internalID: -1292786874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_58
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956509fc8067d634caef4394aafc7988
+      internalID: -544166421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_59
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a8983a54e913e4da0bbd9baf769747
+      internalID: -1014152544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_60
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07c6d15cac0e50e4f975683424f98947
+      internalID: 254079499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_61
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0bf8ba74cc29464aac159e6cd6993b5
+      internalID: 927059516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_62
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7353d160e5c17df43af10f1ace9bfafd
+      internalID: 1379823462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_63
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85922a068134e3248ad98e5bebb0aa42
+      internalID: -522125034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_64
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ffc3b1ed7b645408937860ebe6f184
+      internalID: -725972519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_65
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9460a25d30de1984c883da1cc5883609
+      internalID: -160119082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_66
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee41b1d63845ef840808c93ca940f161
+      internalID: -687841209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_67
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ae45d2aff5266439877eac6094d8d3
+      internalID: -361173261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_68
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d3250ca44d17e144b9062f7cc9db96c
+      internalID: 814569931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_69
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b6f9986861e934f87ef79ea121de0e
+      internalID: -1158777281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_70
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e9263e7bc21c64db09bdcca20c044f
+      internalID: -1283741259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_71
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0015a373151c27441abff1973737cfdd
+      internalID: -1349684097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_72
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e55f5e655be984989895f582916794
+      internalID: -100663583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_73
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9767e3b6523664a4db6292f7732c8c28
+      internalID: 1418364590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_74
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b75ed2ee6cb1d43ad1b95908d3d600
+      internalID: 2123864492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_75
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fecdf591d20d2945b3b66789538cd7b
+      internalID: 407813511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_76
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf5c4b66957acd499bd7e02d3cc4cf3
+      internalID: 108529864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_77
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136947bc65f71c543ab007df901b7d2b
+      internalID: 1842488341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_78
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4928f397c6c724291e7f8a4eba7cf8
+      internalID: 2005229200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_79
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb723d764c55084086de9b102e58a72
+      internalID: 1722077873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_80
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01f1c150d351b7e46a6a9513fbfa6fc8
+      internalID: -2111377316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_81
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929c1685cd61dfd4393cc7367f2404fa
+      internalID: 1360153497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_82
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a034b7b33678884b8238ccb4a1b4c38
+      internalID: 2035271011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_83
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8505c35a7c655a240be4240c59e96475
+      internalID: 2077541810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_84
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126bc223b56173043bb523f831b44635
+      internalID: -510602630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_85
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601edb18df1854b44a23da1c3c7cc976
+      internalID: 1611300564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_86
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f405680c6497a1040b424c7595f74e7e
+      internalID: -320931676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_87
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dca488c6a3dabb46a7f4b0a840de32f
+      internalID: -1273057308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_88
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58528499d136bc24b846aa89ec4d336f
+      internalID: 301016757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_89
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b24d50190081f14694af3d822a2d0ff
+      internalID: -1735560962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_90
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97454368e7e6174fadcd44b8985f981
+      internalID: -1036348767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_91
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaff1662da7f10f499409d212ff1511b
+      internalID: -1770694176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_92
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb96af37ee6881846b1144dd51fd0773
+      internalID: -1123036038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_93
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f01ea49781c914f88ec285890ed8e6
+      internalID: 522462366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_94
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f39bbf5a3c520d43943c361fb8cb1a2
+      internalID: 1254409386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_95
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdba8b5ad301058408158ff0112397ee
+      internalID: -418092120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_96
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aebfc12433739f4ba1f945e871be839
+      internalID: -1963758666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_97
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4fbdc0418102e479a40791f1631f73
+      internalID: -1943528613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_98
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 883c27e45b93f674bb5f73078618605a
+      internalID: 2075454450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_99
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7198bced84026af418f0fb9a471a65f7
+      internalID: 2141862842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_100
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ede4417468351646a48a17116d651e2
+      internalID: 1120948566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_101
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705c78dfa6e9230448efa1441b7039c1
+      internalID: -388383596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_102
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce0af9ed00209344bb65916827ff97d
+      internalID: 768999304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_103
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466d883af4bd03141972d255ea416690
+      internalID: -384817000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_104
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f228f14ddce10974392451cc322e1f41
+      internalID: -2054345566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_105
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a12c234f4b3c74a9edcf1d202a222f
+      internalID: 203986127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_106
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59481c5488c9706489d29ca8873ba84e
+      internalID: 969393345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_107
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff2c7d0643d95c42b35d6fa28ec0567
+      internalID: -79579607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_108
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6537b4d820f5f4b418058db2d6e85b3f
+      internalID: 1721624740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_109
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a630208f13647945accb5c140b98f63
+      internalID: 742547506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_110
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecd3a40c57afd734d9a8b4c9584a2d33
+      internalID: 1890408823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_111
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df46a7a8f353884e9eea67f184635e9
+      internalID: 516382712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_112
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df4c4cd8583e38a43aded2ce42ea745c
+      internalID: -789106457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_113
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0809776f7f688fa4f921739ab2b4b735
+      internalID: 217266735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_114
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b63c9f113902b24881535c80a6a6c15
+      internalID: 273821593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_115
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f73a6034ba2b34b970bb35987e7cb0
+      internalID: -1213957905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_116
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3b8ae9b7fd8244db96278dea4b45be
+      internalID: -500282286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_117
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 107c4e3ee32647e4bb985cb6f8824bdc
+      internalID: -614717773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_118
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c953ab271b81d8244a2ba6f7be76797c
+      internalID: 990119058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_119
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82239bf9131902041ab80b97b42c6912
+      internalID: 1708642239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_120
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 852effd284bbee64ab3fed98e198fd0a
+      internalID: -1986466724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_121
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b52443a9ee37844f8bf67c4eeb12d84
+      internalID: 1226348452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_122
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 102411c3c929c1d439f27c857d635f24
+      internalID: 1806739873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_123
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb822afa4133d047ac38428e942174d
+      internalID: 1531544621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_124
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987927f7dfe2eed4e9a10df1131c3a9b
+      internalID: 1231644367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_125
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2b6bc2714465d4a9985adc94342ec0
+      internalID: -1358939851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_126
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f955df87919a2b644a300f55734eafb7
+      internalID: -668352423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_127
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9e8f3455242ff4ca46feaef58a6a5e
+      internalID: 228429170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_128
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c2337333370b94fb6a2d147c31d511
+      internalID: -74629730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_129
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a02477a83b599ff46a726c3ff71a3d46
+      internalID: 202136672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_130
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb65d747d52255c4384ed983f14eefd3
+      internalID: 1301445657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_131
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d93bf16002c68a4882d43ab876339a7
+      internalID: -797642547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_132
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4277b23a0dd3d5645b6a9a893dce2d5c
+      internalID: 1758230494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_133
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35db8714f01a73242b20b521100a248e
+      internalID: 1515771363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_134
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0353e986b820bb4d9223b74b6d71dcd
+      internalID: -650078755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_135
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198624c75e3adff4bab285ff9b63d5e4
+      internalID: -65986834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_136
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f107959b839296f468c6afaa05956e6c
+      internalID: -842348603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_137
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fbdb609b362f244a14380f0b8edd56
+      internalID: -1116100668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_138
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbf20ec849f2c7549be4e53d8061bfd2
+      internalID: 127482373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_139
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68d9e6dd2df23648a1aeae2b7848f35
+      internalID: 503866877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_140
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff8102762cef434f8879b77e16e0112
+      internalID: -654282929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_141
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c06871ea76a9f42990b765606753a8
+      internalID: 1989202666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_142
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e95cf34e35b9e45a7b3c34e9dfed6a
+      internalID: -1074196502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_143
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1c2e7231bda094f9f147223bd9f1f0
+      internalID: -908852224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_144
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2fe384bc1b7ca408a2a09e1cbf6de0
+      internalID: 466655291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_145
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a82360f2280f9a84d85cfa373594d190
+      internalID: -487587206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_146
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19ee989caf624648873a0326cded0ec
+      internalID: 1598964590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_147
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2321296cd1a042d4d8fc14512d67f48a
+      internalID: 1948363708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_148
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b51c106e80a79449a85066688a6af9f
+      internalID: 33306118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_149
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b50f4e351911eb438bb875098261396
+      internalID: -1340512017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_150
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6c916e240b572f4093deef162003815
+      internalID: -1359103084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_151
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dab89d704c7f424b9bf7ab65de96ae8
+      internalID: 508956399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_152
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89544bec6d96ee84bb7f43e16071108f
+      internalID: -1653627185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_153
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea1e1cb9864021646ba523e0a77ec130
+      internalID: 985567658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_154
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749fb35709deaac4388540e7c034ded5
+      internalID: 1699410064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_155
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a92af3f56b0567469243f7faa8540dd
+      internalID: 1716417808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_156
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a83ab0e98bfebd14ab2161a53127f7b0
+      internalID: 226278459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_157
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cecde345e56bd4db1364aa6eb2df9f
+      internalID: -2066223927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_158
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55ee1dd918638c45aebc1f6205f132b
+      internalID: 433298115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_159
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25ebf3fe9329a64ca7124a66559ebe1
+      internalID: -501699545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_160
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d228d89f8af6846bc5bc2759193b43
+      internalID: 220658029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_161
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd1c69d60b8bd54cb43aaa0c41ac22a
+      internalID: 1592521344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_162
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2882541fb79faa438d1a8acc31984eb
+      internalID: 550986725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_163
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88faab7883a93ea48bae0af888aa0bb0
+      internalID: 1652779904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_164
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4df0675dea6a648b1910791fe4fe0c
+      internalID: -978559327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_165
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe65f4770bd300f4bb8bd49ef62ba826
+      internalID: -363958221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_166
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d512ca0d5011a9e48a0545d8cd4d369c
+      internalID: -2145785976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_167
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6f035e810f217449c6e5bbef322d47
+      internalID: -1923419956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_168
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1922104dc331dc94d8d08ca8188f19be
+      internalID: 41171041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_169
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bfc6bf2883c47418b816b88619e983
+      internalID: -1671129379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_170
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8baee4a7ea7652642a32106d9d2c1c8b
+      internalID: -540888587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_171
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d20e9188bdce272479f1191445622025
+      internalID: -2046860659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_172
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750ed2fef2bec8744a64a45cf8043bf4
+      internalID: 2049524383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_173
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bec3b3ff50d1de42bad74db0fb66685
+      internalID: -1360218407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_174
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d613335529440484f8d379a9026d19e3
+      internalID: 1393884080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_175
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d000b039a5b0c94da9dcce089e1f863
+      internalID: 640830326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_176
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3324076a3e588f047b019f761f2a5afd
+      internalID: -241625146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_177
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e87c8ad6bab274eb320286302454bd
+      internalID: -490863651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_178
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411241ed27117c44794d812c0b3acd2d
+      internalID: 76055141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_179
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319181e76e2f8274cafda6df50c4d8db
+      internalID: 1695063608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_180
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd30ebb7a892544fab231139ed36c13
+      internalID: 475910206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_181
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c108eb263372f6a4799e4b22c7d999f7
+      internalID: 1351098504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_182
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a878ded2f756e4ea1e885170447987
+      internalID: -1317867985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_183
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd63bea1fbf748743bdd48ff2f5f9e40
+      internalID: 827824773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_184
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435dd4db379fe544bb1eedf1fd08c4cc
+      internalID: 1322882639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_185
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911eb16dc04d06c40a51b487c2ecb8ec
+      internalID: 509441469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_186
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89bdb7928d0eadc45a94b85c85f6cd60
+      internalID: 403632473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_187
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ffeb72b4278f34793ce501ef416d4f
+      internalID: 1887236807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_188
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07af93d6ebf35514eae5ddd3b3afe1d7
+      internalID: -1703105021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_189
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54754be5e12ab304b9e079c2c55c4faa
+      internalID: -1461952076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_190
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12bf078a403be5d458d01cb0c0dd1897
+      internalID: -2014906148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_191
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04447b516457a164c8661b565a7c4c7d
+      internalID: -765572481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_192
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5ff8dbc43246341b9742b5dae232d7
+      internalID: 1424157404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_193
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca0c31d689b06d42a05a83817ffdeec
+      internalID: -1564928569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_194
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9211afba1f4e0f649bb84e4d6a64cd1e
+      internalID: 667788015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_195
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a5bc9e82593a24186436afc26898a1
+      internalID: -2053758178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_196
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdcd73384c297914d8a7b47e58debe6c
+      internalID: -1381846033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_197
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90740529f1471fa4da1ddef72c9537db
+      internalID: -173519807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_198
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ecb913d0ee2fb41a0ac4b19e90d058
+      internalID: 533052259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_199
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4dd2f697b1aba4f89394332f4927d8
+      internalID: 886469585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_200
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d7032ba870dd04389af57cb33531f7
+      internalID: -1826038922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_201
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0271fed279e7f35439ff6688a0e119f4
+      internalID: -1783766798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_202
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce3cdf176a491c4bb458a9fef26a93e
+      internalID: -1692078914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_203
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b212c8f04dd0ef84a97a4ec4180668d1
+      internalID: 1231760608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_204
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f5f5a690407164183e06cde0e0bf77
+      internalID: 1878311974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_205
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ca0a91d1dd5a3488c267dbaf1e0580
+      internalID: 1135378887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_206
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbb95e2c15fb3c419c5972d453cf98c
+      internalID: 2009225188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_207
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28414e38cc46166439755e741e4cf715
+      internalID: -1787829752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_208
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d278c198daf8204fbbcad9af49ba34f
+      internalID: -2139249032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_209
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d13c8ebe6b183443b67a052bb134e8f
+      internalID: -353211535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_210
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf420884a24396446b2d27ed184160f1
+      internalID: 1869953465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_211
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769bf8f3b09b66c4b932199d2faa4684
+      internalID: 1427377437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_212
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4507625d716f4249a8eee42fd2e1fd1
+      internalID: -1751500392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_213
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74dd594c2b439e64ba3a5994bfa6c2b5
+      internalID: 97715805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_214
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53027892f41367f4abf9a0c7fdcfd0b2
+      internalID: 629471987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_215
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca909303f7a55de40957abfeeb746abc
+      internalID: 900331189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_216
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844822ae9ebebd2428719a0291750980
+      internalID: -1112568166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_217
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f0e5acafed5aa4998bd7b5f789bea3
+      internalID: -1237937066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_218
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c72da1fbd032948926d061b3b5b052
+      internalID: -1638624777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_219
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f80c3a8347aea46a62f3844c02effc
+      internalID: 377403202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_220
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a6fc95d203f824ab65b1a10925ca30
+      internalID: -2139069355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_221
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47cf90bbbd8e47343a4d7f5599baa455
+      internalID: 304298825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_222
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c067ba75212930147a819642fe03e2bf
+      internalID: -1049934286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_223
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a309dd5fd20d8d74a8442b4ab4bc2713
+      internalID: -1520158898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_224
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f4cf6ee052a9e942a985b50c10d1a17
+      internalID: 1423826355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_225
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ef960f04b6b7fd4b80bf259b0996f77
+      internalID: 89030873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_226
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eecab4b2083f5cd439498369a14d0445
+      internalID: -1919200717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_227
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a95667775ec25847a6ed9b87e7cd5d7
+      internalID: -1993695939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_228
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a269e320525a10042ac10361506c1abe
+      internalID: -1140613728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_229
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1248f22c133a8348ad4881d9941576c
+      internalID: 1509805548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_230
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0357e3c14818fe4b970b6c64f50fedb
+      internalID: -2027938482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_231
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d135552283b32346bf8dbd8a14c232f
+      internalID: 427760302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_232
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea6653eec94e44d478df0ae0a8b92899
+      internalID: 1610700939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_233
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc8c3a57cde97a48943f599efd71cff
+      internalID: 1535733950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_234
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975b0113cf47680489d93872bbc0ac61
+      internalID: 313084610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_235
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3add0d049e5a4e84eb4202713e1116be
+      internalID: -1529778389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_236
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d923e296facee249af15039ac38e0bd
+      internalID: -1663026543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_237
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce043c30f197aa94da45176d31ce6d89
+      internalID: -1670751311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_238
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce9f4fe1d21f4542adf3deacf0f0608
+      internalID: 165812405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_239
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dcf0e30dc9aa3d4ea73a65d0f8184f3
+      internalID: 1685105854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_240
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808f90e3cc01902479c15ac80752e6b2
+      internalID: -1061129961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_241
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f344e58a8411e4580458600702e355
+      internalID: 1590866094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_242
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32834bf49e1c0f64bbe5e12162923b36
+      internalID: 1020245551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_243
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a97df22ca370dd4d9d5d933c3bbd226
+      internalID: 2050543113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_244
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48791c4a89f1e1149b4ffcd500a9f531
+      internalID: -866845631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_245
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c9c439f55c302498cb1fcf2631a5e5
+      internalID: 1736199291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_246
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d9657244decf84996f172270cd58d7
+      internalID: -204676039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_247
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcae93085d99b348a34078d867b307c
+      internalID: 1399833681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_248
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb52e206e0079d45ae7db2404f6481b
+      internalID: 1111881647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_249
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bdc844846aa0b54caf69bd3866c3da1
+      internalID: 63210859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_250
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273c70318d1620a47aa31cfcbcf7f20e
+      internalID: 1632879010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_251
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ccfb11867283b41b85e923f8c6df7c
+      internalID: -469165409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_252
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eef0f0b6ccad4464f87297b199fea206
+      internalID: 1156979168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_253
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e797f92b5d202f42979c50ae594ef1c
+      internalID: 1530070648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_254
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938e11e505fc73549a4a4b8f96b961ab
+      internalID: 183505873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_255
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110c0a834937f274583e490bb882e625
+      internalID: -237861381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_256
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3671e6bedc59054783e8bedf1437b1c
+      internalID: 1291884758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_257
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26352d2809ebd3c43987c0900ef5ece6
+      internalID: -1159958947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_258
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dad4d1740918404097699b5a9530b08
+      internalID: 945512246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_259
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7968ba6839229e64194f71914a81bf61
+      internalID: -75100655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_260
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1beabfd9ab850f646bcf327ce84193cb
+      internalID: -712103609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_261
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060bb1d8ff94d1e4c93845247811e43b
+      internalID: -1599553980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_262
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad73c0eeca0cffc4e90bf1d3355d611b
+      internalID: 591735947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_263
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b449fdf223aba142b0c54b168b5277e
+      internalID: 519808787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_264
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce55400c6a3af104e810c9137aac7018
+      internalID: -135649589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_265
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8592dcff04f73fc4694e207ebfdb70d8
+      internalID: 1821909261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_266
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9792073a938d24c9d7dedcde9903e3
+      internalID: 1935795180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_267
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e849083c16e541245a664eb160b18e23
+      internalID: -867720720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_268
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf66192067567c4a976d03d1c2a8d72
+      internalID: 312661106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_269
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df25fbba0a180a245959f7f7cacda6dc
+      internalID: -150900644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_270
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476413ffbcf740f4f97bbc2001094b89
+      internalID: -815868580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_271
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a87bd9df431d044a6ef404f18193a0
+      internalID: -1007529123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_272
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb96ca57f74d6d540923e580880f86f5
+      internalID: 838803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_273
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58ca0ebcf577894e97a356350c91aca
+      internalID: -1384917738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_274
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dfc37e1b555af44a46e6d7eff20a19
+      internalID: 2082613884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_275
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e574ac90c83b2d40b4519ea15805c94
+      internalID: -419496513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_276
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0da19c2e34b794bb7a3beeca72e1cd
+      internalID: -331919224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_277
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c827934a62df99a4eb794b2a9df89ea1
+      internalID: 1177145861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_278
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b757369a8620c404898c304f56a8f97e
+      internalID: -1490340686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_279
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4ac1cc9ed2cc94eb032f26f18520b9
+      internalID: -118645719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_280
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799a4e9f595eea74ab5ed548f983752a
+      internalID: -971727629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_281
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 199f818e47e68d94c85c87b0c66a687b
+      internalID: 1033567017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_282
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a476a2179402c54fbad7ee4d6e07740
+      internalID: 1062495881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_283
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bbe08705e56df04c953959eab797941
+      internalID: -1848351479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_284
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44af1ed8af41f2a41930f075fd266f5b
+      internalID: 952044580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_285
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1b6c4716d949d428c92a07ee69ed04
+      internalID: -1026622355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_286
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47361dffc4eac64395cd0fa2927c592
+      internalID: -972822036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_287
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c791904f99d934bb1ec84ac41a0e45
+      internalID: 145238551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_288
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89154f69e66d9d94b9096ed719b8edda
+      internalID: -2098007152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_289
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3ee2ba7e8fd2194e94513c6d4673cdb
+      internalID: 510645884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_290
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7224a53db49b71429255f9bbce8ada3
+      internalID: 193612002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_291
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5f4909892f33545a370d42a3af04c7
+      internalID: -1270190218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_292
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb16d868380ca474cb6d2d8e7b6d9f7e
+      internalID: 1491080811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_293
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61219c5e2e107ec4990f5b42ddbe09d4
+      internalID: -1202635508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_294
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f0a07f371b9c446af7bf9a7f74fad8
+      internalID: 673986807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_295
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02b63569f6406cc42b5c4c831e71184d
+      internalID: -160516708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_296
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39925ad3b58125d49a5980aff9f6a0aa
+      internalID: -732726258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_297
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea589875dbcf06942a58bffdb3d1030f
+      internalID: 394822738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_298
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac1e796cd0cbf847ad9ac8afb181f98
+      internalID: 609932859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_299
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87008e6366a2e49459f71ec8a5b147f7
+      internalID: 1147137933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_300
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2680be5d66dd81a4f9ad1cadaaf047a0
+      internalID: 586998013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_301
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414f46dae14f223429d89fc078399943
+      internalID: 2022956103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_302
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3488264366341c4f9eeaa2124a3a18b
+      internalID: -1796216831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_303
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c54162de6acb024d95152f8f7a870aa
+      internalID: -1863702776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_304
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd63899782d754c448488c47bac535c7
+      internalID: 1485221160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_305
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8b52612450957479fe58e81bb111ef
+      internalID: -1683746322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_306
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014bebcf1f637f54e87c15628c20c0e4
+      internalID: 725468175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_307
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01f2ee724d36ec489117313cab5bc39
+      internalID: -1369197334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_308
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e975f2215c3f940b9ff44603c3d910
+      internalID: -395507404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_309
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d73a34d56470a1448888f9ef9ab5c4c
+      internalID: -710531051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_310
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422282bd7aea52b46a36154deb859f53
+      internalID: 1610545923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_311
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00f58c3072ffb9a47981e40a382041ad
+      internalID: 1642385279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_312
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b41d18e0dde7c4282e934ec22a762e
+      internalID: 1554955179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_313
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbea45f550d31a14a8f48582fc569d42
+      internalID: 435979196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_314
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446c276c227f2664aba2ef4ff481f5e5
+      internalID: -1732158245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_315
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30804bab44ead074ba7c761c3c825be6
+      internalID: -1826862209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_316
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed2781d64441a641970899ea9a65cb9
+      internalID: -715985435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_317
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b24bad70488deb4c9046e812cdc00bd
+      internalID: 746782901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_318
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a766fea71e351d49814781b7c6a8f1f
+      internalID: -1476656638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_319
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c5d240ad9303e41a926c2f488d5f57
+      internalID: -435806374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_320
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0973d692b5eaebd418cddc190a88879e
+      internalID: -59561578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_321
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b2e17076e106d4b81f5754f1a9f485
+      internalID: 1095931784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _indoor_tiles_322
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0791e71979b75ad4786a1c0c7d379748
+      internalID: -1389379045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0a99f2f1f279689409cec116c7915de1
     internalID: 0
     vertices: []
     indices: 
@@ -121,8 +7240,333 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":17.0,"y":21.0},"gridSpriteSize":{"x":18.0,"y":18.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      _indoor_tiles_0: 1052550706
+      _indoor_tiles_1: 1331006906
+      _indoor_tiles_10: -877027560
+      _indoor_tiles_100: 1120948566
+      _indoor_tiles_101: -388383596
+      _indoor_tiles_102: 768999304
+      _indoor_tiles_103: -384817000
+      _indoor_tiles_104: -2054345566
+      _indoor_tiles_105: 203986127
+      _indoor_tiles_106: 969393345
+      _indoor_tiles_107: -79579607
+      _indoor_tiles_108: 1721624740
+      _indoor_tiles_109: 742547506
+      _indoor_tiles_11: 304790094
+      _indoor_tiles_110: 1890408823
+      _indoor_tiles_111: 516382712
+      _indoor_tiles_112: -789106457
+      _indoor_tiles_113: 217266735
+      _indoor_tiles_114: 273821593
+      _indoor_tiles_115: -1213957905
+      _indoor_tiles_116: -500282286
+      _indoor_tiles_117: -614717773
+      _indoor_tiles_118: 990119058
+      _indoor_tiles_119: 1708642239
+      _indoor_tiles_12: -367252709
+      _indoor_tiles_120: -1986466724
+      _indoor_tiles_121: 1226348452
+      _indoor_tiles_122: 1806739873
+      _indoor_tiles_123: 1531544621
+      _indoor_tiles_124: 1231644367
+      _indoor_tiles_125: -1358939851
+      _indoor_tiles_126: -668352423
+      _indoor_tiles_127: 228429170
+      _indoor_tiles_128: -74629730
+      _indoor_tiles_129: 202136672
+      _indoor_tiles_13: 605857448
+      _indoor_tiles_130: 1301445657
+      _indoor_tiles_131: -797642547
+      _indoor_tiles_132: 1758230494
+      _indoor_tiles_133: 1515771363
+      _indoor_tiles_134: -650078755
+      _indoor_tiles_135: -65986834
+      _indoor_tiles_136: -842348603
+      _indoor_tiles_137: -1116100668
+      _indoor_tiles_138: 127482373
+      _indoor_tiles_139: 503866877
+      _indoor_tiles_14: -708871179
+      _indoor_tiles_140: -654282929
+      _indoor_tiles_141: 1989202666
+      _indoor_tiles_142: -1074196502
+      _indoor_tiles_143: -908852224
+      _indoor_tiles_144: 466655291
+      _indoor_tiles_145: -487587206
+      _indoor_tiles_146: 1598964590
+      _indoor_tiles_147: 1948363708
+      _indoor_tiles_148: 33306118
+      _indoor_tiles_149: -1340512017
+      _indoor_tiles_15: 1921009329
+      _indoor_tiles_150: -1359103084
+      _indoor_tiles_151: 508956399
+      _indoor_tiles_152: -1653627185
+      _indoor_tiles_153: 985567658
+      _indoor_tiles_154: 1699410064
+      _indoor_tiles_155: 1716417808
+      _indoor_tiles_156: 226278459
+      _indoor_tiles_157: -2066223927
+      _indoor_tiles_158: 433298115
+      _indoor_tiles_159: -501699545
+      _indoor_tiles_16: 2117182369
+      _indoor_tiles_160: 220658029
+      _indoor_tiles_161: 1592521344
+      _indoor_tiles_162: 550986725
+      _indoor_tiles_163: 1652779904
+      _indoor_tiles_164: -978559327
+      _indoor_tiles_165: -363958221
+      _indoor_tiles_166: -2145785976
+      _indoor_tiles_167: -1923419956
+      _indoor_tiles_168: 41171041
+      _indoor_tiles_169: -1671129379
+      _indoor_tiles_17: 1340491454
+      _indoor_tiles_170: -540888587
+      _indoor_tiles_171: -2046860659
+      _indoor_tiles_172: 2049524383
+      _indoor_tiles_173: -1360218407
+      _indoor_tiles_174: 1393884080
+      _indoor_tiles_175: 640830326
+      _indoor_tiles_176: -241625146
+      _indoor_tiles_177: -490863651
+      _indoor_tiles_178: 76055141
+      _indoor_tiles_179: 1695063608
+      _indoor_tiles_18: -538815244
+      _indoor_tiles_180: 475910206
+      _indoor_tiles_181: 1351098504
+      _indoor_tiles_182: -1317867985
+      _indoor_tiles_183: 827824773
+      _indoor_tiles_184: 1322882639
+      _indoor_tiles_185: 509441469
+      _indoor_tiles_186: 403632473
+      _indoor_tiles_187: 1887236807
+      _indoor_tiles_188: -1703105021
+      _indoor_tiles_189: -1461952076
+      _indoor_tiles_19: -1062048503
+      _indoor_tiles_190: -2014906148
+      _indoor_tiles_191: -765572481
+      _indoor_tiles_192: 1424157404
+      _indoor_tiles_193: -1564928569
+      _indoor_tiles_194: 667788015
+      _indoor_tiles_195: -2053758178
+      _indoor_tiles_196: -1381846033
+      _indoor_tiles_197: -173519807
+      _indoor_tiles_198: 533052259
+      _indoor_tiles_199: 886469585
+      _indoor_tiles_2: 79601200
+      _indoor_tiles_20: 1456702601
+      _indoor_tiles_200: -1826038922
+      _indoor_tiles_201: -1783766798
+      _indoor_tiles_202: -1692078914
+      _indoor_tiles_203: 1231760608
+      _indoor_tiles_204: 1878311974
+      _indoor_tiles_205: 1135378887
+      _indoor_tiles_206: 2009225188
+      _indoor_tiles_207: -1787829752
+      _indoor_tiles_208: -2139249032
+      _indoor_tiles_209: -353211535
+      _indoor_tiles_21: -776537499
+      _indoor_tiles_210: 1869953465
+      _indoor_tiles_211: 1427377437
+      _indoor_tiles_212: -1751500392
+      _indoor_tiles_213: 97715805
+      _indoor_tiles_214: 629471987
+      _indoor_tiles_215: 900331189
+      _indoor_tiles_216: -1112568166
+      _indoor_tiles_217: -1237937066
+      _indoor_tiles_218: -1638624777
+      _indoor_tiles_219: 377403202
+      _indoor_tiles_22: -649583454
+      _indoor_tiles_220: -2139069355
+      _indoor_tiles_221: 304298825
+      _indoor_tiles_222: -1049934286
+      _indoor_tiles_223: -1520158898
+      _indoor_tiles_224: 1423826355
+      _indoor_tiles_225: 89030873
+      _indoor_tiles_226: -1919200717
+      _indoor_tiles_227: -1993695939
+      _indoor_tiles_228: -1140613728
+      _indoor_tiles_229: 1509805548
+      _indoor_tiles_23: 570434487
+      _indoor_tiles_230: -2027938482
+      _indoor_tiles_231: 427760302
+      _indoor_tiles_232: 1610700939
+      _indoor_tiles_233: 1535733950
+      _indoor_tiles_234: 313084610
+      _indoor_tiles_235: -1529778389
+      _indoor_tiles_236: -1663026543
+      _indoor_tiles_237: -1670751311
+      _indoor_tiles_238: 165812405
+      _indoor_tiles_239: 1685105854
+      _indoor_tiles_24: -1038087182
+      _indoor_tiles_240: -1061129961
+      _indoor_tiles_241: 1590866094
+      _indoor_tiles_242: 1020245551
+      _indoor_tiles_243: 2050543113
+      _indoor_tiles_244: -866845631
+      _indoor_tiles_245: 1736199291
+      _indoor_tiles_246: -204676039
+      _indoor_tiles_247: 1399833681
+      _indoor_tiles_248: 1111881647
+      _indoor_tiles_249: 63210859
+      _indoor_tiles_25: 2078684936
+      _indoor_tiles_250: 1632879010
+      _indoor_tiles_251: -469165409
+      _indoor_tiles_252: 1156979168
+      _indoor_tiles_253: 1530070648
+      _indoor_tiles_254: 183505873
+      _indoor_tiles_255: -237861381
+      _indoor_tiles_256: 1291884758
+      _indoor_tiles_257: -1159958947
+      _indoor_tiles_258: 945512246
+      _indoor_tiles_259: -75100655
+      _indoor_tiles_26: 290009115
+      _indoor_tiles_260: -712103609
+      _indoor_tiles_261: -1599553980
+      _indoor_tiles_262: 591735947
+      _indoor_tiles_263: 519808787
+      _indoor_tiles_264: -135649589
+      _indoor_tiles_265: 1821909261
+      _indoor_tiles_266: 1935795180
+      _indoor_tiles_267: -867720720
+      _indoor_tiles_268: 312661106
+      _indoor_tiles_269: -150900644
+      _indoor_tiles_27: 706924619
+      _indoor_tiles_270: -815868580
+      _indoor_tiles_271: -1007529123
+      _indoor_tiles_272: 838803
+      _indoor_tiles_273: -1384917738
+      _indoor_tiles_274: 2082613884
+      _indoor_tiles_275: -419496513
+      _indoor_tiles_276: -331919224
+      _indoor_tiles_277: 1177145861
+      _indoor_tiles_278: -1490340686
+      _indoor_tiles_279: -118645719
+      _indoor_tiles_28: -1193269481
+      _indoor_tiles_280: -971727629
+      _indoor_tiles_281: 1033567017
+      _indoor_tiles_282: 1062495881
+      _indoor_tiles_283: -1848351479
+      _indoor_tiles_284: 952044580
+      _indoor_tiles_285: -1026622355
+      _indoor_tiles_286: -972822036
+      _indoor_tiles_287: 145238551
+      _indoor_tiles_288: -2098007152
+      _indoor_tiles_289: 510645884
+      _indoor_tiles_29: 270921486
+      _indoor_tiles_290: 193612002
+      _indoor_tiles_291: -1270190218
+      _indoor_tiles_292: 1491080811
+      _indoor_tiles_293: -1202635508
+      _indoor_tiles_294: 673986807
+      _indoor_tiles_295: -160516708
+      _indoor_tiles_296: -732726258
+      _indoor_tiles_297: 394822738
+      _indoor_tiles_298: 609932859
+      _indoor_tiles_299: 1147137933
+      _indoor_tiles_3: -1604521913
+      _indoor_tiles_30: -335615048
+      _indoor_tiles_300: 586998013
+      _indoor_tiles_301: 2022956103
+      _indoor_tiles_302: -1796216831
+      _indoor_tiles_303: -1863702776
+      _indoor_tiles_304: 1485221160
+      _indoor_tiles_305: -1683746322
+      _indoor_tiles_306: 725468175
+      _indoor_tiles_307: -1369197334
+      _indoor_tiles_308: -395507404
+      _indoor_tiles_309: -710531051
+      _indoor_tiles_31: -1720659785
+      _indoor_tiles_310: 1610545923
+      _indoor_tiles_311: 1642385279
+      _indoor_tiles_312: 1554955179
+      _indoor_tiles_313: 435979196
+      _indoor_tiles_314: -1732158245
+      _indoor_tiles_315: -1826862209
+      _indoor_tiles_316: -715985435
+      _indoor_tiles_317: 746782901
+      _indoor_tiles_318: -1476656638
+      _indoor_tiles_319: -435806374
+      _indoor_tiles_32: 1621811066
+      _indoor_tiles_320: -59561578
+      _indoor_tiles_321: 1095931784
+      _indoor_tiles_322: -1389379045
+      _indoor_tiles_33: -1947068848
+      _indoor_tiles_34: 1192036165
+      _indoor_tiles_35: -259397056
+      _indoor_tiles_36: -954759279
+      _indoor_tiles_37: 1816719584
+      _indoor_tiles_38: -878498
+      _indoor_tiles_39: 56352032
+      _indoor_tiles_4: -1448411146
+      _indoor_tiles_40: -1099056953
+      _indoor_tiles_41: -25967650
+      _indoor_tiles_42: -1965979931
+      _indoor_tiles_43: -1354382824
+      _indoor_tiles_44: -1396338642
+      _indoor_tiles_45: -203209177
+      _indoor_tiles_46: -1069184361
+      _indoor_tiles_47: -1871141946
+      _indoor_tiles_48: -2046272158
+      _indoor_tiles_49: -906308696
+      _indoor_tiles_5: 1466395328
+      _indoor_tiles_50: -248716149
+      _indoor_tiles_51: 565756456
+      _indoor_tiles_52: -1140110
+      _indoor_tiles_53: -1186732198
+      _indoor_tiles_54: -1182909416
+      _indoor_tiles_55: -646594462
+      _indoor_tiles_56: -1458807330
+      _indoor_tiles_57: -1292786874
+      _indoor_tiles_58: -544166421
+      _indoor_tiles_59: -1014152544
+      _indoor_tiles_6: 57201919
+      _indoor_tiles_60: 254079499
+      _indoor_tiles_61: 927059516
+      _indoor_tiles_62: 1379823462
+      _indoor_tiles_63: -522125034
+      _indoor_tiles_64: -725972519
+      _indoor_tiles_65: -160119082
+      _indoor_tiles_66: -687841209
+      _indoor_tiles_67: -361173261
+      _indoor_tiles_68: 814569931
+      _indoor_tiles_69: -1158777281
+      _indoor_tiles_7: -1865292726
+      _indoor_tiles_70: -1283741259
+      _indoor_tiles_71: -1349684097
+      _indoor_tiles_72: -100663583
+      _indoor_tiles_73: 1418364590
+      _indoor_tiles_74: 2123864492
+      _indoor_tiles_75: 407813511
+      _indoor_tiles_76: 108529864
+      _indoor_tiles_77: 1842488341
+      _indoor_tiles_78: 2005229200
+      _indoor_tiles_79: 1722077873
+      _indoor_tiles_8: -1000091607
+      _indoor_tiles_80: -2111377316
+      _indoor_tiles_81: 1360153497
+      _indoor_tiles_82: 2035271011
+      _indoor_tiles_83: 2077541810
+      _indoor_tiles_84: -510602630
+      _indoor_tiles_85: 1611300564
+      _indoor_tiles_86: -320931676
+      _indoor_tiles_87: -1273057308
+      _indoor_tiles_88: 301016757
+      _indoor_tiles_89: -1735560962
+      _indoor_tiles_9: -7077325
+      _indoor_tiles_90: -1036348767
+      _indoor_tiles_91: -1770694176
+      _indoor_tiles_92: -1123036038
+      _indoor_tiles_93: 522462366
+      _indoor_tiles_94: 1254409386
+      _indoor_tiles_95: -418092120
+      _indoor_tiles_96: -1963758666
+      _indoor_tiles_97: -1943528613
+      _indoor_tiles_98: 2075454450
+      _indoor_tiles_99: 2141862842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

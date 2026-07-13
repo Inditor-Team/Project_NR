@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,14 +106,7375 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: _overworld_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d606852123f37014a9e62dec03b7bfd5
+      internalID: -477293295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9a7502adb2e2740bdea0ae009b9162
+      internalID: 65628912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbb925f53afbfe94da76bf03526fc49e
+      internalID: 1283043539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f22db0298a8d94b8102b98e3914b48
+      internalID: 2099211444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1ad5f52971b31648924326f6dc62d64
+      internalID: 673809508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba456dc8f9a65634b980c836a44b022b
+      internalID: -721127259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39509edf59c790443afe2429f584f0a6
+      internalID: -1044569510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e04ff10d1c3cbb4a9b7ce207b5e0e12
+      internalID: -1885902531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f339ca756c73c8643a45411a26189d1c
+      internalID: 1501552840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 247f46fa6f2e33742bb691cc6280dc3d
+      internalID: 1994227600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f2f414605e15246ae0de975f303ed6
+      internalID: -1139216533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_11
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a19e42a3fade4441b33c270c57ecf81
+      internalID: 1430400234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_12
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c34377410e9445544be328d6bbbae5d5
+      internalID: 968668435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_13
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae603b47ca977794487d325d0b77f176
+      internalID: 1847717242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_14
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9029724bce56a984aae0b905bf4b7637
+      internalID: -99842344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_15
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069d7ff9ab26ff7429c9a2ce4383d667
+      internalID: 594208308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_16
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ae7724eb89275488dd577da7494074
+      internalID: 293495244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_17
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae0c1ad87eeb0344a5a24d841c8002c
+      internalID: 1928231410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_18
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be034d18d2dc6e46b68df8489439bc8
+      internalID: -181025421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_19
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eaaf3681bd383e4d88bf6ce12a36d4e
+      internalID: -1963285608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_20
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 308
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a469d650ff12f4f83e025f30bbc412
+      internalID: -938842484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a600831e3ba304aa98108b978ec51a
+      internalID: 1715115151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_22
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23dd699f670216f46956f953e8f2c5a1
+      internalID: -198064356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_23
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056b711d4ea45f44da4c8adc3f70f5cf
+      internalID: 961268294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_24
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4527c42898b6b2e40b0c44b2f94ab16b
+      internalID: -649722214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_25
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc098035859f1324598ecca6bcd4e480
+      internalID: 1043276489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_26
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e19bd5dd32884c46808bb1baf72bad8
+      internalID: 398930898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_27
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 510fd126bf0a4394eacc908604a04433
+      internalID: -829260260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_28
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818d4baa1bdd0fd4e85ee29d48f83e78
+      internalID: -62894661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_29
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50997a030bd9f74ea665a906716d145
+      internalID: -1342054111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_30
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 097357b46a8280d4db7d03d6c42cc77f
+      internalID: -1009538005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_31
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b76ead90b41a9744a43d3e4fa908ad4
+      internalID: 902571230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_32
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 227a2d573e04f604095183e905345e02
+      internalID: -1256096703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_33
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dd6bedb6d92a0344a07e13dc38f6d9e
+      internalID: -862083126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_34
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c9e762cee1ace4aaf22643c0a925a9
+      internalID: -565369079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_35
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590bab5e7bd37d14aba492cb2545cf27
+      internalID: 472451478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_36
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32334aa5ad378b4986a426a5264f11b
+      internalID: -2021515762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_37
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c0ad3de6f107044a55764d9f28cdd9
+      internalID: 1645178688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_38
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2fc7a04ab5902a45b05e9dd819e7e3e
+      internalID: 489455308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_39
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3317c35f38a7e254c8cd3620a58e7c57
+      internalID: 367253298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_40
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 290
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f47b7ec41fbb19479078e0dd1611849
+      internalID: 348170019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d4b9d62a8faabd4e9b7f6425cfb7375
+      internalID: 742083213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_42
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979f8755dc29cdc4389722945244c057
+      internalID: 874143978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_43
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7074bd44983ec0f458aa53669a032cd0
+      internalID: -152257846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_44
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96dbc2305151f624691382d87693972f
+      internalID: 776127033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_45
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e31299526036a4dbe3cd66e3152505
+      internalID: -1763545574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_46
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42557ea9ac6a4f64090eb5475b8091bb
+      internalID: -692666709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_47
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a08bd409d4cd10d4786cfbea7febb8d8
+      internalID: -929684413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_48
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36b06f0f4bf1f8a4188ccb81068e6cb2
+      internalID: -425690370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_49
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e952e1f7b934040bd526b4a36a549a
+      internalID: -1465694381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_50
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c44ce8018586cd41bdb22b3fa44e650
+      internalID: 736841682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_51
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a050a82e14f7db478ea30b50913a731
+      internalID: -520551205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_52
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9875a55da10d85438719ad1e770a0f3
+      internalID: 1716187595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_53
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a890c75cd9f914780549c4ee7e7798
+      internalID: 182588240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_54
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411c430e2a38cdf4db545fe2e8df41d8
+      internalID: -563754567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_55
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b64182d7a11e3f846a157c155f7beb50
+      internalID: 1699079966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_56
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d3656b397616e459bc516456f94d96
+      internalID: -493942515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_57
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c35aa1157190cc948ab868f62a704437
+      internalID: -1342100439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_58
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350deb4a1568d824f8c354ce9f5ae2f0
+      internalID: 292682964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_59
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f360f9601eb2447abb5d0cff20d966
+      internalID: 1130200633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_60
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 532e912024a8c0a4a9a831a97eaaaba5
+      internalID: 1117508878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_61
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 272
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa10ee9b46b42e41957a5684ab0a132
+      internalID: 1439433417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07cbbf00875db244198bf9bae23aea65
+      internalID: 1695646667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_63
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200c5ab8da3b87a48adf389c563b0d3c
+      internalID: -1002183454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_64
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1d55754e4932a4cbc79fb111714aa6
+      internalID: -2104165733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_65
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0982be610ad86fc42bd5d4b1b62b63a2
+      internalID: 2138827505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_66
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eae53ad85db77549ae17c57fd655144
+      internalID: -246754892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_67
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0459e1c701bcdeb4d9a5dadd2ccee941
+      internalID: -6084757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_68
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55599cffc39e3247a50c2ff2309c11d
+      internalID: -1696525800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_69
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00b24bb05f656f4cb9c15a0564296ff
+      internalID: 1211159210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_70
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf745fa560727c4884440a80f56a3eb
+      internalID: 932718679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_71
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724ca1d14f8f0c242a8efafe92de8873
+      internalID: -568397244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_72
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de43a72406ea9984d8df33be9ce7fdc4
+      internalID: -337821903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_73
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127f792feb5529143bf0d4a4b6326117
+      internalID: -59244257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_74
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da97ac51ab9073e49b219ba31f60f301
+      internalID: -1817148825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_75
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd6f084dc7f65e43b0150f7532d382c
+      internalID: -721629095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_76
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3356d8d9464b3cf4b9645ee431900080
+      internalID: 1280251215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_77
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417b4c0dc8dfa854394caaf2a5873a39
+      internalID: 411163621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_78
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 707ba23ef87d0bb44802d4731deee692
+      internalID: -327197935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_79
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2983cde50f9b55498db3c4aa5849356
+      internalID: 2105083125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_80
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e52d50e54122a419b8b781bc852940
+      internalID: 842739662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_81
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871d68cec75a5ed459b8756f92d66281
+      internalID: 2059842340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_82
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1fa7d0dffbf6e43b454e1c99ee7be5
+      internalID: -528376808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_83
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 254
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b236793412cf6a548a7bdf6a52c4dff9
+      internalID: 468462371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed8baeb017fe5c4cbaedeabbf02fcc9
+      internalID: -245163046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_85
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2bcd49045280242b7ec11b84ca828e
+      internalID: 933733705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_86
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb24b7a4673df2429c2adbc0050fb68
+      internalID: 773673363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_87
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2744bed31b7e885458acf96f8233a2b6
+      internalID: 1090768858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_88
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc92f303e0ea6e44a9a2f05973ea5fb
+      internalID: 2098489006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_89
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a48fa7dccf5ee4682a834cc8b3ee6a
+      internalID: -843716293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_90
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86505653a17c2d447bf7fca0173e449e
+      internalID: 983950600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_91
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0561b450703884f41ac797898c17077a
+      internalID: -983571894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_92
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6297673abb8cd864e9aa65ad31fdc190
+      internalID: 919597456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_93
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5346c3c60d88a00418441afa2b4d7178
+      internalID: 112308686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_94
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045974430b7bbf6408478bb18df759c8
+      internalID: 2123959336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_95
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d086ba27b04cc44871dd6bf1a570e6
+      internalID: -1100026488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_96
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c196330b541e5ff438747a154260651c
+      internalID: 1637291834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_97
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a5486975d6d9264a8e9aa54fa337331
+      internalID: 853158200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_98
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c485e18e28d2b10448855f4781094639
+      internalID: -1570714814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_99
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c4667b69f784ec46a3bfea42805cfc2
+      internalID: -1723782750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_100
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e04a04489499fd43ac586bfe5485fa2
+      internalID: -2080663820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_101
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e671e3c1bc4748f489db35f1e88c533a
+      internalID: -1954074333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_102
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1296b61bfa276fa4c9ad9d2286f3b477
+      internalID: 1104152870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_103
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfe8a4c7bcfcfe45b5d843cf3519e9b
+      internalID: -1147536750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_104
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 236
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e702a043cbe0f3448aa24af19296180b
+      internalID: 1890071643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_105
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 481a710b9a760804a9157bb677b3fb9f
+      internalID: -1886938128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_106
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8c69e500f50524fb48fa9be17bd0a7
+      internalID: 84427243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_107
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05d0bb291b557242a06b313530b0e7b
+      internalID: 686990751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_108
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5d7a40866135644b8793a33f39c86d
+      internalID: -380535846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_109
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88947d4b78731214e97624297f02152e
+      internalID: -943602450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_110
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db85de792a7003844937c10bcc1ca21d
+      internalID: -1806506973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_111
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd95a2f13c2a91643830e9bb09f0356c
+      internalID: -38459088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_112
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955764b88ca6a41469a24eb58e346015
+      internalID: -899385573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_113
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab76987f23fa85d40bda056cab0f5f88
+      internalID: -618617206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_114
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761dc9806d557e547948e0bc8c8e67f9
+      internalID: -89731122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_115
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d98b6fcbad97c4bae7072c7d363b4c
+      internalID: 1144535302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_116
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c981e8298946c4480dcb4c91567887
+      internalID: 1180967315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_117
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deac6d014b1b57546b2ca410d1700eb3
+      internalID: 859386878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_118
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5fed68199daf64ca4786627833fd57
+      internalID: 968430258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_119
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5775b97d0239b2e42bd4b842d25f822b
+      internalID: 936327374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_120
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8f3c4df1ec8674b92bce3a1f6efa4e
+      internalID: 1803454965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_121
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a710bff9b85b054a83fc85d3ff79ce9
+      internalID: -1485920172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_122
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3843e2d7b616c0499aa7637cafcb45b
+      internalID: 928114562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_123
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4565893aede49d54a8c7961132784f05
+      internalID: -1474795685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_124
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fdad8492d13114da4fc44867ab7a7e
+      internalID: -891979955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_125
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 218
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb692ab5a9c002c4b95f5ae78595cdcb
+      internalID: 639036697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840fc7782bcf4a74cb8084275a3a1f14
+      internalID: -841691213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_127
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de580af1d367a549a202edf98164613
+      internalID: 279328663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_128
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35cc00f826b7c14ea41c66a59e59367
+      internalID: -2594023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_129
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7527e98d35e98e745998c8483ae371d9
+      internalID: -1490308790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_130
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ad5df1e8e20e34290167923dc30d8b
+      internalID: 761718067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_131
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91633f384bfd244e98a418d8e842387
+      internalID: -1847423830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_132
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44727e5c306e85a48b4762be472a4853
+      internalID: 1766137699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_133
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c319b467a019171458c0570c95433fac
+      internalID: 720104086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_134
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98be2b6ab8871b6459aeeb1f7f1f4441
+      internalID: 1492442528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_135
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d148fe1af5551834c8f530543ffd659a
+      internalID: 2029664393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_136
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed5d96384b8eaab4cbb8cd551a378a5d
+      internalID: 1791947743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_137
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58353dce7a8209447a1d8df003751374
+      internalID: -2003300667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_138
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a003ad1c971cd8b4f840de96fc29770b
+      internalID: 1420190015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_139
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df55ebdddc8fba542819db3fec517a65
+      internalID: 87598464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_140
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446309b34665dc643a557bcdc721fe9b
+      internalID: -1812422613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_141
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab57b4bf05327a4ab74e11490eedc43
+      internalID: -1313123505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_142
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9392e89c6322714ab492c5890f87533
+      internalID: 609011644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_143
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c7a4ed3aacd07b4386c31d094a80b7d
+      internalID: 1344544908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_144
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce376746a1a71c47a06e62ab4610106
+      internalID: -805948198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_145
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f6d87aa09ce60438766a73bb32e126
+      internalID: -1208349043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_146
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19c68977ad077b4494efd1969109ca7
+      internalID: 727608202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_147
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b945354c7ca44b24fa7bdd4555cfe389
+      internalID: 216083966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_148
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df7fed50e341302409d69d431f4e9c92
+      internalID: -139425442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_149
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e22ef36cd498ea4d9bfff325e6897f7
+      internalID: 1770732814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_150
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425ef202b7a1cb1438779c13399c808a
+      internalID: 1958160627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_151
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2cf607ab00ec94587f9522d44886e8
+      internalID: 1611853937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_152
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a7e936523f33d64cbc2e3b21fe3fc22
+      internalID: 520635544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_153
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bcb60c5bac52c24b908684b79235b43
+      internalID: 1351588540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_154
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6ae0a87465b974c88d70e97aac86ae
+      internalID: 2033584876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_155
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b85f9edf8f1c044f9db1660fb79aa87
+      internalID: -514608294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_156
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ddc47e58b791347bc24f69f1ca33ab
+      internalID: -842096925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_157
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9be342b9bdc88ac4bbc8824d79b39af1
+      internalID: -204792594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_158
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b0149b463adfa4fafc315944cc5cd9
+      internalID: 14075266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_159
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a562686474b08ee48bc98f60471fe09f
+      internalID: -1233018847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_160
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55532a94a52384943afa2b76717ca76c
+      internalID: 125239595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_161
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 891d5224ccd81c043a720ee923fde55b
+      internalID: -482182615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_162
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b592261d9a27f19468717408b9c45c88
+      internalID: -1503528253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_163
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cb59c84279c28408662ef3febcb164
+      internalID: -280829048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_164
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c65ee89f51e339044b09c9daab572ef0
+      internalID: 253752279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_165
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bbea23c55303346ae3408d9e5d7a5b
+      internalID: 545072901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_166
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 182
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e36f54f3495e0c4f8e7c87211f94bfe
+      internalID: -186508743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_167
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5393cae96c9561e47a8c04c757561bd6
+      internalID: -2040781111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_168
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d2f0fd1863c238459793f747742b4ff
+      internalID: 250737379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_169
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d00d2de05e2aab4f97bbc0d1a493a47
+      internalID: 372029633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_170
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f453cffe3ab46b040a85c39dbf5cb9cf
+      internalID: -40800005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_171
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab0eb106b621fe4693e6f809648e0df
+      internalID: 1377032707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_172
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0259705fd12ea37469cf8e4b2909ac00
+      internalID: 1611551313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_173
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7519b2ede2f170b4ab8afe8f1e7812b6
+      internalID: 2060463006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_174
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751ced4b0b4f4604e92e501718e1f89d
+      internalID: -1112165236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_175
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c6bce6f48a095409cdb827d50f5bc8
+      internalID: 144559298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_176
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7c5c8aba2d1004ab45aad8e025d898
+      internalID: -1285300526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_177
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8eed13d37a23643b8af324df131e82
+      internalID: -884888969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_178
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515db1c4b92e6ad42abd0197c384eece
+      internalID: 1322230428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_179
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7320dbb5844814980f85abfbd7dcd4
+      internalID: 1383101020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_180
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18192e6897a0b0b43be20dce97003c56
+      internalID: -364618094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_181
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7070c1597557179488d4c395d7ec1414
+      internalID: 1941387257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_182
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0644a1902409a5f4989a0580a382969e
+      internalID: 2097303469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_183
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ed7ebf96edb684b9b2de2100e91682
+      internalID: 980999111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_184
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228ae575e42e5694fb90a391a3b31456
+      internalID: -1148210267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_185
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43efc2c5add506d41b0f3ff0c6bad591
+      internalID: 1795099655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_186
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 164
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d457594a2893bd14f827b14ba9e5ab80
+      internalID: -161626886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_187
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785639bf1b12d26448240723542672ca
+      internalID: -1033746581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_188
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dddef018188f2e46b6bea45c3c5ec8d
+      internalID: 1427639789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_189
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b57c5db333baa41952ede1a7bae6e7
+      internalID: -1401958198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_190
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab6aeb20bb1639499cf2d7eaa11d679
+      internalID: -1213690584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_191
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1863c342584717f46a0cce823df5ae78
+      internalID: -380568795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_192
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde86508efa08084587d3f650c0bbef6
+      internalID: -159931876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_193
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd98e9093c52d042974589c4cbafc9a
+      internalID: -388272827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_194
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f047ff21ba690c84383c713b333c117d
+      internalID: -2071410564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_195
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e218adfa09e0b74cb3a5fbe0705cffb
+      internalID: -1676080195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_196
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1d85868a5f9474db73376988166bbd
+      internalID: -1813600765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_197
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da309a19770ecf74abf6ca32598ab6e3
+      internalID: -1551261319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_198
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e051f86c5fb2f43ad3e5dd8515adae
+      internalID: 817967554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_199
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afdba684cfb5e4f46a1f0eb9c5f5e0ea
+      internalID: -517232308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_200
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0dcadc174344540adebc0c54220e6e
+      internalID: -319435925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_201
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bb66d32083f2a4c9b73c98bcabd04a
+      internalID: -1228840848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_202
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96c6ae34740a1c64b8f1337793ed5b6d
+      internalID: -145139244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_203
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4ff97adde2b074f82c50a545ff04e0
+      internalID: 1753750518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_204
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b41b57333552ad43a9512e3f1ad83a5
+      internalID: 609727467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_205
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d1091eb18e9b7478672cc1f013f3d9
+      internalID: 1693240510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_206
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc270f6213196dd498bc47cf71ef8543
+      internalID: -1640311766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_207
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 146
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202d740258a2de14788769cadd7cb843
+      internalID: 2084795353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_208
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d6bf5d04a4ea44392ad72f3c945d7e
+      internalID: -1970167558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_209
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff79ccb7e7f18d44b5612115bae7be7
+      internalID: -1439531937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_210
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac037d65fa1ad4740996ac105ae5db8a
+      internalID: -129396128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_211
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb33f4e10ca193a4496c1465069e203a
+      internalID: -417706040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_212
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7766c4d7e63bcc46a7358876930ddbe
+      internalID: -1793556052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_213
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8591aac7316a84f4bb4f5237d7b033d3
+      internalID: 530442553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_214
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5562d3cc0c89a074bb216a32854d6770
+      internalID: -321984010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_215
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f987deae6bcd149ac0e4411db742ca
+      internalID: -331688372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_216
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5ba66f528fbc2499e51aee05b90af1
+      internalID: -1445185707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_217
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73eb4e528b4290c44bdac61d01a6e130
+      internalID: 1567960471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_218
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fd87708578c9145befd08c9eb7121f
+      internalID: 274025890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_219
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acabc3813c1d22f45b1c13a42a0cc965
+      internalID: -507159302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_220
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b4bb28f8a30c674f9d84cf8d2aba0ce
+      internalID: 1222518688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_221
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1a060fe65bbd64e9ac553a1ec7b75f
+      internalID: 1645238675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_222
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2d6e82cd7d1fa54d98cddb72bba7630
+      internalID: 1602659234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_223
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55319b3702c4bf4f9e7f430adfb9508
+      internalID: 1496426864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_224
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24301748ed9bc1d4c948012b9e467c46
+      internalID: -1269152031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_225
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c284c70d30263b42adddddf17f48ee4
+      internalID: 1934876059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_226
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5acb83b495f3dec489458729b5e8047d
+      internalID: -536202085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_227
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0d4b810f4048846a7636c39ca3693e
+      internalID: -552970516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_228
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 128
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a297c6cf0d597c45adf8557fb643dbb
+      internalID: -1620896197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_229
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 246c256953fd7cb468bcd7552295f11b
+      internalID: -1550281021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_230
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfac550ec8da2740b7729e89bf3f285
+      internalID: 1913777364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_231
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b8e5cb24907b4f46b6c3b59c70a5db2
+      internalID: -788674829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_232
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368f386b8cb533b4e8899793a4dbb746
+      internalID: 2095068515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_233
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fad956527d39044bf0e489310611f6
+      internalID: -14817030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_234
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a317f8563a0314bb16493708f4f2ba
+      internalID: 2108778294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_235
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9093d0ff2e787424093b0f58e19e7a35
+      internalID: 2106769249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_236
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954401c9733561c41aa008313101990e
+      internalID: 1452031676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_237
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801a64e628d46c1478218def28b752bd
+      internalID: -578768093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_238
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77e0a2130a988741a80e034e8632758
+      internalID: -1513230509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_239
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a099c63fe11516b43b83a2451f61c981
+      internalID: 955548578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_240
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2936e9d2baec72441a4dd1e29c88b829
+      internalID: -1688649931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_241
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec8d047d63c7303499a155065790d22f
+      internalID: -1291398672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_242
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a8fb8cd256461448807509f04638c6
+      internalID: 504314260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_243
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 199fe721e4d1c6041aa96422924b87f1
+      internalID: 1586308727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_244
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f70571764cf1c44f802c0146ec05475
+      internalID: 1088521229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_245
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e4f4e9462ad8a4cb00295e7ff55308
+      internalID: -834289878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_246
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7ee21cc9e8b47439410cdeda106462
+      internalID: -1267702506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_247
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed9648332b7a094d8792f4df4ec7c2c
+      internalID: -18554856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_248
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc87475137feba47b21c52b53605f9c
+      internalID: -390018019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_249
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 110
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c73f34e1ab9bb4a83d12362d0b67cf
+      internalID: 483099517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_250
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d859ea4454a8088478d41f3efc782d6d
+      internalID: 1357213296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_251
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08dab7fcb0f19fb42ba3c27ffce877fa
+      internalID: -1604953770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_252
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416e75668d0b1e0468b19163a9433392
+      internalID: 299895864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_253
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d543b22e2099d40a8be5e1db575e2c
+      internalID: -1045369000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_254
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db26b79b83c546444b97181ed31f2abc
+      internalID: -483818120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_255
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86fcf3de8e570d44d96a0e417753d8ad
+      internalID: -1313437330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_256
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50736e0b505c9be4aa48a9a0e059c463
+      internalID: -2118171960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_257
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca4255f165eddd40b6f953947857f87
+      internalID: 1021981544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_258
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6aa3cd1e4a44845a77ddc5189f95ef
+      internalID: 222349385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_259
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 205ee4d0c640c6945a767104c8de6454
+      internalID: -579442797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_260
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fde0390e3dd21b4dacef0b9ab97b6e4
+      internalID: 1402505359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_261
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a9d61fbf95d87f4a8aa6148a9de2901
+      internalID: 1122843063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_262
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fe0893649579a43ac5da4dee7b7032
+      internalID: 1613585875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_263
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9800282eee68840aaa0a8fead010cf
+      internalID: 2066570756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_264
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55279243006e9c14a8252f4928ac9965
+      internalID: 1182719401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_265
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd3ff4c3bb755840ac0ad2d4ff391a7
+      internalID: 1407265506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_266
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a506f8093f193a2458701608bc10d0ef
+      internalID: 1807280899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_267
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63d5eb9437e42bc42a0d958b4c58e031
+      internalID: -1757771125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_268
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a563daf9f49ea649adbd3a7395306ed
+      internalID: -96440567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_269
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84142330389921f4ca3764e51350f4b7
+      internalID: 1975521686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_270
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 92
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ccb731663a8d94bbb63c4d199319b3
+      internalID: 804831486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_271
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 603da8f40ad0ace4e8b4a81296681500
+      internalID: 925060817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_272
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7305f8f13e21d1a43bec10b0d883c8f5
+      internalID: 1000542450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_273
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09fdddac697960249910db57e6a9947e
+      internalID: 665608517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_274
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67ddbeda740e944fa30bf24a77b78f8
+      internalID: -707970334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_275
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89e6d95b4231f24a920f7a6b704fbd3
+      internalID: -1716911951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_276
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482fc7969a213ef4f9cee6c91f79095d
+      internalID: 2045521375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_277
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a32b14b177880f4b957a7dedce508b7
+      internalID: -1151005560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_278
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7b4896be5142648a48b60cd26eb692
+      internalID: 403736003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_279
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822f5b7ac5aa52b4286309fdac3d8207
+      internalID: 1890477764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_280
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bec9c847c3490c4f84639d63b4f59f2
+      internalID: 1210528785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_281
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef211af9da660a4681a36cbdc3a4738
+      internalID: 544359680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_282
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f1f67c7ca916d4f8ff6cbfe3e8e352
+      internalID: 1509908718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_283
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cabf17389e74e59408692feeb6c6a371
+      internalID: 2060618998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_284
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df991883e71df5249a27c49623e1285b
+      internalID: 417876376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_285
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad7199d800a03144a89e984d0cca9191
+      internalID: -50316512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_286
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d707df155c67d4c9892630f163edef
+      internalID: 1555618061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_287
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f33c7bcbc4689440afafc6ce175f507
+      internalID: 421915829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_288
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d099a3e5157b2214e92624414e35dfd4
+      internalID: 100906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_289
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf1425961e469d45bc351a0d605c338
+      internalID: 1775777388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_290
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ff1ce1b3871eb45a72db1f9ccfe4af
+      internalID: -306963934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_291
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e011ce483e680548b4aefcd0832b711
+      internalID: 245254869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_292
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1471a19d244f2aa4ba4e08af19ccc38b
+      internalID: -1778387495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_293
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8012cb47e8b58824e93f7d1d4e19be1e
+      internalID: 1254621844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_294
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be0b0d386e0e85a40924b531b46e58e2
+      internalID: 190511978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_295
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795afb6896109e44aadb0f7dc4e9d492
+      internalID: -1838376068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_296
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae1a5b914ba89343ace52416f73a022
+      internalID: 1745257529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_297
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2187ea7720fa7da4586c7159f6909bd9
+      internalID: -1558871802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_298
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cce5bf721a1c7f4bac8009495fadd13
+      internalID: 365455349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_299
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14461d5b5060e34594dbfab7bf7316d
+      internalID: 1905640023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_300
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d1c5eb258092dc44aa88f4cf0253e2a
+      internalID: -1808209147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_301
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22e004c6c9318f43b46f29ac595fcda
+      internalID: -741826446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_302
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2aaece668b8b9f40b9bde4874eb57f1
+      internalID: 1822911568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_303
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 56
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 965b97c861b2dfe4ea44a951ddfd9d40
+      internalID: -922382744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_304
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad59c776ea6310647b9e06cd6dc03808
+      internalID: -2097325911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_305
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a943ba3e323985f4a9258df34c6a33c4
+      internalID: 1894836927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_306
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746594b162c57d44c9dcb28470df7607
+      internalID: 543650758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_307
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f9ecda16d4ee541aa240475a8fff4a
+      internalID: -1101492008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_308
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378ed5f081de43d4796b4fe32df08965
+      internalID: 1475910102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_309
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9024071ad93f33a43bf8df3239db2255
+      internalID: 274307756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_310
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f612ba2291b538440a716e4839b0adfe
+      internalID: 1722292409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_311
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5a1db58e6e6684bb1dfdb488eaf899
+      internalID: -1631077095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_312
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcf2f474a8b45344fa6dda20e5e1c1ee
+      internalID: -1147838132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_313
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7995ae0dcf7f74eb398bc00bada24d
+      internalID: 2115125065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_314
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 38
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3f428fd241ad54ab9a60584b00c921
+      internalID: 1828770126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_315
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffe176af4d8179448fe3c9d68b5596c
+      internalID: -615221439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_316
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a69dffc2aecac47a4b3fb714a4dc57
+      internalID: -1346411449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_317
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f4a83f011aa3c40beacd85d8c60e8a
+      internalID: -2105940487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_318
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97f5079f1933ae46bd235bbc09a9cd4
+      internalID: 876960430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_319
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a64a76a84bfec4d809592fd915f5e5
+      internalID: -605990084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_320
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f1ff9fac720ad4fb688d39c24dc129
+      internalID: -226269493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_321
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1335db5050931f241af7ddf0530b5029
+      internalID: 1214343248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_322
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b178b516e7ac2a42b295b0f08acad32
+      internalID: 261500549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_323
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdba0e23e5f1d5543af6fa9587cddf79
+      internalID: -166416902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_324
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 20
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 300a03693013fd6468586d893bb20c88
+      internalID: -2134709223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_325
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b14831401a79c4443986de1680874adc
+      internalID: 523533561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_326
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24fcc0bce2d35b45b9e8d8342ea4460
+      internalID: 919735264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_327
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84dcffa9a96e67845a4133b92253a3d5
+      internalID: -41240895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_328
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab2561b02357c34abb7b0d3eecc8eca
+      internalID: 1071564259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_329
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c10b2adad62a46343bb532a68a0abcd4
+      internalID: 840227214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_330
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e59e584889c94e4f851ec80d2f802ec
+      internalID: 288580755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_331
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d66bd562df0ea654cbaf30f2372d5b84
+      internalID: 443507595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_332
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c6910da425f87f41a09c937a36dbccd
+      internalID: -1612181538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _overworld_tiles_333
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 2
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94568f87d75fced4aa49db7250501057
+      internalID: 2059349023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2f4a8e0cfb920f442a68704fab4d5b04
     internalID: 0
     vertices: []
     indices: 
@@ -121,8 +7482,344 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":21.0,"y":18.0},"gridSpriteSize":{"x":18.0,"y":18.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      _overworld_tiles_0: -477293295
+      _overworld_tiles_1: 65628912
+      _overworld_tiles_10: -1139216533
+      _overworld_tiles_100: -2080663820
+      _overworld_tiles_101: -1954074333
+      _overworld_tiles_102: 1104152870
+      _overworld_tiles_103: -1147536750
+      _overworld_tiles_104: 1890071643
+      _overworld_tiles_105: -1886938128
+      _overworld_tiles_106: 84427243
+      _overworld_tiles_107: 686990751
+      _overworld_tiles_108: -380535846
+      _overworld_tiles_109: -943602450
+      _overworld_tiles_11: 1430400234
+      _overworld_tiles_110: -1806506973
+      _overworld_tiles_111: -38459088
+      _overworld_tiles_112: -899385573
+      _overworld_tiles_113: -618617206
+      _overworld_tiles_114: -89731122
+      _overworld_tiles_115: 1144535302
+      _overworld_tiles_116: 1180967315
+      _overworld_tiles_117: 859386878
+      _overworld_tiles_118: 968430258
+      _overworld_tiles_119: 936327374
+      _overworld_tiles_12: 968668435
+      _overworld_tiles_120: 1803454965
+      _overworld_tiles_121: -1485920172
+      _overworld_tiles_122: 928114562
+      _overworld_tiles_123: -1474795685
+      _overworld_tiles_124: -891979955
+      _overworld_tiles_125: 639036697
+      _overworld_tiles_126: -841691213
+      _overworld_tiles_127: 279328663
+      _overworld_tiles_128: -2594023
+      _overworld_tiles_129: -1490308790
+      _overworld_tiles_13: 1847717242
+      _overworld_tiles_130: 761718067
+      _overworld_tiles_131: -1847423830
+      _overworld_tiles_132: 1766137699
+      _overworld_tiles_133: 720104086
+      _overworld_tiles_134: 1492442528
+      _overworld_tiles_135: 2029664393
+      _overworld_tiles_136: 1791947743
+      _overworld_tiles_137: -2003300667
+      _overworld_tiles_138: 1420190015
+      _overworld_tiles_139: 87598464
+      _overworld_tiles_14: -99842344
+      _overworld_tiles_140: -1812422613
+      _overworld_tiles_141: -1313123505
+      _overworld_tiles_142: 609011644
+      _overworld_tiles_143: 1344544908
+      _overworld_tiles_144: -805948198
+      _overworld_tiles_145: -1208349043
+      _overworld_tiles_146: 727608202
+      _overworld_tiles_147: 216083966
+      _overworld_tiles_148: -139425442
+      _overworld_tiles_149: 1770732814
+      _overworld_tiles_15: 594208308
+      _overworld_tiles_150: 1958160627
+      _overworld_tiles_151: 1611853937
+      _overworld_tiles_152: 520635544
+      _overworld_tiles_153: 1351588540
+      _overworld_tiles_154: 2033584876
+      _overworld_tiles_155: -514608294
+      _overworld_tiles_156: -842096925
+      _overworld_tiles_157: -204792594
+      _overworld_tiles_158: 14075266
+      _overworld_tiles_159: -1233018847
+      _overworld_tiles_16: 293495244
+      _overworld_tiles_160: 125239595
+      _overworld_tiles_161: -482182615
+      _overworld_tiles_162: -1503528253
+      _overworld_tiles_163: -280829048
+      _overworld_tiles_164: 253752279
+      _overworld_tiles_165: 545072901
+      _overworld_tiles_166: -186508743
+      _overworld_tiles_167: -2040781111
+      _overworld_tiles_168: 250737379
+      _overworld_tiles_169: 372029633
+      _overworld_tiles_17: 1928231410
+      _overworld_tiles_170: -40800005
+      _overworld_tiles_171: 1377032707
+      _overworld_tiles_172: 1611551313
+      _overworld_tiles_173: 2060463006
+      _overworld_tiles_174: -1112165236
+      _overworld_tiles_175: 144559298
+      _overworld_tiles_176: -1285300526
+      _overworld_tiles_177: -884888969
+      _overworld_tiles_178: 1322230428
+      _overworld_tiles_179: 1383101020
+      _overworld_tiles_18: -181025421
+      _overworld_tiles_180: -364618094
+      _overworld_tiles_181: 1941387257
+      _overworld_tiles_182: 2097303469
+      _overworld_tiles_183: 980999111
+      _overworld_tiles_184: -1148210267
+      _overworld_tiles_185: 1795099655
+      _overworld_tiles_186: -161626886
+      _overworld_tiles_187: -1033746581
+      _overworld_tiles_188: 1427639789
+      _overworld_tiles_189: -1401958198
+      _overworld_tiles_19: -1963285608
+      _overworld_tiles_190: -1213690584
+      _overworld_tiles_191: -380568795
+      _overworld_tiles_192: -159931876
+      _overworld_tiles_193: -388272827
+      _overworld_tiles_194: -2071410564
+      _overworld_tiles_195: -1676080195
+      _overworld_tiles_196: -1813600765
+      _overworld_tiles_197: -1551261319
+      _overworld_tiles_198: 817967554
+      _overworld_tiles_199: -517232308
+      _overworld_tiles_2: 1283043539
+      _overworld_tiles_20: -938842484
+      _overworld_tiles_200: -319435925
+      _overworld_tiles_201: -1228840848
+      _overworld_tiles_202: -145139244
+      _overworld_tiles_203: 1753750518
+      _overworld_tiles_204: 609727467
+      _overworld_tiles_205: 1693240510
+      _overworld_tiles_206: -1640311766
+      _overworld_tiles_207: 2084795353
+      _overworld_tiles_208: -1970167558
+      _overworld_tiles_209: -1439531937
+      _overworld_tiles_21: 1715115151
+      _overworld_tiles_210: -129396128
+      _overworld_tiles_211: -417706040
+      _overworld_tiles_212: -1793556052
+      _overworld_tiles_213: 530442553
+      _overworld_tiles_214: -321984010
+      _overworld_tiles_215: -331688372
+      _overworld_tiles_216: -1445185707
+      _overworld_tiles_217: 1567960471
+      _overworld_tiles_218: 274025890
+      _overworld_tiles_219: -507159302
+      _overworld_tiles_22: -198064356
+      _overworld_tiles_220: 1222518688
+      _overworld_tiles_221: 1645238675
+      _overworld_tiles_222: 1602659234
+      _overworld_tiles_223: 1496426864
+      _overworld_tiles_224: -1269152031
+      _overworld_tiles_225: 1934876059
+      _overworld_tiles_226: -536202085
+      _overworld_tiles_227: -552970516
+      _overworld_tiles_228: -1620896197
+      _overworld_tiles_229: -1550281021
+      _overworld_tiles_23: 961268294
+      _overworld_tiles_230: 1913777364
+      _overworld_tiles_231: -788674829
+      _overworld_tiles_232: 2095068515
+      _overworld_tiles_233: -14817030
+      _overworld_tiles_234: 2108778294
+      _overworld_tiles_235: 2106769249
+      _overworld_tiles_236: 1452031676
+      _overworld_tiles_237: -578768093
+      _overworld_tiles_238: -1513230509
+      _overworld_tiles_239: 955548578
+      _overworld_tiles_24: -649722214
+      _overworld_tiles_240: -1688649931
+      _overworld_tiles_241: -1291398672
+      _overworld_tiles_242: 504314260
+      _overworld_tiles_243: 1586308727
+      _overworld_tiles_244: 1088521229
+      _overworld_tiles_245: -834289878
+      _overworld_tiles_246: -1267702506
+      _overworld_tiles_247: -18554856
+      _overworld_tiles_248: -390018019
+      _overworld_tiles_249: 483099517
+      _overworld_tiles_25: 1043276489
+      _overworld_tiles_250: 1357213296
+      _overworld_tiles_251: -1604953770
+      _overworld_tiles_252: 299895864
+      _overworld_tiles_253: -1045369000
+      _overworld_tiles_254: -483818120
+      _overworld_tiles_255: -1313437330
+      _overworld_tiles_256: -2118171960
+      _overworld_tiles_257: 1021981544
+      _overworld_tiles_258: 222349385
+      _overworld_tiles_259: -579442797
+      _overworld_tiles_26: 398930898
+      _overworld_tiles_260: 1402505359
+      _overworld_tiles_261: 1122843063
+      _overworld_tiles_262: 1613585875
+      _overworld_tiles_263: 2066570756
+      _overworld_tiles_264: 1182719401
+      _overworld_tiles_265: 1407265506
+      _overworld_tiles_266: 1807280899
+      _overworld_tiles_267: -1757771125
+      _overworld_tiles_268: -96440567
+      _overworld_tiles_269: 1975521686
+      _overworld_tiles_27: -829260260
+      _overworld_tiles_270: 804831486
+      _overworld_tiles_271: 925060817
+      _overworld_tiles_272: 1000542450
+      _overworld_tiles_273: 665608517
+      _overworld_tiles_274: -707970334
+      _overworld_tiles_275: -1716911951
+      _overworld_tiles_276: 2045521375
+      _overworld_tiles_277: -1151005560
+      _overworld_tiles_278: 403736003
+      _overworld_tiles_279: 1890477764
+      _overworld_tiles_28: -62894661
+      _overworld_tiles_280: 1210528785
+      _overworld_tiles_281: 544359680
+      _overworld_tiles_282: 1509908718
+      _overworld_tiles_283: 2060618998
+      _overworld_tiles_284: 417876376
+      _overworld_tiles_285: -50316512
+      _overworld_tiles_286: 1555618061
+      _overworld_tiles_287: 421915829
+      _overworld_tiles_288: 100906
+      _overworld_tiles_289: 1775777388
+      _overworld_tiles_29: -1342054111
+      _overworld_tiles_290: -306963934
+      _overworld_tiles_291: 245254869
+      _overworld_tiles_292: -1778387495
+      _overworld_tiles_293: 1254621844
+      _overworld_tiles_294: 190511978
+      _overworld_tiles_295: -1838376068
+      _overworld_tiles_296: 1745257529
+      _overworld_tiles_297: -1558871802
+      _overworld_tiles_298: 365455349
+      _overworld_tiles_299: 1905640023
+      _overworld_tiles_3: 2099211444
+      _overworld_tiles_30: -1009538005
+      _overworld_tiles_300: -1808209147
+      _overworld_tiles_301: -741826446
+      _overworld_tiles_302: 1822911568
+      _overworld_tiles_303: -922382744
+      _overworld_tiles_304: -2097325911
+      _overworld_tiles_305: 1894836927
+      _overworld_tiles_306: 543650758
+      _overworld_tiles_307: -1101492008
+      _overworld_tiles_308: 1475910102
+      _overworld_tiles_309: 274307756
+      _overworld_tiles_31: 902571230
+      _overworld_tiles_310: 1722292409
+      _overworld_tiles_311: -1631077095
+      _overworld_tiles_312: -1147838132
+      _overworld_tiles_313: 2115125065
+      _overworld_tiles_314: 1828770126
+      _overworld_tiles_315: -615221439
+      _overworld_tiles_316: -1346411449
+      _overworld_tiles_317: -2105940487
+      _overworld_tiles_318: 876960430
+      _overworld_tiles_319: -605990084
+      _overworld_tiles_32: -1256096703
+      _overworld_tiles_320: -226269493
+      _overworld_tiles_321: 1214343248
+      _overworld_tiles_322: 261500549
+      _overworld_tiles_323: -166416902
+      _overworld_tiles_324: -2134709223
+      _overworld_tiles_325: 523533561
+      _overworld_tiles_326: 919735264
+      _overworld_tiles_327: -41240895
+      _overworld_tiles_328: 1071564259
+      _overworld_tiles_329: 840227214
+      _overworld_tiles_33: -862083126
+      _overworld_tiles_330: 288580755
+      _overworld_tiles_331: 443507595
+      _overworld_tiles_332: -1612181538
+      _overworld_tiles_333: 2059349023
+      _overworld_tiles_34: -565369079
+      _overworld_tiles_35: 472451478
+      _overworld_tiles_36: -2021515762
+      _overworld_tiles_37: 1645178688
+      _overworld_tiles_38: 489455308
+      _overworld_tiles_39: 367253298
+      _overworld_tiles_4: 673809508
+      _overworld_tiles_40: 348170019
+      _overworld_tiles_41: 742083213
+      _overworld_tiles_42: 874143978
+      _overworld_tiles_43: -152257846
+      _overworld_tiles_44: 776127033
+      _overworld_tiles_45: -1763545574
+      _overworld_tiles_46: -692666709
+      _overworld_tiles_47: -929684413
+      _overworld_tiles_48: -425690370
+      _overworld_tiles_49: -1465694381
+      _overworld_tiles_5: -721127259
+      _overworld_tiles_50: 736841682
+      _overworld_tiles_51: -520551205
+      _overworld_tiles_52: 1716187595
+      _overworld_tiles_53: 182588240
+      _overworld_tiles_54: -563754567
+      _overworld_tiles_55: 1699079966
+      _overworld_tiles_56: -493942515
+      _overworld_tiles_57: -1342100439
+      _overworld_tiles_58: 292682964
+      _overworld_tiles_59: 1130200633
+      _overworld_tiles_6: -1044569510
+      _overworld_tiles_60: 1117508878
+      _overworld_tiles_61: 1439433417
+      _overworld_tiles_62: 1695646667
+      _overworld_tiles_63: -1002183454
+      _overworld_tiles_64: -2104165733
+      _overworld_tiles_65: 2138827505
+      _overworld_tiles_66: -246754892
+      _overworld_tiles_67: -6084757
+      _overworld_tiles_68: -1696525800
+      _overworld_tiles_69: 1211159210
+      _overworld_tiles_7: -1885902531
+      _overworld_tiles_70: 932718679
+      _overworld_tiles_71: -568397244
+      _overworld_tiles_72: -337821903
+      _overworld_tiles_73: -59244257
+      _overworld_tiles_74: -1817148825
+      _overworld_tiles_75: -721629095
+      _overworld_tiles_76: 1280251215
+      _overworld_tiles_77: 411163621
+      _overworld_tiles_78: -327197935
+      _overworld_tiles_79: 2105083125
+      _overworld_tiles_8: 1501552840
+      _overworld_tiles_80: 842739662
+      _overworld_tiles_81: 2059842340
+      _overworld_tiles_82: -528376808
+      _overworld_tiles_83: 468462371
+      _overworld_tiles_84: -245163046
+      _overworld_tiles_85: 933733705
+      _overworld_tiles_86: 773673363
+      _overworld_tiles_87: 1090768858
+      _overworld_tiles_88: 2098489006
+      _overworld_tiles_89: -843716293
+      _overworld_tiles_9: 1994227600
+      _overworld_tiles_90: 983950600
+      _overworld_tiles_91: -983571894
+      _overworld_tiles_92: 919597456
+      _overworld_tiles_93: 112308686
+      _overworld_tiles_94: 2123959336
+      _overworld_tiles_95: -1100026488
+      _overworld_tiles_96: 1637291834
+      _overworld_tiles_97: 853158200
+      _overworld_tiles_98: -1570714814
+      _overworld_tiles_99: -1723782750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
