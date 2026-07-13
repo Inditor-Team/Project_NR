@@ -154,6 +154,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Easteregg"",
+                    ""type"": ""Button"",
+                    ""id"": ""af02a927-4c74-491a-acb9-6cbdb3270931"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -418,6 +427,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""SpecialSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c8ac49a-2625-4162-97f5-c4c6cadbe3e1"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Easteregg"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1012,6 +1032,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_PrimaryAttack = m_Player.FindAction("PrimaryAttack", throwIfNotFound: true);
         m_Player_SecondaryAttack = m_Player.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Player_SpecialSkill = m_Player.FindAction("SpecialSkill", throwIfNotFound: true);
+        m_Player_Easteregg = m_Player.FindAction("Easteregg", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1112,6 +1133,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PrimaryAttack;
     private readonly InputAction m_Player_SecondaryAttack;
     private readonly InputAction m_Player_SpecialSkill;
+    private readonly InputAction m_Player_Easteregg;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1151,6 +1173,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/SpecialSkill".
         /// </summary>
         public InputAction @SpecialSkill => m_Wrapper.m_Player_SpecialSkill;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Easteregg".
+        /// </summary>
+        public InputAction @Easteregg => m_Wrapper.m_Player_Easteregg;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1198,6 +1224,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SpecialSkill.started += instance.OnSpecialSkill;
             @SpecialSkill.performed += instance.OnSpecialSkill;
             @SpecialSkill.canceled += instance.OnSpecialSkill;
+            @Easteregg.started += instance.OnEasteregg;
+            @Easteregg.performed += instance.OnEasteregg;
+            @Easteregg.canceled += instance.OnEasteregg;
         }
 
         /// <summary>
@@ -1230,6 +1259,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SpecialSkill.started -= instance.OnSpecialSkill;
             @SpecialSkill.performed -= instance.OnSpecialSkill;
             @SpecialSkill.canceled -= instance.OnSpecialSkill;
+            @Easteregg.started -= instance.OnEasteregg;
+            @Easteregg.performed -= instance.OnEasteregg;
+            @Easteregg.canceled -= instance.OnEasteregg;
         }
 
         /// <summary>
@@ -1579,6 +1611,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpecialSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Easteregg" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEasteregg(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

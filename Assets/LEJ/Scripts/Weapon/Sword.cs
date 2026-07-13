@@ -6,21 +6,21 @@ public class Sword : WeaponBase
     [SerializeField] float damage;
 
     [SerializeField] float attackRate; //검 휘두르는 것에 대한 쿨타임
-    [SerializeField] float speed = 1.5f;
     float lastAttackTime;
 
     float animOriginSpeed = 1f;
     Collider2D col;
-    Animator anim;
     HashSet<IDamageable> hitTargets = new(); //하나의 적이 여러 번 공격 인정 되는 것을 방지
 
     GameObject owner;
+    [SerializeField] SwordSwing swing;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
+
         DisableAttackCollider();
+        swing.OnStopSwing += DisableAttackCollider;
     }
 
     public override void SetOwner(GameObject owner)
@@ -40,14 +40,12 @@ public class Sword : WeaponBase
 
     internal override void Attack()
     {
-        anim.speed = speed;
-        anim.Play("Sword_Attack");
+        swing.Swing();
     }
 
     internal void Attack(float speed)
     {
-        anim.speed = speed;
-        anim.Play("Sword_Attack");
+        swing.Swing();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,22 +64,9 @@ public class Sword : WeaponBase
         target.TakeDamage(damage);
     }
 
-    /// <summary>
-    /// 애니메이션에서 호출되는 콜라이더 on 이벤트
-    /// </summary>
-    public void EnableAttackCollider()
-    {
-        hitTargets.Clear();
-        col.enabled = true;
-    }
-
-    /// <summary>
-    /// 애니메이션에서 호출되는 콜라이더 off 이벤트
-    /// </summary>
     public void DisableAttackCollider()
     {
         col.enabled = false;
-        anim.speed = animOriginSpeed;
     }
 
 }
