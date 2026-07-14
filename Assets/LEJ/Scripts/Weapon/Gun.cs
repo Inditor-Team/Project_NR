@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class Gun : WeaponBase
 {
+    [SerializeField] SpriteRenderer model;
+    public SpriteRenderer Model => model;
+
     [Header("총 스탯")]
     [SerializeField] float damage;
-    [SerializeField] float speed;
     [SerializeField] float fireRate; //발사 속도
+    float curSpeed = 3f;
 
     [Header("외부 오브젝트")]
     [SerializeField] Transform firePoint; //총구 위치
@@ -23,12 +26,6 @@ public class Gun : WeaponBase
     }
 
     GameObject owner; //총의 소유자
-    private SpriteRenderer sprite;
-
-    private void Awake()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-    }
 
     /// <summary>
     /// Init 을 호출 해 총의 소유자를 설정하고 총이 작동될 수 있게 합니다
@@ -53,12 +50,12 @@ public class Gun : WeaponBase
         {
             BulletBase bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             bulletPool[i] = bullet;
-            bullet.Init(damage, speed, owner); //총알 초기화
+            bullet.Init(damage, curSpeed, owner); //총알 초기화
             bullet.gameObject.SetActive(false); 
         }
     }
 
-    public override void TryAttack()
+    public override void TryAttack(float speed)
     {
         if (Time.time - lastFireTime < fireRate) 
             return;
@@ -70,7 +67,7 @@ public class Gun : WeaponBase
     internal override void Attack()
     {
         bulletPool[bulletIndex].transform.position = firePoint.position; //총알 위치 초기화
-        bulletPool[bulletIndex].OnFire(-firePoint.right);
+        bulletPool[bulletIndex].OnFire(-firePoint.right, curSpeed);
         bulletIndex++;
     }
 }

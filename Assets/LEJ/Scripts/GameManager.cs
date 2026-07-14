@@ -34,13 +34,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private PlayerController player;
-    public PlayerController Player
+    private GameObject player;
+    public GameObject Player
     {
         get
         {
             if (player == null)
-                player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+                player = GameObject.FindWithTag("Player");
 
             return player;
         }

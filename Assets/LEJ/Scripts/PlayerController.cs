@@ -1,3 +1,4 @@
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,25 +19,20 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float rollSpeed = 10f;
     [SerializeField] float rollDuration = 0.2f;
-    [SerializeField] float swordAttackSpeed = 0.5f;
+    [SerializeField] float swordSwingSpeed = 3f;
+    [SerializeField] float bulletSpeed = 3f;
 
-    [Header("캐릭터 프로토콜")]
-    [SerializeField] ProtocolBase protocol;
+    //[Header("캐릭터 프로토콜")]
+    //[SerializeField] ProtocolBase protocol;
 
     float rollTimer;
     float attackTimer;
-
-    Quaternion swordHoldRot = Quaternion.Euler(0f, 0f, 0.25f);
 
     [Header("캐릭터 오브젝트")]
     [SerializeField] SpriteRenderer model;
     public SpriteRenderer Model => model;
     [SerializeField] Sword sword;
-    [SerializeField] Transform swordHoldPoint;
     [SerializeField] Gun gun;
-    [SerializeField] Transform gunHoldPoint;
-    SpriteRenderer gunSprite;
-    SpriteRenderer swordSprite;
     Camera mainCam;
 
     enum PlayerState
@@ -64,21 +60,16 @@ public class PlayerController : MonoBehaviour, IDamageable
         mainCam = Camera.main;
     }
 
-    private void Start()
-    {
-        GetWeaponSprite();
-    }
-
     void OnEnable()
     {
         //Input System 활성화 후 입력 받아오기
         input.Player.Enable();
 
-        input.Player.PrimaryAttack.performed += _ => TryPrimaryAttack();
-        input.Player.SecondaryAttack.performed += _ => TrySecondaryAttack();
+        input.Player.PrimaryAttack.performed += _ => TrySwordAttack();
+        input.Player.SecondaryAttack.performed += _ => TryGunAttack();
         input.Player.Roll.performed += _ => TryRoll();
-        input.Player.SpecialSkill.performed += _ => TrySpecialSkill();
-        input.Player.Easteregg.performed += _ => PlayUkulele();
+        //input.Player.SpecialSkill.performed += _ => TrySpecialSkill();
+        //input.Player.Easteregg.performed += _ => PlayUkulele();
     }
 
     void OnDisable()
@@ -99,11 +90,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     void FixedUpdate()
     {
         Move();
-    }
-
-    void LateUpdate()
-    {
-        SetWeaponPos();
     }
     #endregion
 
@@ -131,12 +117,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
             case PlayerState.SwordAttack:
                 anim.SetBool("IsAttack", true);
-                attackTimer = 1f / swordAttackSpeed;
+                attackTimer = 1f / swordSwingSpeed;
                 break;
 
             case PlayerState.GunAttack:
                 anim.SetBool("IsAttack", true);
-                attackTimer = 1f / swordAttackSpeed;
+                attackTimer = 1f / swordSwingSpeed;
                 break;
         }
     }
@@ -180,6 +166,10 @@ public class PlayerController : MonoBehaviour, IDamageable
                 if (attackTimer <= 0)
                 {
                     anim.SetBool("IsAttack", false);
+
+                    if (!gun.gameObject.activeSelf) //칼 공격 시 총이 꺼져 있었다면
+                        gun.gameObject.SetActive(true);
+
                     ChangeState(PlayerState.Idle);
                 }
                 break;
@@ -189,6 +179,10 @@ public class PlayerController : MonoBehaviour, IDamageable
                 if (attackTimer <= 0)
                 {
                     anim.SetBool("IsAttack", false);
+
+                    if (!sword.gameObject.activeSelf) //총 공격 시 칼이 꺼져 있었다면
+                        sword.gameObject.SetActive(true);
+
                     ChangeState(PlayerState.Idle);
                 }
                 break;
@@ -200,21 +194,28 @@ public class PlayerController : MonoBehaviour, IDamageable
     /// <summary>
     /// 검 공격 시도. Roll 과 Gun 도중 불가
     /// </summary>
-    void TryPrimaryAttack()
+    void TrySwordAttack()
     {
         if (curState == PlayerState.Roll) return;
         if (curState == PlayerState.GunAttack) return;
 
         ChangeState(PlayerState.SwordAttack);
 
+
+        if (gun != null) //칼 공격 시에 총이 안 보이게
+            gun.gameObject.SetActive(false);
+
         if (sword != null)
-            sword.TryAttack();
+        {
+            sword.gameObject.SetActive(true); //칼은 공격시에만 모습이 보입니다
+            sword.TryAttack(swordSwingSpeed);
+        }
     }
 
     /// <summary>
     /// 총 공격 시도. Roll 과 Sword 도중 불가
     /// </summary>
-    void TrySecondaryAttack()
+    void TryGunAttack()
     {
         if (curState == PlayerState.Roll) return;
         if (curState == PlayerState.SwordAttack) return;
@@ -222,19 +223,19 @@ public class PlayerController : MonoBehaviour, IDamageable
         ChangeState(PlayerState.GunAttack);
 
         if (gun != null)
-            gun.TryAttack();
+            gun.TryAttack(bulletSpeed);
     }
 
     /// <summary>
     /// 프로토콜 스킬 시도
     /// </summary>
-    void TrySpecialSkill()
-    {
-        if (protocol.IsActive)
-            return;
+    //void TrySpecialSkill()
+    //{
+    //    if (protocol.IsActive)
+    //        return;
 
-        protocol.TryProtocol();
-    }
+    //    protocol.TryProtocol();
+    //}
 
     /// <summary>
     /// 구르기 시도. Gun 과 Sword 도중 불가
@@ -255,9 +256,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         float speed = moveSpeed;
 
-        //프로토콜 여부에 따른 이속 변화 존재(기본 값은 1)
-        if (protocol != null)
-            speed = protocol.IsActive ? moveSpeed * protocol.SpeedMultiplier: moveSpeed;
+        ////프로토콜 여부에 따른 이속 변화 존재(기본 값은 1)
+        //if (protocol != null)
+        //    speed = protocol.IsActive ? moveSpeed * protocol.SpeedMultiplier: moveSpeed;
 
         if (curState == PlayerState.Roll)
             speed = rollSpeed;
@@ -273,97 +274,44 @@ public class PlayerController : MonoBehaviour, IDamageable
     void UpdateAnimator()
     {
         //4방향 그 이상일 때 blend tree 로 플레이어 방향에 맞는 애니메이션 적용
-        if (curState == PlayerState.Idle || curState == PlayerState.Move || curState == PlayerState.Roll)
-        {
-            anim.SetFloat("DirX", moveInput.x);
-            anim.SetFloat("DirY", moveInput.y);
-        }
+        //if (curState == PlayerState.Idle || curState == PlayerState.Move || curState == PlayerState.Roll)
+        //{
+        //    anim.SetFloat("DirX", moveInput.x);
+        //    anim.SetFloat("DirY", moveInput.y);
+        //}
 
         //플레이어 2방향일 때
-        //if (moveInput.x > 0)
-        //    model.flipX = true;
-        //else if (moveInput.x < 0)
-        //    model.flipX = false;
+        if (moveInput.x > 0)
+            model.flipX = true;
+        else if (moveInput.x < 0)
+            model.flipX = false;
     }
 
-    /// <summary>
-    /// 마우스 위치에 따라 총과 검의 방향 변경
-    /// </summary>
-    void SetWeaponPos()
-    {
-        //사용자 마우스 위치 받아서 좌표 계산
-        Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector3 mouseScreen3D = new Vector3(mouseScreen.x, mouseScreen.y, -mainCam.transform.position.z);
-        Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen3D);
-        Vector2 aim = (mouseWorld - transform.position).normalized;
-        float mousePosAngle = Mathf.Atan2(-aim.y, -aim.x) * Mathf.Rad2Deg;
-
-        if (gun != null)
-        {
-            gunHoldPoint.transform.rotation = Quaternion.Euler(0, 0, mousePosAngle);
-            gunHoldPoint.transform.position = (Vector2)transform.position + aim * 0.5f; //총이 캐릭터에서 약간 떨어지도록 위치 조정
-
-            //총이 캐릭터보다 왼쪽에 있을 때 총을 뒤집어서 보이도록 처리
-            gunSprite.flipY = (aim.x > 0);
-
-            if (curState == PlayerState.GunAttack)
-            {
-                anim.SetFloat("DirX", aim.x);
-                anim.SetFloat("DirY", aim.y);
-            }
-        }
-        if (sword != null)
-        {
-            //칼의 경우는 공격 시에만 mousePosAngle 을 적용
-            if (curState == PlayerState.SwordAttack)
-            {
-                swordHoldPoint.transform.rotation = model.flipX ? Quaternion.Euler(0, 0, -mousePosAngle) : Quaternion.Euler(0, -180, -mousePosAngle);
-
-                anim.SetFloat("DirX", aim.x);
-                anim.SetFloat("DirY", aim.y);
-            }
-            else //기본 상태
-            {
-                //칼 위치는 swordHoldPoint 에 고정하되, 캐릭터가 flip 될 때 칼도 같이 좌우 반전되도록 처리
-                swordHoldPoint.transform.rotation = (model.flipX ? Quaternion.Euler(0, -180, swordHoldRot.z) : swordHoldRot);
-            }
-        }
-    }
     #endregion
 
     #region State
-    /// <summary>
-    /// 각 무기에 대한 스프라이트를 받아옵니다
-    /// </summary>
-    private void GetWeaponSprite()
-    {
-        if (gun != null)
-            gunSprite = gun.GetComponent<SpriteRenderer>();
-        if (sword != null)
-            swordSprite = sword.GetComponent<SpriteRenderer>();
-    }
 
     public void TakeDamage(float damage)
     {
         //프로토콜이 실행 중이고 해당 프로토콜이 무적 상태라면 데미지 무시
-        if (protocol.IsActive && protocol.isInvincible)
-            return;
+        //if (protocol.IsActive && protocol.isInvincible)
+        //    return;
     }
     #endregion
 
     #region Prefs
-    void PlayUkulele()
-    {
-        if (curState != PlayerState.Idle)
-            return;
+    //void PlayUkulele()
+    //{
+    //    if (curState != PlayerState.Idle)
+    //        return;
 
-        anim.SetBool("IsPlayUkulele", true);
-        Invoke("StopPlayUkulele", 1.5f);
-    }
+    //    anim.SetBool("IsPlayUkulele", true);
+    //    Invoke("StopPlayUkulele", 1.5f);
+    //}
 
-    void StopPlayUkulele()
-    {
-        anim.SetBool("IsPlayUkulele", false);
-    }
+    //void StopPlayUkulele()
+    //{
+    //    anim.SetBool("IsPlayUkulele", false);
+    //}
     #endregion
 }

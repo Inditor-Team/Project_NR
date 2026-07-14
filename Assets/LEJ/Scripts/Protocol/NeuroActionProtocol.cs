@@ -103,7 +103,7 @@ public class NeuroActionProtocol : ProtocolBase
 
     private void Effect()
     {
-        curSprite = GameManager.Instance.Player.Model;
+        //curSprite = GameManager.Instance.Player.Model;
 
         SpriteRenderer spectrum = spectrumPool[index];
 
