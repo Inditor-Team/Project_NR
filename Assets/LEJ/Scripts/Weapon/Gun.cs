@@ -3,62 +3,42 @@ using UnityEngine;
 
 public class Gun : WeaponBase
 {
+
+    [Tooltip("총구 위치")]
+    [SerializeField] Transform firePoint; //총구 위치
     [SerializeField] SpriteRenderer model;
     public SpriteRenderer Model => model;
 
-    [Header("총 스탯")]
-    [SerializeField] float damage;
-    [SerializeField] float fireRate; //발사 속도
-    float curSpeed = 3f;
-
-    [Header("외부 오브젝트")]
-    [SerializeField] Transform firePoint; //총구 위치
-
+    float fireRate;
     float lastFireTime;
+    float speed;
+    float damage;
 
-    [SerializeField] BulletBase bulletPrefab; //총알 프리팹
-    private BulletBase[] bulletPool; //총알 오브젝트 풀
+    [SerializeField] GameObject bulletPrefab; //총알 프리팹
     private int bulletPoolSize = 20;
-    private int _bulletIndex = 0;
-    private int bulletIndex {
-        get { return _bulletIndex; }
-        set { _bulletIndex = value % bulletPoolSize; }
-    }
+    BulletBase curBullet;
 
-    GameObject owner; //총의 소유자
-
-    /// <summary>
-    /// Init 을 호출 해 총의 소유자를 설정하고 총이 작동될 수 있게 합니다
-    /// </summary>
-    /// <param name="owner"></param>
-    public override void SetOwner(GameObject owner)
+    private void Start()
     {
-        this.owner = owner;
-
-        if (bulletPool != null)
-            return;
-
         MakeBulletPool();
-        lastFireTime = -fireRate; //처음에 바로 발사할 수 있도록 초기화
     }
 
     private void MakeBulletPool()
     {
-        bulletPool = new BulletBase[bulletPoolSize];
-
-        for (int i = 0; i < bulletPoolSize; i++) 
-        {
-            BulletBase bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            bulletPool[i] = bullet;
-            bullet.Init(damage, curSpeed, owner); //총알 초기화
-            bullet.gameObject.SetActive(false); 
-        }
+        PoolManager.Instance.PoolInit(bulletPrefab, bulletPoolSize);
     }
 
-    public override void TryAttack(float speed)
+    public void TryAttack(float fireRate, float speed, float damage)
     {
         if (Time.time - lastFireTime < fireRate) 
             return;
+
+        this.fireRate = fireRate;
+        this.speed = speed;
+        this.damage = damage;
+
+        curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
+        curBullet.transform.position = firePoint.position; //총알 위치 초기화
 
         Attack();
         lastFireTime = Time.time;
@@ -66,8 +46,9 @@ public class Gun : WeaponBase
 
     internal override void Attack()
     {
-        bulletPool[bulletIndex].transform.position = firePoint.position; //총알 위치 초기화
-        bulletPool[bulletIndex].OnFire(-firePoint.right, curSpeed);
-        bulletIndex++;
+        if (curBullet == null)
+            return;
+
+        curBullet.OnFire(-firePoint.right, speed, damage, bulletPrefab);
     }
 }

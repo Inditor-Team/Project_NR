@@ -77,8 +77,8 @@ public class BladerProtocol : ProtocolBase
         BulletBase newBullet = Instantiate(collision.gameObject, enemyBullet.transform.position, Quaternion.identity).AddComponent<BulletBase>();
         Destroy(newBullet.GetComponent<EnemyBullet>());
         newBullet.gameObject.name = "duplicateBullet";
-        newBullet.Init(1f, enemyBullet.velocity.magnitude); //�ӽ� ������
-        newBullet.OnFire(-enemyBullet.velocity.normalized);
+        //newBullet.Init(1f, enemyBullet.velocity.magnitude); //�ӽ� ������
+        //newBullet.OnFire(-enemyBullet.velocity.normalized);
     }
 
     internal override void EndProtocol()
