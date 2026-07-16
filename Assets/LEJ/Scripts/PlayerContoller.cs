@@ -154,5 +154,10 @@ public class PlayerContoller : MonoBehaviour
 
         rb.linearVelocity = moveInput * speed;
     }
+
+    void EnableMoveFlip()
+    {
+        animator.DoFlip = true;
+    }
     #endregion
 }

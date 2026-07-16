@@ -14,6 +14,7 @@ public class SwordAttacker : MonoBehaviour
     [SerializeField] SpriteRenderer characterModel;
 
     PlayerStat stat;
+    float lastAttackTime;
 
     #region HoldVariables
     //캐릭터가 왼쪽을 보고 있을 때 들고 있는 위치
@@ -32,6 +33,8 @@ public class SwordAttacker : MonoBehaviour
 
         if (rotateByAim != null)
             rotateByAim.enabled = false;
+
+        lastAttackTime = Time.time;
     }
 
     public void RegisterStat(PlayerStat stat)
@@ -47,8 +50,13 @@ public class SwordAttacker : MonoBehaviour
         if (swingRoutine != null)
             return;
 
+        if (Time.time - lastAttackTime < stat.StatDic[PlayerStat.Stat.SwordSwingRate])
+            return;
+
+        lastAttackTime = Time.time;
+
         swingRoutine = StartCoroutine(SwingTime());
-        sword.TryAttack(stat.StatDic[PlayerStat.Stat.SwordDamage], stat.StatDic[PlayerStat.Stat.SwordSwingRate]);
+        sword.TryAttack(stat.StatDic[PlayerStat.Stat.SwordDamage]);
     }
 
     private void Update()

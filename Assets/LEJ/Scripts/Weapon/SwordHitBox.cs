@@ -7,10 +7,22 @@ public class SwordHitBox : MonoBehaviour, IDamageable
 {
     HashSet<GameObject> hitTargets = new(); //하나의 적이 여러 번 공격 인정 되는 것을 방지
     public UnityAction<GameObject> OnHit;
+    Collider2D col;
+
+    void Awake()
+    {
+        col = GetComponent<Collider2D>();
+    }
 
     private void OnEnable()
     {
+        col.enabled = true;
         hitTargets.Clear();
+    }
+
+    private void OnDisable()
+    {
+        col.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

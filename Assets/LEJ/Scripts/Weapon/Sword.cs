@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Sword : WeaponBase
 {
@@ -8,7 +9,6 @@ public class Sword : WeaponBase
     public SpriteRenderer Model => model;
 
     float damage;
-    float lastAttackTime;
 
     private void Awake()
     {
@@ -19,13 +19,9 @@ public class Sword : WeaponBase
         }
     }
 
-    public void TryAttack(float damage, float attackRate)
+    public void TryAttack(float damage)
     {
-        if (Time.time - lastAttackTime < attackRate)
-            return;
-
         this.damage = damage;
-        lastAttackTime = Time.time;
     }
 
     internal override void Attack()
@@ -51,7 +47,9 @@ public class Sword : WeaponBase
             return;
         }
         else if (damageable != null)
+        {
             damageable.TakeDamage(damage);
+        }
     }
 
 }

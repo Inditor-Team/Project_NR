@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -46,7 +47,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
     {
         UpdateStat(Stat.MoveSpeed, 3f);
         UpdateStat(Stat.RollSpeed, 6f);
-        UpdateStat(Stat.RollDuration, 2f);
+        UpdateStat(Stat.RollDuration, 0.25f);
         UpdateStat(Stat.SwordSwingSpeed, 5f);
         UpdateStat(Stat.SwordDamage, 1f);
         UpdateStat(Stat.SwordSwingRate, 1f);
@@ -58,7 +59,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        statDic[Stat.Life] -= damage;
+        UpdateStat(Stat.Life, -damage);
 
         if (statDic[Stat.Life] <= 0)
             Die();
@@ -73,5 +74,6 @@ public class PlayerStat : MonoBehaviour, IDamageable
     public void UpdateStat(Stat type, float value)
     {
         statDic[type] = value;
+        OnUpdateStat?.Invoke(type, value);
     }
 }

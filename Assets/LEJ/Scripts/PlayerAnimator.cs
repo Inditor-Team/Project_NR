@@ -11,6 +11,8 @@ public class PlayerAnimator : MonoBehaviour
 
     Vector2 moveInput;
 
+    public bool DoFlip = true;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -18,7 +20,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        FlipByMoveInput();
+        //FlipByMoveInput();
     }
 
     public void SetMoveInput(Vector2 moveInput)
