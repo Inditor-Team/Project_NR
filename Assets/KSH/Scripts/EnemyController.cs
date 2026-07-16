@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -8,6 +9,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private EnemyScope detectScope;
     [SerializeField] private EnemyShooter enemyShooter;
     [SerializeField] private EnemyDataBase data;
+    [SerializeField] private Slider healthSlider;
     
     [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
@@ -32,9 +34,10 @@ public class EnemyController : MonoBehaviour, IDamageable
     
     private float correctionFactor = 0.5f; // 보정 계수
 
-    // EnemyDataBase 관련 변수
+    // 기본 속성
     private float defaultSpeed;
     private float combatTargetDist; // 플레이어와 떨어진 간격
+    private float maxHealth;
     private float health;
     private float damage;
 
@@ -57,11 +60,13 @@ public class EnemyController : MonoBehaviour, IDamageable
         startPos = transform.position;
         defaultSpeed = data.moveSpeed;
         combatTargetDist = data.combatTargetDist; // 플레이어와 떨어진 간격
+        maxHealth = data.health;
         health = data.health;
         damage = data.damage;
         
         enemyShooter.SetDamage(damage);
-        reloadSpeed = defaultSpeed * 3f;
+        reloadSpeed = defaultSpeed * 3f; // 일반 이동 속도의 3배
+        healthSlider.value = health / maxHealth;
     }
 
     private void OnEnable()
@@ -72,7 +77,9 @@ public class EnemyController : MonoBehaviour, IDamageable
         isRightSide = true;
         currentStat = EnemyStat.Patrol;
 
-        health = 10f;
+        // 체력 재설정
+        health = maxHealth;
+        healthSlider.value = health / maxHealth;
     }
 
     private void OnDisable()
@@ -88,7 +95,13 @@ public class EnemyController : MonoBehaviour, IDamageable
         health -= damage;
 
         if (health <= 0)
+        {
             ChangeStat(EnemyStat.Dead);
+            healthSlider.value = 0;
+            return;
+        }
+        
+        healthSlider.value = health / maxHealth;
     }
 
     private void FixedUpdate()
