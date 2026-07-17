@@ -125,3 +125,7 @@ Assets/Imports/ExternalAssets/**/*.anim
 Assets/Imports/ExternalAssets/**/*.controller
 Assets/Imports/ExternalAssets/**/*.prefab
 Assets/Imports/ExternalAssets/**/*.asset
+
+# DOTween
+Assets/Plugins/Demigiant/
+Assets/Plugins/Demigiant.meta
