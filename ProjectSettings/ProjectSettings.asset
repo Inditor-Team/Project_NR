@@ -826,7 +826,25 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: DOTWEEN;DOTWEEN_NOPHYSICS
+    EmbeddedLinux: DOTWEEN;DOTWEEN_NOPHYSICS
+    GameCoreScarlett: DOTWEEN;DOTWEEN_NOPHYSICS
+    GameCoreXboxOne: DOTWEEN;DOTWEEN_NOPHYSICS
+    Kepler: DOTWEEN;DOTWEEN_NOPHYSICS
+    LinuxHeadlessSimulation: DOTWEEN;DOTWEEN_NOPHYSICS
+    Nintendo Switch: DOTWEEN;DOTWEEN_NOPHYSICS
+    Nintendo Switch 2: DOTWEEN;DOTWEEN_NOPHYSICS
+    PS4: DOTWEEN;DOTWEEN_NOPHYSICS
+    PS5: DOTWEEN;DOTWEEN_NOPHYSICS
+    QNX: DOTWEEN;DOTWEEN_NOPHYSICS
+    Standalone: DOTWEEN;DOTWEEN_NOPHYSICS
+    VisionOS: DOTWEEN;DOTWEEN_NOPHYSICS
+    WebGL: DOTWEEN;DOTWEEN_NOPHYSICS
+    Windows Store Apps: DOTWEEN;DOTWEEN_NOPHYSICS
+    XboxOne: DOTWEEN;DOTWEEN_NOPHYSICS
+    iPhone: DOTWEEN;DOTWEEN_NOPHYSICS
+    tvOS: DOTWEEN;DOTWEEN_NOPHYSICS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
