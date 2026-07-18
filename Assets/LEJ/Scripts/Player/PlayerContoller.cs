@@ -18,6 +18,7 @@ public class PlayerContoller : MonoBehaviour
     Rigidbody2D rb;
 
     float rollTimer;
+    float lastRollTime;
 
     enum PlayerState
     {
@@ -133,9 +134,12 @@ public class PlayerContoller : MonoBehaviour
     void TryRoll()
     {
         if (moveInput == Vector2.zero) return; //이동하고 있는 경우가 아니면 대쉬 X
+        if (Time.time - lastRollTime < stat.StatDic[PlayerStat.Stat.RollRate]) //대시 간격 주기
+            return;
 
         rollTimer = stat.StatDic[PlayerStat.Stat.RollDuration];
         curState = PlayerState.Roll;
+        lastRollTime = Time.time;
     }
 
     /// <summary>
