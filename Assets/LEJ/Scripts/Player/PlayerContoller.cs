@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerContoller : MonoBehaviour
 {
     #region Variables
+    [SerializeField] ProtocolBase protocol;
+
     PlayerInputActions input;
     Vector2 moveInput;
 
@@ -53,6 +55,7 @@ public class PlayerContoller : MonoBehaviour
         input.Player.PrimaryAttack.performed += _ => TrySwordAttack();
         input.Player.SecondaryAttack.performed += _ => TryGunAttack();
         input.Player.Roll.performed += _ => TryRoll();
+        input.Player.SpecialSkill.performed += _ => TryProtocol();
     }
 
     void OnDisable()
@@ -140,6 +143,11 @@ public class PlayerContoller : MonoBehaviour
         rollTimer = stat.StatDic[PlayerStat.Stat.RollDuration];
         curState = PlayerState.Roll;
         lastRollTime = Time.time;
+    }
+
+    void TryProtocol()
+    {
+        protocol.TryProtocol();
     }
 
     /// <summary>

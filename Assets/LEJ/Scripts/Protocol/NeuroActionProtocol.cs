@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class NeuroActionProtocol : ProtocolBase
 {
+    [SerializeField] SpriteRenderer playerModel;
     [SerializeField] GameObject debug_effect; //임시 시각 효과
 
     [Header("임시 능력치")]
@@ -52,7 +53,9 @@ public class NeuroActionProtocol : ProtocolBase
 
     internal override void DoProtocol()
     {
-        debug_effect.SetActive(true);
+        if (debug_effect != null)
+            debug_effect.SetActive(true);
+
         isActive = true;
 
         Debug.Log("Player: NeuroAction Protocol! ");
@@ -103,7 +106,7 @@ public class NeuroActionProtocol : ProtocolBase
 
     private void Effect()
     {
-        //curSprite = GameManager.Instance.Player.Model;
+        curSprite = playerModel;
 
         SpriteRenderer spectrum = spectrumPool[index];
 
