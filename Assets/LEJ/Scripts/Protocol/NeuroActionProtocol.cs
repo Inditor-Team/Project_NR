@@ -90,7 +90,7 @@ public class NeuroActionProtocol : ProtocolBase
 
     internal override void EndProtocol()
     {
-        debug_effect.SetActive(false);
+        //debug_effect.SetActive(false);
 
         GameTime.SetTimeScale(1f);
         isActive = false;
