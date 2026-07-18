@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -9,6 +11,11 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private EnemyShooter enemyShooter;
     [SerializeField] private EnemyDataBase data;
     
+    [Header("체력 UI 관련")]
+    [SerializeField] private GameObject healthUI;
+    [SerializeField] private Slider healthSlider;
+    
+    [Header("플레이어")]
     [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
     // 스프라이트 관련
@@ -32,9 +39,10 @@ public class EnemyController : MonoBehaviour, IDamageable
     
     private float correctionFactor = 0.5f; // 보정 계수
 
-    // EnemyDataBase 관련 변수
+    // 기본 속성
     private float defaultSpeed;
     private float combatTargetDist; // 플레이어와 떨어진 간격
+    private float maxHealth;
     private float health;
     private float damage;
 
@@ -57,11 +65,13 @@ public class EnemyController : MonoBehaviour, IDamageable
         startPos = transform.position;
         defaultSpeed = data.moveSpeed;
         combatTargetDist = data.combatTargetDist; // 플레이어와 떨어진 간격
+        maxHealth = data.health;
         health = data.health;
         damage = data.damage;
         
         enemyShooter.SetDamage(damage);
-        reloadSpeed = defaultSpeed * 3f;
+        reloadSpeed = defaultSpeed * 3f; // 일반 이동 속도의 3배
+        healthSlider.value = health / maxHealth;
     }
 
     private void OnEnable()
@@ -72,7 +82,10 @@ public class EnemyController : MonoBehaviour, IDamageable
         isRightSide = true;
         currentStat = EnemyStat.Patrol;
 
-        health = 10f;
+        // 체력 재설정
+        health = maxHealth;
+        healthSlider.value = health / maxHealth;
+        healthUI.SetActive(false);
     }
 
     private void OnDisable()
@@ -84,11 +97,25 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log($"Take Damage {damage} !");
+        if (currentStat == EnemyStat.Patrol) // 순찰 중에 피격되면 Combat으로 전환
+            ChangeStat(EnemyStat.Combat);
+        
+        if (currentStat == EnemyStat.Dead) return; // 이미 Dead면 중복 실행되지 않도록 처리
+        
         health -= damage;
 
         if (health <= 0)
+        {
             ChangeStat(EnemyStat.Dead);
+            healthSlider.value = 0;
+            return;
+        }
+
+        sprite.DOColor(Color.red, 0.2f).OnComplete(() =>
+        {
+            sprite.DOColor(Color.white, 0.2f);
+        });
+        healthSlider.value = health / maxHealth;
     }
 
     private void FixedUpdate()
@@ -114,9 +141,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         switch (currentStat)
         {
             case EnemyStat.Combat: 
+                if (!healthUI.activeSelf) healthUI.SetActive(true);
+                enemyShooter.StartShooting(target.transform);
                 startPos = transform.position;  // 시작 위치 초기화
                 break;
             case EnemyStat.Reloading:
+                enemyShooter.StopShooting();
                 // 애니메이션 재생
                 break;
             case EnemyStat.Dead: // 한 번만 실행이라 여기서 동작
@@ -173,6 +203,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         
         Vector2 finalMove = (sideVec + gapVector).normalized * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
         
+        rigid.linearVelocity = Vector2.zero;
         rigid.MovePosition(rigid.position + finalMove);
             
         UpdateDirection(normalizedDir); // 스프라이트 업데이트, 전투용
@@ -180,16 +211,12 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnReloadStart()
     {
-        Debug.Log("OnReloadStart");
-        enemyShooter.StopShooting();
         ChangeStat(EnemyStat.Reloading);
     }
     
     private void OnReloadEnd()
     {
-        Debug.Log("OnReloadEnd");
         ChangeStat(EnemyStat.Combat);
-        enemyShooter.StartShooting(target.transform);
     }
     
     private void OnScopeEnter(Collider2D other) // 추적 시작
@@ -198,7 +225,6 @@ public class EnemyController : MonoBehaviour, IDamageable
             return;
         
         ChangeStat(EnemyStat.Combat);
-        enemyShooter.StartShooting(other.transform);
     }
     
     // 애니메이션 관련
@@ -219,7 +245,14 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void SetDead()
     {
         enemyShooter.StopShooting();
+        healthUI.SetActive(false);
         anim.SetTrigger("isDead");
+    }
+
+    public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
+    {
+        gameObject.SetActive(false);
+        SpawnManager.Instance.DestroyedEnemy(); 
         // 오브젝트 풀링 적용 예정, returnPool
     }
 }
