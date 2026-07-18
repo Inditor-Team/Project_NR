@@ -28,7 +28,7 @@ public class EnemyShooter : MonoBehaviour
     
     private void Start()
     {
-        PoolManager.Instance.PoolInit(bulletPrefab, defaultCapacity, maxPoolSize);
+        PoolManager.Instance.MakeInitPool(bulletPrefab, 10);
     }
 
     public void SetDamage(float damage)

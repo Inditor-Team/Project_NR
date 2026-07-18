@@ -29,20 +29,36 @@ public class PoolManager : MonoBehaviour
         pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
     }
     
-    public void PoolInit(GameObject prefab, int defaultCapacity = 10, int maxPoolSize = 20)
+    public void PoolInit(GameObject prefab, int defaultCapacity = 10, int maxPoolSize = 30) 
     {
         var pool = new ObjectPool<GameObject>(
             () => CreatePooledItem(prefab),    // 풀이 비었을 때 새로 생성하는 메서드
             OnTakeFromPool,      // 풀에서 가져갈 때 호출되는 메서드 (초기화)
             OnReturnedToPool,    // 풀에 반환될 때 호출되는 메서드 (정리)
             OnDestroyPoolObject, // 풀이 가득 찼거나 파괴될 때 호출되는 메서드
-            true,                // Collection Check: 중복 릴리즈 검사
-            defaultCapacity,
+            true,   // Collection Check: 중복 릴리즈 검사
+            defaultCapacity,    // 내부 Stack의 초기 배열 크기
             maxPoolSize
         );
         pools[prefab] = pool;
     }
 
+    public void MakeInitPool(GameObject prefab, int initPoolSize)
+    {
+        if (!pools.ContainsKey(prefab)) // 초기화가 안된 경우
+            PoolInit(prefab);
+
+        List<GameObject> tempPool = new List<GameObject>(initPoolSize);
+        for (int i = 0; i < initPoolSize; i++)
+        {
+            tempPool.Add(pools[prefab].Get());
+        }
+        foreach (var obj in tempPool)
+        {
+            pools[prefab].Release(obj);
+        }
+    }
+    
     public GameObject Get(GameObject prefab) // 오브젝트 풀을 가져올 때 사용
     {
         if (!pools.ContainsKey(prefab))

@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
     
+    // TODO: 스폰 매니저에서 몹 소환
     // 적 관련 오브젝트등
     // [SerializeField] private GameObject enemyObj;
     // [SerializeField] private GameObject enemyHealtheBar;

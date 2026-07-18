@@ -10,9 +10,12 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private EnemyScope detectScope;
     [SerializeField] private EnemyShooter enemyShooter;
     [SerializeField] private EnemyDataBase data;
+    
+    [Header("체력 UI 관련")]
     [SerializeField] private GameObject healthUI;
     [SerializeField] private Slider healthSlider;
     
+    [Header("플레이어")]
     [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
     
     // 스프라이트 관련
@@ -97,6 +100,8 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (currentStat == EnemyStat.Patrol) // 순찰 중에 피격되면 Combat으로 전환
             ChangeStat(EnemyStat.Combat);
         
+        if (currentStat == EnemyStat.Dead) return; // 이미 Dead면 중복 실행되지 않도록 처리
+        
         health -= damage;
 
         if (health <= 0)
@@ -141,6 +146,7 @@ public class EnemyController : MonoBehaviour, IDamageable
                 startPos = transform.position;  // 시작 위치 초기화
                 break;
             case EnemyStat.Reloading:
+                enemyShooter.StopShooting();
                 // 애니메이션 재생
                 break;
             case EnemyStat.Dead: // 한 번만 실행이라 여기서 동작
@@ -205,14 +211,12 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnReloadStart()
     {
-        enemyShooter.StopShooting();
         ChangeStat(EnemyStat.Reloading);
     }
     
     private void OnReloadEnd()
     {
         ChangeStat(EnemyStat.Combat);
-        enemyShooter.StartShooting(target.transform);
     }
     
     private void OnScopeEnter(Collider2D other) // 추적 시작
