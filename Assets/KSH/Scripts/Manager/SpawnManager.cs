@@ -19,12 +19,18 @@ public class SpawnManager : MonoBehaviour
     }
     
     // 적 관련 오브젝트등
-    [SerializeField] private GameObject enemyObj;
+    // [SerializeField] private GameObject enemyObj;
     // [SerializeField] private GameObject enemyHealtheBar;
     // [SerializeField] private Slider enemyHealthSlider;
-
-    public void SpawnEnemy(int enemyCount)
+    private int remainingCount = 6; // 맵에 남은 적
+    
+    public void DestroyedEnemy() // 적이 파괴되면 호출
     {
-        
+        remainingCount--;
+
+        if (remainingCount <= 0)
+        {
+            GameManager.Instance.SectionClear();
+        }
     }
 }

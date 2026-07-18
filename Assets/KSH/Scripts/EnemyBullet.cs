@@ -51,7 +51,7 @@ public class EnemyBullet : PoolObjectBase
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) // Wall이나 맵 tag 나중에 추가
+        if (!other.CompareTag("Player") && !other.CompareTag("Wall"))
             return;
         
         if (isReleased) return;

@@ -197,6 +197,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         
         Vector2 finalMove = (sideVec + gapVector).normalized * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
         
+        rigid.linearVelocity = Vector2.zero;
         rigid.MovePosition(rigid.position + finalMove);
             
         UpdateDirection(normalizedDir); // 스프라이트 업데이트, 전투용
@@ -240,13 +241,14 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void SetDead()
     {
         enemyShooter.StopShooting();
-        anim.SetTrigger("isDead");
         healthUI.SetActive(false);
-        // 오브젝트 풀링 적용 예정, returnPool
+        anim.SetTrigger("isDead");
     }
 
-    public void OnDeadAnimationOver()
+    public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
     {
         gameObject.SetActive(false);
+        SpawnManager.Instance.DestroyedEnemy(); 
+        // 오브젝트 풀링 적용 예정, returnPool
     }
 }

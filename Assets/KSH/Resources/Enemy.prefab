@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85114208740362179}
   - component: {fileID: 2294193716342219207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 6082170595571923479}
   - component: {fileID: 7315569007868824587}
   - component: {fileID: 6823612991406779743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DetectScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4831077384464386872}
   - component: {fileID: 3976357419957949929}
   - component: {fileID: 7276765989023053360}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: WorldSpaceCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2751322401883290722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunLeft
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -276,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6046539913920598381}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Health Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 4909442112701601709}
   - component: {fileID: 4933828003023925321}
   - component: {fileID: 6145814054690583849}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7126936924679069765}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EnemyHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 1039734134121965110}
   - component: {fileID: 8260586020939295007}
   - component: {fileID: 6317741021534913193}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 746459439344951474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunRight
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 8542432294790622134}
   - component: {fileID: 8753008535210858597}
   - component: {fileID: 4156556591786413802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033663783787104378}
   - component: {fileID: 8323013521620475259}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
