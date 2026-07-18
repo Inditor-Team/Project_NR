@@ -1,67 +1,70 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Gun : WeaponBase
 {
-    [Header("총 스탯")]
-    [SerializeField] float damage;
-    [SerializeField] float speed;
-    [SerializeField] float fireRate; //발사 속도
-
-    [Header("외부 오브젝트")]
+    [Tooltip("총구 위치")]
     [SerializeField] Transform firePoint; //총구 위치
+    [SerializeField] SpriteRenderer model;
+    public SpriteRenderer Model => model;
+    //[SerializeField] LineRenderer lineRenderer;
+    //[SerializeField] private float laserDuration = 1f;
+    //private float disableTime;
+    float maxDistance = 20f;
 
+    float fireRate;
     float lastFireTime;
+    float speed;
+    float damage;
 
-    [SerializeField] BulletBase bulletPrefab; //총알 프리팹
-    private BulletBase[] bulletPool; //총알 오브젝트 풀
+    [SerializeField] GameObject bulletPrefab; //총알 프리팹
     private int bulletPoolSize = 20;
-    private int _bulletIndex = 0;
-    private int bulletIndex {
-        get { return _bulletIndex; }
-        set { _bulletIndex = value % bulletPoolSize; }
-    }
+    BulletBase curBullet;
 
-    GameObject owner; //총의 소유자
-    private SpriteRenderer sprite;
+    [SerializeField] LayerMask hitLayer;
+    [SerializeField] private ParticleSystem laserEffect;
+
+    public UnityAction OnShoot;
 
     private void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        //lineRenderer.positionCount = 2;
+        //lineRenderer.enabled = false;
     }
 
-    /// <summary>
-    /// Init 을 호출 해 총의 소유자를 설정하고 총이 작동될 수 있게 합니다
-    /// </summary>
-    /// <param name="owner"></param>
-    public override void SetOwner(GameObject owner)
+    private void Start()
     {
-        this.owner = owner;
-
-        if (bulletPool != null)
-            return;
-
-        MakeBulletPool();
-        lastFireTime = -fireRate; //처음에 바로 발사할 수 있도록 초기화
+        //MakeBulletPool();
     }
 
+    private void Update()
+    {
+        //if (lineRenderer.enabled && Time.time >= disableTime)
+        //    lineRenderer.enabled = false;
+    }
+
+    /*
     private void MakeBulletPool()
     {
-        bulletPool = new BulletBase[bulletPoolSize];
-
-        for (int i = 0; i < bulletPoolSize; i++) 
-        {
-            BulletBase bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            bulletPool[i] = bullet;
-            bullet.Init(damage, speed, owner); //총알 초기화
-            bullet.gameObject.SetActive(false); 
-        }
+        PoolManager.Instance.PoolInit(bulletPrefab, bulletPoolSize);
     }
+    */
 
-    public override void TryAttack()
+    public void TryAttack(float fireRate, float speed, float damage)
     {
         if (Time.time - lastFireTime < fireRate) 
             return;
+
+        this.fireRate = fireRate;
+        this.damage = damage;
+        
+        // 총알 사용
+        this.speed = speed;
+
+        //curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
+        //curBullet.transform.position = firePoint.position; //총알 위치 초기화
 
         Attack();
         lastFireTime = Time.time;
@@ -69,8 +72,128 @@ public class Gun : WeaponBase
 
     internal override void Attack()
     {
-        bulletPool[bulletIndex].transform.position = firePoint.position; //총알 위치 초기화
-        bulletPool[bulletIndex].OnFire(-firePoint.right);
-        bulletIndex++;
+        OnShoot?.Invoke();
+
+        /*총알 사용
+        if (curBullet == null)
+            return;
+
+        curBullet.OnFire(-firePoint.right, speed, damage, bulletPrefab);
+        */
+
+        Vector2 endPosition;
+
+        Vector2 startPosition = firePoint.position;
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 direction =
+            (mouseWorldPos - startPosition).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, maxDistance, hitLayer);
+
+        if (hit.collider != null)
+        {
+            endPosition = hit.point;
+
+            if (hit.collider.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.TakeDamage(damage);
+
+                Debug.Log($"{hit.collider.name}에게 데미지 {damage}를 가함");
+            }
+        }
+        else
+            endPosition = startPosition + direction * maxDistance;
+
+        PlayLaserEffect(firePoint.position, endPosition);
+
+        /*
+        if (lineRenderer != null)
+            DrawLaser(startPosition, endPosition);
+        */
     }
+    
+    public void PlayLaserEffect(Vector2 start, Vector2 end)
+    {
+        Vector2 direction = end - start;
+        float distance = direction.magnitude;
+
+        Debug.Log(direction);
+
+        if (distance <= 0.001f)
+            return;
+
+        float speed = distance / 0.06f;
+
+        ParticleSystem.EmitParams emitParams =
+            new ParticleSystem.EmitParams();
+
+        emitParams.position = start;
+        emitParams.velocity = direction.normalized * speed;
+        emitParams.startLifetime = 0.06f;
+
+        laserEffect.Emit(emitParams, 1);
+    }
+
+    /*
+    private Coroutine laserCoroutine;
+
+    private void DrawLaser(Vector3 start, Vector3 end)
+    {
+        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(1, end);
+
+        lineRenderer.enabled = true;
+        disableTime = Time.time + laserDuration;
+
+        if (laserCoroutine != null)
+            StopCoroutine(laserCoroutine);
+
+        laserCoroutine = StartCoroutine(FadeLaser());
+    }
+
+    private IEnumerator FadeLaser()
+    {
+        lineRenderer.enabled = true;
+
+        float elapsed = 0f;
+
+        while (elapsed < laserDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float progress = Mathf.Clamp01(elapsed / laserDuration);
+            SetFadeGradient(progress);
+
+            yield return null;
+        }
+
+        lineRenderer.enabled = false;
+        laserCoroutine = null;
+    }
+
+    private void SetFadeGradient(float progress)
+    {
+        float fadeEdge = Mathf.Clamp01(progress + 0.15f);
+
+        Gradient gradient = new Gradient();
+
+        gradient.SetKeys(
+            new[]
+            {
+                new GradientColorKey(Color.green, 0f),
+                new GradientColorKey(Color.green, 1f)
+            },
+            new[]
+            {
+                new GradientAlphaKey(0f, 0f),
+                new GradientAlphaKey(0f, progress),
+                new GradientAlphaKey(1f, fadeEdge),
+                new GradientAlphaKey(1f, 1f)
+            }
+        );
+
+        lineRenderer.colorGradient = gradient;
+    }
+    */
 }

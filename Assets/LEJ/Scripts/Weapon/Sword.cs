@@ -1,87 +1,55 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Sword : WeaponBase
 {
-    [SerializeField] float damage;
+    [SerializeField] SwordHitBox hitBox;
+    [SerializeField] SpriteRenderer model;
+    public SpriteRenderer Model => model;
 
-    [SerializeField] float attackRate; //검 휘두르는 것에 대한 쿨타임
-    [SerializeField] float speed = 1.5f;
-    float lastAttackTime;
-
-    float animOriginSpeed = 1f;
-    Collider2D col;
-    Animator anim;
-    HashSet<IDamageable> hitTargets = new(); //하나의 적이 여러 번 공격 인정 되는 것을 방지
-
-    GameObject owner;
+    float damage;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
-        col = GetComponent<Collider2D>();
-        DisableAttackCollider();
+        if (hitBox != null)
+        {
+            hitBox.OnHit += OnHit;
+            hitBox.enabled = false;
+        }
     }
 
-    public override void SetOwner(GameObject owner)
+    public void TryAttack(float damage)
     {
-        this.owner = owner;
-        lastAttackTime = -attackRate; //처음에 바로 공격할 수 있도록 초기화
-    }
-
-    public override void TryAttack()
-    {
-        if (Time.time - lastAttackTime < attackRate)
-            return;
-
-        Attack();
-        lastAttackTime = Time.time;
+        this.damage = damage;
     }
 
     internal override void Attack()
     {
-        anim.speed = speed;
-        anim.Play("Sword_Attack");
+        hitBox.enabled = true;
     }
 
-    internal void Attack(float speed)
+    public void EndAttack()
     {
-        anim.speed = speed;
-        anim.Play("Sword_Attack");
+        hitBox.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnHit(GameObject target)
     {
-        IDamageable target = collision.GetComponent<IDamageable>();
+        IDamageable damageable = target.GetComponent<IDamageable>();
+        EnemyBullet bullet = target.GetComponent<EnemyBullet>();
 
-        //데미지를 안 받는 오브젝트거나 공격자 자신이면 무시
-        if (target == null || collision.gameObject == owner)
+        //적의 총알일 경우
+        if (bullet != null)
+        {
+            //반대로 날려보내기
+            //bullet.Launch(-bullet.velocity.normalized, bullet.velocity.magnitude, damage);
             return;
-        
-        //콜리젼에 여러 번 들어오는 것을 방지하기 위한 중복 체크
-        if (hitTargets.Contains(target))
-            return;
-
-        hitTargets.Add(target);
-        target.TakeDamage(damage);
-    }
-
-    /// <summary>
-    /// 애니메이션에서 호출되는 콜라이더 on 이벤트
-    /// </summary>
-    public void EnableAttackCollider()
-    {
-        hitTargets.Clear();
-        col.enabled = true;
-    }
-
-    /// <summary>
-    /// 애니메이션에서 호출되는 콜라이더 off 이벤트
-    /// </summary>
-    public void DisableAttackCollider()
-    {
-        col.enabled = false;
-        anim.speed = animOriginSpeed;
+        }
+        else if (damageable != null)
+        {
+            damageable.TakeDamage(damage);
+        }
     }
 
 }

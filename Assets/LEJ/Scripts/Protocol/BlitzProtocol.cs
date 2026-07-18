@@ -49,7 +49,7 @@ public class BlitzProtocol : ProtocolBase
 
             if (enemy != null)
             {
-                sword.Attack(5f);
+                //sword.Attack(5f);
                 enemy.gameObject.SetActive(false);
                 yield return new WaitForSeconds(0.05f);
             }
