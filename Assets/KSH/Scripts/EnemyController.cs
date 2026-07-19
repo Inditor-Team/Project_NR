@@ -15,8 +15,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private GameObject healthUI;
     [SerializeField] private Slider healthSlider;
     
-    [Header("플레이어")]
-    [SerializeField] private Transform target; // 나중에 GameManager에서 받아오도록 수정
+    private Transform target;
     
     // 스프라이트 관련
     private SpriteRenderer sprite;
@@ -72,6 +71,8 @@ public class EnemyController : MonoBehaviour, IDamageable
         enemyShooter.SetDamage(damage);
         reloadSpeed = defaultSpeed * 3f; // 일반 이동 속도의 3배
         healthSlider.value = health / maxHealth;
+
+        target = GameManager.Instance.Player.gameObject.transform;
     }
 
     private void OnEnable()
