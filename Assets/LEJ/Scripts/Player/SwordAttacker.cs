@@ -55,7 +55,7 @@ public class SwordAttacker : MonoBehaviour
 
         lastAttackTime = Time.time;
 
-        swingRoutine = StartCoroutine(SwingTime());
+        Swing();
         sword.TryAttack(stat.StatDic[PlayerStat.Stat.SwordDamage]);
     }
 
@@ -83,6 +83,11 @@ public class SwordAttacker : MonoBehaviour
             sword.transform.localPosition = originHoldPos_L;
             sword.transform.localRotation = originHoldRot_L;
         }
+    }
+
+    public void Swing()
+    {
+        swingRoutine = StartCoroutine(SwingTime());
     }
 
     /// <summary>

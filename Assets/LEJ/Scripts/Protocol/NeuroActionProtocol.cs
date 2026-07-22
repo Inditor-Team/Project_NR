@@ -8,11 +8,10 @@ using UnityEngine;
 public class NeuroActionProtocol : ProtocolBase
 {
     [SerializeField] SpriteRenderer playerModel;
-    [SerializeField] GameObject debug_effect; //임시 시각 효과
 
     [Header("임시 능력치")]
     [SerializeField] private float newTimeScale = 0.05f;
-    [SerializeField] private float newTimeScaleDuration = 5f;
+    float duration;
 
     new Dictionary<ProtocolCard.Buff, float> buffValues = new Dictionary<ProtocolCard.Buff, float>()
     {
@@ -46,20 +45,16 @@ public class NeuroActionProtocol : ProtocolBase
         }
     }
 
-    internal override void TryProtocol()
+    internal override void TryProtocol(float duration)
     {
+        this.duration = duration;
         DoProtocol();
     }
 
     internal override void DoProtocol()
     {
-        if (debug_effect != null)
-            debug_effect.SetActive(true);
-
         isActive = true;
 
-        Debug.Log("Player: NeuroAction Protocol! ");
-        
         if (protocolRoutine == null)
             protocolRoutine = StartCoroutine(ProtocolTime());
     }
@@ -72,7 +67,7 @@ public class NeuroActionProtocol : ProtocolBase
         float time = 0f;
         float nextSpectrumTime = 0f;
 
-        while (time < newTimeScaleDuration)
+        while (time < duration)
         {
             if (time >= nextSpectrumTime)
             {

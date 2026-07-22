@@ -14,8 +14,6 @@ public class Gun : WeaponBase
     //private float disableTime;
     float maxDistance = 20f;
 
-    float fireRate;
-    float lastFireTime;
     float speed;
     float damage;
 
@@ -52,12 +50,8 @@ public class Gun : WeaponBase
     }
     */
 
-    public void TryAttack(float fireRate, float speed, float damage)
+    public void TryAttack(float speed, float damage)
     {
-        if (Time.time - lastFireTime < fireRate) 
-            return;
-
-        this.fireRate = fireRate;
         this.damage = damage;
         
         // 총알 사용
@@ -67,7 +61,6 @@ public class Gun : WeaponBase
         //curBullet.transform.position = firePoint.position; //총알 위치 초기화
 
         Attack();
-        lastFireTime = Time.time;
     }
 
     internal override void Attack()

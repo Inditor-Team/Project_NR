@@ -22,6 +22,9 @@ public class PlayerStat : MonoBehaviour, IDamageable
         BulletDamage, //총알 데미지
         BulletFireRate, //총을 쏜 후 다시 쏠 때까지의 기간
 
+        ProtocolDuration,
+        ProtocolRate,
+
         Life, //생명
 
         Count
@@ -56,6 +59,8 @@ public class PlayerStat : MonoBehaviour, IDamageable
         UpdateStat(Stat.BulletSpeed, 30f);
         UpdateStat(Stat.BulletDamage, 1f);
         UpdateStat(Stat.BulletFireRate, 0.5f);
+        UpdateStat(Stat.ProtocolDuration, 1.5f);
+        UpdateStat(Stat.ProtocolRate, 10f);
         UpdateStat(Stat.Life, 5f);
     }
 

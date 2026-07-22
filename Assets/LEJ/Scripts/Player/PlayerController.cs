@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     #region Variables
-    [SerializeField] ProtocolBase protocol;
 
     PlayerInputActions input;
     Vector2 moveInput;
@@ -15,13 +14,16 @@ public class PlayerController : MonoBehaviour
     PlayerStat stat;
     public PlayerStat Stat => stat;
     PlayerAnimator animator;
-    GunShooter shooter;
-    SwordAttacker attacker;
+    GunShooter gunShooter;
+    SwordAttacker swordAttacker;
+    ProtocolExecutor protocolExecutor;
 
     Rigidbody2D rb;
 
     float rollTimer;
     float lastRollTime;
+
+    float lastProtocolTime;
 
     enum PlayerState
     {
@@ -41,11 +43,13 @@ public class PlayerController : MonoBehaviour
 
         stat = GetComponent<PlayerStat>();
         animator = GetComponent<PlayerAnimator>();
-        attacker = GetComponent<SwordAttacker>();
-        shooter = GetComponent<GunShooter>();
+        swordAttacker = GetComponent<SwordAttacker>();
+        gunShooter = GetComponent<GunShooter>();
+        protocolExecutor = GetComponent<ProtocolExecutor>();
 
-        attacker.RegisterStat(stat);
-        shooter.RegisterStat(stat);
+        swordAttacker.RegisterStat(stat);
+        gunShooter.RegisterStat(stat);
+        protocolExecutor.RegisterStat(stat);    
     }
 
     void OnEnable()
@@ -117,8 +121,8 @@ public class PlayerController : MonoBehaviour
     {
         if (curState == PlayerState.Roll) return;
 
-        if (attacker != null)
-            attacker.DoAttack();
+        if (swordAttacker != null)
+            swordAttacker.DoAttack();
     }
 
     /// <summary>
@@ -128,8 +132,8 @@ public class PlayerController : MonoBehaviour
     {
         if (curState == PlayerState.Roll) return;
 
-        if (shooter != null)
-            shooter.DoAttack();
+        if (gunShooter != null)
+            gunShooter.DoAttack();
     }
 
     /// <summary>
@@ -148,7 +152,8 @@ public class PlayerController : MonoBehaviour
 
     void TryProtocol()
     {
-        protocol.TryProtocol();
+        if (protocolExecutor != null)
+            protocolExecutor.TryProtocol();
     }
 
     /// <summary>
