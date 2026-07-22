@@ -50,8 +50,8 @@ public class PlayerStat : MonoBehaviour, IDamageable
         UpdateStat(Stat.RollSpeed, 6f);
         UpdateStat(Stat.RollDuration, 0.25f);
         UpdateStat(Stat.RollRate, 0.5f);
-        UpdateStat(Stat.SwordSwingSpeed, 5f);
-        UpdateStat(Stat.SwordDamage, 1f);
+        UpdateStat(Stat.SwordSwingSpeed, 10f);
+        UpdateStat(Stat.SwordDamage, 10f);
         UpdateStat(Stat.SwordSwingRate, 1f);
         UpdateStat(Stat.BulletSpeed, 30f);
         UpdateStat(Stat.BulletDamage, 1f);

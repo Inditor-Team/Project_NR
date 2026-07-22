@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 플레이어의 입력에 따른 플레이어블 캐릭터 제어
 /// </summary>
-public class PlayerContoller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     #region Variables
     [SerializeField] ProtocolBase protocol;

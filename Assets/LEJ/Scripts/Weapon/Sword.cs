@@ -9,6 +9,11 @@ public class Sword : WeaponBase
     public SpriteRenderer Model => model;
 
     float damage;
+    int swordLife = 5;
+    public int SwordLife => swordLife;
+    int swingCount = 0;
+
+    public UnityAction OnHitted;
 
     private void Awake()
     {
@@ -44,12 +49,29 @@ public class Sword : WeaponBase
         {
             //반대로 날려보내기
             //bullet.Launch(-bullet.velocity.normalized, bullet.velocity.magnitude, damage);
+            OnHitted?.Invoke();
+
+            swingCount++;
+            if (swingCount >= swordLife)
+                OnBroke();
+
             return;
         }
         else if (damageable != null)
         {
             damageable.TakeDamage(damage);
+            OnHitted?.Invoke();
+            swingCount++;
+
+            if (swingCount >= swordLife)
+                OnBroke();
         }
+    }
+
+    void OnBroke()
+    {
+        hitBox.enabled = false;
+        this.gameObject.SetActive(false);
     }
 
 }
