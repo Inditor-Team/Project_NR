@@ -94,6 +94,10 @@ public class Gun : WeaponBase
 
                 Debug.Log($"{hit.collider.name}에게 데미지 {damage}를 가함");
             }
+            if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+            {
+                interactable.OnInteract();
+            }
         }
         else
             endPosition = startPosition + direction * maxDistance;
@@ -110,8 +114,6 @@ public class Gun : WeaponBase
     {
         Vector2 direction = end - start;
         float distance = direction.magnitude;
-
-        Debug.Log(direction);
 
         if (distance <= 0.001f)
             return;

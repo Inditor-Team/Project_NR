@@ -43,13 +43,19 @@ public class BulletBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable target = collision.GetComponent<IDamageable>();
+        Debug.Log("switch");
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        IInteractable interactable = collision.GetComponent<IInteractable>();
 
-        if (target != null)
+        if (damageable != null)
+            damageable.TakeDamage(damage); //데미지 전달
+        if (interactable != null)
         {
-            DestroyBullet();
-            target.TakeDamage(damage); //데미지 전달
+            Debug.Log("interact");
+            interactable.OnInteract();
         }
+
+        DestroyBullet();
     }
 
     private void DestroyBullet()

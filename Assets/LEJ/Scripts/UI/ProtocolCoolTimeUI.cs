@@ -13,10 +13,15 @@ public class ProtocolCoolTimeUI : MonoBehaviour
     private void Awake()
     {
         coolTimeFill.color = originColor;
-        protocolExecutor.OnTryProtocol += Clear;
+
+        if (protocolExecutor != null)
+            protocolExecutor.OnTryProtocol += Clear;
     }
     private void Update()
     {
+        if (protocolExecutor == null)
+            return;
+
         Fill();
         Rainbow();
 

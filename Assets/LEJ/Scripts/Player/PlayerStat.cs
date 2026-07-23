@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerStat : MonoBehaviour, IDamageable
 {
@@ -34,17 +35,27 @@ public class PlayerStat : MonoBehaviour, IDamageable
     public Dictionary<Stat, float> StatDic => statDic;
 
     public UnityAction<Stat, float> OnUpdateStat;
+    [SerializeField] LayerMask enemyLayer;
+    PlayerController playerController;
 
     void Awake()
     {
         //µÒº≈≥ ∏Æ √ ±‚»≠
         for (int i = 1; i < (int)Stat.Count; i++)
             statDic.Add((Stat)i, 0f);
+
+        playerController = GetComponent<PlayerController>();
     }
 
     void Start()
     {
         SetDefaultStat();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == enemyLayer)
+            statDic[Stat.Life] += 0;
     }
 
     void SetDefaultStat()
@@ -59,7 +70,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
         UpdateStat(Stat.BulletSpeed, 30f);
         UpdateStat(Stat.BulletDamage, 1f);
         UpdateStat(Stat.BulletFireRate, 0.5f);
-        UpdateStat(Stat.ProtocolDuration, 1.5f);
+        UpdateStat(Stat.ProtocolDuration, 2.5f);
         UpdateStat(Stat.ProtocolRate, 10f);
         UpdateStat(Stat.Life, 5f);
     }
@@ -67,14 +78,6 @@ public class PlayerStat : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         UpdateStat(Stat.Life, -damage);
-
-        if (statDic[Stat.Life] <= 0)
-            Die();
-    }
-
-    void Die()
-    {
-
     }
 
     //Ω∫≈»¿ª æ˜µ•¿Ã∆Æ

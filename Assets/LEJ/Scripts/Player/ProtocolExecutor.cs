@@ -4,12 +4,21 @@ using static PlayerStat;
 
 public class ProtocolExecutor : MonoBehaviour
 {
-    [SerializeField] ProtocolBase protocol;
+    [SerializeField] NeuroActionProtocol neuroAction;
+    [SerializeField] BlitzProtocol blitz;
+    [SerializeField] BladerProtocol blader;
+    private ProtocolBase curProtocol = null;
     PlayerStat stat;
     float coolTime = 0;
     public float CoolTime => coolTime;
 
     public UnityAction OnTryProtocol;
+
+    private void Start()
+    {
+        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.None)
+            SetProtocol(GameManager.Instance.CurProtocol);
+    }
 
     private void Update()
     {
@@ -25,12 +34,28 @@ public class ProtocolExecutor : MonoBehaviour
         this.stat = stat;
     }
 
+    public void SetProtocol(ProtocolCard.Protocol protocol)
+    {
+        switch (protocol)
+        {
+            case ProtocolCard.Protocol.NeuroAction:
+                curProtocol = neuroAction;
+                break;
+                case ProtocolCard.Protocol.Blitz:
+                curProtocol = blitz;
+                break;
+            case ProtocolCard.Protocol.Blader:
+                curProtocol = blader;
+                break;
+        }
+    }
+
     public void TryProtocol()
     {
         if (coolTime < 1)
             return;
 
-        if (protocol == null)
+        if (curProtocol == null)
             return;
 
         DoProtocol();
@@ -41,6 +66,6 @@ public class ProtocolExecutor : MonoBehaviour
 
     void DoProtocol()
     {
-        protocol.TryProtocol(stat.StatDic[Stat.ProtocolDuration]);
+        curProtocol.TryProtocol(stat.StatDic[Stat.ProtocolDuration]);
     }
 }

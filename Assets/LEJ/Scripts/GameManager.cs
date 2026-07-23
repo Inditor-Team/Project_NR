@@ -1,8 +1,7 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.Events;
 
-/// <summary>
-/// ���� �� �ð��� �ӵ��� ������ �޴´ٸ� �Ʒ� Ŭ���� ��� (�÷��̾�, UI ����)
-/// </summary>
 public static class GameTime
 {
     private static float worldTimeScale = 1f;
@@ -44,6 +43,13 @@ public class GameManager : MonoBehaviour
 
             return player;
         }
+    }
+
+    [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
+    public ProtocolCard.Protocol CurProtocol => curProtocol;
+    public void SetProtocol(ProtocolCard.Protocol protocol)
+    {
+        curProtocol = protocol;
     }
 
     public void SectionClear() // 맵 내의 적 전부 처리 시 실행

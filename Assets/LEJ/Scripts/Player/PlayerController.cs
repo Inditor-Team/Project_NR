@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         Idle,
         Move,
-        Roll
+        Roll,
+        Die
     }
 
     PlayerState curState;
@@ -57,8 +58,8 @@ public class PlayerController : MonoBehaviour
         //Input System 활성화 후 입력 받아오기
         input.Player.Enable();
 
-        input.Player.PrimaryAttack.performed += _ => TrySwordAttack();
-        input.Player.SecondaryAttack.performed += _ => TryGunAttack();
+        input.Player.PrimaryAttack.performed += _ => TryGunAttack();
+        input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
         input.Player.Roll.performed += _ => TryRoll();
         input.Player.SpecialSkill.performed += _ => TryProtocol();
     }
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
     }
+
     #endregion
 
     #region FSM
@@ -97,17 +99,27 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Idle:
                 if (moveInput.magnitude > 0)
                     curState = PlayerState.Move;
+                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                    curState = PlayerState.Die;
                 break;
 
             case PlayerState.Move:
                 if (moveInput.magnitude == 0)
                     curState = PlayerState.Idle;
+                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                    curState = PlayerState.Die;
                 break;
 
             case PlayerState.Roll:
                 rollTimer -= Time.deltaTime;
                 if (rollTimer <= 0)
                     curState = PlayerState.Idle;
+                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                    curState = PlayerState.Die;
+                break;
+            case PlayerState.Die:
+                rb.simulated = false;
+                this.enabled = false;
                 break;
         }
     }
