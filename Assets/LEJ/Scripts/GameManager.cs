@@ -50,4 +50,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Section Clear !");
     }
+    
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR 
+        UnityEditor.EditorApplication.isPlaying = false; // 에디터 종료
+        #else
+        Application.Quit(); // 어플리케이션 종료
+        #endif
+    }
 }

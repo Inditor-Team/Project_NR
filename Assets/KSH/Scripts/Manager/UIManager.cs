@@ -1,11 +1,14 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using DG.Tweening;
+using System;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 { 
     public static UIManager Instance { get; private set; }
     private bool isMove = false;
+
+    [SerializeField] private MassagePanelController msgController;
 
     private void Awake()
     {
@@ -47,5 +50,10 @@ public class UIManager : MonoBehaviour
                 isMove = false; 
             });
         }
+    }
+
+    public void SetMsgPanel(string text, Action func)
+    {
+        msgController.SetMessagePanel(text, func);
     }
 }

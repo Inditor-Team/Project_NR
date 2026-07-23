@@ -89,4 +89,10 @@ public class SettingPanelController : MonoBehaviour
         img.SetActive(isOff);
         return isOff;
     }
+    
+    // 게임 종료 버튼
+    public void OnClickExitGame()
+    {
+        UIManager.Instance.SetMsgPanel("게임을 종료하시겠습니까?", GameManager.Instance.ExitGame);
+    }
 }
