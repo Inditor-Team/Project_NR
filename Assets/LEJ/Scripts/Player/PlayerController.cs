@@ -118,7 +118,10 @@ public class PlayerController : MonoBehaviour
                     curState = PlayerState.Die;
                 break;
             case PlayerState.Die:
+                animator.DieAnim();
                 rb.simulated = false;
+                swordAttacker.HideSword();
+                gunShooter.HideGun();
                 this.enabled = false;
                 break;
         }

@@ -7,9 +7,8 @@ public class LobbySwitch : MonoBehaviour, IInteractable
     enum SwitchType { None, GameStart, HowTo }
     [SerializeField] SwitchType switchType;
     [SerializeField] string nextSceneName = "MapScene";
-    [SerializeField] GameObject howToUI;
     [SerializeField] GameObject startAlert;
-    [SerializeField] PlayerController playerController;
+    [SerializeField] GameObject uiCanvas;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,7 +22,7 @@ public class LobbySwitch : MonoBehaviour, IInteractable
 
     void HowTo()
     {
-        howToUI.SetActive(!howToUI.activeSelf);
+        uiCanvas.SetActive(!uiCanvas.activeSelf);
     }
 
     public void OnInteract()
@@ -32,7 +31,6 @@ public class LobbySwitch : MonoBehaviour, IInteractable
         {
             case SwitchType.GameStart:
                 startAlert.SetActive(true);
-                playerController.enabled = false;
                 break;
             case SwitchType.HowTo:
                 HowTo();

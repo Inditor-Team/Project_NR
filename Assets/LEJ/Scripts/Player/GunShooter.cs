@@ -24,4 +24,9 @@ public class GunShooter : MonoBehaviour
         gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
         lastFireTime = Time.time;
     }
+
+    public void HideGun()
+    {
+        gun.gameObject.SetActive(false);
+    }
 }

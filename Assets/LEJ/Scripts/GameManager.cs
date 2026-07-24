@@ -52,8 +52,14 @@ public class GameManager : MonoBehaviour
         curProtocol = protocol;
     }
 
+    public UnityAction OnSectionClear;
+    bool isSetionOneClear = false;
+    public bool IsSetionOneClear => isSetionOneClear;
+
     public void SectionClear() // 맵 내의 적 전부 처리 시 실행
     {
         Debug.Log("Section Clear !");
+        OnSectionClear?.Invoke();
+        isSetionOneClear = true;
     }
 }

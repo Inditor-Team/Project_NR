@@ -21,6 +21,11 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         //FlipByMoveInput();
+
+        if (moveInput == null || moveInput == Vector2.zero)
+            anim.SetBool("IsMove", false);
+        else
+            anim.SetBool("IsMove", true);
     }
 
     public void SetMoveInput(Vector2 moveInput)
@@ -41,6 +46,11 @@ public class PlayerAnimator : MonoBehaviour
 
     void RollAnim()
     {
-        anim.SetBool("isRoll", true);
+        anim.SetBool("IsRoll", true);
+    }
+
+    public void DieAnim()
+    {
+        anim.SetBool("IsDie", true);
     }
 }

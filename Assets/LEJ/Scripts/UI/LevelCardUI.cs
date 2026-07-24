@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// LevelCardProvider 에 의해 선점된 레벨 카드들을 보여주는 UI 입니다
@@ -59,6 +60,7 @@ public class LevelCardUI : MonoBehaviour
             curElement.choiceButton.onClick.RemoveAllListeners(); 
 
         curElement.choiceButton.onClick.AddListener(() => { buttonAction?.Invoke(); }); //버튼 이벤트 매핑
+        curElement.choiceButton.onClick.AddListener(() => { SceneManager.LoadScene("MapScene_LEJ"); });
 
         //카드 색상 변경 (임시)
         switch (data.type)

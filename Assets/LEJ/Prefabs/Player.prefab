@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7880014701018855835}
   - component: {fileID: 2485463571065238824}
-  - component: {fileID: 3536959417678717697}
+  - component: {fileID: 2669214311529317012}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Player
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sword
   hitBox: {fileID: 8939146558667143259}
   model: {fileID: 6491340747748547709}
---- !u!114 &3536959417678717697
+--- !u!114 &2669214311529317012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,13 +124,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766713149442861874}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9396926, w: 0.34202018}
   m_LocalPosition: {x: -0.25, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7880014701018855835}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -140}
 --- !u!114 &8939146558667143259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,17 +177,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.5538207, y: 0.072378874}
+  m_Offset: {x: 0.033134192, y: -0.024285749}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6476419, y: 1.1504025}
+  m_Size: {x: 0.6007554, y: 0.497637}
   m_EdgeRadius: 0
 --- !u!212 &6491340747748547709
 SpriteRenderer:
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1264268050, guid: 4ac3d216ff649dd42a30d068e608e67a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c5cc8e64527cde4e9543f52d9c33f82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -339,8 +339,8 @@ MonoBehaviour:
   playerModel: {fileID: 5711610164856498049}
   newTimeScale: 0.05
   spectrumPoolSize: 30
-  spectrumFadeDuration: 3
-  spectrumInterval: 0.5
+  spectrumFadeDuration: 2
+  spectrumInterval: 0.2
 --- !u!1 &2406657997141419777
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 613181277529649084, guid: d5b85d434ad23da4c8d97f3e1cc6be87, type: 3}
   hitLayer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448
   laserEffect: {fileID: 8822022659496778231}
 --- !u!114 &8653148163809611507
 MonoBehaviour:
@@ -487,9 +487,9 @@ Transform:
   m_GameObject: {fileID: 4253029594397454049}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0.006, y: -0.002, z: 0}
+  m_LocalScale: {x: -0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3993123999957123329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -542,7 +542,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 707388655, guid: 520c1f2e5fc91b344baef3022c2f6252, type: 3}
+  m_Sprite: {fileID: 1919136691, guid: 27361e3349d01154da8dff0eeb357e78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5401,7 +5401,7 @@ GameObject:
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5414,7 +5414,7 @@ Transform:
   m_GameObject: {fileID: 4656965609225628674}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.08, z: 0}
+  m_LocalPosition: {x: -0.35, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5444,7 +5444,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5491,6 +5491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aef01ce7832a104eacb8f820a6cbf7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1685491047641687502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5559,7 +5562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f265b5275c9dd4aaf544c97464ad14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProtocolExecutor
-  protocol: {fileID: 2096225381142003720}
+  neuroAction: {fileID: 2096225381142003720}
+  blitz: {fileID: 4794957929466762016}
+  blader: {fileID: 8848816453803726603}
 --- !u!114 &3306942212104853615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5703,7 +5708,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.3, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 532657774382844844}
@@ -5758,9 +5763,9 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2134571819, guid: 4ac3d216ff649dd42a30d068e608e67a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2fd7fbff1da0992418bd3f7ca73a6ed4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}

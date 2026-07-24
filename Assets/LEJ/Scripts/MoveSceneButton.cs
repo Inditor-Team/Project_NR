@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class MapButton : MonoBehaviour
+public class MoveSceneButton : MonoBehaviour
 {
     Button button;
     public string sceneName;
