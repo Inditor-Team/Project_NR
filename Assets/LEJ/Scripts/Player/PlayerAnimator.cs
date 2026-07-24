@@ -5,13 +5,22 @@ public class PlayerAnimator : MonoBehaviour
 {
     Animator anim;
 
-    [Header("ĳ���� ������Ʈ")]
+    [SerializeField] RotateByAim rotateByAnim;
     [SerializeField] SpriteRenderer model;
     public SpriteRenderer Model => model;
 
     Vector2 moveInput;
 
-    public bool DoFlip = true;
+    bool doFlip = false;
+    public bool DoFlip { get { return doFlip; } 
+        set { 
+            doFlip = value;
+            if (doFlip)
+                rotateByAnim.enabled = false;
+            else
+                rotateByAnim.enabled = true;
+        } 
+    }
 
     private void Awake()
     {
@@ -20,7 +29,8 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        //FlipByMoveInput();
+        if (DoFlip)
+            FlipByMoveInput();
 
         if (moveInput == null || moveInput == Vector2.zero)
             anim.SetBool("IsMove", false);
@@ -31,6 +41,9 @@ public class PlayerAnimator : MonoBehaviour
     public void SetMoveInput(Vector2 moveInput)
     {
         this.moveInput = moveInput;
+
+        if (SoundManager.Instance == null)
+            return;
 
         if (this.moveInput != Vector2.zero)
             SoundManager.Instance.PlayPlayerMoveSound();
@@ -49,9 +62,9 @@ public class PlayerAnimator : MonoBehaviour
             model.flipX = false;
     }
 
-    void RollAnim()
+    public void RollAnim(bool doAnim)
     {
-        anim.SetBool("IsRoll", true);
+        anim.SetBool("IsRoll", doAnim);
     }
 
     public void DieAnim()

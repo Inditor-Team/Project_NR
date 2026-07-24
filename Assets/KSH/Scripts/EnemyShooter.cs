@@ -84,5 +84,8 @@ public class EnemyShooter : MonoBehaviour
         enemyBullet.transform.position = spawnPos;
         
         enemyBullet.GetComponent<EnemyBullet>().Launch(direction, shootSpeed, damage);
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
     }
 }

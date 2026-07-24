@@ -54,6 +54,8 @@ public class NeuroActionProtocol : ProtocolBase
     internal override void DoProtocol()
     {
         isActive = true;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Player_NeuroAction);
 
         if (protocolRoutine == null)
             protocolRoutine = StartCoroutine(ProtocolTime());

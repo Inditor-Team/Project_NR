@@ -56,6 +56,7 @@ public class SwordAttacker : MonoBehaviour
         lastAttackTime = Time.time;
 
         Swing();
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_SwordAttack);
         sword.TryAttack(stat.StatDic[PlayerStat.Stat.SwordDamage]);
     }
 
@@ -136,8 +137,8 @@ public class SwordAttacker : MonoBehaviour
         Hold();
     }
 
-    public void HideSword()
+    public void ActiveSword(bool isActive)
     {
-        sword.gameObject.SetActive(false);
+        sword.gameObject.SetActive(isActive);
     }
 }

@@ -2,13 +2,14 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 { 
     public static UIManager Instance { get; private set; }
     private bool isMove = false;
 
-    [SerializeField] private MassagePanelController msgController;
+    [SerializeField] private MessagePanelController msgController;
 
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class UIManager : MonoBehaviour
         if (!isMove)
         {
             isMove = true;
+
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);
             
             panel.SetActive(true);
             panel.transform.localPosition = new Vector3(0, -300, 0);
@@ -48,6 +51,8 @@ public class UIManager : MonoBehaviour
             panel.transform.DOLocalMoveY(panel.transform.localPosition.y - 1000f, 0.5f)
                  .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
             {
+                SoundManager.Instance.PlaySFX(Sound_SFX.UICancel);
+
                 panel.SetActive(false);
                 isMove = false; 
             });

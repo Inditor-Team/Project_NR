@@ -6,6 +6,7 @@ public class Sword : WeaponBase
 {
     [SerializeField] SwordHitBox hitBox;
     [SerializeField] SpriteRenderer model;
+    [SerializeField] GameObject effect;
     public SpriteRenderer Model => model;
 
     float damage;
@@ -22,6 +23,8 @@ public class Sword : WeaponBase
             hitBox.OnHit += OnHit;
             hitBox.enabled = false;
         }
+
+        effect.SetActive(false);
     }
 
     public void TryAttack(float damage)
@@ -51,6 +54,12 @@ public class Sword : WeaponBase
             //bullet.Launch(-bullet.velocity.normalized, bullet.velocity.magnitude, damage);
             OnHitted?.Invoke();
 
+            //임시 이펙트 처리
+            effect.SetActive(false);
+            effect.SetActive(true);
+            Invoke("HideEffect", 0.4f);
+            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
+
             swingCount++;
             if (swingCount >= swordLife)
                 OnBroke();
@@ -61,6 +70,12 @@ public class Sword : WeaponBase
         {
             damageable.TakeDamage(damage);
             OnHitted?.Invoke();
+
+            //임시 이펙트 처리
+            effect.SetActive(false);
+            effect.SetActive(true);
+            Invoke("HideEffect", 0.4f);
+
             swingCount++;
 
             if (swingCount >= swordLife)
@@ -72,6 +87,11 @@ public class Sword : WeaponBase
     {
         hitBox.enabled = false;
         this.gameObject.SetActive(false);
+    }
+
+    void HideEffect()
+    {
+        effect.SetActive(false);
     }
 
 }

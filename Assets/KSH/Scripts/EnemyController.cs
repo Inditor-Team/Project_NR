@@ -56,7 +56,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     }
     EnemyStat currentStat = EnemyStat.Patrol;
 
-    private void Start()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -73,6 +73,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         enemyShooter.SetDamage(damage);
         reloadSpeed = defaultSpeed * 3f; // 일반 이동 속도의 3배
         healthSlider.value = health / maxHealth;
+    }
+
+    void Start()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnPauseGame += Pause;
 
         target = GameManager.Instance.Player.gameObject.transform;
     }
@@ -99,6 +105,11 @@ public class EnemyController : MonoBehaviour, IDamageable
         enemyShooter.OnReloadEnd -= OnReloadEnd;
     }
 
+    void OnDestroy()
+    {
+        GameManager.Instance.OnPauseGame -= Pause;
+    }
+
     public void TakeDamage(float damage)
     {
         if (currentStat == EnemyStat.Patrol) // 순찰 중에 피격되면 Combat으로 전환
@@ -107,6 +118,8 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (currentStat == EnemyStat.Dead) return; // 이미 Dead면 중복 실행되지 않도록 처리
         
         health -= damage;
+
+        SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
 
         if (health <= 0)
         {
@@ -262,5 +275,13 @@ public class EnemyController : MonoBehaviour, IDamageable
         gameObject.SetActive(false);
         SpawnManager.Instance.DestroyedEnemy(); 
         // 오브젝트 풀링 적용 예정, returnPool
+    }
+
+    public void Pause(bool isPause)
+    {
+        bool activeControl = !isPause; //일시정지라면 active false
+
+        enemyShooter.enabled = activeControl;
+        this.enabled = activeControl;
     }
 }

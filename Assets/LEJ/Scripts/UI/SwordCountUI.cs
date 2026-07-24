@@ -13,7 +13,13 @@ public class SwordCountUI : MonoBehaviour
     {
         if (sword != null)
             sword.OnHitted += OnHit;
-    }   
+    }
+
+    private void OnDestroy()
+    {
+        if (sword != null)
+            sword.OnHitted -= OnHit;
+    }
 
     void OnHit()
     {

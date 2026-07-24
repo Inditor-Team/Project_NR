@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
         protocolExecutor.RegisterStat(stat);    
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnPauseGame += Pause;
+    }
+
     void OnEnable()
     {
         //Input System 활성화 후 입력 받아오기
@@ -68,10 +73,16 @@ public class PlayerController : MonoBehaviour
         input.Player.SpecialSkill.performed += _ => TryProtocol();
     }
 
-    void OnDisable()
+    private void OnDestroy()
     {
-        //Input System 비활성화
         input.Player.Disable();
+
+        input.Player.PrimaryAttack.performed -= _ => TryGunAttack();
+        input.Player.SecondaryAttack.performed -= _ => TrySwordAttack();
+        input.Player.Roll.performed -= _ => TryRoll();
+        input.Player.SpecialSkill.performed -= _ => TryProtocol();
+
+        GameManager.Instance.OnPauseGame -= Pause;
     }
 
     void Update()
@@ -79,7 +90,7 @@ public class PlayerController : MonoBehaviour
         if (curState != PlayerState.Roll) //구르기 시 마지막 입력 방향으로 구르기 방향이 고정 됨
             moveInput = input.Player.Move.ReadValue<Vector2>();
 
-        if (animator != null)
+        if (moveInput != null && animator != null)
             animator.SetMoveInput(moveInput); //애니메이터에게 moveInput 전달
 
         HandleState();
@@ -105,29 +116,55 @@ public class PlayerController : MonoBehaviour
                 if (moveInput.magnitude > 0)
                     curState = PlayerState.Move;
                 if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                {
+                    if (SoundManager.Instance != null)
+                        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
+
                     curState = PlayerState.Die;
+                    GameManager.Instance.OnSectionFail();
+                }
                 break;
 
             case PlayerState.Move:
                 if (moveInput.magnitude == 0)
                     curState = PlayerState.Idle;
                 if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                {
+                    if (SoundManager.Instance != null)
+                        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
+
                     curState = PlayerState.Die;
+                    GameManager.Instance.OnSectionFail();
+
+                    animator.DieAnim();
+                    Pause(true);
+                }
                 break;
 
             case PlayerState.Roll:
                 rollTimer -= Time.deltaTime;
                 if (rollTimer <= 0)
+                {
+                    animator.RollAnim(false);
+                    animator.DoFlip = false;
                     curState = PlayerState.Idle;
+
+                    animator.DieAnim();
+                    Pause(true);
+                }
                 if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                {
+                    if (SoundManager.Instance != null)
+                        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
+
                     curState = PlayerState.Die;
+                    GameManager.Instance.OnSectionFail();
+
+                    animator.DieAnim();
+                    Pause(true);
+                }
                 break;
             case PlayerState.Die:
-                animator.DieAnim();
-                rb.simulated = false;
-                swordAttacker.HideSword();
-                gunShooter.HideGun();
-                this.enabled = false;
                 break;
         }
     }
@@ -140,7 +177,6 @@ public class PlayerController : MonoBehaviour
     void TrySwordAttack()
     {
         if (curState == PlayerState.Roll) return;
-        SoundManager.Instance.PlaySFX(Sound_SFX.Player_SwordAttack);
 
         if (swordAttacker != null)
             swordAttacker.DoAttack();
@@ -153,7 +189,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
         if (curState == PlayerState.Roll) return;
-        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
         
         if (gunShooter != null)
             gunShooter.DoAttack();
@@ -167,6 +205,9 @@ public class PlayerController : MonoBehaviour
         if (moveInput == Vector2.zero) return; //이동하고 있는 경우가 아니면 대쉬 X
         if (Time.time - lastRollTime < stat.StatDic[PlayerStat.Stat.RollRate]) //대시 간격 주기
             return;
+
+        animator.RollAnim(true);
+        animator.DoFlip = true;
 
         rollTimer = stat.StatDic[PlayerStat.Stat.RollDuration];
         curState = PlayerState.Roll;
@@ -196,9 +237,14 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = moveInput * speed;
     }
 
-    void EnableMoveFlip()
+    public void Pause(bool isPause)
     {
-        animator.DoFlip = true;
+        bool activeControl = !isPause; //일시정지라면 active false
+
+        animator.enabled = activeControl;
+        rb.simulated = activeControl;
+        swordAttacker.ActiveSword(activeControl);
+        gunShooter.ActiveGun(activeControl);
     }
     #endregion
 }

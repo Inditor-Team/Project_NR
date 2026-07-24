@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataBase
   moveSpeed: 0.5
   combatTargetDist: 5
-  health: 1
+  health: 5
   damage: 1

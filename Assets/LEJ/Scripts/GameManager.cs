@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private GameObject player;
+    [SerializeField] private GameObject player;
     public GameObject Player
     {
         get
@@ -77,5 +78,16 @@ public class GameManager : MonoBehaviour
         #else
         Application.Quit(); // 어플리케이션 종료
         #endif
+    }
+
+    public void FindPlayer()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
+    public UnityAction<bool> OnPauseGame;
+    public void Pause(bool isPause)
+    {
+        OnPauseGame?.Invoke(isPause);
     }
 }

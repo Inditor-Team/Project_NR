@@ -25,8 +25,8 @@ public class GunShooter : MonoBehaviour
         lastFireTime = Time.time;
     }
 
-    public void HideGun()
+    public void ActiveGun(bool isActive)
     {
-        gun.gameObject.SetActive(false);
+        gun.gameObject.SetActive(isActive);
     }
 }

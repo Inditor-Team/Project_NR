@@ -2,22 +2,31 @@ using UnityEngine;
 
 public class EXPManager : MonoBehaviour
 {
-    public static EXPManager Instance { get; private set; }
+    //public static EXPManager Instance { get; private set; }
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    if (Instance != null && Instance != this)
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //    else
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(this.gameObject);
+    //    }
+
+    //}
+
+    private void Start()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-
         //현재 섹터 하나 클리어 시 경험치 카드 제공
         GameManager.Instance.OnSectionClear += ProvideLevelCard;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnSectionClear -= ProvideLevelCard;
     }
 
     [SerializeField] LevelCardProvider levelCardProvider;

@@ -47,7 +47,10 @@ public class RotateByAim : MonoBehaviour
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
         Vector3 mouseScreen3D = new Vector3(mouseScreen.x, mouseScreen.y, -mainCam.transform.position.z);
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen3D);
-        Vector2 aim = (mouseWorld - GameManager.Instance.Player.transform.position).normalized;
+        Vector2 aim = Vector2.zero;
+        if (GameManager.Instance.Player == null)
+            GameManager.Instance.FindPlayer();
+        aim = (mouseWorld - GameManager.Instance.Player.transform.position).normalized;
         return Mathf.Atan2(-aim.y, -aim.x) * Mathf.Rad2Deg;
     }
 }

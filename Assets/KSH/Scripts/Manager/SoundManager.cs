@@ -1,25 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum Sound_BGM
 {
-    Game
+    None, Lobby, Map, Stage1, Count
 }
 
-// TODO: 이후 ScriptableObject 등으로 관리
 public enum Sound_SFX
 {
+    None,
     Player_Move,
     Player_GunShoot,
     Player_SwordAttack,
+    Player_NeuroAction,
     Player_Hit,
-    Enemy_Dead
-    /*Player_Dead,
+    Player_Dead,
+
+    Enemy_Dead,
     Enemy_Attack,
     Enemy_Hit,
-    Enemy_Dead,
-    ButtonClick*/
+    UIOpen,
+    UIConfirm,
+    UICancel,
+    UIText,
+    Count
+}
+
+[Serializable]
+public class BGM
+{
+    public Sound_BGM type;
+    public AudioClip clip;
+}
+
+[Serializable]
+public class SFX
+{
+    public Sound_SFX type;
+    public AudioClip clip;
 }
 
 public class SoundManager : MonoBehaviour
@@ -41,10 +61,10 @@ public class SoundManager : MonoBehaviour
         InitializeAudioSources();
         InitDictionary();
     }
-    
+
     [Header("Audio Clips")]
-    [SerializeField] private AudioClip[] bgmClips; 
-    [SerializeField] private AudioClip[] sfxClips; // TODO: 리소스 추가 후 sfx clip을 Decompress On Load로 설정, enum 순서에 맞게 배치
+    [SerializeField] private BGM[] bgmClips; 
+    [SerializeField] private SFX[] sfxClips; // TODO: 리소스 추가 후 sfx clip을 Decompress On Load로 설정, enum 순서에 맞게 배치
     
     private AudioSource bgmSource; // BGM 재생 AudioSource
     private List<AudioSource> sfxSources = new List<AudioSource>(); // SFX 재생 AudioSource
@@ -96,11 +116,11 @@ public class SoundManager : MonoBehaviour
     {
         bgmDict = new Dictionary<Sound_BGM, AudioClip>();
         for (int i = 0; i < bgmClips.Length; i++)
-            bgmDict[(Sound_BGM)i] = bgmClips[i];
+            bgmDict[(bgmClips[i].type)] = bgmClips[i].clip;
         
         sfxDict = new Dictionary<Sound_SFX, AudioClip>();
         for (int i = 0; i < sfxClips.Length; i++)
-            sfxDict[(Sound_SFX)i] = sfxClips[i];
+            sfxDict[(sfxClips[i].type)] = sfxClips[i].clip;
     }
     
     #endregion
@@ -154,11 +174,10 @@ public class SoundManager : MonoBehaviour
         
         bgmSource.volume = bgmVolume;
     }
-    
+
     #endregion
-    
+
     #region 효과음 (SFX) 메서드
-    
     public AudioSource PlaySFX(Sound_SFX clipName)
     {
         if (!sfxDict.ContainsKey(clipName)) return null;
@@ -263,9 +282,9 @@ public class SoundManager : MonoBehaviour
     }
 
     #endregion
-    
+
     #region 전체 사운드 제어
-    
+
     public void StopAllSounds() // 전체 사운드 정지
     {
         StopBGM();

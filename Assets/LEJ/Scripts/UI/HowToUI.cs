@@ -19,6 +19,8 @@ public class HowToUI : MonoBehaviour
     {
         for (int i = 0; i < howToTexts.Length; i++)
         {
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
+
             howToTexts[i].SetActive(true);
             yield return new WaitForSeconds(activeRate[i]);
         }

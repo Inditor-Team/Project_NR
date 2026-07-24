@@ -35,14 +35,19 @@ public class SettingPanelController : MonoBehaviour
     public void ShowSettingPanel()
     {
         if (settingPanel == null) return;
-        Time.timeScale = 0f; // 게임 정지
+        //Time.timeScale = 0f; // 게임 정지
+        GameManager.Instance.Pause(true);
+        SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);
+
         UIManager.Instance.Show(settingPanel);
     }
 
     public void HideSettingPanel()
     {
         UIManager.Instance.Hide(settingPanel);
-        Time.timeScale = 1f; // 게임 재개
+        SoundManager.Instance.PlaySFX(Sound_SFX.UICancel);
+        //Time.timeScale = 1f; // 게임 재개
+        GameManager.Instance.Pause(false);
     }
 
     private void OnBGMValueChanged(float value) // 변경될 때마다 적용
@@ -95,6 +100,7 @@ public class SettingPanelController : MonoBehaviour
     // 게임 종료 버튼
     public void OnClickExitGame()
     {
+        SoundManager.Instance.PlaySFX(Sound_SFX.UICancel);
         UIManager.Instance.SetMsgPanel("게임을 종료하시겠습니까?", GameManager.Instance.ExitGame);
     }
 }
