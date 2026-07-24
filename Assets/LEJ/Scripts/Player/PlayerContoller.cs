@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 플레이어의 입력에 따른 플레이어블 캐릭터 제어
@@ -21,6 +22,8 @@ public class PlayerContoller : MonoBehaviour
 
     float rollTimer;
     float lastRollTime;
+    
+    private bool isPointerOverUI; // UI 요소인지 감지
 
     enum PlayerState
     {
@@ -73,6 +76,7 @@ public class PlayerContoller : MonoBehaviour
             animator.SetMoveInput(moveInput); //애니메이터에게 moveInput 전달
 
         HandleState();
+        isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
     }
 
     void FixedUpdate()
@@ -114,6 +118,9 @@ public class PlayerContoller : MonoBehaviour
     /// </summary>
     void TrySwordAttack()
     {
+        if (isPointerOverUI) // UI 요소인지 판단, 클릭 이벤트에 적용
+            return;
+        
         if (curState == PlayerState.Roll) return;
 
         if (attacker != null)

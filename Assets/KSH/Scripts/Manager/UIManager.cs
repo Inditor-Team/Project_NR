@@ -32,7 +32,8 @@ public class UIManager : MonoBehaviour
             panel.SetActive(true);
             panel.transform.localPosition = new Vector3(0, -300, 0);
             
-            panel.transform.DOLocalMoveY(panel.transform.localPosition.y + 300f, 0.5f).SetEase(Ease.OutCubic).OnComplete(() => 
+            panel.transform.DOLocalMoveY(panel.transform.localPosition.y + 300f, 0.5f)
+                 .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
             {
                 isMove = false; 
             });
@@ -44,7 +45,8 @@ public class UIManager : MonoBehaviour
         if (!isMove)
         {
             isMove = true;
-            panel.transform.DOLocalMoveY(panel.transform.localPosition.y - 1000f, 0.5f).SetEase(Ease.OutCubic).OnComplete(() => 
+            panel.transform.DOLocalMoveY(panel.transform.localPosition.y - 1000f, 0.5f)
+                 .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
             {
                 panel.SetActive(false);
                 isMove = false; 
