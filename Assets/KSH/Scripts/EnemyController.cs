@@ -254,6 +254,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         healthUI.SetActive(false);
         collider.isTrigger = true; // 충돌 무시
         anim.SetTrigger("isDead");
+        SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Dead);
     }
 
     public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 

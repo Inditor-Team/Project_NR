@@ -118,8 +118,8 @@ public class PlayerContoller : MonoBehaviour
     /// </summary>
     void TrySwordAttack()
     {
-        if (isPointerOverUI) // UI 요소인지 판단, 클릭 이벤트에 적용
-            return;
+        if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_SwordAttack);
         
         if (curState == PlayerState.Roll) return;
 
@@ -133,6 +133,7 @@ public class PlayerContoller : MonoBehaviour
     void TryGunAttack()
     {
         if (curState == PlayerState.Roll) return;
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
 
         if (shooter != null)
             shooter.DoAttack();

@@ -10,16 +10,16 @@ public enum Sound_BGM
 // TODO: 이후 ScriptableObject 등으로 관리
 public enum Sound_SFX
 {
-    ButtonClick,
     Player_Move,
     Player_GunShoot,
     Player_SwordAttack,
     Player_Hit,
-    Player_Dead,
-    Enemy_Move,
+    Enemy_Dead
+    /*Player_Dead,
     Enemy_Attack,
     Enemy_Hit,
-    Enemy_Dead
+    Enemy_Dead,
+    ButtonClick*/
 }
 
 public class SoundManager : MonoBehaviour
@@ -48,6 +48,7 @@ public class SoundManager : MonoBehaviour
     
     private AudioSource bgmSource; // BGM 재생 AudioSource
     private List<AudioSource> sfxSources = new List<AudioSource>(); // SFX 재생 AudioSource
+    private AudioSource playerMoveSource; // 플레이어 이동 전용 오디오
 
     private Dictionary<Sound_BGM, AudioClip> bgmDict; // BGM Dictionary
     private Dictionary<Sound_SFX, AudioClip> sfxDict; // UI SFX Dictionary
@@ -66,6 +67,7 @@ public class SoundManager : MonoBehaviour
         {
             bgmSource = gameObject.AddComponent<AudioSource>();
             bgmSource.loop = true;
+            bgmSource.playOnAwake = false;
             bgmSource.volume = bgmVolume;
         }
         
@@ -75,9 +77,18 @@ public class SoundManager : MonoBehaviour
             {
                 AudioSource sfxSource = gameObject.AddComponent<AudioSource>();
                 sfxSource.loop = false;
+                sfxSource.playOnAwake = false;
                 sfxSource.volume = sfxVolume;
                 sfxSources.Add(sfxSource);
             }
+        }
+
+        if (playerMoveSource == null)
+        {
+            playerMoveSource = gameObject.AddComponent<AudioSource>();
+            playerMoveSource.loop = false;
+            playerMoveSource.playOnAwake = false;
+            playerMoveSource.volume = sfxVolume;
         }
     }
     
@@ -232,6 +243,25 @@ public class SoundManager : MonoBehaviour
         }
     }
     
+    #endregion
+
+    #region // 플레이어 이동 오디오, 중복 방지를 위해 따로 처리
+
+    public void PlayPlayerMoveSound()
+    {
+        if (playerMoveSource.isPlaying)
+            return;
+        
+        playerMoveSource.clip = sfxDict[Sound_SFX.Player_Move];
+        playerMoveSource.volume = sfxVolume;
+        playerMoveSource.Play();
+    }
+
+    public void StopyPlayerMoveSound()
+    {
+        playerMoveSource.Stop();
+    }
+
     #endregion
     
     #region 전체 사운드 제어
