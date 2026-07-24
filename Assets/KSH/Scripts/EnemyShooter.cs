@@ -7,9 +7,6 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform[] gunTransform;
     
-    private int defaultCapacity = 10;
-    private int maxPoolSize = 20;
-    
     private float shootSpeed = 3f;
     
     public float fireInterval = 0.5f; // 발사 간격, 0.2
