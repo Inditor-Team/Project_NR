@@ -5,7 +5,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     Animator anim;
 
-    [Header("Ä³¸¯ÅÍ ¿ÀºêÁ§Æ®")]
+    [Header("Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField] SpriteRenderer model;
     public SpriteRenderer Model => model;
 
@@ -31,6 +31,11 @@ public class PlayerAnimator : MonoBehaviour
     public void SetMoveInput(Vector2 moveInput)
     {
         this.moveInput = moveInput;
+
+        if (this.moveInput != Vector2.zero)
+            SoundManager.Instance.PlayPlayerMoveSound();
+        else
+            SoundManager.Instance.StopyPlayerMoveSound();
     }
 
     void FlipByMoveInput()

@@ -129,4 +129,7 @@ Assets/Imports/ExternalAssets/**/*.asset
 # DOTween
 Assets/Plugins/Demigiant/
 Assets/Plugins/Demigiant.meta
-/Assets/Imports
+
+# Font
+Assets/Imports/Silver SDF.asset
+Assets/Imports/Silver.ttf

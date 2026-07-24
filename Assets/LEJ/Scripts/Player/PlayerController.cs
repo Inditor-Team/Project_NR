@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 플레이어의 입력에 따른 플레이어블 캐릭터 제어
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     float rollTimer;
     float lastRollTime;
+    
+    private bool isPointerOverUI; // UI 요소인지 감지
 
     float lastProtocolTime;
 
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
             animator.SetMoveInput(moveInput); //애니메이터에게 moveInput 전달
 
         HandleState();
+        isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
     }
 
     void FixedUpdate()
@@ -136,6 +140,7 @@ public class PlayerController : MonoBehaviour
     void TrySwordAttack()
     {
         if (curState == PlayerState.Roll) return;
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_SwordAttack);
 
         if (swordAttacker != null)
             swordAttacker.DoAttack();
@@ -146,8 +151,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void TryGunAttack()
     {
+        if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
         if (curState == PlayerState.Roll) return;
-
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
+        
         if (gunShooter != null)
             gunShooter.DoAttack();
     }
