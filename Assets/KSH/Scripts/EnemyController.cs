@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Animator anim;
     private Vector2 nextvec;
     private const float MinDirectionMagnitude = 0.05f;
+    private Collider2D collider;
     
     private int currentPatrolIndex; // 순찰 지점 인덱스
     private Transform patrolNextPosition;
@@ -60,6 +61,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        collider = GetComponent<Collider2D>();
 
         startPos = transform.position;
         defaultSpeed = data.moveSpeed;
@@ -83,10 +85,11 @@ public class EnemyController : MonoBehaviour, IDamageable
         isRightSide = true;
         currentStat = EnemyStat.Patrol;
 
-        // 체력 재설정
+        // 재설정
         health = maxHealth;
         healthSlider.value = health / maxHealth;
         healthUI.SetActive(false);
+        collider.isTrigger = false;
     }
 
     private void OnDisable()
@@ -166,7 +169,8 @@ public class EnemyController : MonoBehaviour, IDamageable
             
         rigid.MovePosition(rigid.position + nextvec);
             
-        UpdateDirection(normalizedDir); // 스프라이트 업데이트, 이동용
+        // UpdateDirection(normalizedDir); // 스프라이트 업데이트, 이동용
+        sprite.flipX = normalizedDir.x > 0f;
     
         if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
         {
@@ -207,7 +211,8 @@ public class EnemyController : MonoBehaviour, IDamageable
         rigid.linearVelocity = Vector2.zero;
         rigid.MovePosition(rigid.position + finalMove);
             
-        UpdateDirection(normalizedDir); // 스프라이트 업데이트, 전투용
+        // UpdateDirection(normalizedDir); // 스프라이트 업데이트, 전투용
+        sprite.flipX = normalizedDir.x > 0f;
     }
 
     private void OnReloadStart()
@@ -229,7 +234,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     }
     
     // 애니메이션 관련
-    public void UpdateDirection(Vector2 direction)
+    /*public void UpdateDirection(Vector2 direction)
     {
         if (direction.sqrMagnitude < MinDirectionMagnitude * MinDirectionMagnitude) // 방향 업데이트 여부 계산
             return;
@@ -241,12 +246,13 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         anim.SetFloat("moveX", Mathf.Abs(direction.x));
         anim.SetFloat("moveY", direction.y);
-    }
+    }*/
 
     public void SetDead()
     {
         enemyShooter.StopShooting();
         healthUI.SetActive(false);
+        collider.isTrigger = true; // 충돌 무시
         anim.SetTrigger("isDead");
     }
 
