@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ***����� ���� EnemyBullet �� Velocity = rigid.linearVelocity; �� ĳ���ؾ���
-/// ���ƿ��� �Ѿ��� �ݻ��ϴ� ��������
-/// </summary>
 public class BladerProtocol : ProtocolBase
 {
-    [Header("�ӽ� ����")]
-    [SerializeField] float duration = 5f;
-    [SerializeField] GameObject debug_effect; //�ӽ� �ð� ȿ��
-
-    GameObject curBullet; //���� �ݻ� �� �Ѿ�
+    GameObject curBullet;
+    float duration;
 
     new Dictionary<ProtocolCard.Buff, float> buffValues = new Dictionary<ProtocolCard.Buff, float>()
     {
@@ -24,8 +17,8 @@ public class BladerProtocol : ProtocolBase
 
     private void Awake()
     {
-        speedMultiplier = 1.5f; //�������� ���� �� �̼� ����
-        isInvincible = true; //�������� ���� �� ���� ����
+        speedMultiplier = 1.5f; 
+        isInvincible = true;
     }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
@@ -36,14 +29,14 @@ public class BladerProtocol : ProtocolBase
         buffValues[type] = level;
     }
 
-    internal override void TryProtocol()
+    internal override void TryProtocol(float duration)
     {
+        this.duration = duration;
         DoProtocol();
     }
 
     internal override void DoProtocol()
     {
-        debug_effect.SetActive(true);
         isActive = true;
         Debug.Log("Player: Blader Protocol! ");
         
@@ -64,25 +57,22 @@ public class BladerProtocol : ProtocolBase
         if (!isActive)
             return;
 
-        //�ε��� ��ü�� enemyBullet �� �ƴ϶��, ��� �� �ε��� enemyBullet �̶�� ����
         var enemyBullet = collision.GetComponent<EnemyBullet>();
 
         if (enemyBullet == null || curBullet == enemyBullet.gameObject)
             return;
 
-        curBullet = enemyBullet.gameObject; //���� �Ѿ˰� �� ���� ĳ��
+        curBullet = enemyBullet.gameObject;
 
-        //�� �Ѿ˷� �����ϱ�
         BulletBase newBullet = Instantiate(collision.gameObject, enemyBullet.transform.position, Quaternion.identity).AddComponent<BulletBase>();
         Destroy(newBullet.GetComponent<EnemyBullet>());
         newBullet.gameObject.name = "duplicateBullet";
-        //newBullet.Init(1f, enemyBullet.velocity.magnitude); //�ӽ� ������
+        //newBullet.Init(1f, enemyBullet.velocity.magnitude);
         //newBullet.OnFire(-enemyBullet.velocity.normalized);
     }
 
     internal override void EndProtocol()
     {
-        debug_effect.SetActive(false);
         isActive = false;
     }
 

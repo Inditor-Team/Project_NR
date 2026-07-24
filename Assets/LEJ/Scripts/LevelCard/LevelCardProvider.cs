@@ -37,6 +37,7 @@ public class LevelCardProvider : MonoBehaviour
             ui.SetUIElement(choosen[i], i, setStatAction);
         }
 
+        stat.TakeDamage(100); //일단 죽은 것으로 처리
         ui.ShowUI();
     }
 

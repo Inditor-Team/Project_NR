@@ -14,8 +14,6 @@ public class Gun : WeaponBase
     //private float disableTime;
     float maxDistance = 20f;
 
-    float fireRate;
-    float lastFireTime;
     float speed;
     float damage;
 
@@ -52,12 +50,8 @@ public class Gun : WeaponBase
     }
     */
 
-    public void TryAttack(float fireRate, float speed, float damage)
+    public void TryAttack(float speed, float damage)
     {
-        if (Time.time - lastFireTime < fireRate) 
-            return;
-
-        this.fireRate = fireRate;
         this.damage = damage;
         
         // 총알 사용
@@ -67,7 +61,6 @@ public class Gun : WeaponBase
         //curBullet.transform.position = firePoint.position; //총알 위치 초기화
 
         Attack();
-        lastFireTime = Time.time;
     }
 
     internal override void Attack()
@@ -101,6 +94,10 @@ public class Gun : WeaponBase
 
                 Debug.Log($"{hit.collider.name}에게 데미지 {damage}를 가함");
             }
+            if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+            {
+                interactable.OnInteract();
+            }
         }
         else
             endPosition = startPosition + direction * maxDistance;
@@ -118,8 +115,6 @@ public class Gun : WeaponBase
         Vector2 direction = end - start;
         float distance = direction.magnitude;
 
-        Debug.Log(direction);
-
         if (distance <= 0.001f)
             return;
 
@@ -134,66 +129,4 @@ public class Gun : WeaponBase
 
         laserEffect.Emit(emitParams, 1);
     }
-
-    /*
-    private Coroutine laserCoroutine;
-
-    private void DrawLaser(Vector3 start, Vector3 end)
-    {
-        lineRenderer.SetPosition(0, start);
-        lineRenderer.SetPosition(1, end);
-
-        lineRenderer.enabled = true;
-        disableTime = Time.time + laserDuration;
-
-        if (laserCoroutine != null)
-            StopCoroutine(laserCoroutine);
-
-        laserCoroutine = StartCoroutine(FadeLaser());
-    }
-
-    private IEnumerator FadeLaser()
-    {
-        lineRenderer.enabled = true;
-
-        float elapsed = 0f;
-
-        while (elapsed < laserDuration)
-        {
-            elapsed += Time.deltaTime;
-
-            float progress = Mathf.Clamp01(elapsed / laserDuration);
-            SetFadeGradient(progress);
-
-            yield return null;
-        }
-
-        lineRenderer.enabled = false;
-        laserCoroutine = null;
-    }
-
-    private void SetFadeGradient(float progress)
-    {
-        float fadeEdge = Mathf.Clamp01(progress + 0.15f);
-
-        Gradient gradient = new Gradient();
-
-        gradient.SetKeys(
-            new[]
-            {
-                new GradientColorKey(Color.green, 0f),
-                new GradientColorKey(Color.green, 1f)
-            },
-            new[]
-            {
-                new GradientAlphaKey(0f, 0f),
-                new GradientAlphaKey(0f, progress),
-                new GradientAlphaKey(1f, fadeEdge),
-                new GradientAlphaKey(1f, 1f)
-            }
-        );
-
-        lineRenderer.colorGradient = gradient;
-    }
-    */
 }

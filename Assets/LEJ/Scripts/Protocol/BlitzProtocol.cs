@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class BlitzProtocol : ProtocolBase
 {
-    [SerializeField] Sword sword;
-    [SerializeField] GameObject debug_effect;
+    [SerializeField] SwordAttacker swordAttacker;
     [Header("юс╫ц ╫╨ех")]
     [SerializeField] float dashSpeed = 30f;
     [SerializeField] float detectRadius = 5f;
     [SerializeField] float swordSpeed = 5f;
     [SerializeField] LayerMask enemyLayer;
+    [SerializeField] int attackCount = 3;
+    int index = 0;
     float attackDistance = 2f;
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
     {
     }
 
-    internal override void TryProtocol()
+    internal override void TryProtocol(float duration)
     {
         DoProtocol();
     }
@@ -26,7 +27,6 @@ public class BlitzProtocol : ProtocolBase
         if (protocolRoutine != null)
             return;
 
-        debug_effect.SetActive(true);
         protocolRoutine = StartCoroutine(ProtocolTime());
     }
 
@@ -49,8 +49,13 @@ public class BlitzProtocol : ProtocolBase
 
             if (enemy != null)
             {
-                //sword.Attack(5f);
+                swordAttacker.Swing();
                 enemy.gameObject.SetActive(false);
+                index++;
+
+                if (index >= attackCount)
+                    yield break;
+
                 yield return new WaitForSeconds(0.05f);
             }
         }
@@ -60,7 +65,6 @@ public class BlitzProtocol : ProtocolBase
 
     internal override void EndProtocol()
     {
-        debug_effect.SetActive(false);
     }
 
 }

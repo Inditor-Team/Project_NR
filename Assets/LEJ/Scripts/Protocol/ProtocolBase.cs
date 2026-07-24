@@ -17,7 +17,7 @@ public abstract class ProtocolBase : MonoBehaviour
 
     public abstract void UpgradeProtocol(ProtocolCard.Buff type, float level);
 
-    internal abstract void TryProtocol();
+    internal abstract void TryProtocol(float duration);
 
     internal abstract void DoProtocol();
 

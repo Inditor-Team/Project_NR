@@ -1,13 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 /// <summary>
 /// 플레이어의 입력에 따른 플레이어블 캐릭터 제어
 /// </summary>
-public class PlayerContoller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     #region Variables
-    [SerializeField] ProtocolBase protocol;
 
     PlayerInputActions input;
     Vector2 moveInput;
@@ -15,8 +15,9 @@ public class PlayerContoller : MonoBehaviour
     PlayerStat stat;
     public PlayerStat Stat => stat;
     PlayerAnimator animator;
-    GunShooter shooter;
-    SwordAttacker attacker;
+    GunShooter gunShooter;
+    SwordAttacker swordAttacker;
+    ProtocolExecutor protocolExecutor;
 
     Rigidbody2D rb;
 
@@ -25,14 +26,18 @@ public class PlayerContoller : MonoBehaviour
     
     private bool isPointerOverUI; // UI 요소인지 감지
 
+    float lastProtocolTime;
+
     enum PlayerState
     {
         Idle,
         Move,
-        Roll
+        Roll,
+        Die
     }
 
     PlayerState curState;
+
     #endregion
 
     #region Cycle
@@ -43,11 +48,13 @@ public class PlayerContoller : MonoBehaviour
 
         stat = GetComponent<PlayerStat>();
         animator = GetComponent<PlayerAnimator>();
-        attacker = GetComponent<SwordAttacker>();
-        shooter = GetComponent<GunShooter>();
+        swordAttacker = GetComponent<SwordAttacker>();
+        gunShooter = GetComponent<GunShooter>();
+        protocolExecutor = GetComponent<ProtocolExecutor>();
 
-        attacker.RegisterStat(stat);
-        shooter.RegisterStat(stat);
+        swordAttacker.RegisterStat(stat);
+        gunShooter.RegisterStat(stat);
+        protocolExecutor.RegisterStat(stat);    
     }
 
     void OnEnable()
@@ -55,8 +62,8 @@ public class PlayerContoller : MonoBehaviour
         //Input System 활성화 후 입력 받아오기
         input.Player.Enable();
 
-        input.Player.PrimaryAttack.performed += _ => TrySwordAttack();
-        input.Player.SecondaryAttack.performed += _ => TryGunAttack();
+        input.Player.PrimaryAttack.performed += _ => TryGunAttack();
+        input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
         input.Player.Roll.performed += _ => TryRoll();
         input.Player.SpecialSkill.performed += _ => TryProtocol();
     }
@@ -83,6 +90,7 @@ public class PlayerContoller : MonoBehaviour
     {
         Move();
     }
+
     #endregion
 
     #region FSM
@@ -96,17 +104,30 @@ public class PlayerContoller : MonoBehaviour
             case PlayerState.Idle:
                 if (moveInput.magnitude > 0)
                     curState = PlayerState.Move;
+                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                    curState = PlayerState.Die;
                 break;
 
             case PlayerState.Move:
                 if (moveInput.magnitude == 0)
                     curState = PlayerState.Idle;
+                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                    curState = PlayerState.Die;
                 break;
 
             case PlayerState.Roll:
                 rollTimer -= Time.deltaTime;
                 if (rollTimer <= 0)
                     curState = PlayerState.Idle;
+                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+                    curState = PlayerState.Die;
+                break;
+            case PlayerState.Die:
+                animator.DieAnim();
+                rb.simulated = false;
+                swordAttacker.HideSword();
+                gunShooter.HideGun();
+                this.enabled = false;
                 break;
         }
     }
@@ -118,13 +139,11 @@ public class PlayerContoller : MonoBehaviour
     /// </summary>
     void TrySwordAttack()
     {
-        if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
-        SoundManager.Instance.PlaySFX(Sound_SFX.Player_SwordAttack);
-        
         if (curState == PlayerState.Roll) return;
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_SwordAttack);
 
-        if (attacker != null)
-            attacker.DoAttack();
+        if (swordAttacker != null)
+            swordAttacker.DoAttack();
     }
 
     /// <summary>
@@ -132,11 +151,12 @@ public class PlayerContoller : MonoBehaviour
     /// </summary>
     void TryGunAttack()
     {
+        if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
         if (curState == PlayerState.Roll) return;
         SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
-
-        if (shooter != null)
-            shooter.DoAttack();
+        
+        if (gunShooter != null)
+            gunShooter.DoAttack();
     }
 
     /// <summary>
@@ -155,7 +175,8 @@ public class PlayerContoller : MonoBehaviour
 
     void TryProtocol()
     {
-        protocol.TryProtocol();
+        if (protocolExecutor != null)
+            protocolExecutor.TryProtocol();
     }
 
     /// <summary>

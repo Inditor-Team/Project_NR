@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New ProtocolCard", menuName = "LEJ/ProtocolCard")]
 public class ProtocolCard : ScriptableObject
 {
+    [Serializable]
     public enum Protocol
     {
         None,

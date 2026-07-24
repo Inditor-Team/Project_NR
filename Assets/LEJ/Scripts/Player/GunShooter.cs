@@ -6,6 +6,7 @@ public class GunShooter : MonoBehaviour
     public Gun Gun => gun;
 
     PlayerStat stat;
+    float lastFireTime;
 
     public void RegisterStat(PlayerStat stat)
     {
@@ -17,6 +18,15 @@ public class GunShooter : MonoBehaviour
         if (stat == null)
             return;
 
-        gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletFireRate], stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
+        if (Time.time - lastFireTime < stat.StatDic[PlayerStat.Stat.BulletFireRate])
+            return;
+
+        gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
+        lastFireTime = Time.time;
+    }
+
+    public void HideGun()
+    {
+        gun.gameObject.SetActive(false);
     }
 }

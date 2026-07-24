@@ -55,7 +55,7 @@ public class SwordAttacker : MonoBehaviour
 
         lastAttackTime = Time.time;
 
-        swingRoutine = StartCoroutine(SwingTime());
+        Swing();
         sword.TryAttack(stat.StatDic[PlayerStat.Stat.SwordDamage]);
     }
 
@@ -85,6 +85,11 @@ public class SwordAttacker : MonoBehaviour
         }
     }
 
+    public void Swing()
+    {
+        swingRoutine = StartCoroutine(SwingTime());
+    }
+
     /// <summary>
     /// Ä®À» È¸Àü½ÃÅµ´Ï´Ù
     /// </summary>
@@ -105,7 +110,7 @@ public class SwordAttacker : MonoBehaviour
         bool isFlip = (aim > 90 && aim < 260);
         float swingStartRot = aim + (isFlip ? -this.swingStartRot : this.swingStartRot);
         float swingEndRot = aim + (isFlip ? -this.swingEndRot : this.swingEndRot);
-        sword.Model.flipY = !isFlip;
+        //sword.Model.flipY = !isFlip;
 
         rotateByAim.enabled = false;
         sword.transform.localRotation = Quaternion.Euler(0f, 0f, swingStartRot);
@@ -129,5 +134,10 @@ public class SwordAttacker : MonoBehaviour
         swingRoutine = null;
 
         Hold();
+    }
+
+    public void HideSword()
+    {
+        sword.gameObject.SetActive(false);
     }
 }
