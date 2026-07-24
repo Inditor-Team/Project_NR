@@ -55,11 +55,18 @@ public class GameManager : MonoBehaviour
     public UnityAction OnSectionClear;
     bool isSetionOneClear = false;
     public bool IsSetionOneClear => isSetionOneClear;
+    public UnityAction OnSectionFail;
 
     public void SectionClear() // 맵 내의 적 전부 처리 시 실행
     {
         Debug.Log("Section Clear !");
         OnSectionClear?.Invoke();
         isSetionOneClear = true;
+    }
+
+    public void SectionFail()
+    {
+        Debug.Log("Section Fail!");
+        OnSectionFail?.Invoke();
     }
 }

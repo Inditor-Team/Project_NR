@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     }
 
     PlayerState curState;
+
     #endregion
 
     #region Cycle
