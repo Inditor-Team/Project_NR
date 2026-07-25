@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isPointerOverUI; // UI 요소인지 감지
 
     float lastProtocolTime;
+    private bool isPaused = false;
 
     enum PlayerState
     {
@@ -237,10 +238,22 @@ public class PlayerController : MonoBehaviour
 
     public void Pause(bool isPause)
     {
+        isPaused = isPause;
         bool activeControl = !isPause; //일시정지라면 active false
 
         animator.enabled = activeControl;
-        rb.simulated = activeControl;
+        // rb.simulated = activeControl; -> 트리거 관련 이벤트에서 문제가 생기기에 입력 시스템을 멈추는 방식으로 변경
+        
+        if (isPause)
+        {
+            rb.linearVelocity = Vector2.zero;
+            input.Player.Disable(); // 입력 자체를 차단
+        }
+        else
+        {
+            input.Player.Enable();
+        }
+        
         swordAttacker.ActiveSword(activeControl);
         gunShooter.ActiveGun(activeControl);
     }
