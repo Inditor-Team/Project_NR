@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// SceneManager ´ë½Å ÇØ´ç Å¬·¡½º »ç¿ë
+/// SceneManager ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 /// </summary>
 public class SceneController : MonoBehaviour
 {
@@ -38,6 +38,7 @@ public class SceneController : MonoBehaviour
         curScene = sceneName;
         StartBGM();
         FindPlayer();
+        SoundManager.Instance.StopAllSFX(); // ì¬ìƒ ì¤‘ì¸ íš¨ê³¼ìŒ ì „ì²´ ì¢…ë£Œ
     }
 
     public void StartBGM()

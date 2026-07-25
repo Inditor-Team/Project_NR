@@ -29,7 +29,6 @@ public class UIManager : MonoBehaviour
         if (!isMove)
         {
             isMove = true;
-
             SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);
             
             panel.SetActive(true);
@@ -48,11 +47,11 @@ public class UIManager : MonoBehaviour
         if (!isMove)
         {
             isMove = true;
+            SoundManager.Instance.PlaySFX(Sound_SFX.UICancel); // 타이밍 조절
+            
             panel.transform.DOLocalMoveY(panel.transform.localPosition.y - 1000f, 0.5f)
                  .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
             {
-                SoundManager.Instance.PlaySFX(Sound_SFX.UICancel);
-
                 panel.SetActive(false);
                 isMove = false; 
             });
@@ -61,6 +60,10 @@ public class UIManager : MonoBehaviour
 
     public void SetMsgPanel(string text, Action func)
     {
+        if (msgController == null)
+        {
+            msgController = FindFirstObjectByType<MessagePanelController>(FindObjectsInactive.Include);
+        }
         msgController.SetMessagePanel(text, func);
     }
 }

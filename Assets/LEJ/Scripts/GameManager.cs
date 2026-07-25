@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     public UnityAction<bool> OnPauseGame;
     public void Pause(bool isPause)
     {
+        GameTime.SetTimeScale(isPause ? 0f : 1f);
         OnPauseGame?.Invoke(isPause);
     }
 }

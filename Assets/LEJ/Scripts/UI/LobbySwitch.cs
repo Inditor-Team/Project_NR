@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,6 +36,9 @@ public class LobbySwitch : MonoBehaviour, IInteractable
         switch (switchType)
         {
             case SwitchType.GameStart:
+                if(uiCanvas.activeSelf)
+                    uiCanvas.SetActive(false); // 튜토리얼 UI 켜져있으면 종료
+                
                 startAlert.SetActive(true);
                 GameManager.Instance.Pause(true);
                 SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);

@@ -264,7 +264,7 @@ public class SoundManager : MonoBehaviour
     
     #endregion
 
-    #region // 플레이어 이동 오디오, 중복 방지를 위해 따로 처리
+    #region 플레이어 이동 오디오, 중복 방지를 위해 따로 처리
 
     public void PlayPlayerMoveSound()
     {

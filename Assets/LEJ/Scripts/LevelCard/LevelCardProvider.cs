@@ -3,13 +3,13 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾î¿¡°Ô ·¹º§ Ä«µå¸¦ Á¦°øÇÕ´Ï´Ù
+/// ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
 /// </summary>
 public class LevelCardProvider : MonoBehaviour
 {
-    [SerializeField] LevelCardData data; //ÃßÈÄ ¸®¼Ò½º¸¦ ÅëÇØ ÇÁ¸®ÆÕ »ý¼ºÀ¸·Î ÂüÁ¶ ¶Ç´Â ½ÃÆ® ¿¬°á
+    [SerializeField] LevelCardData data; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
     [SerializeField] LevelCardUI ui;
-    [SerializeField] PlayerStat stat; //ÃßÈÄ ¸Å´ÏÀú¿¡¼­ Player ÂüÁ¶ ½Ã ±×ÂÊÀ¸·Î ¿¬°á
+    [SerializeField] PlayerStat stat; //ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Player ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private int cardCount = 3;
 
@@ -18,22 +18,22 @@ public class LevelCardProvider : MonoBehaviour
         if (ui == null)
             return;
 
-        //Ä«µå µ¥ÀÌÅÍ Áß 3°³ÀÇ Ä«µå¸¦ ¼±Á¡
+        //Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 3ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
         LevelCard[] choosen = ChooseLevelCard(3);
 
-        //¼±Á¡µÈ Ä«µå¸¦ ui ·Î Á¦°ø
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸¦ ui ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (ui == null)
             return;
 
         for (int i = 0; i < cardCount; i++)
         {
-            //¹öÆ°À» ´­·¶À» ¶§ ½ºÅÈÀÌ Áõ°¡ÇÏµµ·Ï SetStat À» Àü´Þ
+            //ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ SetStat ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Action setStatAction = null;
             foreach (var element in choosen[i].Elements)
                 setStatAction += () => { SetStat(element.targetStat, element.upgradeAmount); };
             setStatAction += () => { ui.CloseUI(); };
 
-            //ui ¿¡°Ô ¼³Á¤À» ¸í·É
+            //ui ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             ui.SetUIElement(choosen[i], i, setStatAction);
         }
 
@@ -43,7 +43,7 @@ public class LevelCardProvider : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ ½ºÅÈÀ» ¾÷±×·¹ÀÌµå
+    /// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½
     /// </summary>
     /// <param name="target"></param>
     /// <param name="amount"></param>
@@ -53,11 +53,11 @@ public class LevelCardProvider : MonoBehaviour
     }
 
     /// <summary>
-    /// È®·ü¿¡ µû¶ó ·¹º§ Ä«µå¸¦ Á¦°ø
+    /// È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     LevelCard[] ChooseLevelCard(int count)
     {
-        //TO DO: È®·ü ±¸Çö
+        //TO DO: È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         LevelCard[] result = new LevelCard[count];
         int index = 0;
         

@@ -23,9 +23,12 @@ public class EnemyShooter : MonoBehaviour
     public event Action OnReloadStart;
     public event Action OnReloadEnd;
     
+    private bool isPaused;
+    
     private void Start()
     {
         PoolManager.Instance.MakeInitPool(bulletPrefab, 10);
+        isPaused = false;
     }
 
     public void SetDamage(float damage)
@@ -50,6 +53,11 @@ public class EnemyShooter : MonoBehaviour
         }
         target = null;
     }
+    
+    public void Pause(bool isPause)
+    {
+        isPaused = isPause;
+    }
 
     private IEnumerator ShootRoutine()
     {
@@ -57,10 +65,11 @@ public class EnemyShooter : MonoBehaviour
         {
             for (int j = 0; j < fireCount; j++)
             {
+                yield return WaitWhilePaused(); // 혹시 모르는 일시 정지 체크
                 Shoot(gunTransform[j%2]);
-                yield return new WaitForSeconds(fireInterval);
+                yield return WaitForSecondsPausable(fireInterval);
             }
-            yield return new WaitForSeconds(shootTimeInterval);
+            yield return WaitForSecondsPausable(shootTimeInterval);
         }
         
         StartCoroutine(Reload()); // TODO: 변수 만들어서 null 처리
@@ -69,7 +78,7 @@ public class EnemyShooter : MonoBehaviour
     private IEnumerator Reload()
     {
         OnReloadStart?.Invoke();
-        yield return new WaitForSeconds(reloadTime);
+        yield return WaitForSecondsPausable(reloadTime);
         OnReloadEnd?.Invoke();
     }
     
@@ -87,5 +96,23 @@ public class EnemyShooter : MonoBehaviour
 
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
+    }
+    
+    // 일시 정지 때 쓸 코루틴 용 시간 함수
+    private IEnumerator WaitForSecondsPausable(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            if (!isPaused)
+                timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    private IEnumerator WaitWhilePaused()
+    {
+        while (isPaused)
+            yield return null;
     }
 }

@@ -22,6 +22,7 @@ public class GunShooter : MonoBehaviour
             return;
 
         gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
         lastFireTime = Time.time;
     }
 

@@ -281,6 +281,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         bool activeControl = !isPause; //일시정지라면 active false
 
+        enemyShooter.Pause(isPause); 
         enemyShooter.enabled = activeControl;
         this.enabled = activeControl;
     }

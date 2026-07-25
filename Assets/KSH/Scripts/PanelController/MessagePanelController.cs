@@ -13,7 +13,6 @@ public class MessagePanelController : MonoBehaviour
         desriptionText.text = text;
         yesFunction = func;
 
-        SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);
         UIManager.Instance.Show(messagePanel);
     }
 
