@@ -34,7 +34,7 @@ public class Gun : WeaponBase
 
     private void Start()
     {
-        //MakeBulletPool();
+        MakeBulletPool();
     }
 
     private void Update()
@@ -43,12 +43,10 @@ public class Gun : WeaponBase
         //    lineRenderer.enabled = false;
     }
 
-    /*
     private void MakeBulletPool()
     {
         PoolManager.Instance.PoolInit(bulletPrefab, bulletPoolSize);
     }
-    */
 
     public void TryAttack(float speed, float damage)
     {
@@ -57,8 +55,8 @@ public class Gun : WeaponBase
         // 총알 사용
         this.speed = speed;
 
-        //curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
-        //curBullet.transform.position = firePoint.position; //총알 위치 초기화
+        curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
+        curBullet.transform.position = firePoint.position; //총알 위치 초기화
 
         Attack();
     }
@@ -67,12 +65,11 @@ public class Gun : WeaponBase
     {
         OnShoot?.Invoke();
 
-        /*총알 사용
+        // 총알 사용
         if (curBullet == null)
             return;
 
         curBullet.OnFire(-firePoint.right, speed, damage, bulletPrefab);
-        */
 
         Vector2 endPosition;
 
@@ -88,16 +85,16 @@ public class Gun : WeaponBase
         {
             endPosition = hit.point;
 
-            if (hit.collider.TryGetComponent<IDamageable>(out var damageable))
-            {
-                damageable.TakeDamage(damage);
+            //if (hit.collider.TryGetComponent<IDamageable>(out var damageable))
+            //{
+            //    damageable.TakeDamage(damage);
 
-                Debug.Log($"{hit.collider.name}에게 데미지 {damage}를 가함");
-            }
-            if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
-            {
-                interactable.OnInteract();
-            }
+            //    Debug.Log($"{hit.collider.name}에게 데미지 {damage}를 가함");
+            //}
+            //if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+            //{
+            //    interactable.OnInteract();
+            //}
         }
         else
             endPosition = startPosition + direction * maxDistance;

@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LobbySwitch : MonoBehaviour, IInteractable
 {
@@ -10,11 +11,6 @@ public class LobbySwitch : MonoBehaviour, IInteractable
     [SerializeField] SceneController.Scene nextSceneName = SceneController.Scene.Scene_Map;
     [SerializeField] GameObject startAlert;
     [SerializeField] GameObject uiCanvas;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        OnInteract();
-    }
 
     public void CloseUI()
     {

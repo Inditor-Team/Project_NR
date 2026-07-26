@@ -65,24 +65,12 @@ public class PlayerController : MonoBehaviour
 
     void OnEnable()
     {
-        //Input System 활성화 후 입력 받아오기
-        input.Player.Enable();
-
-        input.Player.PrimaryAttack.performed += _ => TryGunAttack();
-        input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
-        input.Player.Roll.performed += _ => TryRoll();
-        input.Player.SpecialSkill.performed += _ => TryProtocol();
+        EnableInput();
     }
 
     private void OnDestroy()
     {
-        input.Player.Disable();
-
-        input.Player.PrimaryAttack.performed -= _ => TryGunAttack();
-        input.Player.SecondaryAttack.performed -= _ => TrySwordAttack();
-        input.Player.Roll.performed -= _ => TryRoll();
-        input.Player.SpecialSkill.performed -= _ => TryProtocol();
-
+        DisableInput();
         GameManager.Instance.OnPauseGame -= Pause;
     }
 
@@ -103,6 +91,29 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    #endregion
+
+    #region
+    void EnableInput()
+    {
+        //Input System 활성화 후 입력 받아오기
+        input.Player.Enable();
+
+        input.Player.PrimaryAttack.performed += _ => TryGunAttack();
+        input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
+        //input.Player.Roll.performed += _ => TryRoll();
+        input.Player.SpecialSkill.performed += _ => TryProtocol();
+    }
+
+    void DisableInput()
+    {
+        input.Player.Disable();
+
+        input.Player.PrimaryAttack.performed -= _ => TryGunAttack();
+        input.Player.SecondaryAttack.performed -= _ => TrySwordAttack();
+        //input.Player.Roll.performed -= _ => TryRoll();
+        input.Player.SpecialSkill.performed -= _ => TryProtocol();
+    }
     #endregion
 
     #region FSM
@@ -149,9 +160,6 @@ public class PlayerController : MonoBehaviour
                     animator.RollAnim(false);
                     animator.DoFlip = false;
                     curState = PlayerState.Idle;
-
-                    animator.DieAnim();
-                    Pause(true);
                 }
                 if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
                 {
@@ -238,24 +246,16 @@ public class PlayerController : MonoBehaviour
 
     public void Pause(bool isPause)
     {
+        Debug.Log($"Is Player Pause {isPause}");
         isPaused = isPause;
         bool activeControl = !isPause; //일시정지라면 active false
 
-        animator.enabled = activeControl;
         // rb.simulated = activeControl; -> 트리거 관련 이벤트에서 문제가 생기기에 입력 시스템을 멈추는 방식으로 변경
-        
+
         if (isPause)
-        {
-            rb.linearVelocity = Vector2.zero;
-            input.Player.Disable(); // 입력 자체를 차단
-        }
+            DisableInput(); // 입력 자체를 차단
         else
-        {
-            input.Player.Enable();
-        }
-        
-        swordAttacker.ActiveSword(activeControl);
-        gunShooter.ActiveGun(activeControl);
+            EnableInput();
     }
     #endregion
 }
