@@ -37,7 +37,7 @@ public class LevelCardProvider : MonoBehaviour
             ui.SetUIElement(choosen[i], i, setStatAction);
         }
 
-        GameManager.Instance.Pause(true);
+        GameManager.Instance.RequestPause();// Pause(true);
 
         ui.ShowUI();
     }

@@ -26,7 +26,10 @@ public class ProtocolExecutor : MonoBehaviour
             return;
 
         if (coolTime < 1)
-            coolTime += Time.deltaTime / stat.StatDic[PlayerStat.Stat.ProtocolRate];
+        {
+            if(GameTime.WorldTimeScale > 0f) // 게임 시간이 정지되어 있으면 쿨타임도 정지  
+                coolTime += Time.deltaTime / stat.StatDic[PlayerStat.Stat.ProtocolRate];
+        }
     }
 
     public void RegisterStat(PlayerStat stat)

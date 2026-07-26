@@ -18,7 +18,7 @@ public class LobbySwitch : MonoBehaviour, IInteractable
 
     public void CloseUI()
     {
-        GameManager.Instance.Pause(false);
+        GameManager.Instance.ReleasePause();// Pause(false);
     }
 
     public void GameStart() 
@@ -40,7 +40,7 @@ public class LobbySwitch : MonoBehaviour, IInteractable
                     uiCanvas.SetActive(false); // 튜토리얼 UI 켜져있으면 종료
                 
                 startAlert.SetActive(true);
-                GameManager.Instance.Pause(true);
+                GameManager.Instance.RequestPause();// Pause(true);
                 SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);
                 break;
             case SwitchType.HowTo:

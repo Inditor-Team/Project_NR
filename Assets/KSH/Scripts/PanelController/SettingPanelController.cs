@@ -35,7 +35,7 @@ public class SettingPanelController : MonoBehaviour
     public void ShowSettingPanel()
     {
         if (settingPanel == null) return;
-        GameManager.Instance.Pause(true);
+        GameManager.Instance.RequestPause();// Pause(true);
 
         UIManager.Instance.Show(settingPanel);
     }
@@ -43,7 +43,7 @@ public class SettingPanelController : MonoBehaviour
     public void HideSettingPanel()
     {
         UIManager.Instance.Hide(settingPanel);
-        GameManager.Instance.Pause(false);
+        GameManager.Instance.ReleasePause();// Pause(false);
     }
 
     private void OnBGMValueChanged(float value) // 변경될 때마다 적용

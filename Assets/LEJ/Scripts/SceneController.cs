@@ -33,7 +33,7 @@ public class SceneController : MonoBehaviour
             prevScene = curScene;
 
         SceneManager.LoadScene(sceneName.ToString());
-        GameManager.Instance.Pause(false);
+        GameManager.Instance.ForcedRelease(); // Pause(false);
         
         curScene = sceneName;
         StartBGM();
