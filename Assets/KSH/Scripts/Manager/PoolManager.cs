@@ -62,8 +62,8 @@ public class PoolManager : MonoBehaviour
     public GameObject Get(GameObject prefab) // 오브젝트 풀을 가져올 때 사용
     {
         if (!pools.ContainsKey(prefab))
-            return null;
-          
+            MakeInitPool(prefab, 10); //null나는 경우가 있어 수정
+
         return pools[prefab].Get();
     }
 
@@ -99,16 +99,25 @@ public class PoolManager : MonoBehaviour
     
     protected virtual void OnTakeFromPool(GameObject obj)
     {
+        if (obj == null)
+            return;
+
         obj.SetActive(true);
     }
     
     private void OnReturnedToPool(GameObject obj)
     {
+        if (obj == null)
+            return;
+
         obj.SetActive(false);
     }
 
     private void OnDestroyPoolObject(GameObject obj)
     {
+        if (obj == null)
+            return;
+
         Destroy(obj);
     }
 }

@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour
                         SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
 
                     curState = PlayerState.Die;
+                    animator.DieAnim();
                     GameManager.Instance.OnSectionFail();
                 }
                 break;
@@ -146,9 +147,10 @@ public class PlayerController : MonoBehaviour
                         SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
 
                     curState = PlayerState.Die;
+                    animator.DieAnim();
+
                     GameManager.Instance.OnSectionFail();
 
-                    animator.DieAnim();
                     Pause(true);
                 }
                 break;
@@ -166,10 +168,10 @@ public class PlayerController : MonoBehaviour
                     if (SoundManager.Instance != null)
                         SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
 
+                    animator.DieAnim();
                     curState = PlayerState.Die;
                     GameManager.Instance.OnSectionFail();
 
-                    animator.DieAnim();
                     Pause(true);
                 }
                 break;

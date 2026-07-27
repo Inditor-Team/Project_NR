@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
@@ -24,10 +25,14 @@ public class EnemyShooter : MonoBehaviour
     public event Action OnReloadEnd;
     
     private bool isPaused;
-    
-    private void Start()
+
+    private void Awake()
     {
         PoolManager.Instance.MakeInitPool(bulletPrefab, 10);
+    }
+
+    private void Start()
+    {
         isPaused = false;
     }
 
@@ -90,6 +95,9 @@ public class EnemyShooter : MonoBehaviour
         Vector2 direction = ((Vector2)target.position - spawnPos).normalized;
         
         GameObject enemyBullet = PoolManager.Instance.Get(bulletPrefab); // bulletPool.Get();
+
+        if (enemyBullet == null) return; //null 뜨는 경우가 있어 예외처리
+
         enemyBullet.transform.position = spawnPos;
         
         enemyBullet.GetComponent<EnemyBullet>().Launch(direction, shootSpeed, damage);

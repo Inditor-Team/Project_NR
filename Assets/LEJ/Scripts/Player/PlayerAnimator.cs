@@ -69,6 +69,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void DieAnim()
     {
+        anim.Play("Death");
         anim.SetBool("IsDie", true);
     }
 }

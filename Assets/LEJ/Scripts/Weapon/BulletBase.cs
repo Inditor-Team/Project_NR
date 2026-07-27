@@ -43,7 +43,6 @@ public class BulletBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"player bullet trigger entered in {collision.gameObject.name}");
         IDamageable damageable = collision.GetComponent<IDamageable>();
         IInteractable interactable = collision.GetComponent<IInteractable>();
 

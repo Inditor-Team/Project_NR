@@ -14,6 +14,8 @@ public class EnemyBullet : PoolObjectBase
     
     private GameObject originPrefab; // 오리진 프리팹
 
+    [SerializeField] LayerMask playerLayer;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -57,10 +59,13 @@ public class EnemyBullet : PoolObjectBase
         if (isReleased) return;
         isReleased = true;
         
-        IDamageable target = other.GetComponent<IDamageable>();
+        if (other.gameObject.layer == playerLayer) 
+        {
+            IDamageable target = other.GetComponent<IDamageable>();
 
-        if (target != null)
-            target.TakeDamage(damage);
+            if (target != null)
+                target.TakeDamage(damage);
+        }
         
         PoolManager.Instance.Release(originPrefab, this.gameObject);
     }
