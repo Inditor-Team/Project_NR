@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// SceneManager ��� �ش� Ŭ���� ���
+/// SceneManager 대신 사용합니다
 /// </summary>
 public class SceneController : MonoBehaviour
 {

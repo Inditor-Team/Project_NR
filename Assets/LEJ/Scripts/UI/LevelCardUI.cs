@@ -36,7 +36,7 @@ public class LevelCardUI : MonoBehaviour
             elements[i].gameObject.SetActive(false);
     }
 
-    public void SetUIElement(LevelCard data, int index, Action buttonAction)
+    public void SetUIElement(LevelCardSO data, int index, Action buttonAction)
     {
         LevelCardUIElement curElement = elements[index];
 
@@ -65,16 +65,16 @@ public class LevelCardUI : MonoBehaviour
         //카드 색상 변경 (임시)
         switch (data.type)
         {
-            case LevelCard.LevelCardType.Attack:
+            case LevelCardSO.LevelCardType.Attack:
                 curElement.image.color = Color.red;
                 break;
-            case LevelCard.LevelCardType.Shield:
+            case LevelCardSO.LevelCardType.Shield:
                 curElement.image.color = Color.blue;
                 break;
-            case LevelCard.LevelCardType.Move:
+            case LevelCardSO.LevelCardType.Move:
                 curElement.image.color = Color.yellow;
                 break;
-            case LevelCard.LevelCardType.Special:
+            case LevelCardSO.LevelCardType.Special:
                 curElement.image.color = Color.magenta;
                 break;
         }
