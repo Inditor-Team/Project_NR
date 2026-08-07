@@ -46,6 +46,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private int credit = 0; //게임 내 재화
+    public int Credit
+    {
+        get => credit;
+        set
+        {
+            credit = value;
+            OnCreditChanged?.Invoke(credit);
+        }
+    }
+
+    public UnityAction<int> OnCreditChanged;
+
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
     public void SetProtocol(ProtocolCard.Protocol protocol)

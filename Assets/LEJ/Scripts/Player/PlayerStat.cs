@@ -10,23 +10,23 @@ public class PlayerStat : MonoBehaviour, IDamageable
     {
         None,
 
-        MoveSpeed, //������ �ӵ�
-        RollSpeed, //������ �ӵ�
-        RollDuration, //������ �Ⱓ
-        RollRate, //�ٽ� ����������� ����
+        MoveSpeed, //이동 속도
+        RollSpeed, //구르기 속도
+        RollDuration, //구르는 시간
+        RollRate, //구른 후 다시 구르기까지의 쿨타임
 
-        SwordSwingSpeed, //Į�� �ֵθ��� �ӵ�
-        SwordDamage, //Į ������
-        SwordSwingRate, //Į�� �ֵθ��� �� �� �ٽ� �ֵθ� �������� �Ⱓ
+        SwordSwingSpeed, //칼 휘두르는 속도
+        SwordDamage, //칼이 주는 데미지
+        SwordSwingRate, //휘두른 후 다시 휘두르기까지의 쿨타임
 
-        BulletSpeed, //�Ѿ� �ӵ�
-        BulletDamage, //�Ѿ� ������
-        BulletFireRate, //���� �� �� �ٽ� �� �������� �Ⱓ
+        BulletSpeed, //총알의 속도 
+        BulletDamage, //총알이 주는 데미지
+        BulletFireRate, //발사 후 다시 발사까지의 쿨타임
 
         ProtocolDuration,
         ProtocolRate,
 
-        Life, //����
+        Life, //생명
 
         Count
     }
@@ -72,6 +72,11 @@ public class PlayerStat : MonoBehaviour, IDamageable
         UpdateStat(Stat.ProtocolDuration, 2.5f);
         UpdateStat(Stat.ProtocolRate, 10f);
         UpdateStat(Stat.Life, 5f);
+    }
+
+    public void EarnLife(float amount)
+    {
+        UpdateStat(Stat.Life, amount);
     }
 
     public void TakeDamage(float damage)
