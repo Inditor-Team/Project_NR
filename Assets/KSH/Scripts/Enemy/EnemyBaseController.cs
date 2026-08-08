@@ -28,7 +28,6 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     
     // 기본 속성
     protected float defaultSpeed;
-    protected float combatTargetDist; // 플레이어와 떨어진 간격
     protected float maxHealth;
     protected float health;
     protected float damage;
@@ -41,7 +40,6 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         collider = GetComponent<Collider2D>();
 
         defaultSpeed = data.moveSpeed;
-        combatTargetDist = data.combatTargetDist; // 플레이어와 떨어진 간격
         maxHealth = data.health;
         health = data.health;
         damage = data.damage;

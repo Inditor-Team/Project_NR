@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using DG.Tweening;
 
 public class MineEnemyController : EnemyBaseController
 {
@@ -21,21 +21,34 @@ public class MineEnemyController : EnemyBaseController
     [SerializeField] private Transform mapCenter;
     [SerializeField] private float fleeRecalcInterval = 0.75f; // 방향 재계산 간격
     [SerializeField] private float fleeResetDist = 10f; // Reset 상태로 전이하는 간격
+    [SerializeField] private GameObject detectEffect;
 
     [Header("이동 가중치, 임시")]
     [SerializeField] private float weightPlayerDistance = 1.0f;
     [SerializeField] private float weightGoToOpenSpace = 0.6f;
     [SerializeField] private float weightNoise = 0.2f;
+    [SerializeField] private float weightAvoidWall = 1.5f;
 
     private Vector2 currentFleeDir;   // 도주 방향
     private float fleeRecalcTimer;    // 다음 재계산까지 타이머
+    
+    // 벽에 막혔을 시 재계산 관련
+    private Vector2 lastCheckedPos; // 마지막 Pos
+    private float stuckTimer; // 벽 막힌 시간 타이머
+    private float stuckThreshold = 0.3f; // 몇 초 막혔을 때 재계산?
+    private float stuckDistThreshold = 0.02f; // 거리 차이
+    
+    [Header("벽 회피 관련")]
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private float wallCheckDistance = 1.2f; // 레이 길이
+    private float[] wallCheckAngles = { 0f, 45f, -45f, 90f, -90f }; // 레이 방향
     
     // 리셋 상태 관련
     private float resetCooldown = 10f; // 이정도 시간동안 떨어져있으면 순찰 상태로 변경
     private float resetTimer;
     
     // 지뢰 관련
-    private float waitTime = 1.5f; // 터지기 전 대기 시간
+    private float waitTime = 3f; // 터지기 전 대기 시간
     public float mineDropInterval = 1.5f; // 지뢰를 뿌리는 간격
     private float mineDropTimer; // 다음 지뢰까지 타이머
     
@@ -44,11 +57,12 @@ public class MineEnemyController : EnemyBaseController
         base.Awake();
         landMineSpeed = defaultSpeed * 3f; // 임시, 순찰이랑 지뢰 뿌리는 속도가 다르게
         enemyPlacer.SetValue(waitTime, damage);
+        detectEffect.SetActive(false);
     }
     
     public override void TakeDamage(float damegeAmount)
     {
-        if (currentStat == MineStat.Patrol) // 순찰 중에 피격되면 인지 -> 지뢰 공격
+        if (currentStat == MineStat.Patrol || currentStat == MineStat.Reset) // 순찰 중에 피격되면 인지 -> 지뢰 공격
             ChangeStat(MineStat.Detect);
         
         if (currentStat == MineStat.Dead) return; // 이미 Dead면 중복 실행되지 않도록 처리
@@ -67,6 +81,7 @@ public class MineEnemyController : EnemyBaseController
                 SetLandMine();
                 break;
             case MineStat.Reset:
+                // TODO: Reset 풀린지 얼마 안됐으면 좀 더 기다렸다가 리셋
                 resetTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
                 if (resetTimer <= 0f)
                     ChangeStat(MineStat.Patrol); // 재순찰
@@ -81,18 +96,26 @@ public class MineEnemyController : EnemyBaseController
         currentStat = newStat;
         switch (currentStat)
         {
+            case MineStat.Patrol:
+                anim.SetBool("isMove", true);
+                break;
             case MineStat.Detect: // 플레이어 인지
-                if (!healthUI.activeSelf) healthUI.SetActive(true);
+                anim.SetBool("isMove", false);
                 DetectPlayer();
                 break;
             case MineStat.LandMine:
+                anim.SetBool("isMove", true);
                 fleeRecalcTimer = 0f;
                 mineDropTimer = 0f; // 바로 지뢰 설치
+                lastCheckedPos = transform.position;
+                stuckTimer = stuckThreshold;
                 break;
             case MineStat.Reset:
+                anim.SetBool("isMove", false);
                 resetTimer = resetCooldown;
                 break;
             case MineStat.Dead: // 한 번만 실행이라 여기서 동작
+                detectEffect.transform.DOKill();
                 SetDead();
                 break;
         }
@@ -100,8 +123,19 @@ public class MineEnemyController : EnemyBaseController
 
     private void DetectPlayer() // 플레이어 감지
     {
-        // 0.5초 대기하면서 ! 이펙트 같은 거 추가?
-        ChangeStat(MineStat.LandMine);
+        // 효과음 추가
+        detectEffect.SetActive(true);
+        detectEffect.transform.DOLocalMoveY(detectEffect.transform.localPosition.y + 1.0f, 0.5f)
+            .SetEase(Ease.OutCubic).OnComplete(() =>
+            {
+                detectEffect.transform.position = gameObject.transform.position;
+                detectEffect.SetActive(false);
+                
+                if (currentStat != MineStat.Detect) return; // 혹시 상태 바뀌었으면 아래 무시
+                
+                if (!healthUI.activeSelf) healthUI.SetActive(true);
+                ChangeStat(MineStat.LandMine); 
+            });
     }
 
     private void SetLandMine() // 지뢰 설치 및 이동
@@ -120,6 +154,25 @@ public class MineEnemyController : EnemyBaseController
         sprite.flipX = currentFleeDir.x > 0f;
         
         // 만약 이동 포지션이랑 직전 포지션이 n초동안 0에 가까우면 강제 재계산 추가
+        if (Vector2.Distance(transform.position, lastCheckedPos) < stuckDistThreshold)
+        {
+            // 막힌 상태면
+            stuckTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
+            if (stuckTimer <= 0f) // 방향 재계산
+            {
+                Debug.Log("벽 막힘으로 인한 재계산");
+                fleeRecalcTimer = fleeRecalcInterval; 
+                stuckTimer = stuckThreshold;
+                
+                Vector2 avoidWall = AvoidWall();
+                currentFleeDir = avoidWall.normalized;
+            }
+        }
+        else
+        {
+            lastCheckedPos = transform.position;
+            stuckTimer = stuckThreshold;
+        }
         
         // 지뢰 관련
         mineDropTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
@@ -137,22 +190,63 @@ public class MineEnemyController : EnemyBaseController
     {
         Vector2 playerDistance = (transform.position - target.position).normalized; // 플레이어와 차이
         Vector2 goToOpenSpace = (mapCenter.position - transform.position).normalized; // 맵 중앙
-        Vector2 avoidOwnMines = Vector2.zero; // 지뢰 회피? 나중에 추가
+        Vector2 avoidWall = AvoidWall(); // 벽 피하기
         Vector2 noise = Random.insideUnitCircle.normalized; // 랜덤 값
         
         Vector2 combined = playerDistance * weightPlayerDistance +
                            goToOpenSpace * weightGoToOpenSpace +
-                           avoidOwnMines +               // 나중에 가중치 곱하기, 플레이어보다 크고 맵 중앙 보다 작게?
+                           avoidWall * weightAvoidWall +
                            noise * weightNoise;
-        
-        /*Debug.Log($"1) 플레이어로부터 멀어지는 벡터 {awayFromPlayer}, 2) 맵 중앙 {towardOpenSpace}, " +
-                  $"4) 랜덤 노이즈 {noise}, 다 합쳐서 {combined}");*/
         
         if (combined.sqrMagnitude < 0.001f) // 결과값 애매하면 플레이어 피하는 방향으로만
             return playerDistance;
 
         return combined.normalized;
     }
+    
+    private Vector2 AvoidWall()
+    {
+        Vector2 avoidSum = Vector2.zero;
+        Vector2 baseDir = currentFleeDir.sqrMagnitude > 0.001f ? currentFleeDir : Vector2.up; 
+
+        foreach (float angle in wallCheckAngles) // 벽 체크
+        {
+            Vector2 rayDir = Quaternion.Euler(0f, 0f, angle) * baseDir;
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                rayDir,
+                wallCheckDistance,
+                wallLayer);
+
+            if (hit.collider == null) continue; // 벽 없으면 무시
+
+            Vector2 pushDir = ((Vector2)transform.position - hit.point).normalized;
+
+            float closeness = 1f - (hit.distance / wallCheckDistance);
+
+            avoidSum += pushDir * closeness; // 누적
+        }
+
+        return avoidSum;
+    }
+    
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected() // 테스트용
+    {
+        if (!Application.isPlaying) return;
+
+        Vector2 baseDir = currentFleeDir.sqrMagnitude > 0.001f ? currentFleeDir : Vector2.up;
+
+        foreach (float angle in wallCheckAngles)
+        {
+            Vector2 rayDir = Quaternion.Euler(0f, 0f, angle) * baseDir;
+            Gizmos.color = Physics2D.Raycast(transform.position, rayDir, wallCheckDistance, wallLayer).collider != null
+                ? Color.red   // 벽 O
+                : Color.green; // 벽 X
+            Gizmos.DrawLine(transform.position, (Vector2)transform.position + rayDir * wallCheckDistance);
+        }
+    }
+#endif
     
     private void CheckFleeExitCondition()
     {
@@ -178,6 +272,6 @@ public class MineEnemyController : EnemyBaseController
 
     protected override void ResetStateMachine()
     {
-        currentStat = MineStat.Patrol;
+        ChangeStat(MineStat.Patrol);
     }
 }

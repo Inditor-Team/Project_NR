@@ -7,7 +7,7 @@ public class EnemyPlacer : MonoBehaviour
     private float waitTime; // 터지기 전까지 대기 시간
     private float damage;
     
-    private void Awake()
+    private void Start() // 테스트 끝나면 Awake로 변경
     {
         PoolManager.Instance.MakeInitPool(minePrefab, 5);
     }

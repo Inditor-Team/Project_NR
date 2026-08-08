@@ -293,8 +293,8 @@ GameObject:
   - component: {fileID: 8145189058968569123}
   - component: {fileID: 2102418608792293904}
   - component: {fileID: 6321552780878277707}
-  - component: {fileID: 3075796471179319055}
   - component: {fileID: 2334348082020656837}
+  - component: {fileID: 6056366058700326206}
   m_Layer: 8
   m_Name: Wasp
   m_TagString: Enemy
@@ -443,26 +443,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3075796471179319055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5545420763661645084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79e2ef373d87846498282e2fe80e1f30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  detectScope: {fileID: 7988260072277971452}
-  enemyShooter: {fileID: 5646959653372715449}
-  data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
-  healthUI: {fileID: 51632978863699668}
-  healthSlider: {fileID: 7104441435076597022}
 --- !u!95 &2334348082020656837
 Animator:
   serializedVersion: 7
@@ -485,6 +465,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6056366058700326206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545420763661645084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ec58890f0fe3649b991ea257ee6274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaspEnemyController
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  detectScope: {fileID: 7988260072277971452}
+  data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
+  healthUI: {fileID: 51632978863699668}
+  healthSlider: {fileID: 7104441435076597022}
+  enemyShooter: {fileID: 5646959653372715449}
 --- !u!1 &6593542115435485733
 GameObject:
   m_ObjectHideFlags: 0

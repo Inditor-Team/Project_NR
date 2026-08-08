@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private bool isRightSide = true;
     private Vector2 startPos;
     private float sideLimit = 3f; // 몇 만큼 횡 이동 하는 지
+    private float combatTargetDist = 5f; // 플레이어와 떨어진 간격
     
     // 재장전
     private float reloadSpeed;
@@ -41,7 +42,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     // 기본 속성
     private float defaultSpeed;
-    private float combatTargetDist; // 플레이어와 떨어진 간격
     private float maxHealth;
     private float health;
     private float damage;
@@ -65,7 +65,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         startPos = transform.position;
         defaultSpeed = data.moveSpeed;
-        combatTargetDist = data.combatTargetDist; // 플레이어와 떨어진 간격
         maxHealth = data.health;
         health = data.health;
         damage = data.damage;

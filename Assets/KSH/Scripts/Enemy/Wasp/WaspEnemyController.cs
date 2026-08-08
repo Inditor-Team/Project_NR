@@ -8,6 +8,7 @@ public class WaspEnemyController : EnemyBaseController
     private bool isRightSide = true;
     private Vector2 startPos;
     private float sideLimit = 3f; // 몇 만큼 횡 이동 하는 지
+    private float combatTargetDist = 5f; // 플레이어와 떨어진 간격
     
     // 재장전
     private float reloadSpeed;
