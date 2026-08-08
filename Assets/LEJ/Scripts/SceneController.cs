@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -26,6 +27,7 @@ public class SceneController : MonoBehaviour
     public enum Scene { None, Scene_Lobby, Scene_Map, Scene_Stage1, Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;
+    public UnityAction<Scene> OnSceneChanged;
 
     public void ChangeScene(Scene sceneName)
     {
@@ -39,6 +41,8 @@ public class SceneController : MonoBehaviour
         StartBGM();
         FindPlayer();
         SoundManager.Instance.StopAllSFX(); // 재생 중인 효과음 전체 종료
+
+        OnSceneChanged?.Invoke(curScene);
     }
 
     public void StartBGM()

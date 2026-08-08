@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
                     curState = PlayerState.Die;
                     animator.DieAnim();
-                    GameManager.Instance.OnSectionFail();
+                    SectorManager.Instance.SectorFail();
                 }
                 break;
 
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
                     curState = PlayerState.Die;
                     animator.DieAnim();
 
-                    GameManager.Instance.OnSectionFail();
+                    SectorManager.Instance.SectorFail();
 
                     Pause(true);
                 }
@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
                     animator.DieAnim();
                     curState = PlayerState.Die;
-                    GameManager.Instance.OnSectionFail();
+                    SectorManager.Instance.SectorFail();
 
                     Pause(true);
                 }

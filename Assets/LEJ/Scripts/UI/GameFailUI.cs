@@ -8,16 +8,16 @@ public class GameFailUI : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        GameManager.Instance.OnSectionFail += Play;
+        SectorManager.Instance.OnSectorFail += Play;
         anim.enabled = false;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnSectionFail -= Play;
+        SectorManager.Instance.OnSectorFail -= Play;
     }
 
-    void Play()
+    void Play(SectorSO.SectorType type)
     {
         anim.enabled = true;
         Invoke("BackToMap", 1.1f);
