@@ -1,10 +1,13 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
+using UnityEngine.WSA;
 
 /// <summary>
 /// 월드 상 아이템 오브젝트입니다.
 /// </summary>
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviour, IInteractable
 {
     [SerializeField] SpriteRenderer sprite;
 
@@ -12,21 +15,32 @@ public class ItemObject : MonoBehaviour
     [SerializeField] ItemSO myItem;
     public ItemSO MyItem => myItem;
 
+    float magneticMoveSpeed = 5f;
+    bool isInteracted = false;
+
     #region DOTween
     private Tween floatingTween;
     private float moveDistance = 0.15f;
     private float moveDuration = 0.5f;
 
-    private void OnEnable()
+    private void OnDisable()
     {
-        Vector3 targetPosition = transform.localPosition + Vector3.up * moveDistance;
+        StopFloatAnim();
+
+        isInteracted = false;
+    }
+
+    private void DoFloatAnim()
+    {
+        Vector3 targetPosition = transform.position + Vector3.up * moveDistance;
 
         floatingTween = transform
-            .DOLocalMove(targetPosition, moveDuration)
+            .DOMove(targetPosition, moveDuration)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
     }
-    private void OnDisable()
+
+    private void StopFloatAnim()
     {
         floatingTween?.Kill();
         floatingTween = null;
@@ -37,20 +51,32 @@ public class ItemObject : MonoBehaviour
     {
         myItem = item;
         sprite.sprite = item.Sprite;
+        DoFloatAnim();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        IItemHolder itemHolder = collision.GetComponent<IItemHolder>();
+        IItemHolder holder = collision.GetComponent<IItemHolder>();
 
-        if (itemHolder == null)
+        if (holder == null)
             return;
 
-        if (myItem != null)
+        if (!isInteracted) //플레이어에 의해 상호작용 됐을 때 주워짐
+            return;
+
+        StopFloatAnim();
+        transform.position = Vector2.MoveTowards(transform.position, collision.transform.position, magneticMoveSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, collision.transform.position) < 0.1f)
         {
-            itemHolder.HoldItem(this);
-            ItemManager.Instance.DespawnItem(this);
+            holder.HoldItem(this);
             myItem = null;
+            ItemManager.Instance.DespawnItem(gameObject);
         }
+    }
+
+    public void OnInteract()
+    {
+        isInteracted = true;
     }
 }

@@ -10,6 +10,11 @@ public class ItemSlotUI : MonoBehaviour
     Color transparent = new Color(0, 0, 0, 0);
     Color original = new Color(1, 1, 1, 1);
 
+    private void Awake()
+    {
+        itemSprite.color = transparent;
+    }
+
     public void UpdateUI(ItemSO curItem)
     {
         if (curItem == null)

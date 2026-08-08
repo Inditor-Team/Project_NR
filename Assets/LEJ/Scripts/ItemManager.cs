@@ -30,16 +30,16 @@ public class ItemManager : MonoBehaviour
         //풀 매니저에서 오브젝트 가져오기
         GameObject newGO = PoolManager.Instance.Get(itemObjectPrefab);
         newGO.transform.position = spawnPos.position;
-
+        
         //ItemObject 로 아이템 정보 세팅
         newGO.GetComponent<ItemObject>().SetItem(item);
 
         newGO.SetActive(true);
     }
 
-    public void DespawnItem(ItemObject itemObject)
+    public void DespawnItem(GameObject instance)
     {
         //풀 매니저에서 오브젝트 반환
-        PoolManager.Instance.Release(itemObjectPrefab, itemObject.gameObject);
+        PoolManager.Instance.Release(itemObjectPrefab, instance);
     }
 }

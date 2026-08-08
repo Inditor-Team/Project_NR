@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     GunShooter gunShooter;
     SwordAttacker swordAttacker;
     ProtocolExecutor protocolExecutor;
+    PlayerInventory inventory;
 
     Rigidbody2D rb;
 
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     float lastProtocolTime;
     private bool isPaused = false;
+
+    IInteractable curInteractable;
 
     enum PlayerState
     {
@@ -52,6 +55,7 @@ public class PlayerController : MonoBehaviour
         swordAttacker = GetComponent<SwordAttacker>();
         gunShooter = GetComponent<GunShooter>();
         protocolExecutor = GetComponent<ProtocolExecutor>();
+        inventory = GetComponent<PlayerInventory>();
 
         swordAttacker.RegisterStat(stat);
         gunShooter.RegisterStat(stat);
@@ -91,9 +95,22 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //현재 상호작용 가능한 오브젝트와 트리거 됐다면 캐싱합니다
+        curInteractable = collision.gameObject.GetComponent<IInteractable>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //기존에 캐싱했던 상호작용 가능한 오브젝트와 트리커 Exit 됐다면 캐싱을 풉니다
+        if (curInteractable != null && curInteractable == collision.gameObject.GetComponent<IInteractable>())
+            curInteractable = null;
+    }
+
     #endregion
 
-    #region
+    #region Input
     void EnableInput()
     {
         //Input System 활성화 후 입력 받아오기
@@ -103,6 +120,8 @@ public class PlayerController : MonoBehaviour
         input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
         //input.Player.Roll.performed += _ => TryRoll();
         input.Player.SpecialSkill.performed += _ => TryProtocol();
+        input.Player.Interact.performed += _ => Interact();
+        input.Player.Use.performed += _ => Use();
     }
 
     void DisableInput()
@@ -113,6 +132,8 @@ public class PlayerController : MonoBehaviour
         input.Player.SecondaryAttack.performed -= _ => TrySwordAttack();
         //input.Player.Roll.performed -= _ => TryRoll();
         input.Player.SpecialSkill.performed -= _ => TryProtocol();
+        input.Player.Interact.performed -= _ => Interact();
+        input.Player.Use.performed -= _ => Use();
     }
     #endregion
 
@@ -258,6 +279,22 @@ public class PlayerController : MonoBehaviour
             DisableInput(); // 입력 자체를 차단
         else
             EnableInput();
+    }
+
+    void Interact()
+    {
+        if (curInteractable == null)
+            return;
+
+        curInteractable.OnInteract();
+    }
+
+    void Use()
+    {
+        if (inventory == null)
+            return;
+
+        inventory.UseItem();
     }
     #endregion
 }

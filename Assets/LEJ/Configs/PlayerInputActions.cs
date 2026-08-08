@@ -116,7 +116,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -156,9 +156,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Easteregg"",
+                    ""name"": ""Use"",
                     ""type"": ""Button"",
-                    ""id"": ""af02a927-4c74-491a-acb9-6cbdb3270931"",
+                    ""id"": ""a755ef11-548f-4012-bdf5-2e3a41c74a4c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -432,12 +432,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0c8ac49a-2625-4162-97f5-c4c6cadbe3e1"",
-                    ""path"": ""<Keyboard>/u"",
+                    ""id"": ""54f5dea5-6d23-4e90-9882-d7824aea0a68"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Easteregg"",
+                    ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1032,7 +1032,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_PrimaryAttack = m_Player.FindAction("PrimaryAttack", throwIfNotFound: true);
         m_Player_SecondaryAttack = m_Player.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Player_SpecialSkill = m_Player.FindAction("SpecialSkill", throwIfNotFound: true);
-        m_Player_Easteregg = m_Player.FindAction("Easteregg", throwIfNotFound: true);
+        m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1133,7 +1133,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PrimaryAttack;
     private readonly InputAction m_Player_SecondaryAttack;
     private readonly InputAction m_Player_SpecialSkill;
-    private readonly InputAction m_Player_Easteregg;
+    private readonly InputAction m_Player_Use;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1174,9 +1174,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @SpecialSkill => m_Wrapper.m_Player_SpecialSkill;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Easteregg".
+        /// Provides access to the underlying input action "Player/Use".
         /// </summary>
-        public InputAction @Easteregg => m_Wrapper.m_Player_Easteregg;
+        public InputAction @Use => m_Wrapper.m_Player_Use;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1224,9 +1224,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SpecialSkill.started += instance.OnSpecialSkill;
             @SpecialSkill.performed += instance.OnSpecialSkill;
             @SpecialSkill.canceled += instance.OnSpecialSkill;
-            @Easteregg.started += instance.OnEasteregg;
-            @Easteregg.performed += instance.OnEasteregg;
-            @Easteregg.canceled += instance.OnEasteregg;
+            @Use.started += instance.OnUse;
+            @Use.performed += instance.OnUse;
+            @Use.canceled += instance.OnUse;
         }
 
         /// <summary>
@@ -1259,9 +1259,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SpecialSkill.started -= instance.OnSpecialSkill;
             @SpecialSkill.performed -= instance.OnSpecialSkill;
             @SpecialSkill.canceled -= instance.OnSpecialSkill;
-            @Easteregg.started -= instance.OnEasteregg;
-            @Easteregg.performed -= instance.OnEasteregg;
-            @Easteregg.canceled -= instance.OnEasteregg;
+            @Use.started -= instance.OnUse;
+            @Use.performed -= instance.OnUse;
+            @Use.canceled -= instance.OnUse;
         }
 
         /// <summary>
@@ -1612,12 +1612,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpecialSkill(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Easteregg" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Use" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEasteregg(InputAction.CallbackContext context);
+        void OnUse(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

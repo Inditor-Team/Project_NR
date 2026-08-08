@@ -19,29 +19,22 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     /// <param name="itemObject"></param>
     public void HoldItem(ItemObject itemObject)
     {
-        if (curItem == null)
-            return;
-
         //만약 재화 아이템이라면 획득 시 바로 사용
         if (itemObject.MyItem.Type == ItemSO.ItemType.GetCredit)
         {
             GameManager.Instance.Credit += (int)itemObject.MyItem.Amount;
-            ItemManager.Instance.DespawnItem(itemObject); //월드 내 아이템 오브젝트 Destroy
             return;
         }
 
         //이미 아이템을 들고 있다면, 획득하려는 아이템과 교체
         if (curItem != null)
         {
-            var temp = itemObject.MyItem;
-            itemObject.SetItem(curItem); //월드에 있는 아이템 오브젝트를 현재 슬롯 아이템으로 교체
-            curItem = temp; //월드에 있던 아이템을 슬롯에 장착
+            //현재 아이템을 월드 내 스폰 해 뱉어내기
+            ItemManager.Instance.SpawnItem(curItem, itemObject.transform);
+            curItem = itemObject.MyItem; //월드에 있던 아이템을 슬롯에 장착
         }
         else //아이템을 들고 있지 않다면 그대로 슬롯에 장착
-        {
-            curItem = itemObject.MyItem; //슬롯에 장착 후
-            ItemManager.Instance.DespawnItem(itemObject); //월드 내 아이템 오브젝트 Destroy
-        }
+            curItem = itemObject.MyItem; //슬롯에 장착 
 
         if (ui != null)
             ui.UpdateUI(curItem);
@@ -49,6 +42,9 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
 
     public void UseItem()
     {
+        if (curItem == null)
+            return;
+
         switch (curItem.Type)
         {
             case ItemSO.ItemType.DamagedCore:
@@ -67,6 +63,8 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 //TO DO : 공포탄 아이템 사용 구현
                 break;
         }
+
+        curItem = null;
 
         if (ui != null)
             ui.UpdateUI(curItem);

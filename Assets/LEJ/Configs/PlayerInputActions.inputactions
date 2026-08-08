@@ -30,7 +30,7 @@
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -70,9 +70,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Easteregg",
+                    "name": "Use",
                     "type": "Button",
-                    "id": "af02a927-4c74-491a-acb9-6cbdb3270931",
+                    "id": "a755ef11-548f-4012-bdf5-2e3a41c74a4c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -346,12 +346,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0c8ac49a-2625-4162-97f5-c4c6cadbe3e1",
-                    "path": "<Keyboard>/u",
+                    "id": "54f5dea5-6d23-4e90-9882-d7824aea0a68",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Easteregg",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
