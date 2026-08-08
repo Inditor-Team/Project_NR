@@ -72,6 +72,7 @@ public class MineEnemyController : EnemyBaseController
     
     private void FixedUpdate()
     {
+        if (isPaused) return;
         switch (currentStat)
         {
             case MineStat.Patrol:
@@ -273,5 +274,10 @@ public class MineEnemyController : EnemyBaseController
     protected override void ResetStateMachine()
     {
         ChangeStat(MineStat.Patrol);
+    }
+    
+    public override void Pause(bool isPause)
+    {
+        isPaused = isPause;
     }
 }

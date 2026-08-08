@@ -45,6 +45,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     private float maxHealth;
     private float health;
     private float damage;
+    
+    private bool isPaused; // 정지 상태
 
     // FSM 관련 변수
     private enum EnemyStat
@@ -72,6 +74,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         enemyShooter.SetDamage(damage);
         reloadSpeed = defaultSpeed * 3f; // 일반 이동 속도의 3배
         healthSlider.value = health / maxHealth;
+        isPaused = false;
     }
 
     void Start()
@@ -136,6 +139,8 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
+        if (isPaused) return;
+        
         switch (currentStat)
         {
             case EnemyStat.Patrol:
@@ -282,6 +287,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         enemyShooter.Pause(isPause); 
         enemyShooter.enabled = activeControl;
-        this.enabled = activeControl;
+        isPaused = isPause;
     }
 }

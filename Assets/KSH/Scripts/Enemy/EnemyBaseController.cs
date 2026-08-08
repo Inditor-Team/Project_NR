@@ -32,6 +32,8 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     protected float health;
     protected float damage;
     
+    protected bool isPaused; // 정지 관련
+    
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -45,6 +47,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         damage = data.damage;
         
         healthSlider.value = health / maxHealth;
+        isPaused = false;
     }
 
     protected virtual void Start()
@@ -130,12 +133,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         SpawnManager.Instance.DestroyedEnemy(); 
     }
 
-    public virtual void Pause(bool isPause)
-    {
-        bool activeControl = !isPause;
-        this.enabled = activeControl;
-    }
-
+    public abstract void Pause(bool isPause);
     protected abstract void OnHealthDepleted();
     protected abstract void OnScopeEnter(Collider2D other);
     protected abstract void ResetStateMachine();

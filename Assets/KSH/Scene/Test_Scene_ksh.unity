@@ -5754,6 +5754,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8753008535210858597, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753008535210858597, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -21573,11 +21577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1039734134121965110, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1039734134121965110, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1733080155392800748, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_Layer
@@ -21637,7 +21641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6513199367987714174, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7315569007868824587, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_Size.x

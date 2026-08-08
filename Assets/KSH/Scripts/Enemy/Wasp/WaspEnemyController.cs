@@ -62,6 +62,7 @@ public class WaspEnemyController : EnemyBaseController
 
     private void FixedUpdate()
     {
+        if (isPaused) return;
         switch (currentStat)
         {
             case WaspStat.Patrol:
@@ -160,7 +161,7 @@ public class WaspEnemyController : EnemyBaseController
     public override void Pause(bool isPause)
     {
         bool activeControl = !isPause;
-        base.Pause(isPause);
+        isPaused = isPause;
 
         enemyShooter.Pause(isPause); 
         enemyShooter.enabled = activeControl;
