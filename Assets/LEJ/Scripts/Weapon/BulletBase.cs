@@ -53,7 +53,6 @@ public class BulletBase : MonoBehaviour
         }
         if (interactable != null)
         {
-            Debug.Log("interact");
             interactable.OnInteract();
             DestroyBullet();
         }

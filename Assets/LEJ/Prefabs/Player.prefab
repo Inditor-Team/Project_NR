@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7880014701018855835}
   - component: {fileID: 2485463571065238824}
   - component: {fileID: 2669214311529317012}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7002312544001858335}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Protocol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8939146558667143259}
   - component: {fileID: 7352079562429314721}
   - component: {fileID: 6491340747748547709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: model (sword)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7482545034780937945}
   - component: {fileID: 8848816453803726603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4496281307531137590}
   - component: {fileID: 2096225381142003720}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NeuroAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 8257176381231720944}
   - component: {fileID: 805145537335099986}
   - component: {fileID: 8653148163809611507}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 6350759085849897695}
   - component: {fileID: 5654316004800773794}
   - component: {fileID: 2157129870112503589}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SwordEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054475243717582521}
   - component: {fileID: 4794957929466762016}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blitz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 470412082327797489}
   - component: {fileID: 8822022659496778231}
   - component: {fileID: 2022843705335411812}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LaserEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5551,7 +5551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532657774382844844}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -5594,7 +5594,7 @@ GameObject:
   - component: {fileID: 9040341826501541636}
   - component: {fileID: 4058492084245161020}
   - component: {fileID: 6108741013514701135}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5786,7 +5786,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 50
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5845,7 +5845,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4629838550811621068}
   - component: {fileID: 7563049229175620897}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: model (gun)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

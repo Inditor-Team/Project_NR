@@ -25,7 +25,7 @@ public class ItemManager : MonoBehaviour
         PoolManager.Instance.MakeInitPool(itemObjectPrefab, poolSize);
     }
 
-    public void SpawnItem(ItemSO item, Transform spawnPos)
+    public GameObject SpawnItem(ItemSO item, Transform spawnPos)
     {
         //풀 매니저에서 오브젝트 가져오기
         GameObject newGO = PoolManager.Instance.Get(itemObjectPrefab);
@@ -35,6 +35,8 @@ public class ItemManager : MonoBehaviour
         newGO.GetComponent<ItemObject>().SetItem(item);
 
         newGO.SetActive(true);
+
+        return newGO;
     }
 
     public void DespawnItem(GameObject instance)
