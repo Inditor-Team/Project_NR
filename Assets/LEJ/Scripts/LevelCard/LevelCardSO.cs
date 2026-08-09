@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelCard", menuName = "LEJ/LevelCard")]
-public class LevelCard : ScriptableObject
+[CreateAssetMenu(fileName = "LevelCardSO", menuName = "LEJ/LevelCardSO")]
+public class LevelCardSO : ScriptableObject
 {
     public enum LevelCardType { None, Attack, Shield, Move, Special, Count}
     public string Id;

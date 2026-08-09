@@ -5,6 +5,6 @@ using UnityEngine;
 /// </summary>
 public class LevelCardData : MonoBehaviour
 {
-    [SerializeField] LevelCard[] levelCards;
-    public LevelCard[] LevelCards => levelCards;
+    [SerializeField] LevelCardSO[] levelCards;
+    public LevelCardSO[] LevelCards => levelCards;
 }

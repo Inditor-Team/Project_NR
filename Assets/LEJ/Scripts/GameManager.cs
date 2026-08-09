@@ -1,5 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,6 +30,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+
+            SceneController.Instance.OnSceneChanged += RegisterSectorManagerEvent;
         }
     }
 
@@ -46,6 +47,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private int credit = 0; //게임 내 재화
+    public int Credit
+    {
+        get => credit;
+        set
+        {
+            credit = value;
+            OnCreditChanged?.Invoke(credit);
+        }
+    }
+
+    public event UnityAction<int> OnCreditChanged;
+
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
     public void SetProtocol(ProtocolCard.Protocol protocol)
@@ -53,22 +67,61 @@ public class GameManager : MonoBehaviour
         curProtocol = protocol;
     }
 
-    public UnityAction OnSectionClear;
-    bool isSetionOneClear = false;
-    public bool IsSetionOneClear => isSetionOneClear;
-    public UnityAction OnSectionFail;
-
+    /// <summary>
+    /// TO DO : SectorManager 의 동일명 함수로 수정하기
+    /// </summary>
     public void SectionClear() // 맵 내의 적 전부 처리 시 실행
     {
-        Debug.Log("Section Clear !");
-        OnSectionClear?.Invoke();
-        isSetionOneClear = true;
+        Debug.Log("현재 GameManager 에서 실행됐습니다. SectorManager 의 SectionClear 로 바꿔주세요");
     }
 
     public void SectionFail()
     {
-        Debug.Log("Section Fail!");
-        OnSectionFail?.Invoke();
+        Debug.Log("현재 GameManager 에서 실행됐습니다. SectorManager 의 SectionFail 로 바꿔주세요");
+    }
+
+    Dictionary<SectorSO.SectorType, bool> clearedSector = new Dictionary<SectorSO.SectorType, bool>();
+    public Dictionary<SectorSO.SectorType, bool> ClearedSector => clearedSector;
+
+    void RegisterSectorManagerEvent(SceneController.Scene curScene)
+    {
+        //로비, 맵분기 또는 이벤트 맵의 경우 제외
+        if (curScene == SceneController.Scene.Scene_Lobby || curScene == SceneController.Scene.Scene_Map)
+            return;
+
+        SectorManager.Instance.OnSectorClear += OnSectorClear;
+        SectorManager.Instance.OnSectorFail += OnSectorFailed;
+    }
+
+    public void UnRegisterSectorManagerEvent()
+    {
+        if (SectorManager.Instance == null)
+            return;
+
+        SectorManager.Instance.OnSectorClear -= OnSectorClear;
+        SectorManager.Instance.OnSectorFail -= OnSectorFailed;
+    }
+
+    /// <summary>
+    /// SectorManager 로 부터 Sector 의 클리어 여부를 받습니다
+    /// </summary>
+    public void OnSectorClear(SectorSO.SectorType sectorType)
+    {
+        if (!clearedSector.ContainsKey(sectorType))
+            clearedSector.Add(sectorType, false);
+
+        clearedSector[sectorType] = true;
+    }
+
+    /// <summary>
+    /// SectorManager 로 부터 Sector 의 클리어 여부를 받습니다
+    /// </summary>
+    public void OnSectorFailed(SectorSO.SectorType sectorType)
+    {
+        if (!clearedSector.ContainsKey(sectorType))
+            clearedSector.Add(sectorType, false);
+
+        clearedSector[sectorType] = false;
     }
     
     public void ExitGame()
@@ -87,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     private int pauseRequestCount = 0; // UI 창이 여러 개인 경우가 있으니 카운팅 형식으로 변경
     public bool IsPaused => pauseRequestCount > 0;
-    public UnityAction<bool> OnPauseGame;
+    public event UnityAction<bool> OnPauseGame;
     public void RequestPause()
     {
         pauseRequestCount++;
@@ -109,7 +162,7 @@ public class GameManager : MonoBehaviour
     private void ApplyPause()
     {
         bool shouldPause = pauseRequestCount > 0;
-        GameTime.SetTimeScale(shouldPause ? 0f : 1f); // 1f 가 아닌 기존에 설정된 값으로?
+        GameTime.SetTimeScale(shouldPause ? 0f : GameTime.WorldTimeScale);
         OnPauseGame?.Invoke(shouldPause);
     }
     

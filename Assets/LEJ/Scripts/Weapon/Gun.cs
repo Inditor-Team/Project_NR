@@ -24,7 +24,7 @@ public class Gun : WeaponBase
     [SerializeField] LayerMask hitLayer;
     [SerializeField] private ParticleSystem laserEffect;
 
-    public UnityAction OnShoot;
+    public event UnityAction OnShoot;
 
     private void Awake()
     {
