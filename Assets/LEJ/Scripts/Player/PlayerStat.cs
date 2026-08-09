@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerStat : MonoBehaviour, IDamageable
 {
@@ -34,7 +32,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
     Dictionary<Stat, float> statDic = new Dictionary<Stat, float>();
     public Dictionary<Stat, float> StatDic => statDic;
 
-    public UnityAction<Stat, float> OnUpdateStat;
+    public event UnityAction<Stat, float> OnUpdateStat;
     [SerializeField] LayerMask enemyLayer;
     PlayerController playerController;
 

@@ -7,8 +7,8 @@ using UnityEngine.Events;
 /// </summary>
 public class StoreTable : MonoBehaviour, IInteractable
 {
-    public UnityAction<int> OnInteracted;
-    public UnityAction<int> OnTriggered;
+    public event UnityAction<int> OnInteracted;
+    public event UnityAction<int> OnTriggered;
     int myIndex;
 
     public void SetMyIndex(int index)

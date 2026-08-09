@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 플레이어의 입력에 따른 플레이어블 캐릭터 제어
@@ -80,13 +81,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (curState == PlayerState.Die)
+            return;
+
+        HandleState();
+
+        if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
+            Die();
+
         if (curState != PlayerState.Roll) //구르기 시 마지막 입력 방향으로 구르기 방향이 고정 됨
             moveInput = input.Player.Move.ReadValue<Vector2>();
 
         if (moveInput != null && animator != null)
             animator.SetMoveInput(moveInput); //애니메이터에게 moveInput 전달
 
-        HandleState();
         isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
     }
 
@@ -116,24 +124,24 @@ public class PlayerController : MonoBehaviour
         //Input System 활성화 후 입력 받아오기
         input.Player.Enable();
 
-        input.Player.PrimaryAttack.performed += _ => TryGunAttack();
-        input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
-        //input.Player.Roll.performed += _ => TryRoll();
-        input.Player.SpecialSkill.performed += _ => TryProtocol();
-        input.Player.Interact.performed += _ => Interact();
-        input.Player.Use.performed += _ => Use();
+        input.Player.PrimaryAttack.performed +=  TryGunAttack;
+        input.Player.SecondaryAttack.performed += TrySwordAttack;
+        //input.Player.Roll.performed += TryRoll;
+        input.Player.SpecialSkill.performed += TryProtocol;
+        input.Player.Interact.performed += Interact;
+        input.Player.Use.performed += Use;
     }
 
     void DisableInput()
     {
         input.Player.Disable();
 
-        input.Player.PrimaryAttack.performed -= _ => TryGunAttack();
-        input.Player.SecondaryAttack.performed -= _ => TrySwordAttack();
-        //input.Player.Roll.performed -= _ => TryRoll();
-        input.Player.SpecialSkill.performed -= _ => TryProtocol();
-        input.Player.Interact.performed -= _ => Interact();
-        input.Player.Use.performed -= _ => Use();
+        input.Player.PrimaryAttack.performed -= TryGunAttack;
+        input.Player.SecondaryAttack.performed -= TrySwordAttack;
+        //input.Player.Roll.performed -= TryRoll;
+        input.Player.SpecialSkill.performed -= TryProtocol;
+        input.Player.Interact.performed -= Interact;
+        input.Player.Use.performed -= Use;
     }
     #endregion
 
@@ -148,32 +156,11 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Idle:
                 if (moveInput.magnitude > 0)
                     curState = PlayerState.Move;
-                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
-                {
-                    if (SoundManager.Instance != null)
-                        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
-
-                    curState = PlayerState.Die;
-                    animator.DieAnim();
-                    SectorManager.Instance.SectorFail();
-                }
                 break;
 
             case PlayerState.Move:
                 if (moveInput.magnitude == 0)
                     curState = PlayerState.Idle;
-                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
-                {
-                    if (SoundManager.Instance != null)
-                        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
-
-                    curState = PlayerState.Die;
-                    animator.DieAnim();
-
-                    SectorManager.Instance.SectorFail();
-
-                    Pause(true);
-                }
                 break;
 
             case PlayerState.Roll:
@@ -184,19 +171,6 @@ public class PlayerController : MonoBehaviour
                     animator.DoFlip = false;
                     curState = PlayerState.Idle;
                 }
-                if (stat.StatDic[PlayerStat.Stat.Life] <= 0)
-                {
-                    if (SoundManager.Instance != null)
-                        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
-
-                    animator.DieAnim();
-                    curState = PlayerState.Die;
-                    SectorManager.Instance.SectorFail();
-
-                    Pause(true);
-                }
-                break;
-            case PlayerState.Die:
                 break;
         }
     }
@@ -206,7 +180,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 검 공격 시도. Roll 과 Gun 도중 불가
     /// </summary>
-    void TrySwordAttack()
+    void TrySwordAttack(InputAction.CallbackContext callback)
     {
         if (isPointerOverUI) return;
         if (curState == PlayerState.Roll) return;
@@ -218,7 +192,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 총 공격 시도. Roll 과 Sword 도중 불가
     /// </summary>
-    void TryGunAttack()
+    void TryGunAttack(InputAction.CallbackContext callback)
     {
         if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
         if (curState == PlayerState.Roll) return;
@@ -244,7 +218,7 @@ public class PlayerController : MonoBehaviour
         lastRollTime = Time.time;
     }
 
-    void TryProtocol()
+    void TryProtocol(InputAction.CallbackContext callback)
     {
         if (protocolExecutor != null)
             protocolExecutor.TryProtocol();
@@ -281,7 +255,7 @@ public class PlayerController : MonoBehaviour
             EnableInput();
     }
 
-    void Interact()
+    void Interact(InputAction.CallbackContext callback)
     {
         if (curInteractable == null)
             return;
@@ -289,12 +263,25 @@ public class PlayerController : MonoBehaviour
         curInteractable.OnInteract();
     }
 
-    void Use()
+    void Use(InputAction.CallbackContext callback)
     {
         if (inventory == null)
             return;
 
         inventory.UseItem();
+    }
+
+    void Die()
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
+
+        curState = PlayerState.Die;
+        animator.DieAnim();
+
+        SectorManager.Instance.SectorFail();
+
+        Pause(true);
     }
     #endregion
 }

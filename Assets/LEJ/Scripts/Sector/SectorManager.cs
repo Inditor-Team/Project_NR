@@ -35,7 +35,7 @@ public class SectorManager : MonoBehaviour
     [SerializeField] private Slider enemyHealthSlider;
     private int remainingCount = 6; // 맵에 남은 적
 
-    public UnityAction OnEnemyDestroyed; //해당 이벤트 Invoke 해주시길 바랍니다
+    public event UnityAction OnEnemyDestroyed; //해당 이벤트 Invoke 해주시길 바랍니다
 
     public void SpawnEnemy()
     {
@@ -53,8 +53,8 @@ public class SectorManager : MonoBehaviour
             GameManager.Instance.SectionClear();
     }
 
-    public UnityAction<SectorSO.SectorType> OnSectorClear;
-    public UnityAction<SectorSO.SectorType> OnSectorFail;
+    public event UnityAction<SectorSO.SectorType> OnSectorClear;
+    public event UnityAction<SectorSO.SectorType> OnSectorFail;
 
     public void SectorClear() // 맵 내의 적 전부 처리 시 실행
     {

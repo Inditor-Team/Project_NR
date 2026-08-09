@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-        }
 
-        SceneController.Instance.OnSceneChanged += RegisterSectorManagerEvent;
+            SceneController.Instance.OnSceneChanged += RegisterSectorManagerEvent;
+        }
     }
 
     [SerializeField] private GameObject player;
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public UnityAction<int> OnCreditChanged;
+    public event UnityAction<int> OnCreditChanged;
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     private int pauseRequestCount = 0; // UI 창이 여러 개인 경우가 있으니 카운팅 형식으로 변경
     public bool IsPaused => pauseRequestCount > 0;
-    public UnityAction<bool> OnPauseGame;
+    public event UnityAction<bool> OnPauseGame;
     public void RequestPause()
     {
         pauseRequestCount++;
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
     private void ApplyPause()
     {
         bool shouldPause = pauseRequestCount > 0;
-        GameTime.SetTimeScale(shouldPause ? 0f : 1f); // 1f 가 아닌 기존에 설정된 값으로?
+        GameTime.SetTimeScale(shouldPause ? 0f : GameTime.WorldTimeScale);
         OnPauseGame?.Invoke(shouldPause);
     }
     
