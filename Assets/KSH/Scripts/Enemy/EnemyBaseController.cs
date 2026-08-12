@@ -101,7 +101,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         healthSlider.value = health / maxHealth;
     }
     
-    protected void DoPatrol()
+    protected void DoPatrol(bool isFliped)
     {
         patrolNextPosition = patrolPoints[currentPatrolIndex];
         Vector2 dir = patrolNextPosition.position - transform.position;
@@ -111,8 +111,11 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
             
         rigid.MovePosition(rigid.position + nextvec);
         
-        sprite.flipX = normalizedDir.x > 0f;
-    
+        if (isFliped)
+            sprite.flipX = normalizedDir.x > 0f;
+        else
+            sprite.flipX = normalizedDir.x < 0f;
+        
         if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;

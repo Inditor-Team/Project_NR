@@ -76,7 +76,7 @@ public class MineEnemyController : EnemyBaseController
         switch (currentStat)
         {
             case MineStat.Patrol:
-                DoPatrol();
+                DoPatrol(true);
                 break;
             case MineStat.LandMine:
                 SetLandMine();
