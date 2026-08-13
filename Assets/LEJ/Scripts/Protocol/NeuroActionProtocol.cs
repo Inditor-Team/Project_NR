@@ -33,16 +33,15 @@ public class NeuroActionProtocol : ProtocolBase
 
     private Coroutine[] fadeCoroutines;
 
-    private void Awake()
+    private void Start()
     {
-        spectrumPool = new SpriteRenderer[spectrumPoolSize];
-        fadeCoroutines = new Coroutine[spectrumPoolSize];
+        GameManager.Instance.OnProtocolChanged += InitEffect;
+    }
 
-        for (int i = 0; i < spectrumPoolSize; i++)
-        {
-            spectrumPool[i] = new GameObject($"SpectrumEffect_{i}").AddComponent<SpriteRenderer>();
-            spectrumPool[i].gameObject.SetActive(false);
-        }
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= InitEffect;
     }
 
     internal override void TryProtocol(float duration)
@@ -99,6 +98,21 @@ public class NeuroActionProtocol : ProtocolBase
             return;
 
         buffValues[type] = level;
+    }
+
+    void InitEffect()
+    {
+        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.NeuroAction)
+            return;
+
+        spectrumPool = new SpriteRenderer[spectrumPoolSize];
+        fadeCoroutines = new Coroutine[spectrumPoolSize];
+
+        for (int i = 0; i < spectrumPoolSize; i++)
+        {
+            spectrumPool[i] = new GameObject($"SpectrumEffect_{i}").AddComponent<SpriteRenderer>();
+            spectrumPool[i].gameObject.SetActive(false);
+        }
     }
 
     private void Effect()

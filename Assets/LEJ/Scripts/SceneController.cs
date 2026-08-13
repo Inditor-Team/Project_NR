@@ -7,20 +7,21 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneController : MonoBehaviour
 {
-    public static SceneController Instance { get; private set; }
-
-    private void Awake()
+    static SceneController instance;
+    public static SceneController Instance
     {
-        if (Instance != null && Instance != this)
+        get
         {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
+            if (instance == null)
+                instance = FindAnyObjectByType<SceneController>();
+
+            return instance;
         }
 
+    }
+
+    private void Start()
+    {
         StartBGM();
     }
 

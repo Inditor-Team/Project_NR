@@ -14,7 +14,8 @@ public class GameFailUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        SectorManager.Instance.OnSectorFail -= Play;
+        if (SectorManager.Instance != null)
+            SectorManager.Instance.OnSectorFail -= Play;
     }
 
     void Play(SectorSO.SectorType type)

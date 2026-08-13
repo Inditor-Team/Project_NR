@@ -18,20 +18,21 @@ public static class GameTime
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
-    private void Awake()
+    static GameManager instance;
+    public static GameManager Instance
     {
-        if (Instance != null && Instance != this)
+        get
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            if (instance == null)
+                instance = FindAnyObjectByType<GameManager>();
+
+            return instance;
         }
 
+    }
+
+    private void Start()
+    {
         SceneController.Instance.OnSceneChanged += RegisterSectorManagerEvent;
     }
 
@@ -62,9 +63,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
+
+    public event UnityAction OnProtocolChanged;
+
     public void SetProtocol(ProtocolCard.Protocol protocol)
     {
         curProtocol = protocol;
+        OnProtocolChanged?.Invoke();
     }
 
     /// <summary>

@@ -10,25 +10,21 @@ public abstract class PoolObjectBase : MonoBehaviour
 
 public class PoolManager : MonoBehaviour
 {
-    private Dictionary<GameObject, ObjectPool<GameObject>> pools;
-    
-    public static PoolManager Instance { get; private set; }
+    private Dictionary<GameObject, ObjectPool<GameObject>> pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
 
-    private void Awake()
+    static PoolManager instance;
+    public static PoolManager Instance
     {
-        if (Instance != null && Instance != this)
+        get
         {
-            Destroy(this);
+            if (instance == null)
+                instance = FindAnyObjectByType<PoolManager>();
+
+            return instance;
         }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        
-        pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
+
     }
-    
+
     public void PoolInit(GameObject prefab, int defaultCapacity = 10, int maxPoolSize = 30) 
     {
         var pool = new ObjectPool<GameObject>(

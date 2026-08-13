@@ -18,6 +18,14 @@ public class ProtocolExecutor : MonoBehaviour
     {
         if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.None)
             SetProtocol(GameManager.Instance.CurProtocol);
+
+        GameManager.Instance.OnProtocolChanged += SetProtocol;
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= SetProtocol;
     }
 
     private void Update()
@@ -45,6 +53,22 @@ public class ProtocolExecutor : MonoBehaviour
                 curProtocol = neuroAction;
                 break;
                 case ProtocolCard.Protocol.Blitz:
+                curProtocol = blitz;
+                break;
+            case ProtocolCard.Protocol.Blader:
+                curProtocol = blader;
+                break;
+        }
+    }
+
+    public void SetProtocol()
+    {
+        switch (GameManager.Instance.CurProtocol)
+        {
+            case ProtocolCard.Protocol.NeuroAction:
+                curProtocol = neuroAction;
+                break;
+            case ProtocolCard.Protocol.Blitz:
                 curProtocol = blitz;
                 break;
             case ProtocolCard.Protocol.Blader:
