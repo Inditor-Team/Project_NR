@@ -477,10 +477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec58890f0fe3649b991ea257ee6274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaspEnemyController
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPoints: []
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   detectScope: {fileID: 7988260072277971452}
   data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
   healthUI: {fileID: 51632978863699668}

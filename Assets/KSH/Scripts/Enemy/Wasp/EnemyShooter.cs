@@ -26,14 +26,15 @@ public class EnemyShooter : MonoBehaviour
     
     private bool isPaused;
 
-    private void Awake()
+    /*private void Awake()
     {
         PoolManager.Instance.MakeInitPool(bulletPrefab, 10);
-    }
+    }*/
 
     private void Start()
     {
         isPaused = false;
+        PoolManager.Instance.MakeInitPool(bulletPrefab, 10);
     }
 
     public void SetDamage(float damage)

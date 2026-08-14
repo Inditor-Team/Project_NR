@@ -263,10 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4914e43d24fbdbd41a45f112ff703ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineEnemyController
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPoints: []
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   detectScope: {fileID: 5947785557331054354}
   data: {fileID: 11400000, guid: 3fc7d7051cc612f4d950b9ff76cbade7, type: 2}
   healthUI: {fileID: 3207475912908722597}
@@ -280,9 +280,6 @@ MonoBehaviour:
   weightGoToOpenSpace: 0.6
   weightNoise: 0.2
   weightAvoidWall: 1.5
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
   wallCheckDistance: 1.2
   mineDropInterval: 1.5
 --- !u!212 &3618168382559001084

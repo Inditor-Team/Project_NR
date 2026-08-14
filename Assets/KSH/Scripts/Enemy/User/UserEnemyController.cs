@@ -18,7 +18,6 @@ public class UserEnemyController : EnemyBaseController
     private Vector2 currentTrackDir;   // 추적 방향
     
     [Header("벽 회피 관련")]
-    [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float wallCheckDistance = 1.2f; // 레이 길이
     private float[] wallCheckAngles = { 0f, 45f, -45f, 90f, -90f }; // 레이 방향
     private Vector2 prevTangent = Vector2.zero;
