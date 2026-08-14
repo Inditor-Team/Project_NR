@@ -1,0 +1,52 @@
+{
+  "dialogues": [
+    {
+      "id": "intro_npc_1",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_1",
+      "nextId": "",
+      "options": [],
+      "phase": "intro"
+    },
+    {
+      "id": "store_npc_1",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_1",
+      "nextId": "store_npc_2",
+      "options": [],
+      "phase": "store"
+    },
+    {
+      "id": "store_npc_2",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_2",
+      "nextId": "",
+      "options": [
+        {"text": "OPT_STORE_NPC_2_1", "nextId": "store_npc_2_1"},
+        {"text": "OPT_STORE_NPC_2_2", "nextId": "store_npc_2_2"}
+      ],
+      "phase": "store"
+    },
+    {
+      "id": "store_npc_2_1",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_2_1_1",
+      "nextId": "",
+      "options": [],
+      "phase": "store"
+    },
+    {
+      "id": "store_npc_2_2",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_2_2_2",
+      "nextId": "",
+      "options": [],
+      "phase": "store"
+    }
+  ]
+}
