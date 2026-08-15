@@ -60,8 +60,8 @@ public class PlayerStat : MonoBehaviour, IDamageable
     void SetDefaultStat()
     {
         UpdateStat(Stat.MoveSpeed, 3f);
-        UpdateStat(Stat.RollSpeed, 6f);
-        UpdateStat(Stat.RollDuration, 0.5f);
+        UpdateStat(Stat.RollSpeed, 10f);
+        UpdateStat(Stat.RollDuration, 0.3f);
         UpdateStat(Stat.RollRate, 0.5f);
         UpdateStat(Stat.SwordSwingSpeed, 5f);
         UpdateStat(Stat.SwordDamage, 10f);

@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
         input.Player.PrimaryAttack.performed += _ => TryGunAttack();
         input.Player.SecondaryAttack.performed += _ => TrySwordAttack();
-        //input.Player.Roll.performed += _ => TryRoll();
+        input.Player.Roll.performed += _ => TryRoll();
         input.Player.SpecialSkill.performed += _ => TryProtocol();
         input.Player.Interact.performed += _ => Interact();
         input.Player.Use.performed += _ => Use();
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
         input.Player.PrimaryAttack.performed -= _ => TryGunAttack();
         input.Player.SecondaryAttack.performed -= _ => TrySwordAttack();
-        //input.Player.Roll.performed -= _ => TryRoll();
+        input.Player.Roll.performed -= _ => TryRoll();
         input.Player.SpecialSkill.performed -= _ => TryProtocol();
         input.Player.Interact.performed -= _ => Interact();
         input.Player.Use.performed -= _ => Use();
