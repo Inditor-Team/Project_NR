@@ -13,7 +13,7 @@ public class LevelCardUI : MonoBehaviour
     private void Awake()
     {
         Init();
-        CloseUI();
+        gameObject.SetActive(false);
     }
 
     void Init()
@@ -26,14 +26,12 @@ public class LevelCardUI : MonoBehaviour
 
     public void ShowUI()
     {
-        for (int i = 0; i < elements.Length; i++)
-            elements[i].gameObject.SetActive(true);
+        UIManager.Instance.Show(this.gameObject);
     }
 
     public void CloseUI()
     {
-        for (int i = 0; i < elements.Length; i++)
-            elements[i].gameObject.SetActive(false);
+        UIManager.Instance.Hide(this.gameObject);
     }
 
     public void SetUIElement(LevelCardSO data, int index, Action buttonAction)
