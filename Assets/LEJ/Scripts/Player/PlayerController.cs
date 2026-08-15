@@ -75,7 +75,9 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         DisableInput();
-        GameManager.Instance.OnPauseGame -= Pause;
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnPauseGame -= Pause;
     }
 
     void Update()

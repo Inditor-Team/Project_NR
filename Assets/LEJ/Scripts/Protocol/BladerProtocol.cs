@@ -20,23 +20,7 @@ public class BladerProtocol : ProtocolBase
     [Header("잔상 이펙트")]
     [SerializeField] private int spectrumPoolSize = 30;
     [SerializeField] private float spectrumFadeDuration = 3f; //잔상 페이드 아웃 시간
-    [SerializeField] private float spectrumInterval = 0.1f; //잔상 생성 간격
-    [SerializeField] float spectrumScale = 1.5f; //잔상 최대 크기
-    [SerializeField] float SpectrumSpreadAmount = 0.1f; //잔상 스프레드 크기
-
-    //잔상 이펙트 8방향으로 퍼지게 하기 위한 캐싱
-    readonly Vector2[] directions =
-    {
-        Vector2.up,
-        Vector2.down,
-        Vector2.left,
-        Vector2.right,
-        new Vector2(1, 1).normalized,
-        new Vector2(-1, 1).normalized,
-        new Vector2(1, -1).normalized,
-        new Vector2(-1, -1).normalized
-    };
-
+    [SerializeField] private float spectrumInterval = 0.2f; //잔상 생성 간격
     private int index = 0;
 
     private Coroutine[] fadeCoroutines;
@@ -56,7 +40,8 @@ public class BladerProtocol : ProtocolBase
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnProtocolChanged -= InitEffect;
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= InitEffect;
     }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
@@ -122,11 +107,8 @@ public class BladerProtocol : ProtocolBase
 
     void InitEffect()
     {
-        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.Blader)
+        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.NeuroAction)
             return;
-
-        speedMultiplier = 1.5f;
-        isInvincible = true;
 
         spectrumPool = new SpriteRenderer[spectrumPoolSize];
         fadeCoroutines = new Coroutine[spectrumPoolSize];
@@ -144,6 +126,7 @@ public class BladerProtocol : ProtocolBase
 
         SpriteRenderer spectrum = spectrumPool[index];
 
+        // 기존 페이드 중이면 중지
         if (fadeCoroutines[index] != null)
             StopCoroutine(fadeCoroutines[index]);
 
@@ -153,21 +136,19 @@ public class BladerProtocol : ProtocolBase
         spectrum.flipX = curSprite.flipX;
         spectrum.flipY = curSprite.flipY;
 
-        spectrum.transform.position = transform.position;
-        spectrum.transform.rotation = transform.rotation;
+        spectrum.transform.position = curSprite.transform.position;
+        spectrum.transform.rotation = curSprite.transform.rotation;
         spectrum.transform.localScale = curSprite.transform.lossyScale;
 
         spectrum.sortingLayerID = curSprite.sortingLayerID;
-        spectrum.sortingOrder = curSprite.sortingOrder + 1;
+        spectrum.sortingOrder = curSprite.sortingOrder - 1;
 
         // 알파 초기화
-        Color c = Color.yellowGreen;
+        Color c = Color.white;
         c.a = 0.5f;
         spectrum.color = c;
 
-        Vector2 dir = directions[index % directions.Length];
-
-        fadeCoroutines[index] = StartCoroutine(SpectrumFadeTime(index, dir));
+        fadeCoroutines[index] = StartCoroutine(SpectrumFadeTime(index));
 
         index = (index + 1) % spectrumPoolSize;
     }
@@ -178,24 +159,16 @@ public class BladerProtocol : ProtocolBase
     /// <param name="spectrum"></param>
     /// <param name="duration"></param>
     /// <returns></returns>
-    IEnumerator SpectrumFadeTime(int poolIndex, Vector2 dir)
+    IEnumerator SpectrumFadeTime(int poolIndex)
     {
         SpriteRenderer spectrum = spectrumPool[poolIndex];
 
         float elapsed = 0f;
         Color color = spectrum.color;
 
-        float time = 0f;
-
         while (elapsed < spectrumFadeDuration)
         {
             float alpha = Mathf.Lerp(0.5f, 0f, elapsed / spectrumFadeDuration);
-
-            spectrum.transform.rotation = transform.rotation;
-
-            time += Time.deltaTime;
-            spectrum.transform.localScale = Vector3.Lerp(curSprite.transform.lossyScale, curSprite.transform.lossyScale * spectrumScale, time);
-            spectrum.transform.position = transform.position + (Vector3)(dir * SpectrumSpreadAmount * time);
 
             color.a = alpha;
             spectrum.color = color;

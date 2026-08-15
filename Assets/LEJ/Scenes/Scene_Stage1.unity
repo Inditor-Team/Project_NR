@@ -522,8 +522,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 0.99999994
+    height: 0.9996382
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -7646,8 +7646,24 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4794957929466762016, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 6740383107938655944}
+    - target: {fileID: 4794957929466762016, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
+      propertyPath: dashSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794957929466762016, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 413533514}
+    - target: {fileID: 4794957929466762016, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: detectRadius
-      value: 10
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794957929466762016, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
+      propertyPath: spectrumInterval
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 5711610164856498049, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: m_Color.b
