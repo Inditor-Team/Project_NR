@@ -172,4 +172,4 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8

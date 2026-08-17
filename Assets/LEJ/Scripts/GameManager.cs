@@ -28,13 +28,8 @@ public class GameManager : MonoBehaviour
 
             return instance;
         }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
 
-        SceneController.Instance.OnSceneChanged += RegisterSectorManagerEvent;
+        
     }
 
     [SerializeField] private GameObject player;
