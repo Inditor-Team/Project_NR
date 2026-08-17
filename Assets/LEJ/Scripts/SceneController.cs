@@ -28,7 +28,7 @@ public class SceneController : MonoBehaviour
     public enum Scene { None, Scene_Lobby, Scene_Map, Scene_Stage1, Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;
-    public UnityAction<Scene> OnSceneChanged;
+    public event UnityAction<Scene> OnSceneChanged;
 
     public void ChangeScene(Scene sceneName)
     {

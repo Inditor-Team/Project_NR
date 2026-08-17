@@ -12,7 +12,7 @@ public class ProtocolExecutor : MonoBehaviour
     float coolTime = 0;
     public float CoolTime => coolTime;
 
-    public UnityAction OnTryProtocol;
+    public event UnityAction OnTryProtocol;
 
     private void Start()
     {

@@ -83,8 +83,8 @@ public class Store : MonoBehaviour
         saleItemObjects[tableIndex].GetComponent<ItemObject>().OnInteract();
 
         //상품이 판매 된 테이블은 테이블 기능을 상실합니다
-        tables[tableIndex].OnTriggered += OnLook;
-        tables[tableIndex].OnInteracted += OnSold;
+        tables[tableIndex].OnTriggered -= OnLook;
+        tables[tableIndex].OnInteracted -= OnSold;
 
         tables[tableIndex].GetComponent<Collider2D>().enabled = false;
         tables[tableIndex].GetComponent<StoreTable>().enabled = false; 

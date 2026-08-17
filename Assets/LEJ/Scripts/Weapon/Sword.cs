@@ -14,7 +14,7 @@ public class Sword : WeaponBase
     public int SwordLife => swordLife;
     int swingCount = 0;
 
-    public UnityAction OnHitted;
+    public event UnityAction OnHitted;
 
     private void Awake()
     {
