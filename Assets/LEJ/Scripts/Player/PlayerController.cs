@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 구르기 시도. Gun 과 Sword 도중 불가
     /// </summary>
-    void TryRoll()
+    void TryRoll(InputAction.CallbackContext callback)
     {
         if (moveInput == Vector2.zero) return; //이동하고 있는 경우가 아니면 대쉬 X
         if (Time.time - lastRollTime < stat.StatDic[PlayerStat.Stat.RollRate]) //대시 간격 주기
