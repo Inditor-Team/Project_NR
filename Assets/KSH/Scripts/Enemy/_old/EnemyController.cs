@@ -109,7 +109,8 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     void OnDestroy()
     {
-        GameManager.Instance.OnPauseGame -= Pause;
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnPauseGame -= Pause;
     }
 
     public void TakeDamage(float damage)

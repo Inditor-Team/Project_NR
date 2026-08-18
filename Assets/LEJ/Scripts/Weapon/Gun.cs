@@ -18,6 +18,7 @@ public class Gun : WeaponBase
     float damage;
 
     [SerializeField] GameObject bulletPrefab; //총알 프리팹
+    public GameObject BulletPrefab => bulletPrefab;
     private int bulletPoolSize = 20;
     BulletBase curBullet;
 
@@ -25,22 +26,12 @@ public class Gun : WeaponBase
     [SerializeField] private ParticleSystem laserEffect;
 
     public event UnityAction OnShoot;
-
-    private void Awake()
-    {
-        //lineRenderer.positionCount = 2;
-        //lineRenderer.enabled = false;
-    }
+    Color originColor;
 
     private void Start()
     {
+        originColor = bulletPrefab.GetComponent<SpriteRenderer>().color;
         MakeBulletPool();
-    }
-
-    private void Update()
-    {
-        //if (lineRenderer.enabled && Time.time >= disableTime)
-        //    lineRenderer.enabled = false;
     }
 
     private void MakeBulletPool()
@@ -56,6 +47,7 @@ public class Gun : WeaponBase
         this.speed = speed;
 
         curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
+        curBullet.GetComponent<SpriteRenderer>().color = originColor;
         curBullet.transform.position = firePoint.position; //총알 위치 초기화
 
         Attack();
@@ -82,31 +74,26 @@ public class Gun : WeaponBase
         RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, maxDistance, hitLayer);
 
         if (hit.collider != null)
-        {
             endPosition = hit.point;
-
-            //if (hit.collider.TryGetComponent<IDamageable>(out var damageable))
-            //{
-            //    damageable.TakeDamage(damage);
-
-            //    Debug.Log($"{hit.collider.name}에게 데미지 {damage}를 가함");
-            //}
-            //if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
-            //{
-            //    interactable.OnInteract();
-            //}
-        }
         else
             endPosition = startPosition + direction * maxDistance;
 
         PlayLaserEffect(firePoint.position, endPosition);
-
-        /*
-        if (lineRenderer != null)
-            DrawLaser(startPosition, endPosition);
-        */
     }
-    
+
+    public void FireReflectBullet(Vector2 startPos, Vector2 dir, float speed, float damage)
+    {
+        curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
+        curBullet.transform.position = startPos;
+
+        curBullet.GetComponent<SpriteRenderer>().color = Color.green;
+
+        if (curBullet == null)
+            return;
+
+        curBullet.OnFire(dir, speed, damage, bulletPrefab);
+    }
+
     public void PlayLaserEffect(Vector2 start, Vector2 end)
     {
         Vector2 direction = end - start;

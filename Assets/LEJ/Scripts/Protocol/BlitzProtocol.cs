@@ -3,15 +3,42 @@ using UnityEngine;
 
 public class BlitzProtocol : ProtocolBase
 {
+    [SerializeField] GameObject player;
+    [SerializeField] SpriteRenderer playerModel;
     [SerializeField] SwordAttacker swordAttacker;
     [Header("임시 스탯")]
-    [SerializeField] float dashSpeed = 30f;
-    [SerializeField] float detectRadius = 5f;
+    [SerializeField] float dashSpeed = 50f;
+    [SerializeField] float detectRadius = 8f;
     [SerializeField] float swordSpeed = 5f;
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] int attackCount = 3;
-    int index = 0;
+    int killCount = 0;
+    int spectrumIndex = 0;
     float attackDistance = 2f;
+
+
+    //프로토콜 발동 시 스펙트럼 이펙트
+    private SpriteRenderer curSprite;
+    private SpriteRenderer[] spectrumPool;
+
+    [Header("잔상 이펙트")]
+    [SerializeField] private int spectrumPoolSize = 30;
+    [SerializeField] private float spectrumFadeDuration = 3f; //잔상 페이드 아웃 시간
+    [SerializeField] private float spectrumInterval = 0.005f; //잔상 생성 간격
+
+    private Coroutine[] fadeCoroutines;
+
+
+    private void Start()
+    {
+        GameManager.Instance.OnProtocolChanged += InitEffect;
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= InitEffect;
+    }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
     {
@@ -41,9 +68,18 @@ public class BlitzProtocol : ProtocolBase
             if (enemy.GetComponent<EnemyController>() == null)
                 continue;
 
+            float intervalTime = 0f;
             while (enemy != null && Vector2.Distance(transform.position, enemy.transform.position) > attackDistance)
             {
-                transform.position = Vector2.MoveTowards(transform.position,enemy.transform.position,dashSpeed * Time.deltaTime);
+                player.transform.position = Vector2.MoveTowards(transform.position,enemy.transform.position,dashSpeed * Time.deltaTime);
+                
+                intervalTime += Time.deltaTime;
+                if (intervalTime >= spectrumInterval)
+                {
+                    Effect();
+                    intervalTime = 0f;
+                }
+
                 yield return null;
             }
 
@@ -51,20 +87,100 @@ public class BlitzProtocol : ProtocolBase
             {
                 swordAttacker.Swing();
                 enemy.gameObject.SetActive(false);
-                index++;
+                killCount++;
 
-                if (index >= attackCount)
+                if (killCount >= attackCount)
+                {
+                    EndProtocol();
                     yield break;
+                }
 
                 yield return new WaitForSeconds(0.05f);
             }
         }
-
-        EndProtocol();
     }
 
     internal override void EndProtocol()
     {
+        killCount = 0;
+        protocolRoutine = null;
+    }
+
+
+    void InitEffect()
+    {
+        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.Blitz)
+            return;
+
+        spectrumPool = new SpriteRenderer[spectrumPoolSize];
+        fadeCoroutines = new Coroutine[spectrumPoolSize];
+
+        for (int i = 0; i < spectrumPoolSize; i++)
+        {
+            spectrumPool[i] = new GameObject($"SpectrumEffect_{i}").AddComponent<SpriteRenderer>();
+            spectrumPool[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void Effect()
+    {
+        curSprite = playerModel;
+
+        SpriteRenderer spectrum = spectrumPool[spectrumIndex];
+
+        // 기존 페이드 중이면 중지
+        if (fadeCoroutines[spectrumIndex] != null)
+            StopCoroutine(fadeCoroutines[spectrumIndex]);
+
+        spectrum.gameObject.SetActive(true);
+
+        spectrum.sprite = curSprite.sprite;
+        spectrum.flipX = curSprite.flipX;
+        spectrum.flipY = curSprite.flipY;
+
+        spectrum.transform.position = curSprite.transform.position;
+        spectrum.transform.rotation = curSprite.transform.rotation;
+        spectrum.transform.localScale = curSprite.transform.lossyScale;
+
+        spectrum.sortingLayerID = curSprite.sortingLayerID;
+        spectrum.sortingOrder = curSprite.sortingOrder - 1;
+
+        // 알파 초기화
+        Color c = Color.white;
+        c.a = 0.5f;
+        spectrum.color = c;
+
+        fadeCoroutines[spectrumIndex] = StartCoroutine(SpectrumFadeTime(spectrumIndex));
+
+        spectrumIndex = (spectrumIndex + 1) % spectrumPoolSize;
+    }
+
+    /// <summary>
+    /// 스펙트럼 잔상에 대해 페이드 아웃 효과를 적용합니다
+    /// </summary>
+    /// <param name="spectrum"></param>
+    /// <param name="duration"></param>
+    /// <returns></returns>
+    IEnumerator SpectrumFadeTime(int poolIndex)
+    {
+        SpriteRenderer spectrum = spectrumPool[poolIndex];
+
+        float elapsed = 0f;
+        Color color = spectrum.color;
+
+        while (elapsed < spectrumFadeDuration)
+        {
+            float alpha = Mathf.Lerp(0.5f, 0f, elapsed / spectrumFadeDuration);
+
+            color.a = alpha;
+            spectrum.color = color;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        spectrum.gameObject.SetActive(false);
+        fadeCoroutines[poolIndex] = null;
     }
 
 }
