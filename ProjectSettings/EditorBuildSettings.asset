@@ -15,14 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_Stage1.unity
     guid: 880e403387a68a14a9f0d9c500800ddf
   - enabled: 1
-    path: Assets/LEJ/Scenes/Scene_Lobby_LEJ.unity
-    guid: 4a109d3557621ad4a9fc78d38b898a4e
+    path: Assets/LEJ/Scenes/Scene_Lobby.unity
+    guid: 910f5b2c7443f32428340594294a7e24
   - enabled: 1
-    path: Assets/LEJ/Scenes/Scene_Map_LEJ.unity
-    guid: 06b833162a1a53e4f84055427162050c
-  - enabled: 1
-    path: Assets/LEJ/Scenes/Scene_Stage1_LEJ.unity
-    guid: 512e78d9d02788d4b9dc3685906c30c0
+    path: Assets/LEJ/Scenes/Scene_Stage1.unity
+    guid: 54e8b9c7473928e48864acd27f9a7537
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

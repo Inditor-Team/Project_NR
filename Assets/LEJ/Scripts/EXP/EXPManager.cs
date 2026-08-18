@@ -26,7 +26,8 @@ public class EXPManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        SectorManager.Instance.OnSectorClear -= ProvideLevelCard;
+        if (SectorManager.Instance != null)
+            SectorManager.Instance.OnSectorClear -= ProvideLevelCard;
     }
 
     [SerializeField] LevelCardProvider levelCardProvider;

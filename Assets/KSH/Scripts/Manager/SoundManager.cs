@@ -44,20 +44,20 @@ public class SFX
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; private set; }
+    static SoundManager instance;
+    public static SoundManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindAnyObjectByType<SoundManager>();
 
+            return instance;
+        }
+
+    }
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        
         InitializeAudioSources();
         InitDictionary();
     }

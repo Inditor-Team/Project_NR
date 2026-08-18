@@ -16,8 +16,10 @@ public class SectorManager : MonoBehaviour
         {
             if (instance == null)
                 instance = FindAnyObjectByType<SectorManager>();
+
             return instance;
         }
+
     }
 
     private void Awake()

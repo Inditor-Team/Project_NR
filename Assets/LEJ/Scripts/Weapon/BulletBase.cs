@@ -5,6 +5,8 @@ using UnityEngine;
 /// </summary>
 public class BulletBase : MonoBehaviour
 {
+    [SerializeField] LayerMask ownerLayer;
+
     private float damage;
     private float speed;
     private Vector2 dir;
@@ -12,6 +14,7 @@ public class BulletBase : MonoBehaviour
 
     float timer = 0;
     GameObject originPrefab;
+
 
     private void Update()
     {
@@ -30,12 +33,13 @@ public class BulletBase : MonoBehaviour
         transform.Translate(dir * speed * Time.fixedDeltaTime * GameTime.WorldTimeScale, Space.World);
     }
 
-    public void OnFire(Vector2 dir, float speed, float damage, GameObject originPrefab)
+    public void OnFire(Vector2 dir, float speed, float damage, GameObject originPrefab = null)
     {
         this.damage = damage;
         this.speed = speed;
         this.dir = dir.normalized;
-        this.originPrefab = originPrefab;
+        if (this.originPrefab == null)
+            this.originPrefab = originPrefab;
         timer = 0;
 
         gameObject.SetActive(true);
@@ -43,6 +47,9 @@ public class BulletBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if ((ownerLayer.value & (1 << collision.gameObject.layer)) != 0)
+            return;
+
         IDamageable damageable = collision.GetComponent<IDamageable>();
         IInteractable interactable = collision.GetComponent<IInteractable>();
 
