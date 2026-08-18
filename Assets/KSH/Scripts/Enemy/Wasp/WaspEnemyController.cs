@@ -66,7 +66,7 @@ public class WaspEnemyController : EnemyBaseController
         switch (currentStat)
         {
             case WaspStat.Patrol:
-                DoPatrol();
+                DoPatrol(true);
                 break;
             case WaspStat.Combat:
                 Move(defaultSpeed, combatTargetDist, true);

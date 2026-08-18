@@ -39,7 +39,6 @@ public class MineEnemyController : EnemyBaseController
     private float stuckDistThreshold = 0.02f; // 거리 차이
     
     [Header("벽 회피 관련")]
-    [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float wallCheckDistance = 1.2f; // 레이 길이
     private float[] wallCheckAngles = { 0f, 45f, -45f, 90f, -90f }; // 레이 방향
     
@@ -76,7 +75,7 @@ public class MineEnemyController : EnemyBaseController
         switch (currentStat)
         {
             case MineStat.Patrol:
-                DoPatrol();
+                DoPatrol(true);
                 break;
             case MineStat.LandMine:
                 SetLandMine();

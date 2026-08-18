@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {"key": "TEMP_COMMENT_1", "value": "이래로 인트로 npc 대사입니다"},
+    {"key": "DLG_INTRO_NPC_1", "value": "인트로~~"},
+    
+    {"key": "TEMP_COMMENT_2", "value": "아래로 상점 주인 대사 입니다"},
+    {"key": "DLG_STORE_NPC_1", "value": "상점 주인 대사 \n텍스트만 출력"},
+    {"key": "DLG_STORE_NPC_2", "value": "상점 주인 대사 2\n그리고 옵션"},
+    {"key": "DLG_STORE_NPC_2_1_1", "value": "옵션1을 선택"},
+    {"key": "DLG_STORE_NPC_2_2_2", "value": "옵션2를 선택"},
+
+    {"key": "TEMP_COMMENT_2", "value": "아래로 상점 대화 옵션 텍스트 입니다"},
+    {"key": "OPT_STORE_NPC_2_1", "value": "옵션1"},
+    {"key": "OPT_STORE_NPC_2_2", "value": "옵션2"}
+  ]
+}

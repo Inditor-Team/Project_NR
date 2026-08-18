@@ -7,6 +7,7 @@ using DG.Tweening;
 public abstract class EnemyBaseController : MonoBehaviour, IDamageable
 {
     [SerializeField] protected Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
+    [SerializeField] protected LayerMask wallLayer; 
     [SerializeField] protected EnemyScope detectScope;
     [SerializeField] protected EnemyDataBase data;
     
@@ -33,6 +34,17 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     protected float damage;
     
     protected bool isPaused; // 정지 관련
+    
+    // 랜덤 순찰(배회?)
+    protected float patrolRadius = 3f; // 순찰 돌아다니는 반경
+    protected float arriveDist = 0.2f; // 도착 판점 위치
+    protected float patrolWaitTimeMin = 0.5f; 
+    protected float patrolWaitTimeMax = 1.5f;
+
+    protected Vector2 originPos;      // 배회 기준
+    protected Vector2 randomPatrolTarget;   // 순찰 목적지
+    protected bool hasPatrolTarget;   // 목적지가 있는가
+    protected float patrolWaitTimer;  
     
     protected virtual void Awake()
     {
@@ -68,6 +80,10 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         healthUI.SetActive(false);
         collider.isTrigger = false;
         
+        originPos = transform.position; // 활성화된 시점의 위치를 기준점으로 고정
+        hasPatrolTarget = false;
+        patrolWaitTimer = 0f;
+        
         ResetStateMachine();
     }
 
@@ -101,7 +117,16 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         healthSlider.value = health / maxHealth;
     }
     
-    protected void DoPatrol()
+    protected void DoPatrol(bool isFliped)
+    {
+        // 나중에 고정 순찰 삭제?
+        if (patrolPoints != null && patrolPoints.Length > 0)
+            DoFixedPatrol(isFliped);
+        else
+            DoRandomPatrol(isFliped);
+    }
+
+    protected void DoFixedPatrol(bool isFliped)
     {
         patrolNextPosition = patrolPoints[currentPatrolIndex];
         Vector2 dir = patrolNextPosition.position - transform.position;
@@ -111,12 +136,69 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
             
         rigid.MovePosition(rigid.position + nextvec);
         
-        sprite.flipX = normalizedDir.x > 0f;
-    
-        if (Vector3.Distance(transform.position, patrolNextPosition.position) < 0.2f) // 근처 도착
+        if (isFliped)
+            sprite.flipX = normalizedDir.x > 0f;
+        else
+            sprite.flipX = normalizedDir.x < 0f;
+        
+        if (Vector3.Distance(transform.position, patrolNextPosition.position) < arriveDist) // 근처 도착
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
         }
+    }
+    
+    protected void DoRandomPatrol(bool isFliped)
+    {
+        if (patrolWaitTimer > 0f) // 대기중
+        {
+            // TODO: 대기 중엔 idle 애니메이션 재생
+            patrolWaitTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
+            return;
+        }
+
+        if (!hasPatrolTarget) // 랜덤 목적지 뽑기
+        {
+            hasPatrolTarget = TryPickWanderTarget(out randomPatrolTarget);
+            if (!hasPatrolTarget) return; 
+        }
+
+        Vector2 dir = randomPatrolTarget - (Vector2)transform.position;
+        Vector2 normalizedDir = dir.normalized;
+
+        nextvec = normalizedDir * defaultSpeed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
+        rigid.MovePosition(rigid.position + nextvec);
+
+        if (isFliped)
+            sprite.flipX = normalizedDir.x > 0f;
+        else
+            sprite.flipX = normalizedDir.x < 0f;
+
+        if (dir.magnitude < arriveDist) // 목적지 도착
+        {
+            hasPatrolTarget = false;
+            patrolWaitTimer = Random.Range(patrolWaitTimeMin, patrolWaitTimeMax); // 대기
+        }
+    }
+
+    private bool TryPickWanderTarget(out Vector2 result)
+    {
+        const int maxAttempts = 8; // 무한루프 방지용, 일단 8번 시도
+
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector2 randomOffset = Random.insideUnitCircle * patrolRadius;
+            Vector2 randomPos = originPos + randomOffset;
+
+            // 벽 체크
+            if (Physics2D.OverlapCircle(randomPos, 0.1f, wallLayer)) continue; // 벽이랑 겹치는 가?
+            if (Physics2D.Linecast(transform.position, randomPos, wallLayer)) continue; // 가는 길에 벽이 있는가?
+
+            result = randomPos;
+            return true;
+        }
+
+        result = Vector2.zero;
+        return false;
     }
     
     public virtual void SetDead()

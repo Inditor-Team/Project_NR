@@ -59,13 +59,8 @@ public class EnemyBullet : PoolObjectBase
         if (isReleased) return;
         isReleased = true;
         
-        if ((playerLayer.value & (1 << other.gameObject.layer)) != 0) // 이미 위에서 tag로 처리하는데 tag로 통일 하는 건 어떠신지
-        {
-            IDamageable target = other.GetComponent<IDamageable>();
-
-            if (target != null)
-                target.TakeDamage(damage);
-        }
+        IDamageable target = other.GetComponent<IDamageable>();
+        if (target != null) target.TakeDamage(damage);
         
         PoolManager.Instance.Release(originPrefab, this.gameObject);
     }
