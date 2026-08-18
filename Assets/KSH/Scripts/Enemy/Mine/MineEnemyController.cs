@@ -21,8 +21,7 @@ public class MineEnemyController : EnemyBaseController
     [SerializeField] private Transform mapCenter;
     [SerializeField] private float fleeRecalcInterval = 0.75f; // 방향 재계산 간격
     [SerializeField] private float fleeResetDist = 10f; // Reset 상태로 전이하는 간격
-    [SerializeField] private GameObject detectEffect;
-
+    
     [Header("이동 가중치, 임시")]
     [SerializeField] private float weightPlayerDistance = 1.0f;
     [SerializeField] private float weightGoToOpenSpace = 0.6f;
@@ -45,11 +44,17 @@ public class MineEnemyController : EnemyBaseController
     // 리셋 상태 관련
     private float resetCooldown = 10f; // 이정도 시간동안 떨어져있으면 순찰 상태로 변경
     private float resetTimer;
+    private float resetConfirmDuration = 0.5f; // 이 시간 동안 플레이어와 떨어져 있어야 Reset으로 변경시키기
+    private float resetConfirmTimer;
     
     // 지뢰 관련
     private float waitTime = 3f; // 터지기 전 대기 시간
     public float mineDropInterval = 1.5f; // 지뢰를 뿌리는 간격
     private float mineDropTimer; // 다음 지뢰까지 타이머
+    
+    // landmine 상태 관련
+    private float landMineMinDuration = 3f; // 최소 유지 시간, Reset으로 안빠짐
+    private float landMineElapsed; // LandMine 상태 경과 시간
     
     protected override void Awake()
     {
@@ -81,7 +86,6 @@ public class MineEnemyController : EnemyBaseController
                 SetLandMine();
                 break;
             case MineStat.Reset:
-                // TODO: Reset 풀린지 얼마 안됐으면 좀 더 기다렸다가 리셋
                 resetTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
                 if (resetTimer <= 0f)
                     ChangeStat(MineStat.Patrol); // 재순찰
@@ -109,6 +113,7 @@ public class MineEnemyController : EnemyBaseController
                 mineDropTimer = 0f; // 바로 지뢰 설치
                 lastCheckedPos = transform.position;
                 stuckTimer = stuckThreshold;
+                landMineElapsed = 0f;
                 break;
             case MineStat.Reset:
                 anim.SetBool("isMove", false);
@@ -119,23 +124,6 @@ public class MineEnemyController : EnemyBaseController
                 SetDead();
                 break;
         }
-    }
-
-    private void DetectPlayer() // 플레이어 감지
-    {
-        // 효과음 추가
-        detectEffect.SetActive(true);
-        detectEffect.transform.DOLocalMoveY(detectEffect.transform.localPosition.y + 1.0f, 0.5f)
-            .SetEase(Ease.OutCubic).OnComplete(() =>
-            {
-                detectEffect.transform.position = gameObject.transform.position;
-                detectEffect.SetActive(false);
-                
-                if (currentStat != MineStat.Detect) return; // 혹시 상태 바뀌었으면 아래 무시
-                
-                if (!healthUI.activeSelf) healthUI.SetActive(true);
-                ChangeStat(MineStat.LandMine); 
-            });
     }
 
     private void SetLandMine() // 지뢰 설치 및 이동
@@ -250,10 +238,21 @@ public class MineEnemyController : EnemyBaseController
     
     private void CheckFleeExitCondition()
     {
+        landMineElapsed += Time.fixedDeltaTime * GameTime.WorldTimeScale;
+        if (landMineElapsed < landMineMinDuration) return;
+        
         float distToPlayer = Vector2.Distance(transform.position, target.position);
-
+        
         if (distToPlayer >= fleeResetDist)
-            ChangeStat(MineStat.Reset);
+        {
+            resetConfirmTimer += Time.fixedDeltaTime * GameTime.WorldTimeScale;
+            if (resetConfirmTimer >= resetConfirmDuration)
+                ChangeStat(MineStat.Reset);
+        }
+        else
+        {
+            resetConfirmTimer = 0f; // 다시 가까워졌을 때
+        }
     }
     
     protected override void OnHealthDepleted()
@@ -279,4 +278,7 @@ public class MineEnemyController : EnemyBaseController
     {
         isPaused = isPause;
     }
+    
+    protected override bool IsCurrentlyDetecting() => currentStat == MineStat.Detect;
+    protected override void OnDetectComplete() => ChangeStat(MineStat.LandMine);
 }

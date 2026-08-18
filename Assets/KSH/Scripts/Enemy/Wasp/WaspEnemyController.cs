@@ -20,6 +20,7 @@ public class WaspEnemyController : EnemyBaseController
     private enum WaspStat
     {
         Patrol,
+        Detect,
         Combat,
         Reloading,
         Dead
@@ -53,7 +54,7 @@ public class WaspEnemyController : EnemyBaseController
     public override void TakeDamage(float damegeAmount)
     {
         if (currentStat == WaspStat.Patrol) // 순찰 중에 피격되면 Combat으로 전환
-            ChangeStat(WaspStat.Combat);
+            ChangeStat(WaspStat.Detect);
         
         if (currentStat == WaspStat.Dead) return; // 이미 Dead면 중복 실행되지 않도록 처리
         
@@ -67,6 +68,9 @@ public class WaspEnemyController : EnemyBaseController
         {
             case WaspStat.Patrol:
                 DoPatrol(true);
+                break;
+            case WaspStat.Detect:
+                DetectPlayer();
                 break;
             case WaspStat.Combat:
                 Move(defaultSpeed, combatTargetDist, true);
@@ -149,7 +153,7 @@ public class WaspEnemyController : EnemyBaseController
         if (currentStat != WaspStat.Patrol || !other.CompareTag("Player"))
             return;
         
-        ChangeStat(WaspStat.Combat);
+        ChangeStat(WaspStat.Detect);
     }
 
     public override void SetDead()
@@ -177,4 +181,7 @@ public class WaspEnemyController : EnemyBaseController
     {
         ChangeStat(WaspStat.Dead);
     }
+    
+    protected override bool IsCurrentlyDetecting() => currentStat == WaspStat.Detect;
+    protected override void OnDetectComplete() => ChangeStat(WaspStat.Combat);
 }

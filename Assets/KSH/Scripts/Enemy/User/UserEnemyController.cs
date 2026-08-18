@@ -12,7 +12,6 @@ public class UserEnemyController : EnemyBaseController
     }
     UserStat currentStat = UserStat.Patrol;
     
-    [SerializeField] private GameObject detectEffect;
     [SerializeField] private EnemyScope explodeScope; // 폭발 범위 스코프
     
     private Vector2 currentTrackDir;   // 추적 방향
@@ -84,33 +83,13 @@ public class UserEnemyController : EnemyBaseController
                 break;
         }
     }
-    
-    private void DetectPlayer() // 플레이어 감지
-    {
-        // 효과음 추가
-        detectEffect.SetActive(true);
-        detectEffect.transform.DOLocalMoveY(detectEffect.transform.localPosition.y + 1.0f, 0.5f)
-            .SetEase(Ease.OutCubic).OnComplete(() =>
-            {
-                detectEffect.transform.position = gameObject.transform.position;
-                detectEffect.SetActive(false);
-        
-                if (currentStat != UserStat.Detect) return; // 혹시 상태 바뀌었으면 아래 무시
-        
-                if (!healthUI.activeSelf) healthUI.SetActive(true);
-                ChangeStat(UserStat.Track); 
-            });
-    }
 
     private void TrackPlayer()
     {
         Vector2 playerDir = (target.transform.position - transform.position).normalized;
-        Vector2 baseDir = playerDir; // 기본적으로 플레이어 방향으로 레이 쏘기, TODO: 베이스랑 플레이어 방향 똑같으니 계산 단순화 시키기
-        Vector2 finalDir;
-
         Vector2 seekForce = playerDir; // 찾는 건 플레이어 방향 그대로
-        Vector2 avoidForce = ComputeAvoidance(baseDir, playerDir); // 평균 낸 회피 방향
-        finalDir = (seekForce * seekWeight + avoidForce * avoidWeight).normalized; // 가중치 적용
+        Vector2 avoidForce = ComputeAvoidance(playerDir); // 평균 낸 회피 방향
+        Vector2 finalDir = (seekForce * seekWeight + avoidForce * avoidWeight).normalized; // 가중치 적용
 
         // 테스트용
         seekForceDebug = seekForce;
@@ -124,8 +103,7 @@ public class UserEnemyController : EnemyBaseController
         sprite.flipX = currentTrackDir.x < 0f;
     }
 
-    // TODO: 계산 단순화!!
-    private Vector2 ComputeAvoidance(Vector2 baseDir, Vector2 playerDir)
+    private Vector2 ComputeAvoidance(Vector2 playerDir)
     {
         // ㄷ자 골목은 회피 못함, 나중에 다양한 맵에서 테스트해보기
         Vector2 accumulated = Vector2.zero;
@@ -136,7 +114,7 @@ public class UserEnemyController : EnemyBaseController
 
         foreach (float angle in wallCheckAngles)
         {
-            Vector2 rayDir = Quaternion.Euler(0f, 0f, angle) * baseDir;
+            Vector2 rayDir = Quaternion.Euler(0f, 0f, angle) * playerDir;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDir, wallCheckDistance, wallLayer);
             if (hit.collider == null) continue;
 
@@ -215,4 +193,7 @@ public class UserEnemyController : EnemyBaseController
     {
         isPaused = isPause;
     }
+    
+    protected override bool IsCurrentlyDetecting() => currentStat == UserStat.Detect;
+    protected override void OnDetectComplete() => ChangeStat(UserStat.Track);
 }
