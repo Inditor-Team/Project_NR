@@ -9,8 +9,14 @@
     {"key": "DLG_STORE_NPC_2_1_1", "value": "옵션1을 선택"},
     {"key": "DLG_STORE_NPC_2_2_2", "value": "옵션2를 선택"},
 
-    {"key": "TEMP_COMMENT_2", "value": "아래로 상점 대화 옵션 텍스트 입니다"},
+    {"key": "TEMP_COMMENT_3", "value": "아래로 상점 대화 옵션 텍스트 입니다"},
     {"key": "OPT_STORE_NPC_2_1", "value": "옵션1"},
-    {"key": "OPT_STORE_NPC_2_2", "value": "옵션2"}
+    {"key": "OPT_STORE_NPC_2_2", "value": "옵션2"},
+
+    {"key": "TEMP_COMMENT_4", "value": "아래로 이벤트A NPC 대사입니다"},
+    {"key": "DLG_EVENT_NPC_A_1", "value": "이벤트A NPC"},
+    
+    {"key": "TEMP_COMMENT_5", "value": "아래로 이벤트B NPC 대사입니다"},
+    {"key": "DLG_EVENT_NPC_B_1", "value": "이벤트B NPC"}
   ]
 }
