@@ -8,6 +8,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
 {
     [SerializeField] protected Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
     [SerializeField] protected LayerMask wallLayer; 
+    [SerializeField] protected GameObject detectEffect;
     [SerializeField] protected EnemyScope detectScope;
     [SerializeField] protected EnemyDataBase data;
     
@@ -94,7 +95,8 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
 
     protected virtual void OnDestroy()
     {
-        GameManager.Instance.OnPauseGame -= Pause;
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnPauseGame -= Pause;
     }
 
     public virtual void TakeDamage(float damegeAmount)
@@ -201,6 +203,22 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         return false;
     }
     
+    protected void DetectPlayer() // 플레이어 감지 - 공통 로직
+    {
+        detectEffect.SetActive(true);
+        detectEffect.transform.DOLocalMoveY(detectEffect.transform.localPosition.y + 1.0f, 0.5f)
+            .SetEase(Ease.OutCubic).OnComplete(() =>
+            {
+                detectEffect.transform.position = gameObject.transform.position;
+                detectEffect.SetActive(false);
+
+                if (!IsCurrentlyDetecting()) return; // 자식에게 위임
+
+                if (!healthUI.activeSelf) healthUI.SetActive(true);
+                OnDetectComplete(); // 자식에게 위임
+            });
+    }
+    
     public virtual void SetDead()
     {
         healthUI.SetActive(false);
@@ -219,4 +237,8 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     protected abstract void OnHealthDepleted();
     protected abstract void OnScopeEnter(Collider2D other);
     protected abstract void ResetStateMachine();
+    
+    // Detect 상태 관련
+    protected abstract bool IsCurrentlyDetecting(); // detect 상태인가?
+    protected abstract void OnDetectComplete(); // detect가 끝났나?
 }

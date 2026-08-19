@@ -1,8 +1,15 @@
 using UnityEngine;
 
+public enum DialogueID
+{
+    store_npc_1,
+    event_npc_A_1,
+    event_npc_B_1
+}
+
 public class NpcInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string startDialogueId;
+    [SerializeField] private DialogueID startDialogueId;
 
     public void OnInteract()
     {
@@ -12,6 +19,6 @@ public class NpcInteractable : MonoBehaviour, IInteractable
             return;
         }
         
-        DialogueManager.Instance.StartDialogue(startDialogueId);
+        DialogueManager.Instance.StartDialogue(startDialogueId.ToString());
     }
 }

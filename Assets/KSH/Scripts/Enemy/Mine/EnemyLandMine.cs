@@ -74,7 +74,7 @@ public class EnemyLandMine : PoolObjectBase
             bombScope.bounds.center,
             bombScope.bounds.size,
             bombScope.transform.eulerAngles.z,
-            playerLayer);
+            playerLayer); // tag로 감지하면 더 복잡해져서 여기선 레이어로 감지
 
         foreach (var hit in hits)
         {

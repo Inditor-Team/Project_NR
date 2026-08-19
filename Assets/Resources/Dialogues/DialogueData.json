@@ -47,6 +47,24 @@
       "nextId": "",
       "options": [],
       "phase": "store"
+    },
+    {
+      "id": "event_npc_A_1",
+      "npcId": "eventNPCA",
+      "name": "NAME_EVENT_NPCA",
+      "text": "DLG_EVENT_NPC_A_1",
+      "nextId": "",
+      "options": [],
+      "phase": "eventA"
+    },
+    {
+      "id": "event_npc_B_1",
+      "npcId": "eventNPCB",
+      "name": "NAME_EVENT_NPCB",
+      "text": "DLG_EVENT_NPC_B_1",
+      "nextId": "",
+      "options": [],
+      "phase": "eventB"
     }
   ]
 }
