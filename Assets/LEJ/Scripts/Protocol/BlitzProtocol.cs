@@ -64,16 +64,17 @@ public class BlitzProtocol : ProtocolBase
 
         foreach (Collider2D enemy in enemies)
         {
-            //레이어 구분 전 임시
-            if (enemy.GetComponent<EnemyController>() == null)
-                continue;
+            if (killCount >= attackCount)
+                break;
 
             float intervalTime = 0f;
+
             while (enemy != null && Vector2.Distance(transform.position, enemy.transform.position) > attackDistance)
             {
                 player.transform.position = Vector2.MoveTowards(transform.position,enemy.transform.position,dashSpeed * Time.deltaTime);
                 
                 intervalTime += Time.deltaTime;
+
                 if (intervalTime >= spectrumInterval)
                 {
                     Effect();
@@ -83,21 +84,15 @@ public class BlitzProtocol : ProtocolBase
                 yield return null;
             }
 
-            if (enemy != null)
-            {
-                swordAttacker.Swing();
-                enemy.GetComponent<IDamageable>().TakeDamage(100);
-                killCount++;
+            swordAttacker.Swing();
+            enemy.GetComponent<IDamageable>().TakeDamage(100);
+            killCount++;
 
-                if (killCount >= attackCount)
-                {
-                    EndProtocol();
-                    yield break;
-                }
-
-                yield return new WaitForSeconds(0.05f);
-            }
+            yield return new WaitForSeconds(0.05f);
         }
+
+        EndProtocol();
+        yield break;
     }
 
     internal override void EndProtocol()
