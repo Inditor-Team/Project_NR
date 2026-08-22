@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948b99c4822cf004cb0ec6abbfbec2b9, type: 3}
-  m_Name: LevelCard_NeuralAcceleration
-  m_EditorClassIdentifier: Assembly-CSharp::LevelCard
-  Id: 03
+  m_Script: {fileID: 11500000, guid: f6497fe613ffe4e4d8abe40cd677e1b7, type: 3}
+  m_Name: NeuralAcceleration
+  m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
+  Id: 4
   type: 3
-  CardName: "\uC2E0\uACBD \uAC00\uC18D"
-  CardDescription: "\uC774\uB3D9 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  Probability: 0
+  CardName: "\uC2E0\uACBD\uAC00\uC18Di"
+  CardDescription: "\uC774\uB3D9 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD55C\uB2E4"
+  Probability: 10
   Elements:
   - targetStat: 1
     upgradeAmount: 1

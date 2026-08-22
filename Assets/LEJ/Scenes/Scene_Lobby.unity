@@ -5831,6 +5831,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058492084245161020, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058492084245161020, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
@@ -8209,8 +8213,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99999994
-    height: 0.9996382
+    width: 0.9999138
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

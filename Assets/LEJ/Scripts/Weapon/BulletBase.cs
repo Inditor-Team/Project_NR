@@ -6,6 +6,7 @@ using UnityEngine;
 public class BulletBase : MonoBehaviour
 {
     [SerializeField] LayerMask ownerLayer;
+    [SerializeField] LayerMask wallLayer;
 
     private float damage;
     private float speed;
@@ -41,14 +42,18 @@ public class BulletBase : MonoBehaviour
         if (this.originPrefab == null)
             this.originPrefab = originPrefab;
         timer = 0;
-
-        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((ownerLayer.value & (1 << collision.gameObject.layer)) != 0)
             return;
+
+        if ((wallLayer.value & (1 << collision.gameObject.layer)) != 0)
+        {
+            DestroyBullet();
+            return;
+        }
 
         IDamageable damageable = collision.GetComponent<IDamageable>();
         IInteractable interactable = collision.GetComponent<IInteractable>();

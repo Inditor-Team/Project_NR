@@ -86,7 +86,7 @@ public class BlitzProtocol : ProtocolBase
             if (enemy != null)
             {
                 swordAttacker.Swing();
-                enemy.gameObject.SetActive(false);
+                enemy.GetComponent<IDamageable>().TakeDamage(100);
                 killCount++;
 
                 if (killCount >= attackCount)

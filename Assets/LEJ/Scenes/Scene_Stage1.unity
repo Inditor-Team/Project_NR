@@ -523,7 +523,7 @@ Camera:
     x: 0
     y: 0
     width: 0.99999994
-    height: 0.9996382
+    height: 0.99991477
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -914,43 +914,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &413533513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4253029594397454049, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
-  m_PrefabInstance: {fileID: 6740383107938655941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &413533514 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5711610164856498049, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
   m_PrefabInstance: {fileID: 6740383107938655941}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &413533517
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413533513}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &413659922
 GameObject:
   m_ObjectHideFlags: 0
@@ -7732,9 +7700,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6152121639868676899, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       insertIndex: 3
       addedObject: {fileID: 6740383107938655945}
-    - targetCorrespondingSourceObject: {fileID: 4253029594397454049, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 413533517}
     - targetCorrespondingSourceObject: {fileID: 2130022078305305045, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 897523984}

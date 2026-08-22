@@ -25,6 +25,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
         ProtocolRate,
 
         Life, //생명
+        MaxLife, //최대 생명
 
         Count
     }
@@ -70,6 +71,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
         UpdateStat(Stat.ProtocolDuration, 2.5f);
         UpdateStat(Stat.ProtocolRate, 10f);
         UpdateStat(Stat.Life, 5f);
+        UpdateStat(Stat.MaxLife, 5f);
     }
 
     public void EarnLife(float amount)
@@ -86,7 +88,13 @@ public class PlayerStat : MonoBehaviour, IDamageable
 
     public void UpdateStat(Stat type, float value)
     {
-        statDic[type] += value;
+        if (type == Stat.RollRate || type == Stat.SwordSwingRate || type == Stat.BulletFireRate || type == Stat.ProtocolRate)
+        {
+            //배율 증가 또는 감소
+            statDic[type] *= value;
+        }
+        else
+            statDic[type] += value;
         OnUpdateStat?.Invoke(type, value);
     }
 }
