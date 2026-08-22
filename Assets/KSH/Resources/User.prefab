@@ -783,11 +783,11 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  detectEffect: {fileID: 2539870843759031036}
   detectScope: {fileID: 2241633017986970874}
   data: {fileID: 11400000, guid: 130c4abc2cb10d04cba40bcbf6a159bf, type: 2}
   healthUI: {fileID: 6023039564563549091}
   healthSlider: {fileID: 7831573339444688938}
-  detectEffect: {fileID: 2539870843759031036}
   explodeScope: {fileID: 2733768677855299986}
   wallCheckDistance: 1.2
 --- !u!95 &4249809354998220521
