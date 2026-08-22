@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    [SerializeField] PlayerStat stat;
+    PlayerStat stat;
     [SerializeField] Slider slider;
     float additiveValue = 0.2f;
 
-    private void Awake()
+    private void Start()
     {
+        stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
         stat.OnUpdateStat += OnUpdateStat;
     }
     

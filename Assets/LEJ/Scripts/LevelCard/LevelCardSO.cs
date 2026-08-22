@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelCardSO", menuName = "LEJ/LevelCardSO")]
 public class LevelCardSO : ScriptableObject
 {
-    public enum LevelCardType { None, Attack, Shield, Move, Special, Count}
+    public enum LevelCardType { None, Attack, Shield, Speed, Evasion, Risk, Count}
     public string Id;
     public LevelCardType type;
     public string CardName;

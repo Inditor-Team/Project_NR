@@ -69,10 +69,13 @@ public class LevelCardUI : MonoBehaviour
             case LevelCardSO.LevelCardType.Shield:
                 curElement.image.color = Color.blue;
                 break;
-            case LevelCardSO.LevelCardType.Move:
+            case LevelCardSO.LevelCardType.Evasion:
                 curElement.image.color = Color.yellow;
                 break;
-            case LevelCardSO.LevelCardType.Special:
+            case LevelCardSO.LevelCardType.Speed:
+                curElement.image.color = Color.yellowGreen;
+                break;
+            case LevelCardSO.LevelCardType.Risk:
                 curElement.image.color = Color.magenta;
                 break;
         }

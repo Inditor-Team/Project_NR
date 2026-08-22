@@ -25,7 +25,12 @@ public class SceneController : MonoBehaviour
         StartBGM();
     }
 
-    public enum Scene { None, Scene_Lobby, Scene_Map, Scene_Stage1, Count }
+    public enum Scene { None, Scene_Lobby, Scene_Map, 
+        Scene_NormalA, Scene_NormalB, Scene_NormalC, Scene_NormalD,
+        Scene_HardA, Scene_HardB, 
+        Scene_EventA, Scene_EventB, Scene_Shop,
+        Scene_MiddleBoss,
+        Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;
     public event UnityAction<Scene> OnSceneChanged;
@@ -56,7 +61,7 @@ public class SceneController : MonoBehaviour
             case Scene.Scene_Map:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Map);
                 break;
-            case Scene.Scene_Stage1:
+            case Scene.Scene_NormalA:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Stage1);
                 break;
         }

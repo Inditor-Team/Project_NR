@@ -278,7 +278,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
     {
         gameObject.SetActive(false);
-        SpawnManager.Instance.DestroyedEnemy(); 
+        SectorManager.Instance.DestroyedEnemy(); 
         // 오브젝트 풀링 적용 예정, returnPool
     }
 
