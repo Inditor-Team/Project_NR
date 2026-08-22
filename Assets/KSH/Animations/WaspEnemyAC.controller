@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 278e3c1ede06ca7498ccacd521aff1f2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 07ebeed4ecccb6c4bb0dbd2eab4a1ecf, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyBaseAC
+  m_Name: WaspEnemyAC
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isDead
@@ -126,7 +126,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 64186311a2d7f59448b9783af3046800, type: 2}
+  m_Motion: {fileID: 7400000, guid: f897acbc48394de4284bc1b71aae6627, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

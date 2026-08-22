@@ -267,6 +267,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  detectEffect: {fileID: 1022882084947652020}
   detectScope: {fileID: 5947785557331054354}
   data: {fileID: 11400000, guid: 3fc7d7051cc612f4d950b9ff76cbade7, type: 2}
   healthUI: {fileID: 3207475912908722597}
@@ -275,7 +276,6 @@ MonoBehaviour:
   mapCenter: {fileID: 0}
   fleeRecalcInterval: 0.75
   fleeResetDist: 10
-  detectEffect: {fileID: 1022882084947652020}
   weightPlayerDistance: 1
   weightGoToOpenSpace: 0.6
   weightNoise: 0.2
@@ -331,7 +331,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -855745988, guid: 27ca1e64f273313418625aa0a34d0e25, type: 3}
+  m_Sprite: {fileID: -881194897, guid: cd4a70b158f370f419eba01f4ee523b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
