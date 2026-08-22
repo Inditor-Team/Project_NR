@@ -9,9 +9,14 @@ public static class GameTime
     
     public static float WorldDeltaTime =>
         Time.deltaTime * WorldTimeScale;
+    
+    // 임시 시간 변수
+    private static float beforeWorldTimeScale = 1f; // 0이 아닌 시간을 저장해서 이전 타임 스케일로 돌아오도록 함
+    public static float BeforeWorldTimeScale => beforeWorldTimeScale;
 
     public static void SetTimeScale(float timeScale)
     {
+        if (timeScale > 0f) beforeWorldTimeScale = timeScale;
         worldTimeScale = timeScale;
     }
 }
@@ -163,7 +168,7 @@ public class GameManager : MonoBehaviour
     private void ApplyPause()
     {
         bool shouldPause = pauseRequestCount > 0;
-        GameTime.SetTimeScale(shouldPause ? 0f : GameTime.WorldTimeScale);
+        GameTime.SetTimeScale(shouldPause ? 0f : GameTime.BeforeWorldTimeScale);
         OnPauseGame?.Invoke(shouldPause);
     }
     
