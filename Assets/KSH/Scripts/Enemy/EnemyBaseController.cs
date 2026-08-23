@@ -230,7 +230,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
     {
         gameObject.SetActive(false);
-        SpawnManager.Instance.DestroyedEnemy(); 
+        SectorManager.Instance.DestroyedEnemy(); 
     }
 
     public abstract void Pause(bool isPause);

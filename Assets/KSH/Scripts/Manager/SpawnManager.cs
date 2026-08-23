@@ -30,8 +30,6 @@ public class SpawnManager : MonoBehaviour
         remainingCount--;
 
         if (remainingCount <= 0)
-        {
-            GameManager.Instance.SectionClear();
-        }
+            SectorManager.Instance.DestroyedEnemy();
     }
 }

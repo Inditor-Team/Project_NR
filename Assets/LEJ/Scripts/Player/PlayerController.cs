@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         input = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
 
-        stat = GetComponent<PlayerStat>();
+        stat = transform.GetChild(0).GetComponent<PlayerStat>();
         animator = GetComponent<PlayerAnimator>();
         swordAttacker = GetComponent<SwordAttacker>();
         gunShooter = GetComponent<GunShooter>();

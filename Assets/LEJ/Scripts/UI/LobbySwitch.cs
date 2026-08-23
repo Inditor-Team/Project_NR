@@ -32,9 +32,12 @@ public class LobbySwitch : MonoBehaviour, IInteractable
         switch (switchType)
         {
             case SwitchType.GameStart:
-                if(uiCanvas.activeSelf)
+                if (uiCanvas.activeSelf)
+                {
                     uiCanvas.SetActive(false); // 튜토리얼 UI 켜져있으면 종료
-                
+                    GameManager.Instance.ReleasePause();
+                }
+
                 UIManager.Instance.Show(startAlert);
                 GameManager.Instance.RequestPause();// Pause(true);
                 SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);

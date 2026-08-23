@@ -20,7 +20,22 @@ public class BladerProtocol : ProtocolBase
     [Header("잔상 이펙트")]
     [SerializeField] private int spectrumPoolSize = 30;
     [SerializeField] private float spectrumFadeDuration = 3f; //잔상 페이드 아웃 시간
-    [SerializeField] private float spectrumInterval = 0.2f; //잔상 생성 간격
+    [SerializeField] private float spectrumInterval = 0.1f; //잔상 생성 간격
+    [SerializeField] float spectrumScale = 1.5f; //잔상 최대 크기
+    [SerializeField] float SpectrumSpreadAmount = 0.1f; //잔상 스프레드 크기
+
+    //잔상 이펙트 8방향으로 퍼지게 하기 위한 캐싱
+    readonly Vector2[] directions =
+    {
+        Vector2.up,
+        Vector2.down,
+        Vector2.left,
+        Vector2.right,
+        new Vector2(1, 1).normalized,
+        new Vector2(-1, 1).normalized,
+        new Vector2(1, -1).normalized,
+        new Vector2(-1, -1).normalized
+    };
     private int index = 0;
 
     private Coroutine[] fadeCoroutines;
@@ -107,7 +122,7 @@ public class BladerProtocol : ProtocolBase
 
     void InitEffect()
     {
-        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.NeuroAction)
+        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.Blader)
             return;
 
         spectrumPool = new SpriteRenderer[spectrumPoolSize];
@@ -148,7 +163,9 @@ public class BladerProtocol : ProtocolBase
         c.a = 0.5f;
         spectrum.color = c;
 
-        fadeCoroutines[index] = StartCoroutine(SpectrumFadeTime(index));
+        Vector2 dir = directions[index % directions.Length];
+
+        fadeCoroutines[index] = StartCoroutine(SpectrumFadeTime(index, dir));
 
         index = (index + 1) % spectrumPoolSize;
     }
@@ -159,16 +176,21 @@ public class BladerProtocol : ProtocolBase
     /// <param name="spectrum"></param>
     /// <param name="duration"></param>
     /// <returns></returns>
-    IEnumerator SpectrumFadeTime(int poolIndex)
+    IEnumerator SpectrumFadeTime(int poolIndex, Vector2 dir)
     {
         SpriteRenderer spectrum = spectrumPool[poolIndex];
 
+        float time = 0f;
         float elapsed = 0f;
         Color color = spectrum.color;
 
         while (elapsed < spectrumFadeDuration)
         {
             float alpha = Mathf.Lerp(0.5f, 0f, elapsed / spectrumFadeDuration);
+
+            time += Time.deltaTime;
+            spectrum.transform.localScale = Vector3.Lerp(curSprite.transform.lossyScale, curSprite.transform.lossyScale * spectrumScale, time);
+            spectrum.transform.position = transform.position + (Vector3)(dir * SpectrumSpreadAmount * time);
 
             color.a = alpha;
             spectrum.color = color;

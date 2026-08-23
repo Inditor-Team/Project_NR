@@ -23,7 +23,7 @@ public class Gun : WeaponBase
     BulletBase curBullet;
 
     [SerializeField] LayerMask hitLayer;
-    [SerializeField] private ParticleSystem laserEffect;
+    [SerializeField] private TrailRenderer laserTrail;
 
     public event UnityAction OnShoot;
     Color originColor;
@@ -63,13 +63,13 @@ public class Gun : WeaponBase
 
         curBullet.OnFire(-firePoint.right, speed, damage, bulletPrefab);
 
+        laserTrail.Clear();
         Vector2 endPosition;
-
         Vector2 startPosition = firePoint.position;
+
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 direction =
-            (mouseWorldPos - startPosition).normalized;
+        Vector2 direction = (mouseWorldPos - startPosition).normalized;
 
         RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, maxDistance, hitLayer);
 
@@ -78,39 +78,65 @@ public class Gun : WeaponBase
         else
             endPosition = startPosition + direction * maxDistance;
 
-        PlayLaserEffect(firePoint.position, endPosition);
+        //PlayLaserEffect(startPosition, endPosition);
     }
 
     public void FireReflectBullet(Vector2 startPos, Vector2 dir, float speed, float damage)
     {
-        curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
-        curBullet.transform.position = startPos;
+        GameObject bulletObject = PoolManager.Instance.Get(bulletPrefab);
 
-        curBullet.GetComponent<SpriteRenderer>().color = Color.green;
+        if (bulletObject == null)
+            return;
+
+        bulletObject.SetActive(true);
+
+        curBullet = bulletObject.GetComponent<BulletBase>();
 
         if (curBullet == null)
             return;
 
+        curBullet.transform.position = startPos;
+        curBullet.GetComponent<SpriteRenderer>().color = Color.green;
+
         curBullet.OnFire(dir, speed, damage, bulletPrefab);
     }
 
-    public void PlayLaserEffect(Vector2 start, Vector2 end)
-    {
-        Vector2 direction = end - start;
-        float distance = direction.magnitude;
+    //private Coroutine laserCoroutine;
 
-        if (distance <= 0.001f)
-            return;
 
-        float speed = distance / 0.06f;
+    //public void PlayLaserEffect(Vector2 start, Vector2 end)
+    //{
+    //    if (laserCoroutine == null)
+    //        laserCoroutine = StartCoroutine(PlayLaserRoutine(start, end));
+    //}
+    
+    //private IEnumerator PlayLaserRoutine(Vector2 start, Vector2 end)
+    //{
+    //    const float duration = 0.06f;
+    
+    //    laserTrail.emitting = false;
+    //    laserTrail.Clear();
 
-        ParticleSystem.EmitParams emitParams =
-            new ParticleSystem.EmitParams();
+    //    yield return null;
 
-        emitParams.position = start;
-        emitParams.velocity = direction.normalized * speed;
-        emitParams.startLifetime = 0.06f;
+    //    laserTrail.transform.position = start;
+    //    laserTrail.emitting = true;
+    
+    //    float elapsed = 0f;
+    
+    //    while (elapsed < duration)
+    //    {
+    //        float t = Mathf.Clamp01(elapsed / duration);
+    
+    //        laserTrail.transform.position = Vector2.Lerp(start, end, t);
+    
+    //        elapsed += Time.deltaTime;
+    
+    //        yield return null;
+    //    }
+    //    laserTrail.transform.position = end;
 
-        laserEffect.Emit(emitParams, 1);
-    }
+    //    laserTrail.emitting = false;
+    //    laserCoroutine = null;
+    //}
 }

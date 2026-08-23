@@ -9,9 +9,25 @@ public class LevelCardProvider : MonoBehaviour
 {
     [SerializeField] LevelCardData data; //추후 리소스를 통해 프리팹 생성으로 참조 또는 시트 연결
     [SerializeField] LevelCardUI ui;
-    [SerializeField] PlayerStat stat; //추후 매니저에서 Player 참조 시 그쪽으로 연결
+    PlayerStat stat; 
 
     private int cardCount = 3;
+
+    private void Start()
+    {
+        stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
+        SectorManager.Instance.OnSectorClear += ProvideByUI;
+    }
+
+    private void OnDestroy()
+    {
+        SectorManager.Instance.OnSectorClear -= ProvideByUI;
+    }
+
+    void ProvideByUI(SectorSO.SectorType type)
+    {
+        ProvideByUI();
+    }
 
     public void ProvideByUI()
     {

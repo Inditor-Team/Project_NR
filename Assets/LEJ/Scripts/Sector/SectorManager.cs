@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -22,29 +23,43 @@ public class SectorManager : MonoBehaviour
 
     }
 
-    private void Awake()
-    {
-        OnEnemyDestroyed += DestroyedEnemy;
-    }
+    [SerializeField] private GameObject wasp_prefab;
+    [SerializeField] private GameObject mine_prefab;
+    [SerializeField] private GameObject user_prefab;
 
-    private void OnDisable()
-    {
-        OnEnemyDestroyed -= DestroyedEnemy;
-    }
-
-    [SerializeField] private GameObject enemyObj;
-    [SerializeField] private GameObject enemyHealtheBar;
+    [SerializeField] private GameObject enemyHealthBar;
     [SerializeField] private Slider enemyHealthSlider;
-    private int remainingCount = 6; // 맵에 남은 적
+    private int remainingCount = -1; //맵에 남은 적
 
-    public event UnityAction OnEnemyDestroyed; //해당 이벤트 Invoke 해주시길 바랍니다
+    private void Start()
+    {
+        remainingCount = curSectorSO.EnemyData.Length;
+    }
 
     public void SpawnEnemy()
     {
         if (curSectorSO == null)
             return;
 
-        //여기에 SectorSO 를 기반한 몹 스폰 구현 예정
+        GameObject curPrefab = null;
+
+        for (int i = 0; i < curSectorSO.EnemyData.Length; i++)
+        {
+            switch (curSectorSO.EnemyData[i].type)
+            {
+                case SectorSO.EnemyType.Wasp:
+                    curPrefab = wasp_prefab;
+                    break;
+                case SectorSO.EnemyType.Mine:
+                    curPrefab = mine_prefab;
+                    break;
+                case SectorSO.EnemyType.User:
+                    curPrefab = user_prefab;
+                    break;
+            }
+
+            Instantiate(curPrefab, curSectorSO.EnemyData[i].spawnPos, Quaternion.identity);
+        }
     }
 
     public void DestroyedEnemy() // 적이 파괴되면 호출
@@ -52,7 +67,7 @@ public class SectorManager : MonoBehaviour
         remainingCount--;
 
         if (remainingCount <= 0)
-            GameManager.Instance.SectionClear();
+            SectorClear();
     }
 
     public event UnityAction<SectorSO.SectorType> OnSectorClear;
@@ -60,7 +75,7 @@ public class SectorManager : MonoBehaviour
 
     public void SectorClear() // 맵 내의 적 전부 처리 시 실행
     {
-        Debug.Log("Section Clear !");
+        Debug.Log("Section Clear!");
         OnSectorClear?.Invoke(curSectorSO.Type);
 
         //섹터가 끝나면 GameManager 에 등록한 이벤트 등록 취소
