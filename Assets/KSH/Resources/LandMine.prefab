@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 3548976916338782406}
   - component: {fileID: 3671861770587749416}
   - component: {fileID: 5095656932813408747}
+  - component: {fileID: 5613939550438714291}
   m_Layer: 0
   m_Name: LandMine
   m_TagString: Untagged
@@ -345,6 +346,28 @@ MonoBehaviour:
     m_Bits: 8
   bombScope: {fileID: 7285781944572875403}
   bombEffectSprite: {fileID: 701503805709385909}
+--- !u!95 &5613939550438714291
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443741529372853142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b7eab3c6a4024945a4b1ff1f0896aea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9008994309687138003
 GameObject:
   m_ObjectHideFlags: 0

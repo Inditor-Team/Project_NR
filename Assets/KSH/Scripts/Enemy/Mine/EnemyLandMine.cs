@@ -1,14 +1,12 @@
-using System;
 using UnityEngine;
 using DG.Tweening;
-using System.Collections.Generic;
 
 public class EnemyLandMine : PoolObjectBase
 {
     private enum MineState { Idle, Armed, Exploding }
     private MineState state;
 
-    [SerializeField] private SpriteRenderer sprite;
+    
     [SerializeField] private LayerMask playerLayer;
 
     [SerializeField] private Collider2D bombScope;
@@ -20,6 +18,10 @@ public class EnemyLandMine : PoolObjectBase
     private float damage;
     private GameObject originPrefab;
     
+    // 폭파 애니메이션
+    private SpriteRenderer sprite;
+    private Animator anim;
+    
     public override void SetOriginPrefab(GameObject prefab) => originPrefab = prefab;
     public void SetValue(float newTime, float newDamage)
     {
@@ -27,6 +29,12 @@ public class EnemyLandMine : PoolObjectBase
         damage = newDamage;
     }
 
+    private void Awake()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+    
     private void OnEnable()
     {
         state = MineState.Idle;
@@ -58,6 +66,7 @@ public class EnemyLandMine : PoolObjectBase
     
     private void EnterArmedState()
     {
+        // TODO: 카운트 효과음 추가
         state = MineState.Armed;
         sprite.DOColor(Color.red, 0.2f).SetLoops(-1, LoopType.Yoyo);
         bombEffectSprite.DOFade(0.35f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
@@ -82,11 +91,13 @@ public class EnemyLandMine : PoolObjectBase
                 target.TakeDamage(damage);
         }
         
-        // 폭발 연출, TODO: 효과음 추가
         bombEffectSprite.DOKill();
         SetBombEffectAlpha(1f); 
-        bombEffectSprite.DOFade(0f, 0.4f).OnComplete(() =>
+        anim.SetTrigger("isBomb"); 
+        // TODO: 폭발 효과음 추가
+        bombEffectSprite.DOFade(0f, 0.5f).OnComplete(() =>
         {
+            anim.Rebind(); // 애니메이션 초기화
             PoolManager.Instance.Release(originPrefab, gameObject);
         });
     }
