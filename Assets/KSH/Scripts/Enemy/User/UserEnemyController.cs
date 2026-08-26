@@ -24,7 +24,7 @@ public class UserEnemyController : EnemyBaseController
     // 방향 계산 가중치, 벽 피하기 우선
     private float seekWeight = 1f;
     private float avoidWeight = 2f; 
-
+    
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -63,7 +63,6 @@ public class UserEnemyController : EnemyBaseController
     
     private void ChangeStat(UserStat newStat)
     {
-        Debug.Log($"새 상태 : {newStat}");
         currentStat = newStat;
         switch (currentStat)
         {
@@ -192,6 +191,15 @@ public class UserEnemyController : EnemyBaseController
     public override void Pause(bool isPause)
     {
         isPaused = isPause;
+    }
+    
+    // 보스맵 스폰
+    public void SpawnForBoss(Vector2 spawnPos)
+    {
+        transform.position = spawnPos;
+        currentTrackDir = Vector2.zero;
+        prevTangent = Vector2.zero;
+        ChangeStat(UserStat.Track); // Patrol을 거치지 않고 바로 추적
     }
     
     protected override bool IsCurrentlyDetecting() => currentStat == UserStat.Detect;

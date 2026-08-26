@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class EnemyBullet : PoolObjectBase
+public class EnemyBullet : MonoBehaviour, IPoolObjectBase
 {
     public Vector2 velocity; 
     private Rigidbody2D rigid; // 캐싱
@@ -46,7 +46,7 @@ public class EnemyBullet : PoolObjectBase
         rigid.linearVelocity = direction * speed * GameTime.WorldTimeScale;
     }
 
-    public override void SetOriginPrefab(GameObject prefab)
+    public void SetOriginPrefab(GameObject prefab)
     {
         originPrefab = prefab;
     }

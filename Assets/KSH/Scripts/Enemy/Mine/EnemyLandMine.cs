@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class EnemyLandMine : PoolObjectBase
+public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
 {
     private enum MineState { Idle, Armed, Exploding }
     private MineState state;
@@ -22,7 +22,7 @@ public class EnemyLandMine : PoolObjectBase
     private SpriteRenderer sprite;
     private Animator anim;
     
-    public override void SetOriginPrefab(GameObject prefab) => originPrefab = prefab;
+    public void SetOriginPrefab(GameObject prefab) => originPrefab = prefab;
     public void SetValue(float newTime, float newDamage)
     {
         waitTime = newTime;

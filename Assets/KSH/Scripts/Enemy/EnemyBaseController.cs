@@ -66,9 +66,10 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         if (GameManager.Instance != null)
+        {
             GameManager.Instance.OnPauseGame += Pause;
-
-        target = GameManager.Instance.Player.gameObject.transform;
+            target = GameManager.Instance.Player.gameObject.transform;
+        }
     }
 
     protected virtual void OnEnable()

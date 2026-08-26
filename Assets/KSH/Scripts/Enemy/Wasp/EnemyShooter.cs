@@ -21,9 +21,10 @@ public class EnemyShooter : MonoBehaviour
     private int shootTimeCount = 5;
     private float damage;
     
-    public event Action OnReloadStart;
+    public event Action OnReloadStart; // 재장전
     public event Action OnReloadEnd;
-    
+    public event Action OnShootIntervalStart; // 1회 간격 대기
+    public event Action OnShootIntervalEnd;
     private bool isPaused;
 
 
@@ -36,6 +37,13 @@ public class EnemyShooter : MonoBehaviour
     public void SetDamage(float damage)
     {
         this.damage = damage;
+    }
+
+    public void SetCount(int shootTimeCount, int fireCount, float reloadTime)
+    {
+        this.shootTimeCount = shootTimeCount;
+        this.fireCount = fireCount;
+        this.reloadTime = reloadTime;
     }
     
     public void StartShooting(Transform playerTransform) // 아예 플레이어 transform를 참조하기, 변동되는 position 따라 잡기 위해
@@ -71,9 +79,10 @@ public class EnemyShooter : MonoBehaviour
                 Shoot(gunTransform[j%2]);
                 yield return WaitForSecondsPausable(fireInterval);
             }
+            OnShootIntervalStart?.Invoke();
             yield return WaitForSecondsPausable(shootTimeInterval);
+            OnShootIntervalEnd?.Invoke();
         }
-        
         StartCoroutine(Reload()); // TODO: 변수 만들어서 null 처리
     }
 
