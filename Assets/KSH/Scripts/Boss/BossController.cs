@@ -4,8 +4,10 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public class BossController : MonoBehaviour, IDamageable
+public partial class BossController : MonoBehaviour, IDamageable
 {
+    # region 변수 모음 
+    
     private enum BossAttack // 기본 공격 패턴
     {
         Shoot = 0,
@@ -13,7 +15,7 @@ public class BossController : MonoBehaviour, IDamageable
         SpawnUser = 2
     }
 
-    private enum BossPatern // 페이즈2 패턴
+    private enum BossPattern // 페이즈2 패턴
     {
         ShootAndLandMine = 0,
         ShootAndUser = 1,
@@ -35,7 +37,7 @@ public class BossController : MonoBehaviour, IDamageable
     // 현재 스탯 및 공격 정보
     private BossStat currentStat;
     private BossAttack currentAttack;
-    private BossPatern currentPattern;
+    private BossPattern currentPattern;
     
     [SerializeField] private LayerMask wallLayer; 
     [SerializeField] private EnemyDataBase data;
@@ -51,11 +53,11 @@ public class BossController : MonoBehaviour, IDamageable
     private SpriteRenderer sprite;
     private Animator anim;
     private Vector2 nextvec;
-    private Collider2D collider;
+    private Collider2D col;
     private Rigidbody2D rigid;
     private bool isPaused;
     
-    // 에너미랑 같은 구조
+    // 기본 설정 값 변수
     private float defaultSpeed;
     private float maxHealth;
     private float health;
@@ -83,13 +85,32 @@ public class BossController : MonoBehaviour, IDamageable
     private float landMineMaxTime = 5f; // 강제 지뢰 설치 종료 타이머
     private int mineSpawnedCount; // 현재까지 설치한 개수
     private int mineTargetCount; // 목표 지뢰 설치 개수
+    private bool attackIncludesLandMine; // 현재 공격에 지뢰 설치가 포함되는가
+    
+    // 유저 스폰 관련
+    private float userSpawnCollisionRadius = 1.5f;
+    private const float userSpawnMinRadius = 2.5f;
+    private const float userSpawnMaxRadius = 4f;
+    private const float userMinAngleGap = 120f; // 두 개체 간 최소 각도 차이
+    private const int userSpawnMaxAttempts = 8;
+    
+    // 회복 패턴 관련
+    private bool isHealed = false;
+    private float healStartHealth;
+    private float goalDamageAmount = 5f; // 일단 5 데미지 입혀야 힐 취소
+    private float healAmount = 15f; // 보스 회복량
+    private float healTimer;
+    private float healMaxTime = 5f; // 5초 동안 힐 패턴 진입
+    
+    
+    # endregion
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        collider = GetComponent<Collider2D>();
+        col = GetComponent<Collider2D>();
 
         defaultSpeed = data.moveSpeed;
         maxHealth = data.health;
@@ -139,30 +160,29 @@ public class BossController : MonoBehaviour, IDamageable
             return;
         
         health -= damegeAmount;
-
+        
         // 보스 피격 효과음은 에너미랑 똑같이?
         // SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
 
-        if (health <= maxHealth / 2 && !isPhaseTwo) // 페이즈 변경
-        {
-            isPhaseTwo = true;
-            ChangeStat(BossStat.PhaseSwitch);
-        }
-
-        if (health <= maxHealth * 0.25)
-        {
-            // 회복 패턴 진입
-            Debug.Log("회복 패턴 진입");
-            ChangeStat(BossStat.Heal);
-        }
-        
         if (health <= 0) // 사망
         {
             healthSlider.value = 0;
             ChangeStat(BossStat.Dead);
             return;
-        }
-
+        } 
+        
+        if (health <= maxHealth * 0.25 && !isHealed) // 1회만 진입 가능
+        {
+             // 회복 패턴 진입
+             Debug.Log("회복 패턴 진입");
+             ChangeStat(BossStat.Heal);
+             // 이펙트나 색상 전환으로 표시?
+        } 
+        else if (health <= maxHealth / 2 && !isPhaseTwo) // 페이즈 변경
+        {
+            ChangeStat(BossStat.PhaseSwitch);
+        } 
+        
         sprite.DOColor(Color.red, 0.2f).OnComplete(() =>
         {
             sprite.DOColor(Color.white, 0.2f);
@@ -173,7 +193,7 @@ public class BossController : MonoBehaviour, IDamageable
     private void SetDead()
     {
         enemyShooter.StopShooting();
-        collider.isTrigger = true; // 충돌 무시
+        col.isTrigger = true; // 충돌 무시
         anim.SetTrigger("isDead");
         
         // TODO: 사망 효과음 변경?
@@ -188,7 +208,7 @@ public class BossController : MonoBehaviour, IDamageable
         // SectorManager.Instance.DestroyedEnemy(); 
     }
 
-    public void OnPhaseSwitchAnimationOver()
+    public void OnPhaseSwitchAnimationOver() // 페이즈 스위치 애니메이션 끝날 시 실행
     {
         ChangeStat(BossStat.Wait);
     }
@@ -208,17 +228,11 @@ public class BossController : MonoBehaviour, IDamageable
                 anim.SetBool("isMove", false);
                 break;
             case BossStat.PhaseOneMove:
-                anim.SetBool("isFire", false);
-                anim.SetBool("isMove", true);
-                break;
-            case BossStat.PhaseOneFire:
-                anim.SetBool("isFire", true);
-                anim.SetBool("isMove", false);
-                break;
             case BossStat.PhaseTwoMove:
                 anim.SetBool("isFire", false);
                 anim.SetBool("isMove", true);
                 break;
+            case BossStat.PhaseOneFire:
             case BossStat.PhaseTwoFire:
                 anim.SetBool("isFire", true);
                 anim.SetBool("isMove", false);
@@ -226,10 +240,15 @@ public class BossController : MonoBehaviour, IDamageable
             case BossStat.PhaseSwitch:
                 anim.SetTrigger("switchPhase");
                 anim.SetBool("isPhaseTwo", true);
+                isPhaseTwo = true;
                 // TODO: 페이즈 전환 효과음
                 break;
             case BossStat.Heal:
                 anim.SetBool("isMove", false); // 정지
+                anim.SetBool("isFire", false);
+                isHealed = true;
+                healStartHealth = health; // 현재 체력 저장
+                healTimer = 0f;
                 // 맞으면 되돌아오게 (hp얼마나 깎여야?)
                 // 데미지 n만큼 받으면 바로 패턴 해제 or m초 동안 무조건 정지하고 n만큼 피해 받아야 회복 안됨
                 break;
@@ -250,15 +269,22 @@ public class BossController : MonoBehaviour, IDamageable
             // 이동
             case BossStat.PhaseOneMove:
             case BossStat.PhaseTwoMove:
-                // 페이즈 상관없이 이동은 동일
-                if (currentAttack == BossAttack.LandMine) LandMineAttack();
-                Move();
+                Move(); // 페이즈 상관없이 이동은 동일
+                if (attackIncludesLandMine) LandMineAttack();
                 break;
             case BossStat.PhaseOneFire:
             case BossStat.PhaseTwoFire:
-                if (isMovingDuringInterval) Move();
-                if (currentPattern == BossPatern.LandMineAndUser ||
-                    currentPattern == BossPatern.ShootAndLandMine) LandMineAttack();
+                if (isMovingDuringInterval) Move(); // 총 안쏘는 간격 사이에만 이동
+                if (attackIncludesLandMine) LandMineAttack();
+                break;
+            case BossStat.Heal:
+                healTimer += Time.fixedDeltaTime * GameTime.WorldTimeScale;
+                if (healTimer >= healMaxTime)
+                {
+                    if((health - healStartHealth) < goalDamageAmount) // 목표 값보다 데미지 량이 적으면 회복
+                        HealHealth();
+                    ChangeStat(BossStat.Wait);
+                }
                 break;
         }
     }
@@ -282,16 +308,15 @@ public class BossController : MonoBehaviour, IDamageable
                         AttackPhaseOne(newAttack);
                         break;
                     }
-                    
                 }
 
                 if (isPhaseTwo)
                 {
-                    BossPatern newPatern = (BossPatern)random;
-                    if (newPatern != currentPattern)
+                    BossPattern newPattern = (BossPattern)random;
+                    if (newPattern != currentPattern)
                     {
                         waitTimer = 0;
-                        AttackPhaseTwo(newPatern);
+                        AttackPhaseTwo(newPattern);
                         break;
                     }
                 }
@@ -314,167 +339,16 @@ public class BossController : MonoBehaviour, IDamageable
         rigid.MovePosition(rigid.position + finalMove);
     }
 
-    private void AttackPhaseOne(BossAttack attack) // 1개의 공격 타입
+    private void HealHealth()
     {
-        currentAttack = attack;
-        switch (attack)
+        health += healAmount;
+        // 회복은 파란색
+        sprite.DOColor(Color.blue, 0.2f).OnComplete(() =>
         {
-            case BossAttack.Shoot:
-                Debug.Log("AttackPhaseOne: Shoot");
-                ChangeStat(BossStat.PhaseOneFire);
-                ShootAttackStart();
-                break;
-            case BossAttack.LandMine:
-                Debug.Log("AttackPhaseOne: LandMine");
-                ChangeStat(BossStat.PhaseOneMove);
-                StartLandMineAttack();
-                break;
-            case BossAttack.SpawnUser:
-                Debug.Log("AttackPhaseOne: SpawnUser");
-                ChangeStat(BossStat.PhaseOneMove);
-                LandUserAttack();
-                break;
-        }
-    }
-
-    private void AttackPhaseTwo(BossPatern patern) // 2개의 공격 타입
-    {
-        currentPattern = patern;
-        switch (patern)
-        {
-            case BossPatern.ShootAndLandMine:
-                Debug.Log("AttackPhaseTwo: ShootAndLandMine");
-                ChangeStat(BossStat.PhaseTwoFire);
-                ShootAttackStart();
-                StartLandMineAttack();
-                break;
-            case BossPatern.ShootAndUser:
-                Debug.Log("AttackPhaseTwo: ShootAndUser");
-                ChangeStat(BossStat.PhaseTwoFire);
-                ShootAttackStart();
-                LandUserAttack();
-                break;
-            case BossPatern.LandMineAndUser:
-                Debug.Log("AttackPhaseTwo: LandMineAndUser");
-                ChangeStat(BossStat.PhaseTwoMove);
-                StartLandMineAttack();
-                LandUserAttack();
-                break;
-        }
-    }
-    
-    private void ShootAttackStart()
-    {
-        isFire = true;
-        enemyShooter.StartShooting(target.transform);
-    }
-    
-    private void ShootAttackEnd()
-    {
-        isFire = false;
-        enemyShooter.StopShooting();
-    }
-
-    private void OnReloadStart()
-    {
-        ShootAttackEnd();
-        ChangeStat(BossStat.Wait);
-    }
-
-    private void OnShootIntervalStart()
-    {
-        anim.SetBool("isFire", false);
-        anim.SetBool("isMove", true);
-        isMovingDuringInterval = true;
-    }
-
-    private void OnShootIntervalEnd()
-    {
-        anim.SetBool("isFire", true);
-        anim.SetBool("isMove", false);
-        isMovingDuringInterval = false;
-    }
-
-    private void StartLandMineAttack()
-    {
-        mineSpawnedCount = 0;
-        mineTargetCount = Random.Range(2, 4);
-        mineDropTimer = 0f; // 바로 1개 설치되도록
-        landMineElapsed = 0f;
-    }
-
-    private void LandMineAttack()
-    {
-        landMineElapsed += Time.fixedDeltaTime * GameTime.WorldTimeScale;
-        mineDropTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
-
-        if (mineDropTimer <= 0f)
-        {
-            if (enemyPlacer.PlaceMineNear(target.position, 2f, 4.5f))
-                mineSpawnedCount++;
-            mineDropTimer = mineDropInterval;
-        }
-
-        if (mineSpawnedCount >= mineTargetCount || landMineElapsed >= landMineMaxTime)
-            ChangeStat(BossStat.Wait);
-    }
-
-    private float userSpawnCollisionRadius = 1.5f;
-    private const float userSpawnMinRadius = 2.5f;
-    private const float userSpawnMaxRadius = 4f;
-    private const float userMinAngleGap = 120f; // 두 개체 간 최소 각도 차이
-    private const int userSpawnMaxAttempts = 8;
-
-    private void LandUserAttack() // 유저 사출
-    {
-        float firstAngle = Random.Range(0f, 360f);
-
-        // 첫 번째 개체: 실패해도 마지막엔 강제로 스폰 (최소 1개체 보장)
-        Vector2 firstPos = FindValidSpawnPos(firstAngle, out bool firstFound);
-        if (!firstFound)
-            firstPos = GetSpawnPosAtAngle(firstAngle, userSpawnMinRadius); // 폴백: 벽 무시하고 강제 위치
-
-        SpawnUser(firstPos);
-
-        // 두 번째 개체: 첫 번째와 각도 차이를 두고 시도, 실패하면 스킵
-        float secondAngle = firstAngle + userMinAngleGap * (Random.value < 0.5f ? 1f : -1f);
-        Vector2 secondPos = FindValidSpawnPos(secondAngle, out bool secondFound);
-        if (secondFound) SpawnUser(secondPos);
-
-        ChangeStat(BossStat.Wait);
-    }
-
-    // 주어진 각도 기준으로 반경 내 랜덤 위치를 뽑아 벽 체크, 성공하면 위치와 true 반환
-    private Vector2 FindValidSpawnPos(float baseAngle, out bool found)
-    {
-        for (int i = 0; i < userSpawnMaxAttempts; i++)
-        {
-            // 각도에 약간의 편차를 줘서 매번 완전히 동일한 위치가 나오지 않도록
-            float angle = baseAngle + Random.Range(-15f, 15f);
-            float radius = Random.Range(userSpawnMinRadius, userSpawnMaxRadius);
-            Vector2 candidate = GetSpawnPosAtAngle(angle, radius);
-
-            if (!Physics2D.OverlapCircle(candidate, userSpawnCollisionRadius, wallLayer))
-            {
-                found = true;
-                return candidate;
-            }
-        }
-
-        found = false;
-        return Vector2.zero;
-    }
-
-    private Vector2 GetSpawnPosAtAngle(float angleDeg, float radius)
-    {
-        float rad = angleDeg * Mathf.Deg2Rad;
-        Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
-        return (Vector2)transform.position + offset;
-    }
-
-    private void SpawnUser(Vector2 pos)
-    {
-        GameObject user = Instantiate(userEnemy);
-        user.GetComponent<UserEnemyController>().SpawnForBoss(pos);
+            sprite.DOColor(Color.white, 0.2f);
+        });
+        healthSlider.value = health / maxHealth;
+        
+        Debug.Log("회복 완료 !");
     }
 }
