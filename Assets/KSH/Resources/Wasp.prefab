@@ -745,7 +745,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!50 &8542432294790622134
 Rigidbody2D:

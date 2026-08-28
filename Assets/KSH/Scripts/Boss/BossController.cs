@@ -252,8 +252,6 @@ public partial class BossController : MonoBehaviour, IDamageable
                 isHealed = true;
                 healStartHealth = health; // 현재 체력 저장
                 healTimer = 0f;
-                // 맞으면 되돌아오게 (hp얼마나 깎여야?)
-                // 데미지 n만큼 받으면 바로 패턴 해제 or m초 동안 무조건 정지하고 n만큼 피해 받아야 회복 안됨
                 break;
             case BossStat.Dead:
                 SetDead();

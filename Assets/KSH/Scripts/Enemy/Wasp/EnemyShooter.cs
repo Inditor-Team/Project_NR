@@ -17,6 +17,7 @@ public class EnemyShooter : MonoBehaviour
 
     private Transform target; // 플레이어
     private Coroutine shootRoutine;
+    private Coroutine reloadRoutine;
 
     private int fireCount = 6;
     private int shootTimeCount = 5;
@@ -64,6 +65,13 @@ public class EnemyShooter : MonoBehaviour
             StopCoroutine(shootRoutine);
             shootRoutine = null;
         }
+
+        if (reloadRoutine != null)
+        {
+            StopCoroutine(reloadRoutine);
+            reloadRoutine = null;
+        }
+        
         target = null;
     }
     
@@ -86,7 +94,9 @@ public class EnemyShooter : MonoBehaviour
             yield return WaitForSecondsPausable(shootTimeInterval);
             OnShootIntervalEnd?.Invoke();
         }
-        StartCoroutine(Reload()); // TODO: 변수 만들어서 null 처리
+        
+        if(reloadRoutine == null)
+            reloadRoutine = StartCoroutine(Reload());
     }
 
     private IEnumerator Reload()
