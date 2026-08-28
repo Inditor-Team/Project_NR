@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public partial class BossController : MonoBehaviour, IDamageable
+public partial class BossController
 {
     # region 공격 패턴 설정
     
@@ -132,53 +129,7 @@ public partial class BossController : MonoBehaviour, IDamageable
     
     private void LandUserAttack() // 유저 사출
     {
-        float firstAngle = Random.Range(0f, 360f);
-
-        // 1번 개체: 실패해도 마지막엔 강제로 스폰
-        Vector2 firstPos = FindValidSpawnPos(firstAngle, out bool firstFound);
-        if (!firstFound)
-            firstPos = GetSpawnPosAtAngle(firstAngle, userSpawnMinRadius); // 벽 무시하고 강제 소환
-
-        SpawnUser(firstPos);
-
-        // 2번 개체: 1번과 각도 차이를 두고 시도, 실패하면 스킵하기
-        float secondAngle = firstAngle + userMinAngleGap * (Random.value < 0.5f ? 1f : -1f);
-        Vector2 secondPos = FindValidSpawnPos(secondAngle, out bool secondFound);
-        if (secondFound) SpawnUser(secondPos);
-    }
-
-    // 주어진 각도 기준으로 반경 내 랜덤 위치를 뽑아 벽 체크, 성공하면 위치와 true 반환
-    private Vector2 FindValidSpawnPos(float baseAngle, out bool found)
-    {
-        for (int i = 0; i < userSpawnMaxAttempts; i++)
-        {
-            // 각도에 약간의 편차를 줘서 매번 완전히 동일한 위치가 나오지 않도록
-            float angle = baseAngle + Random.Range(-15f, 15f);
-            float radius = Random.Range(userSpawnMinRadius, userSpawnMaxRadius);
-            Vector2 candidate = GetSpawnPosAtAngle(angle, radius);
-
-            if (!Physics2D.OverlapCircle(candidate, userSpawnCollisionRadius, wallLayer))
-            {
-                found = true;
-                return candidate;
-            }
-        }
-
-        found = false;
-        return Vector2.zero;
-    }
-
-    private Vector2 GetSpawnPosAtAngle(float angleDeg, float radius)
-    {
-        float rad = angleDeg * Mathf.Deg2Rad;
-        Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
-        return (Vector2)transform.position + offset;
-    }
-
-    private void SpawnUser(Vector2 pos)
-    {
-        GameObject user = Instantiate(userEnemy);
-        user.GetComponent<UserEnemyController>().SpawnForBoss(pos);
+        spawnUserEnemy.SpwanUser();
     }
     
     # endregion

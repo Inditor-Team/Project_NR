@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyPlacer : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemyPlacer : MonoBehaviour
     private const int MaxPlaceAttempts = 10; // 최대 재시도 횟수
     
     private LayerMask wallLayer;
+
+    private List<EnemyLandMine> enemyLandMineScript = new List<EnemyLandMine>();
     
     private void Start() // 테스트 끝나면 Awake로 변경
     {
@@ -33,8 +36,13 @@ public class EnemyPlacer : MonoBehaviour
         GameObject mineObject = PoolManager.Instance.Get(minePrefab);
 
         if (mineObject == null) return; //null 뜨는 경우가 있어 예외처리
-        mineObject.GetComponent<EnemyLandMine>().SetValue(waitTime, damage);
 
+        EnemyLandMine enemyLandMine = mineObject.GetComponent<EnemyLandMine>();
+        enemyLandMine.SetValue(waitTime, damage);
+        enemyLandMine.OnMineExpired -= RemoveMineFromList;
+        enemyLandMine.OnMineExpired += RemoveMineFromList;
+        enemyLandMineScript.Add(enemyLandMine);
+        
         mineObject.transform.position = position;
         
         // 나중에 설치 효과음 추가
@@ -70,5 +78,19 @@ public class EnemyPlacer : MonoBehaviour
 
         Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
         return center + offset;
+    }
+
+    private void RemoveMineFromList(EnemyLandMine obj)
+    {
+        enemyLandMineScript.Remove(obj);
+    }
+    
+    public void ClearAllMines() // 보스 사망시 호출되는 함수, 지뢰 폭파
+    {
+        foreach (EnemyLandMine enemyLandMine in enemyLandMineScript)
+        {
+            enemyLandMine.ExpireByBossDeath();
+        }
+        enemyLandMineScript.Clear();
     }
 }

@@ -6,16 +6,16 @@ using Random = UnityEngine.Random;
 
 public partial class BossController : MonoBehaviour, IDamageable
 {
-    # region º¯¼ö ¸ğÀ½ 
+    # region ë³€ìˆ˜ ëª¨ìŒ
     
-    private enum BossAttack // ±âº» °ø°İ ÆĞÅÏ
+    private enum BossAttack // ì¼ë°˜ ê³µê²© ì¢…ë¥˜
     {
         Shoot = 0,
         LandMine = 1,
         SpawnUser = 2
     }
 
-    private enum BossPattern // ÆäÀÌÁî2 ÆĞÅÏ
+    private enum BossPattern // í˜ì´ì¦ˆ2 ê³µê²© íŒ¨í„´
     {
         ShootAndLandMine = 0,
         ShootAndUser = 1,
@@ -24,17 +24,17 @@ public partial class BossController : MonoBehaviour, IDamageable
     
     private enum BossStat
     {
-        Wait, // °ø°İ Áß ´ë±â
-        PhaseOneMove, // ÆäÀÌÁî 1 ÀÌµ¿
-        PhaseOneFire, // ÆäÀÌÁî 1 Åº¸· °ø°İ, ÀÌµ¿ Á¤Áö(À¯Àú »çÃâ, Áö·Ú´Â ÀÌµ¿ Áß °ø°İ) -> Áö¿ì°í ÄÚµå·Î Ã³¸®?
-        PhaseTwoMove, // ÆäÀÌÁî 2 ÀÌµ¿ 
-        PhaseTwoFire, // ÆäÀÌÁî 2 Åº¸· °ø°İ
-        PhaseSwitch, // ÆäÀÌÁî º¯°æ
-        Heal, // È¸º¹ ÆĞÅÏ
-        Dead // »ç¸Á, hp = 0
+        Wait, // ê³µê²© ì¤‘ ëŒ€ê¸°
+        PhaseOneMove, // í˜ì´ì¦ˆ 1 ì´ë™
+        PhaseOneFire, // í˜ì´ì¦ˆ 1 íƒ„ë§‰ ê³µê²©, ì´ë™ ì •ì§€(ìœ ì € ì‚¬ì¶œ, ì§€ë¢°ëŠ” ì´ë™ ì¤‘ ê³µê²©) -> ì§€ìš°ê³  ì½”ë“œë¡œ ì²˜ë¦¬?
+        PhaseTwoMove, // í˜ì´ì¦ˆ 2 ì´ë™ 
+        PhaseTwoFire, // í˜ì´ì¦ˆ 2 íƒ„ë§‰ ê³µê²©
+        PhaseSwitch, // í˜ì´ì¦ˆ ë³€ê²½
+        Heal, // íšŒë³µ íŒ¨í„´
+        Dead // ì‚¬ë§, hp = 0
     }
 
-    // ÇöÀç ½ºÅÈ ¹× °ø°İ Á¤º¸
+    // í˜„ì¬ ìŠ¤íƒ¯ í˜¹ì€ ê³µê²©
     private BossStat currentStat;
     private BossAttack currentAttack;
     private BossPattern currentPattern;
@@ -42,13 +42,14 @@ public partial class BossController : MonoBehaviour, IDamageable
     [SerializeField] private LayerMask wallLayer; 
     [SerializeField] private EnemyDataBase data;
     
-    [Header("Ã¼·Â UI °ü·Ã")]
+    [Header("ì²´ë ¥ UI ê´€ë ¨")]
     [SerializeField] private Slider healthSlider;
     
-    [Header("°ø°İ °ü·Ã")]
-    [SerializeField] private EnemyShooter enemyShooter; // Åº¸·
-    [SerializeField] private EnemyPlacer enemyPlacer; // Áö·Ú
-    [SerializeField] private GameObject userEnemy; // À¯Àú ¼ÒÈ¯
+    [Header("ê³µê²© ê´€ë ¨")]
+    [SerializeField] private EnemyShooter enemyShooter; // íƒ„ë§‰
+    [SerializeField] private EnemyPlacer enemyPlacer; // ì§€ë¢° ì„¤ì¹˜
+    [SerializeField] private GameObject userEnemy; // ìœ ì € ì†Œí™˜
+    [SerializeField] private SpawnUserEnemy spawnUserEnemy;
     
     private SpriteRenderer sprite;
     private Animator anim;
@@ -57,51 +58,45 @@ public partial class BossController : MonoBehaviour, IDamageable
     private Rigidbody2D rigid;
     private bool isPaused;
     
-    // ±âº» ¼³Á¤ °ª º¯¼ö
+    // ê¸°ë³¸ ì„¤ì • ê°’
     private float defaultSpeed;
     private float maxHealth;
     private float health;
     private float damage;
     
-    // ´ë±â (°ø°İ ÆĞÅÏ ¼±ÅÃ)
-    private float waitTIme = 1.5f; // ´ë±â ½Ã°£(¾ó¸¶³ª ´ë±âÇÒÁö)
-    private float waitTimer; // ´ë±â ½Ã°£ Å¸ÀÌ¸Ó
+    // ëŒ€ê¸° (ê³µê²© íŒ¨í„´ ì„ íƒ)
+    private float waitTIme = 1.5f; // ëŒ€ê¸° ì‹œê°„(ì–¼ë§ˆë‚˜ ëŒ€ê¸°í• ì§€)
+    private float waitTimer; // ëŒ€ê¸° ì‹œê°„ íƒ€ì´ë¨¸
     
-    // ÀÌµ¿
-    private float targetDist = 5f; // ÇÃ·¹ÀÌ¾î¿Í ¶³¾îÁø °£°İ
-    private float correctionFactor = 0.5f; // º¸Á¤ °è¼ö
+    // ì´ë™
+    private float targetDist = 5f; // í”Œë ˆì´ì–´ì™€ ë–¨ì–´ì§„ ê°„ê²©
+    private float correctionFactor = 0.5f; // ë³´ì • ê³„ìˆ˜
+    private float wallCheckDist = 0.8f; // ë²½ ê²€ì‚¬ ê±°ë¦¬
+    private float wallCheckRadius = 1.5f;
     
-    // °ø°İ °ü·Ã
+    // ê³µê²© ê´€ë ¨
     private Transform target;
     private bool isPhaseTwo = false;
     private bool isFire = false;
-    private bool isMovingDuringInterval = false; // »ç°İ Áß ÀÌµ¿
+    private bool isMovingDuringInterval = false; // ì´ ë°œì‚¬ ê°„ê²© ì¤‘ ì´ë™ì¸ì§€
     
-    // Áö·Ú °ü·Ã
-    private float landMineWaitTime = 3f; // ÅÍÁö±â Àü ´ë±â ½Ã°£
-    public float mineDropInterval = 1.5f; // Áö·Ú¸¦ »Ñ¸®´Â °£°İ
+    // ì§€ë¢° ê´€ë ¨
+    private float landMineWaitTime = 3f; // í„°ì§€ê¸° ì „ ëŒ€ê¸° ì‹œê°„
+    public float mineDropInterval = 1.5f; // ì§€ë¢°ë¥¼ ë¿Œë¦¬ëŠ” ê°„ê²©
     private float mineDropTimer;
     private float landMineElapsed;
-    private float landMineMaxTime = 5f; // °­Á¦ Áö·Ú ¼³Ä¡ Á¾·á Å¸ÀÌ¸Ó
-    private int mineSpawnedCount; // ÇöÀç±îÁö ¼³Ä¡ÇÑ °³¼ö
-    private int mineTargetCount; // ¸ñÇ¥ Áö·Ú ¼³Ä¡ °³¼ö
-    private bool attackIncludesLandMine; // ÇöÀç °ø°İ¿¡ Áö·Ú ¼³Ä¡°¡ Æ÷ÇÔµÇ´Â°¡
+    private float landMineMaxTime = 5f; // ê°•ì œ ì§€ë¢° ì„¤ì¹˜ ì¢…ë£Œ íƒ€ì´ë¨¸
+    private int mineSpawnedCount; // í˜„ì¬ê¹Œì§€ ì„¤ì¹˜í•œ ê°œìˆ˜
+    private int mineTargetCount; // ëª©í‘œ ì§€ë¢° ì„¤ì¹˜ ê°œìˆ˜
+    private bool attackIncludesLandMine; // í˜„ì¬ ê³µê²©ì— ì§€ë¢° ì„¤ì¹˜ê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€
     
-    // À¯Àú ½ºÆù °ü·Ã
-    private float userSpawnCollisionRadius = 1.5f;
-    private const float userSpawnMinRadius = 2.5f;
-    private const float userSpawnMaxRadius = 4f;
-    private const float userMinAngleGap = 120f; // µÎ °³Ã¼ °£ ÃÖ¼Ò °¢µµ Â÷ÀÌ
-    private const int userSpawnMaxAttempts = 8;
-    
-    // È¸º¹ ÆĞÅÏ °ü·Ã
+    // íšŒë³µ íŒ¨í„´ ê´€ë ¨
     private bool isHealed = false;
     private float healStartHealth;
-    private float goalDamageAmount = 5f; // ÀÏ´Ü 5 µ¥¹ÌÁö ÀÔÇô¾ß Èú Ãë¼Ò
-    private float healAmount = 15f; // º¸½º È¸º¹·®
+    private float goalDamageAmount = 5f; // ëª©í‘œë¡œ í•˜ëŠ” í”¼í•´ëŸ‰, ì´ì •ë„ í”¼í•´ ì…í˜€ì•¼ íšŒë³µ ì·¨ì†Œ
+    private float healAmount = 15f; // íšŒë³µëŸ‰
     private float healTimer;
-    private float healMaxTime = 5f; // 5ÃÊ µ¿¾È Èú ÆĞÅÏ ÁøÀÔ
-    
+    private float healMaxTime = 5f; // 5ì´ˆ ì•ˆì— ëª©í‘œ í”¼í•´ëŸ‰ ë‹¬ì„±
     
     # endregion
 
@@ -128,12 +123,15 @@ public partial class BossController : MonoBehaviour, IDamageable
             GameManager.Instance.OnPauseGame += Pause;
             target = GameManager.Instance.Player.gameObject.transform;
         }
+        enemyShooter.SetDamage(damage);
         enemyShooter.OnReloadStart += OnReloadStart;
         enemyShooter.OnShootIntervalStart += OnShootIntervalStart;
         enemyShooter.OnShootIntervalEnd += OnShootIntervalEnd;
         
         enemyPlacer.SetValue(landMineWaitTime, damage);
         enemyPlacer.SetLayerMask(wallLayer);
+        
+        spawnUserEnemy.SetLayerMask(wallLayer);
     }
 
     private void OnDestroy()
@@ -145,7 +143,7 @@ public partial class BossController : MonoBehaviour, IDamageable
         enemyShooter.OnShootIntervalEnd -= OnShootIntervalEnd;
     }
     
-    private void Pause(bool isPause) // ÀÏ½Ã Á¤Áö
+    private void Pause(bool isPause) // ì¼ì‹œ ì •ì§€
     {
         bool activeControl = !isPause;
         isPaused = isPause;
@@ -161,24 +159,24 @@ public partial class BossController : MonoBehaviour, IDamageable
         
         health -= damegeAmount;
         
-        // º¸½º ÇÇ°İ È¿°úÀ½Àº ¿¡³Ê¹Ì¶û ¶È°°ÀÌ?
+        // ë³´ìŠ¤ í”¼ê²© íš¨ê³¼ìŒì€ ì—ë„ˆë¯¸ë‘ ê°™ì€ íš¨ê³¼ìŒ? ë‹¤ë¥´ê²Œ?
         // SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
 
-        if (health <= 0) // »ç¸Á
+        if (health <= 0) // ì‚¬ë§
         {
             healthSlider.value = 0;
             ChangeStat(BossStat.Dead);
             return;
         } 
         
-        if (health <= maxHealth * 0.25 && !isHealed) // 1È¸¸¸ ÁøÀÔ °¡´É
+        if (health <= maxHealth * 0.25 && !isHealed) // 1ë²ˆë§Œ íšŒë³µ íŒ¨í„´ ë“¤ì–´ê°€ê²Œ?
         {
-             // È¸º¹ ÆĞÅÏ ÁøÀÔ
-             Debug.Log("È¸º¹ ÆĞÅÏ ÁøÀÔ");
+             // íšŒë³µ íŒ¨í„´ ì§„ì…
+             Debug.Log("íšŒë³µ íŒ¨í„´ ì§„ì…");
              ChangeStat(BossStat.Heal);
-             // ÀÌÆåÆ®³ª »ö»ó ÀüÈ¯À¸·Î Ç¥½Ã?
+             // íšŒë³µí•˜ëŠ” ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ?
         } 
-        else if (health <= maxHealth / 2 && !isPhaseTwo) // ÆäÀÌÁî º¯°æ
+        else if (health <= maxHealth / 2 && !isPhaseTwo) // í˜ì´ì¦ˆ ì „í™˜
         {
             ChangeStat(BossStat.PhaseSwitch);
         } 
@@ -193,22 +191,27 @@ public partial class BossController : MonoBehaviour, IDamageable
     private void SetDead()
     {
         enemyShooter.StopShooting();
-        col.isTrigger = true; // Ãæµ¹ ¹«½Ã
+        col.isTrigger = true; // ì¶©ëŒ ë¬´ì‹œ
         anim.SetTrigger("isDead");
         
-        // TODO: »ç¸Á È¿°úÀ½ º¯°æ?
+        // ë§µì— ë‚¨ì€ ì˜¤ë¸Œì íŠ¸ íŒŒê´´
+        enemyShooter.ClearAllBullets(); // ì´ì•Œ ì œê±°
+        enemyPlacer.ClearAllMines(); // ì§€ë¢° ì œê±°
+        spawnUserEnemy.ClearAllUsers(); // ìœ ì € ì œê±°
+        
+        // TODO: ì‚¬ë§ íš¨ê³¼ìŒ ë³€ê²½?
         SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Dead);
     }
 
-    #region ¾Ö´Ï¸ŞÀÌ¼Ç ³¡³¯ ¶§ ½ÇÇàµÇ´Â ÇÔ¼ö
+    #region ì• ë‹ˆë©”ì´ì…˜ ëë‚  ë•Œ ì‹¤í–‰ë˜ëŠ” í•¨ìˆ˜
 
-    public void OnDeadAnimationOver() // dead ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı Á¾·á ÈÄ È£Ãâ 
+    public void OnDeadAnimationOver() // dead ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ ì¢…ë£Œ í›„ í˜¸ì¶œ
     {
-        // TODO: SectorManager¿¡ Áß°£ º¸½º Á¦°Å ¸Ş¼Òµå Ãß°¡ ÇÊ¿ä, ¿£µù ¿¬Ãâ Àç»ıµµ °Å±â¼­
+        // TODO: SectorManagerì— ì¤‘ê°„ ë³´ìŠ¤ ì œê±° ë©”ì†Œë“œ ì¶”ê°€ í•„ìš”, ì—”ë”© ì—°ì¶œ ì¬ìƒë„ ê±°ê¸°ì„œ
         // SectorManager.Instance.DestroyedEnemy(); 
     }
 
-    public void OnPhaseSwitchAnimationOver() // ÆäÀÌÁî ½ºÀ§Ä¡ ¾Ö´Ï¸ŞÀÌ¼Ç ³¡³¯ ½Ã ½ÇÇà
+    public void OnPhaseSwitchAnimationOver() // í˜ì´ì¦ˆ ì „í™˜ ëë‚˜ê³  í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     {
         ChangeStat(BossStat.Wait);
     }
@@ -218,7 +221,7 @@ public partial class BossController : MonoBehaviour, IDamageable
     private void ChangeStat(BossStat newStat)
     {
         currentStat = newStat;
-        if(isFire) ShootAttackEnd(); // È¤½Ã ¸ğ¸£´Â Ã³¸®
+        if(isFire) ShootAttackEnd(); // í˜¹ì‹œ ëª¨ë¥´ëŠ” ì²˜ë¦¬
         Debug.Log($"BossStat : {newStat}");
         
         switch (newStat)
@@ -241,16 +244,16 @@ public partial class BossController : MonoBehaviour, IDamageable
                 anim.SetTrigger("switchPhase");
                 anim.SetBool("isPhaseTwo", true);
                 isPhaseTwo = true;
-                // TODO: ÆäÀÌÁî ÀüÈ¯ È¿°úÀ½
+                // TODO: í˜ì´ì¦ˆ ì „í™˜ íš¨ê³¼ìŒ?
                 break;
             case BossStat.Heal:
-                anim.SetBool("isMove", false); // Á¤Áö
+                anim.SetBool("isMove", false); // ì •ì§€
                 anim.SetBool("isFire", false);
                 isHealed = true;
-                healStartHealth = health; // ÇöÀç Ã¼·Â ÀúÀå
+                healStartHealth = health; // í˜„ì¬ ì²´ë ¥ ì €ì¥
                 healTimer = 0f;
-                // ¸ÂÀ¸¸é µÇµ¹¾Æ¿À°Ô (hp¾ó¸¶³ª ±ğ¿©¾ß?)
-                // µ¥¹ÌÁö n¸¸Å­ ¹ŞÀ¸¸é ¹Ù·Î ÆĞÅÏ ÇØÁ¦ or mÃÊ µ¿¾È ¹«Á¶°Ç Á¤ÁöÇÏ°í n¸¸Å­ ÇÇÇØ ¹Ş¾Æ¾ß È¸º¹ ¾ÈµÊ
+                // ë§ìœ¼ë©´ ë˜ëŒì•„ì˜¤ê²Œ (hpì–¼ë§ˆë‚˜ ê¹ì—¬ì•¼?)
+                // ë°ë¯¸ì§€ në§Œí¼ ë°›ìœ¼ë©´ ë°”ë¡œ íŒ¨í„´ í•´ì œ or mì´ˆ ë™ì•ˆ ë¬´ì¡°ê±´ ì •ì§€í•˜ê³  në§Œí¼ í”¼í•´ ë°›ì•„ì•¼ íšŒë³µ ì•ˆë¨
                 break;
             case BossStat.Dead:
                 SetDead();
@@ -266,23 +269,23 @@ public partial class BossController : MonoBehaviour, IDamageable
             case BossStat.Wait:
                 Wait();
                 break;
-            // ÀÌµ¿
+            // ì´ë™
             case BossStat.PhaseOneMove:
             case BossStat.PhaseTwoMove:
-                Move(); // ÆäÀÌÁî »ó°ü¾øÀÌ ÀÌµ¿Àº µ¿ÀÏ
+                Move(); // í˜ì´ì¦ˆ ìƒê´€ì—†ì´ ì´ë™ì€ ë™ì¼
                 if (attackIncludesLandMine) LandMineAttack();
                 break;
             case BossStat.PhaseOneFire:
             case BossStat.PhaseTwoFire:
-                if (isMovingDuringInterval) Move(); // ÃÑ ¾È½î´Â °£°İ »çÀÌ¿¡¸¸ ÀÌµ¿
+                if (isMovingDuringInterval) Move(); // ë°œì‚¬ ê°„ê²© ì‚¬ì´ì— ì ê¹ ì´ë™ì‹œí‚¤ê¸°(ì´ í¸ì´ ìì—°ìŠ¤ëŸ¬ì›€)
                 if (attackIncludesLandMine) LandMineAttack();
                 break;
             case BossStat.Heal:
                 healTimer += Time.fixedDeltaTime * GameTime.WorldTimeScale;
                 if (healTimer >= healMaxTime)
                 {
-                    if((health - healStartHealth) < goalDamageAmount) // ¸ñÇ¥ °ªº¸´Ù µ¥¹ÌÁö ·®ÀÌ ÀûÀ¸¸é È¸º¹
-                        HealHealth();
+                    if((healStartHealth - health) < goalDamageAmount) // ëª©í¬ í”¼í•´ëŸ‰ ë¯¸ë‹¬ì„± ì‹œ
+                        HealHealth(); // íšŒë³µ
                     ChangeStat(BossStat.Wait);
                 }
                 break;
@@ -294,7 +297,7 @@ public partial class BossController : MonoBehaviour, IDamageable
         waitTimer += Time.fixedDeltaTime * GameTime.WorldTimeScale;
         if (waitTimer >= waitTIme)
         {
-            // °ø°İ ÆĞÅÏ ¼±ÅÃÇÏ±â
+            // ê³µê²© íŒ¨í„´ ì„ íƒí•˜ê¸°
             while (true)
             {
                 int random = Random.Range(0, 3); // 0 ~ 2
@@ -326,29 +329,54 @@ public partial class BossController : MonoBehaviour, IDamageable
 
     private void Move()
     {
-        // ¸ñÇ¥ °Å¸® °è»ê
-        Vector2 dirToPlayer = (Vector2)target.transform.position - (Vector2)transform.position; // À§Ä¡ Â÷ÀÌ¸¦ ³ªÅ¸³»´Â º¤ÅÍ
-        float currentDist = dirToPlayer.magnitude - targetDist; // ÇöÀç °Å¸® Â÷ÀÌ, À½¼ö¸é °¡±õ°í ¾ç¼ö¸é ¸ÖÀ½
-        Vector2 normalizedDir = dirToPlayer.normalized; // ¹æÇâ¸¸
-            
-        // °£°İ º¸Á¤ º¤ÅÍ
-        Vector2 gapVector = normalizedDir * currentDist * correctionFactor; // ¸¶Áö¸·Àº º¸Á¤ °è¼ö(ÀÓ½Ã·Î 0.5·Î ¼³Á¤)
-        Vector2 finalMove = gapVector.normalized * defaultSpeed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
-        
+        // ëª©í‘œ ê±°ë¦¬ ê³„ì‚°
+        Vector2 dirToPlayer = (Vector2)target.transform.position - (Vector2)transform.position;
+        float currentDist = dirToPlayer.magnitude - targetDist;
+        Vector2 normalizedDir = dirToPlayer.normalized;
+
+        // ê°„ê²© ë³´ì • ë²¡í„°
+        Vector2 gapVector = normalizedDir * currentDist * correctionFactor;
+        Vector2 desiredDir = gapVector.normalized; // ì›ë˜ ê°€ë ¤ë˜ ë°©í–¥
+
+        // ë²½ íšŒí”¼ê°€ í•„ìš”í•œì§€ ì²´í¬
+        Vector2 finalDir = GetMoveDirWithWallAvoidance(desiredDir);
+
+        Vector2 finalMove = finalDir * defaultSpeed * Time.fixedDeltaTime * GameTime.WorldTimeScale;
+
         rigid.linearVelocity = Vector2.zero;
         rigid.MovePosition(rigid.position + finalMove);
+    }
+
+    private Vector2 GetMoveDirWithWallAvoidance(Vector2 desiredDir)
+    {
+        if (desiredDir == Vector2.zero) return Vector2.zero;
+
+        // ë³´ìŠ¤ ì£¼ìœ„ë¥¼ ë°˜ì§€ë¦„ìœ¼ë¡œ ì²´í¬
+        RaycastHit2D hit = Physics2D.CircleCast(
+            transform.position, wallCheckRadius, desiredDir, wallCheckDist, wallLayer);
+
+        if (hit.collider == null)
+            return desiredDir; // ë²½ ì—†ëŠ” ê²½ìš° -> ì›ë˜ ë°©í–¥ ê·¸ëŒ€ë¡œ
+
+        // ë²½ì— ë§‰íŒ ê²½ìš° -> ë²½ í‘œë©´ì„ ë”°ë¼ ë¯¸ë„ëŸ¬ì§€ëŠ” ë°©í–¥ ê³„ì‚°
+        Vector2 slideDir = Vector2.Perpendicular(hit.normal); // ë²•ì„  ìˆ˜ì§ì¸ ë²¡í„° ë°©í–¥ì„ ë¦¬í„´í•˜ëŠ” ë©”ì„œë“œ
+        if (Vector2.Dot(slideDir, desiredDir) < 0f)
+            slideDir = -slideDir; // ì›ë˜ ê°€ë ¤ë˜ ë°©í–¥ê³¼ ë” ê°€ê¹Œìš´ ìª½ ì„ íƒ
+
+        return slideDir.normalized;
     }
 
     private void HealHealth()
     {
         health += healAmount;
-        // È¸º¹Àº ÆÄ¶õ»ö
+        // TODO: íšŒë³µ ì™„ë£Œ ì• ë‹ˆë©”ì´ì…˜ í˜¹ì€ ì´í™íŠ¸?? ì¼ë‹¨ íŒŒë—ê²Œ ì ë©¸
         sprite.DOColor(Color.blue, 0.2f).OnComplete(() =>
         {
             sprite.DOColor(Color.white, 0.2f);
         });
+        
         healthSlider.value = health / maxHealth;
         
-        Debug.Log("È¸º¹ ¿Ï·á !");
+        Debug.Log("íšŒë³µ ì™„ë£Œ !");
     }
 }

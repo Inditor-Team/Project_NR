@@ -15,6 +15,8 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
     private GameObject originPrefab; // 오리진 프리팹
 
     [SerializeField] LayerMask playerLayer;
+    
+    public event Action<EnemyBullet> OnBulletExpired; // 총알 사라졌을 때 호출
 
     private void Awake()
     {
@@ -62,6 +64,13 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null) target.TakeDamage(damage);
         
-        PoolManager.Instance.Release(originPrefab, this.gameObject);
+        PoolManager.Instance.Release(originPrefab, gameObject);
+        OnBulletExpired?.Invoke(this);
+    }
+
+    public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
+    {
+        // 혹은 폭파 이펙트
+        PoolManager.Instance.Release(originPrefab, gameObject);
     }
 }

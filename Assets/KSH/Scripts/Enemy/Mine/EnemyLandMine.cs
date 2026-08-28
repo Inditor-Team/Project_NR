@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
 {
@@ -21,6 +22,8 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
     // 폭파 애니메이션
     private SpriteRenderer sprite;
     private Animator anim;
+
+    public event Action<EnemyLandMine> OnMineExpired;
     
     public void SetOriginPrefab(GameObject prefab) => originPrefab = prefab;
     public void SetValue(float newTime, float newDamage)
@@ -99,6 +102,7 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
         {
             anim.Rebind(); // 애니메이션 초기화
             PoolManager.Instance.Release(originPrefab, gameObject);
+            OnMineExpired?.Invoke(this);
         });
     }
     
@@ -107,5 +111,12 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
         Color c = bombEffectSprite.color;
         c.a = alpha;
         bombEffectSprite.color = c;
+    }
+
+    public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
+    {
+        // 바로 폭파 가능한 상태로 만들기
+        state = MineState.Armed;
+        waitTime = 0f;
     }
 }

@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 
-public class UserEnemyController : EnemyBaseController
+public class UserEnemyController : EnemyBaseController, IPoolObjectBase
 {
     private enum UserStat
     {
@@ -25,6 +26,11 @@ public class UserEnemyController : EnemyBaseController
     private float seekWeight = 1f;
     private float avoidWeight = 2f; 
     
+    // 오브젝트 풀링
+    private GameObject originPrefab; // 보스 맵에서만 오브젝트 풀링 사용
+    private bool isSpawnForBoss = false;
+    public event Action<UserEnemyController> OnUserExpired;
+    
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -35,6 +41,11 @@ public class UserEnemyController : EnemyBaseController
     {
         base.OnDisable();
         explodeScope.OnScopeTriggerEnter -= DoExplosion;
+    }
+    
+    public void SetOriginPrefab(GameObject prefab)
+    {
+        originPrefab = prefab;
     }
     
     public override void TakeDamage(float damegeAmount)
@@ -78,9 +89,16 @@ public class UserEnemyController : EnemyBaseController
                 break;
             case UserStat.Dead: // 한 번만 실행이라 여기서 동작
                 detectEffect.transform.DOKill();
+                OnUserExpired?.Invoke(this);
                 SetDead();
                 break;
         }
+    }
+    
+    protected override void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
+    {
+        base.OnDeadAnimationOver();
+        if(isSpawnForBoss) PoolManager.Instance.Release(originPrefab, gameObject);
     }
 
     private void TrackPlayer()
@@ -199,7 +217,14 @@ public class UserEnemyController : EnemyBaseController
         transform.position = spawnPos;
         currentTrackDir = Vector2.zero;
         prevTangent = Vector2.zero;
+        healthUI.SetActive(true); // 체력 바 표시
+        isSpawnForBoss = true; // 보스맵에서 생성된 경우 오브젝트 풀링 적용된 상태
         ChangeStat(UserStat.Track); // Patrol을 거치지 않고 바로 추적
+    }
+
+    public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
+    {
+        SetDead();
     }
     
     protected override bool IsCurrentlyDetecting() => currentStat == UserStat.Detect;
