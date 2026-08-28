@@ -108,9 +108,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2587813315296039784}
   - component: {fileID: 8939146558667143259}
-  - component: {fileID: 7352079562429314721}
   - component: {fileID: 6491340747748547709}
-  m_Layer: 7
+  - component: {fileID: 7278306599336355031}
+  m_Layer: 3
   m_Name: model (sword)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,52 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b4b1ce2c1f57544b76f35f1b75ea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitBox
---- !u!61 &7352079562429314721
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766713149442861874}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.08125371, y: -0.034394324}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.69699454, y: 0.3711295}
-  m_EdgeRadius: 0
 --- !u!212 &6491340747748547709
 SpriteRenderer:
   serializedVersion: 2
@@ -249,6 +203,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!58 &7278306599336355031
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766713149442861874}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.8
 --- !u!1 &2130022078305305045
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,13 +284,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fad29d9ac99673409194663cc4f0fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BladerProtocol
-  playerModel: {fileID: 5711610164856498049}
+  swordAttacker: {fileID: 8732962472253125796}
+  swordModel: {fileID: 6491340747748547709}
   gun: {fileID: 805145537335099986}
   spectrumPoolSize: 30
   spectrumFadeDuration: 3
   spectrumInterval: 0.2
-  spectrumScale: 1.2
-  SpectrumSpreadAmount: 0.1
 --- !u!58 &1798268426244501443
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -435,6 +424,7 @@ MonoBehaviour:
   firePoint: {fileID: 532657774382844844}
   model: {fileID: 7563049229175620897}
   bulletPrefab: {fileID: 613181277529649084, guid: d5b85d434ad23da4c8d97f3e1cc6be87, type: 3}
+  reflectBulletPrefab: {fileID: 613181277529649084, guid: c4d727757ecea794f89b972415649a29, type: 3}
   hitLayer:
     serializedVersion: 2
     m_Bits: 320
@@ -770,6 +760,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  model: {fileID: 0}
 --- !u!1 &4491675949981218699
 GameObject:
   m_ObjectHideFlags: 0

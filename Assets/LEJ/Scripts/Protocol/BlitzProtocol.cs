@@ -28,16 +28,9 @@ public class BlitzProtocol : ProtocolBase
 
     private Coroutine[] fadeCoroutines;
 
-
     private void Start()
     {
-        GameManager.Instance.OnProtocolChanged += InitEffect;
-    }
-
-    private void OnDestroy()
-    {
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnProtocolChanged -= InitEffect;
+        InitEffect();
     }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
@@ -97,6 +90,7 @@ public class BlitzProtocol : ProtocolBase
 
     internal override void EndProtocol()
     {
+        colorTime = 0f;
         killCount = 0;
         protocolRoutine = null;
     }
@@ -112,10 +106,13 @@ public class BlitzProtocol : ProtocolBase
 
         for (int i = 0; i < spectrumPoolSize; i++)
         {
-            spectrumPool[i] = new GameObject($"SpectrumEffect_{i}").AddComponent<SpriteRenderer>();
+            spectrumPool[i] = new GameObject($"blitz effect {i}").AddComponent<SpriteRenderer>();
             spectrumPool[i].gameObject.SetActive(false);
         }
     }
+
+    float colorTime = 0f;
+    [SerializeField] float colorSpeed = 2f;
 
     private void Effect()
     {
@@ -123,7 +120,6 @@ public class BlitzProtocol : ProtocolBase
 
         SpriteRenderer spectrum = spectrumPool[spectrumIndex];
 
-        // 기존 페이드 중이면 중지
         if (fadeCoroutines[spectrumIndex] != null)
             StopCoroutine(fadeCoroutines[spectrumIndex]);
 
@@ -140,12 +136,29 @@ public class BlitzProtocol : ProtocolBase
         spectrum.sortingLayerID = curSprite.sortingLayerID;
         spectrum.sortingOrder = curSprite.sortingOrder - 1;
 
-        // 알파 초기화
-        Color c = Color.white;
-        c.a = 0.5f;
-        spectrum.color = c;
+        Color magenta = new Color(1f, 0f, 1f);
+        Color lime = new Color(0.5f, 1f, 0f);
+        Color cyan = new Color(0f, 1f, 1f);
 
-        fadeCoroutines[spectrumIndex] = StartCoroutine(SpectrumFadeTime(spectrumIndex));
+        colorTime += spectrumInterval * colorSpeed;
+
+        float t = colorTime % 3f;
+
+        Color color;
+
+        if (t < 1f)
+            color = Color.Lerp(magenta, lime, t);
+        else if (t < 2f)
+            color = Color.Lerp(lime, cyan, t - 1f);
+        else
+            color = Color.Lerp(cyan, magenta, t - 2f);
+
+        color.a = 0.5f;
+        spectrum.color = color;
+
+
+        fadeCoroutines[spectrumIndex] =
+            StartCoroutine(SpectrumFadeTime(spectrumIndex));
 
         spectrumIndex = (spectrumIndex + 1) % spectrumPoolSize;
     }
@@ -161,16 +174,22 @@ public class BlitzProtocol : ProtocolBase
         SpriteRenderer spectrum = spectrumPool[poolIndex];
 
         float elapsed = 0f;
+
         Color color = spectrum.color;
 
         while (elapsed < spectrumFadeDuration)
         {
-            float alpha = Mathf.Lerp(0.5f, 0f, elapsed / spectrumFadeDuration);
+            float alpha = Mathf.Lerp(
+                0.5f,
+                0f,
+                elapsed / spectrumFadeDuration
+            );
 
             color.a = alpha;
             spectrum.color = color;
 
             elapsed += Time.deltaTime;
+
             yield return null;
         }
 

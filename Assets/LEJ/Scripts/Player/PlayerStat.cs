@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Splines;
 
 public class PlayerStat : MonoBehaviour, IDamageable
 {
@@ -35,7 +37,10 @@ public class PlayerStat : MonoBehaviour, IDamageable
 
     public event UnityAction<Stat, float> OnUpdateStat;
     [SerializeField] LayerMask enemyLayer;
+    [SerializeField] SpriteRenderer model;
     PlayerController playerController;
+    bool isInvincible = false; //무적 상태
+    public bool IsInvincible { get { return isInvincible; } set { isInvincible = value; } }
 
     void Awake()
     {
@@ -58,20 +63,24 @@ public class PlayerStat : MonoBehaviour, IDamageable
 
     void SetDefaultStat()
     {
-        UpdateStat(Stat.MoveSpeed, 3f);
-        UpdateStat(Stat.RollSpeed, 10f);
-        UpdateStat(Stat.RollDuration, 0.3f);
-        UpdateStat(Stat.RollRate, 0.5f);
-        UpdateStat(Stat.SwordSwingSpeed, 5f);
-        UpdateStat(Stat.SwordDamage, 10f);
-        UpdateStat(Stat.SwordSwingRate, 0.5f);
-        UpdateStat(Stat.BulletSpeed, 30f);
-        UpdateStat(Stat.BulletDamage, 1f);
-        UpdateStat(Stat.BulletFireRate, 0.5f);
-        UpdateStat(Stat.ProtocolDuration, 2.5f);
-        UpdateStat(Stat.ProtocolRate, 10f);
-        UpdateStat(Stat.Life, 5f);
-        UpdateStat(Stat.MaxLife, 5f);
+        SetStat(Stat.MoveSpeed, 3f);
+        SetStat(Stat.RollSpeed, 10f);
+        SetStat(Stat.RollDuration, 0.3f);
+        SetStat(Stat.RollRate, 0.5f);
+
+        SetStat(Stat.SwordSwingSpeed, 5f);
+        SetStat(Stat.SwordDamage, 10f);
+        SetStat(Stat.SwordSwingRate, 0.5f);
+
+        SetStat(Stat.BulletSpeed, 30f);
+        SetStat(Stat.BulletDamage, 1f);
+        SetStat(Stat.BulletFireRate, 0.5f);
+
+        SetStat(Stat.ProtocolDuration, 3f);
+        SetStat(Stat.ProtocolRate, 1f);
+
+        SetStat(Stat.Life, 5f);
+        SetStat(Stat.MaxLife, 5f);
     }
 
     public void EarnLife(float amount)
@@ -81,9 +90,22 @@ public class PlayerStat : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (isInvincible)
+            return;
+
+        model.DOColor(Color.red, 0.2f).OnComplete(() =>
+        {
+            model.DOColor(Color.white, 0.2f);
+        });
+
         UpdateStat(Stat.Life, -damage);
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX(Sound_SFX.Player_Hit);
+    }
+
+    private void SetStat(Stat type, float value)
+    {
+        statDic[type] = value;
     }
 
     public void UpdateStat(Stat type, float value)
@@ -95,6 +117,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
         }
         else
             statDic[type] += value;
+
         OnUpdateStat?.Invoke(type, value);
     }
 }

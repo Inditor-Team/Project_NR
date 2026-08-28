@@ -27,9 +27,10 @@ public class SwordHitBox : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //콜리젼에 여러 번 들어오는 것을 방지하기 위한 중복 체크
-        if (hitTargets.Contains(collision.gameObject))
-            return;
+        ////콜리젼에 여러 번 들어오는 것을 방지하기 위한 중복 체크
+        ///-> 총알 여러 개 막아도 될 거 같음 난이도가..
+        //if (hitTargets.Contains(collision.gameObject))
+        //    return;
 
         hitTargets.Add(collision.gameObject);
         OnHit?.Invoke(collision.gameObject);
