@@ -15,6 +15,8 @@ public class SceneController : MonoBehaviour
             if (instance == null)
                 instance = FindAnyObjectByType<SceneController>();
 
+            DontDestroyOnLoad(instance);
+
             return instance;
         }
 

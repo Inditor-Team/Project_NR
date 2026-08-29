@@ -38,7 +38,6 @@ public class PlayerStat : MonoBehaviour, IDamageable
     public event UnityAction<Stat, float> OnUpdateStat;
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] SpriteRenderer model;
-    PlayerController playerController;
     bool isInvincible = false; //무적 상태
     public bool IsInvincible { get { return isInvincible; } set { isInvincible = value; } }
 
@@ -47,12 +46,12 @@ public class PlayerStat : MonoBehaviour, IDamageable
         for (int i = 1; i < (int)Stat.Count; i++)
             statDic.Add((Stat)i, 0f);
 
-        playerController = GetComponent<PlayerController>();
+        SetDefaultStat();
     }
 
     void Start()
     {
-        SetDefaultStat();
+        SetLifeByGameManager();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -83,6 +82,14 @@ public class PlayerStat : MonoBehaviour, IDamageable
         SetStat(Stat.MaxLife, 5f);
     }
 
+    /// <summary>
+    /// 씬이 바껴도 life 를 유지하고 싶을 때, 게임매니저에 저장된 life 를 계승합니다
+    /// </summary>
+    void SetLifeByGameManager()
+    {
+        SetStat(Stat.Life, GameManager.Instance.Life);
+    }
+
     public void EarnLife(float amount)
     {
         UpdateStat(Stat.Life, amount);
@@ -99,6 +106,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
         });
 
         UpdateStat(Stat.Life, -damage);
+
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX(Sound_SFX.Player_Hit);
     }

@@ -22,6 +22,8 @@ public class ProtocolExecutor : MonoBehaviour
 
         if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.None)
             SetProtocol(GameManager.Instance.CurProtocol);
+
+        GameManager.Instance.OnProtocolChanged += SetProtocol;
     }
 
     private void Update()

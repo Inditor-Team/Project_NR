@@ -28,6 +28,8 @@ public class NeuroActionProtocol : ProtocolBase
     private void Start()
     {
         InitEffect();
+
+        GameManager.Instance.OnProtocolChanged += InitEffect; //µð¹ö±ë¿ë
     }
 
     internal override void TryProtocol(float duration)

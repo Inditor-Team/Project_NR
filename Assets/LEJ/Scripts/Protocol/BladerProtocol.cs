@@ -23,6 +23,8 @@ public class BladerProtocol : ProtocolBase
     private void Start()
     {
         InitEffect();
+        
+        GameManager.Instance.OnProtocolChanged += InitEffect; //µð¹ö±ë¿ë
     }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
