@@ -17,6 +17,13 @@ public class ProtocolCoolTimeUI : MonoBehaviour
         if (protocolExecutor != null)
             protocolExecutor.OnTryProtocol += Clear;
     }
+
+    private void OnDestroy()
+    {
+        if (protocolExecutor != null)
+            protocolExecutor.OnTryProtocol -= Clear;
+    }
+
     private void Update()
     {
         if (protocolExecutor == null)

@@ -21,7 +21,8 @@ public class LevelCardProvider : MonoBehaviour
 
     private void OnDestroy()
     {
-        SectorManager.Instance.OnSectorClear -= ProvideByUI;
+        if (SectorManager.Instance != null)
+            SectorManager.Instance.OnSectorClear -= ProvideByUI;
     }
 
     void ProvideByUI(SectorSO.SectorType type)

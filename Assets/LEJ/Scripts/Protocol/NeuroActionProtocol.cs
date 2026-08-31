@@ -13,14 +13,6 @@ public class NeuroActionProtocol : ProtocolBase
     [SerializeField] private float newTimeScale = 0.05f;
     float duration;
 
-    new Dictionary<ProtocolCard.Buff, float> buffValues = new Dictionary<ProtocolCard.Buff, float>()
-    {
-        { ProtocolCard.Buff.LessCoolTime, 1f },
-        { ProtocolCard.Buff.KillToCool, 1f },
-        { ProtocolCard.Buff.DeadmanSwitch, 1f },
-        { ProtocolCard.Buff.KillToExtend, 1f },
-    };
-
     //프로토콜 발동 시 스펙트럼 이펙트
     private SpriteRenderer curSprite;
     private SpriteRenderer[] spectrumPool;
@@ -35,13 +27,9 @@ public class NeuroActionProtocol : ProtocolBase
 
     private void Start()
     {
-        GameManager.Instance.OnProtocolChanged += InitEffect;
-    }
+        InitEffect();
 
-    private void OnDestroy()
-    {
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnProtocolChanged -= InitEffect;
+        GameManager.Instance.OnProtocolChanged += InitEffect; //디버깅용
     }
 
     internal override void TryProtocol(float duration)
@@ -86,10 +74,9 @@ public class NeuroActionProtocol : ProtocolBase
 
     internal override void EndProtocol()
     {
-        //debug_effect.SetActive(false);
-
         GameTime.SetTimeScale(1f);
         isActive = false;
+        colorTime = 0f;
     }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
@@ -110,10 +97,13 @@ public class NeuroActionProtocol : ProtocolBase
 
         for (int i = 0; i < spectrumPoolSize; i++)
         {
-            spectrumPool[i] = new GameObject($"SpectrumEffect_{i}").AddComponent<SpriteRenderer>();
+            spectrumPool[i] = new GameObject($"neuro action effect {i}").AddComponent<SpriteRenderer>();
             spectrumPool[i].gameObject.SetActive(false);
         }
     }
+
+    float colorTime = 0f;
+    [SerializeField] float colorSpeed = 0.02f;
 
     private void Effect()
     {
@@ -121,7 +111,6 @@ public class NeuroActionProtocol : ProtocolBase
 
         SpriteRenderer spectrum = spectrumPool[index];
 
-        // 기존 페이드 중이면 중지
         if (fadeCoroutines[index] != null)
             StopCoroutine(fadeCoroutines[index]);
 
@@ -138,10 +127,25 @@ public class NeuroActionProtocol : ProtocolBase
         spectrum.sortingLayerID = curSprite.sortingLayerID;
         spectrum.sortingOrder = curSprite.sortingOrder - 1;
 
-        // 알파 초기화
-        Color c = Color.white;
-        c.a = 0.5f;
-        spectrum.color = c;
+        Color magenta = new Color(1f, 0f, 1f);
+        Color lime = new Color(0.5f, 1f, 0f);
+        Color cyan = new Color(0f, 1f, 1f);
+
+        colorTime += spectrumInterval * colorSpeed;
+
+        float t = colorTime % 3f;
+
+        Color color;
+
+        if (t < 1f)
+            color = Color.Lerp(magenta, lime, t);
+        else if (t < 2f)
+            color = Color.Lerp(lime, cyan, t - 1f);
+        else
+            color = Color.Lerp(cyan, magenta, t - 2f);
+
+        color.a = 0.5f;
+        spectrum.color = color;
 
         fadeCoroutines[index] = StartCoroutine(SpectrumFadeTime(index));
 
@@ -159,16 +163,22 @@ public class NeuroActionProtocol : ProtocolBase
         SpriteRenderer spectrum = spectrumPool[poolIndex];
 
         float elapsed = 0f;
+
         Color color = spectrum.color;
 
         while (elapsed < spectrumFadeDuration)
         {
-            float alpha = Mathf.Lerp(0.5f, 0f, elapsed / spectrumFadeDuration);
+            float alpha = Mathf.Lerp(
+                0.5f,
+                0f,
+                elapsed / spectrumFadeDuration
+            );
 
             color.a = alpha;
             spectrum.color = color;
 
             elapsed += Time.deltaTime;
+
             yield return null;
         }
 

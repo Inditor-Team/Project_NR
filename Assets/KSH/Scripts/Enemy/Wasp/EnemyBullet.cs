@@ -64,13 +64,19 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null) target.TakeDamage(damage);
         
-        PoolManager.Instance.Release(originPrefab, gameObject);
+        DestroyBullet();
         OnBulletExpired?.Invoke(this);
+    }
+
+    public void DestroyBullet()
+    {
+        if (gameObject.activeSelf) // 중복 Release 방지?
+            PoolManager.Instance.Release(originPrefab, gameObject);
     }
 
     public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
     {
         // 혹은 폭파 이펙트
-        PoolManager.Instance.Release(originPrefab, gameObject);
+        DestroyBullet();
     }
 }

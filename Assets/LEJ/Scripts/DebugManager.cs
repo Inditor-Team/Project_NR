@@ -34,4 +34,9 @@ public class DebugManager : MonoBehaviour
     {
         GameManager.Instance.SetProtocol(ProtocolCard.Protocol.Blitz);
     }
+
+    public void ForceSectorClear()
+    {
+        SectorManager.Instance.SectorClear();
+    }
 }

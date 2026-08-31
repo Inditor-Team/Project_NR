@@ -34,6 +34,7 @@ public class SectorManager : MonoBehaviour
     private void Start()
     {
         remainingCount = curSectorSO.EnemyData.Length;
+        GameManager.Instance.RegisterSectorManagerEvent(SceneController.Instance.curScene);
     }
 
     public void SpawnEnemy()
@@ -77,17 +78,11 @@ public class SectorManager : MonoBehaviour
     {
         Debug.Log("Section Clear!");
         OnSectorClear?.Invoke(curSectorSO.Type);
-
-        //섹터가 끝나면 GameManager 에 등록한 이벤트 등록 취소
-        GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 
     public void SectorFail()
     {
         Debug.Log("Section Fail!");
         OnSectorFail?.Invoke(curSectorSO.Type);
-
-        //섹터가 끝나면 GameManager 에 등록한 이벤트 등록 취소
-        GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 }

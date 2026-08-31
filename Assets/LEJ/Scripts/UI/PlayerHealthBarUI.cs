@@ -5,12 +5,13 @@ public class PlayerHealthBar : MonoBehaviour
 {
     PlayerStat stat;
     [SerializeField] Slider slider;
-    float additiveValue = 0.2f;
 
     private void Start()
     {
         stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
         stat.OnUpdateStat += OnUpdateStat;
+
+        OnUpdateStat(PlayerStat.Stat.Life, stat.StatDic[PlayerStat.Stat.Life]);
     }
     
     void OnUpdateStat(PlayerStat.Stat type, float value)
@@ -18,14 +19,11 @@ public class PlayerHealthBar : MonoBehaviour
         if (type != PlayerStat.Stat.Life)
             return;
 
-        UpdateHealthBar(value < 0);
+        UpdateHealthBar();
     }
 
-    void UpdateHealthBar(bool decrease)
+    void UpdateHealthBar()
     {
-        if (decrease)
-            slider.value += additiveValue;
-        else
-            slider.value -= additiveValue;
+        slider.value = stat.StatDic[PlayerStat.Stat.Life];
     }
 }

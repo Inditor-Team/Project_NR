@@ -18,18 +18,6 @@ public class EXPManager : MonoBehaviour
 
     //}
 
-    private void Start()
-    {
-        //현재 섹터 하나 클리어 시 경험치 카드 제공
-        SectorManager.Instance.OnSectorClear += ProvideLevelCard;
-    }
-
-    private void OnDestroy()
-    {
-        if (SectorManager.Instance != null)
-            SectorManager.Instance.OnSectorClear -= ProvideLevelCard;
-    }
-
     [SerializeField] LevelCardProvider levelCardProvider;
     
     private float curEXP;

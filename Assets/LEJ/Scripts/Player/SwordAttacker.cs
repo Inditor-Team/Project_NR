@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -9,6 +10,9 @@ public class SwordAttacker : MonoBehaviour
     RotateByAim rotateByAim;
     float swingStartRot = -45f;
     float swingEndRot = 45f;
+
+    float circleSwingStartRot = 0f;
+    float circleSwingEndRot = 360f;
 
     [Tooltip("플레이어 모델")]
     [SerializeField] SpriteRenderer characterModel;
@@ -101,7 +105,10 @@ public class SwordAttacker : MonoBehaviour
         yield return null;
 
         if (rotateByAim == null)
+        {
+            swingRoutine = null;
             yield break;
+        }
 
         var aim = rotateByAim.GetAimPos();
         sword.Attack();
@@ -125,7 +132,7 @@ public class SwordAttacker : MonoBehaviour
 
             float t = Mathf.Clamp01(elapsedTime / duration);
 
-            sword.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(swingStartRot, swingEndRot, t));
+            sword.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(swingStartRot, swingEndRot, t));
             yield return null;
         }
 
@@ -137,8 +144,71 @@ public class SwordAttacker : MonoBehaviour
         Hold();
     }
 
+    internal void CircleSwing()
+    {
+        if (swingRoutine == null)   
+            swingRoutine = StartCoroutine(CircleSwingTime());
+    }
+
+    IEnumerator CircleSwingTime()
+    {
+        sword.inactive = true; //칼의 무적 상태
+        yield return null;
+
+        if (rotateByAim == null)
+        {
+            swingRoutine = null;
+            yield break;
+        }
+
+        rotateByAim.enabled = false;
+        sword.Attack();
+
+        float elapsedTime = 0f;
+        float duration = 1f / stat.StatDic[PlayerStat.Stat.SwordSwingSpeed];
+
+        float radius = 0.1f; //캐릭터 중심에서 칼까지 거리
+
+        sword.transform.localScale = new Vector3(-sword.transform.localScale.x, sword.transform.localScale.y, sword.transform.localScale.z); //칼 좌우반전
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            float angle = Mathf.Lerp(0f, 360f, t);
+
+            float rad = angle * Mathf.Deg2Rad;
+
+            sword.transform.localPosition = new Vector3(
+                Mathf.Cos(rad) * radius,
+                Mathf.Sin(rad) * radius,
+                0f
+            );
+
+            sword.transform.localRotation =
+                Quaternion.Euler(0f, 0f, angle + 30f);
+
+            //칼 방향도 같이 회전
+            sword.transform.localRotation =
+                Quaternion.Euler(0f, 0f, angle);
+
+            yield return null;
+        }
+
+        sword.EndAttack();
+        swingRoutine = null;
+
+        sword.transform.localScale = new Vector3(-sword.transform.localScale.x, sword.transform.localScale.y, sword.transform.localScale.z); //칼 좌우반전 해제
+
+        sword.inactive = false; //칼의 무적 상태 해제
+
+        Hold();
+    }
+
     public void ActiveSword(bool isActive)
     {
         sword.gameObject.SetActive(isActive);
     }
+
 }
