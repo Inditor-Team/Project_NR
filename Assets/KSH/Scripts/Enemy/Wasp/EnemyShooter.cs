@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,15 +17,19 @@ public class EnemyShooter : MonoBehaviour
 
     private Transform target; // 플레이어
     private Coroutine shootRoutine;
+    private Coroutine reloadRoutine;
 
     private int fireCount = 6;
     private int shootTimeCount = 5;
     private float damage;
     
-    public event Action OnReloadStart;
+    public event Action OnReloadStart; // 재장전
     public event Action OnReloadEnd;
-    
+    public event Action OnShootIntervalStart; // 1회 간격 대기
+    public event Action OnShootIntervalEnd;
     private bool isPaused;
+
+    private List<EnemyBullet> bulletList = new List<EnemyBullet>();
 
 
     private void Start()
@@ -36,6 +41,13 @@ public class EnemyShooter : MonoBehaviour
     public void SetDamage(float damage)
     {
         this.damage = damage;
+    }
+
+    public void SetCount(int shootTimeCount, int fireCount, float reloadTime)
+    {
+        this.shootTimeCount = shootTimeCount;
+        this.fireCount = fireCount;
+        this.reloadTime = reloadTime;
     }
     
     public void StartShooting(Transform playerTransform) // 아예 플레이어 transform를 참조하기, 변동되는 position 따라 잡기 위해
@@ -53,6 +65,13 @@ public class EnemyShooter : MonoBehaviour
             StopCoroutine(shootRoutine);
             shootRoutine = null;
         }
+
+        if (reloadRoutine != null)
+        {
+            StopCoroutine(reloadRoutine);
+            reloadRoutine = null;
+        }
+        
         target = null;
     }
     
@@ -71,10 +90,13 @@ public class EnemyShooter : MonoBehaviour
                 Shoot(gunTransform[j%2]);
                 yield return WaitForSecondsPausable(fireInterval);
             }
+            OnShootIntervalStart?.Invoke();
             yield return WaitForSecondsPausable(shootTimeInterval);
+            OnShootIntervalEnd?.Invoke();
         }
         
-        StartCoroutine(Reload()); // TODO: 변수 만들어서 null 처리
+        if(reloadRoutine == null)
+            reloadRoutine = StartCoroutine(Reload());
     }
 
     private IEnumerator Reload()
@@ -97,7 +119,11 @@ public class EnemyShooter : MonoBehaviour
 
         enemyBullet.transform.position = spawnPos;
         
-        enemyBullet.GetComponent<EnemyBullet>().Launch(direction, shootSpeed, damage);
+        EnemyBullet enemyBulletScript = enemyBullet.GetComponent<EnemyBullet>();
+        enemyBulletScript.Launch(direction, shootSpeed, damage);
+        enemyBulletScript.OnBulletExpired -= RemoveBulletFromList; // 혹시 모르는 중복 방지
+        enemyBulletScript.OnBulletExpired += RemoveBulletFromList;
+        bulletList.Add(enemyBulletScript); // 리스트에 저장
 
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
@@ -119,5 +145,20 @@ public class EnemyShooter : MonoBehaviour
     {
         while (isPaused)
             yield return null;
+    }
+
+    private void RemoveBulletFromList(EnemyBullet obj)
+    {
+        bulletList.Remove(obj);
+    }
+    
+    public void ClearAllBullets() // 보스 사망시 호출되는 함수, 총알 소멸
+    {
+        // 현재는 문제 없으나 나중에 리스트 더 사용한다면, 복사한 리스트로 돌리기. foreach 순회 중 리스트 제거 문제
+        foreach (EnemyBullet bullet in bulletList)
+        {
+            bullet.ExpireByBossDeath();
+        }
+        bulletList.Clear();
     }
 }

@@ -66,9 +66,10 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         if (GameManager.Instance != null)
+        {
             GameManager.Instance.OnPauseGame += Pause;
-
-        target = GameManager.Instance.Player.gameObject.transform;
+            target = GameManager.Instance.Player.gameObject.transform;
+        }
     }
 
     protected virtual void OnEnable()
@@ -128,7 +129,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
             DoRandomPatrol(isFliped);
     }
 
-    protected void DoFixedPatrol(bool isFliped)
+    private void DoFixedPatrol(bool isFliped)
     {
         patrolNextPosition = patrolPoints[currentPatrolIndex];
         Vector2 dir = patrolNextPosition.position - transform.position;
@@ -149,7 +150,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         }
     }
     
-    protected void DoRandomPatrol(bool isFliped)
+    private void DoRandomPatrol(bool isFliped)
     {
         if (patrolWaitTimer > 0f) // 대기중
         {
@@ -227,7 +228,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Dead);
     }
 
-    public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
+    protected virtual void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출 
     {
         gameObject.SetActive(false);
         SectorManager.Instance.DestroyedEnemy(); 

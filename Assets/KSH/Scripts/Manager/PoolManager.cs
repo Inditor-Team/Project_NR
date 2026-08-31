@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public abstract class PoolObjectBase : MonoBehaviour
+public interface IPoolObjectBase
 {
     public abstract void SetOriginPrefab(GameObject prefab);
 }
@@ -83,9 +83,9 @@ public class PoolManager : MonoBehaviour
     protected virtual GameObject CreatePooledItem(GameObject prefab)
     {
         GameObject newObj = Instantiate(prefab);
-        PoolObjectBase newObjScript = newObj.GetComponent<PoolObjectBase>();
+        IPoolObjectBase newObjScript = newObj.GetComponent<IPoolObjectBase>();
         
-        if (newObjScript)
+        if (newObjScript != null)
         {
             newObjScript.SetOriginPrefab(prefab);
         }

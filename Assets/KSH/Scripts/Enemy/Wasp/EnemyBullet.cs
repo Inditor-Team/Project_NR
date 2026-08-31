@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class EnemyBullet : PoolObjectBase
+public class EnemyBullet : MonoBehaviour, IPoolObjectBase
 {
     public Vector2 velocity; 
     private Rigidbody2D rigid; // 캐싱
@@ -15,6 +15,8 @@ public class EnemyBullet : PoolObjectBase
     private GameObject originPrefab; // 오리진 프리팹
 
     [SerializeField] LayerMask playerLayer;
+    
+    public event Action<EnemyBullet> OnBulletExpired; // 총알 사라졌을 때 호출
 
     private void Awake()
     {
@@ -46,7 +48,7 @@ public class EnemyBullet : PoolObjectBase
         rigid.linearVelocity = direction * speed * GameTime.WorldTimeScale;
     }
 
-    public override void SetOriginPrefab(GameObject prefab)
+    public void SetOriginPrefab(GameObject prefab)
     {
         originPrefab = prefab;
     }
@@ -61,13 +63,20 @@ public class EnemyBullet : PoolObjectBase
         
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null) target.TakeDamage(damage);
-
+        
         DestroyBullet();
+        OnBulletExpired?.Invoke(this);
     }
 
     public void DestroyBullet()
     {
-        if (gameObject.activeSelf)
-            PoolManager.Instance.Release(originPrefab, this.gameObject);
+        if (gameObject.activeSelf) // 중복 Release 방지?
+            PoolManager.Instance.Release(originPrefab, gameObject);
+    }
+
+    public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
+    {
+        // 혹은 폭파 이펙트
+        DestroyBullet();
     }
 }

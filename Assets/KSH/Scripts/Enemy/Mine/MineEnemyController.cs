@@ -166,7 +166,7 @@ public class MineEnemyController : EnemyBaseController
         mineDropTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
         if (mineDropTimer <= 0f)
         {
-            enemyPlacer.PlaceMine(); // 지뢰 설치
+            enemyPlacer.PlaceMine(transform.position); // 지뢰 설치
             mineDropTimer = mineDropInterval;
         }
 

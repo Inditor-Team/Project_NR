@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPlacer
   minePrefab: {fileID: 7443741529372853142, guid: d3b0bed40ef460b4bb0108d550a110cb, type: 3}
+  mineCollisionRadius: 1.5
 --- !u!1 &3098308452042806633
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +834,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 5, y: 0.0001}
+  m_Size: {x: 8, y: 1}
   m_Direction: 0
 --- !u!114 &5947785557331054354
 MonoBehaviour:

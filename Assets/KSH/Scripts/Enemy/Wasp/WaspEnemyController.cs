@@ -13,7 +13,7 @@ public class WaspEnemyController : EnemyBaseController
     // 재장전
     private float reloadSpeed;
     private float reloadTargetDist = 10f;
-    
+   
     private float correctionFactor = 0.5f; // 보정 계수
 
     // FSM 관련 변수
@@ -69,9 +69,6 @@ public class WaspEnemyController : EnemyBaseController
             case WaspStat.Patrol:
                 DoPatrol(true);
                 break;
-            case WaspStat.Detect:
-                DetectPlayer();
-                break;
             case WaspStat.Combat:
                 Move(defaultSpeed, combatTargetDist, true);
                 break;
@@ -87,6 +84,9 @@ public class WaspEnemyController : EnemyBaseController
         currentStat = newStat;
         switch (currentStat)
         {
+            case WaspStat.Detect:
+                DetectPlayer();
+                break;
             case WaspStat.Combat: 
                 if (!healthUI.activeSelf) healthUI.SetActive(true);
                 enemyShooter.StartShooting(target.transform);
