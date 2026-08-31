@@ -704,6 +704,14 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 546031321854260381}
@@ -1735,6 +1743,18 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageName
+      value: "\uB178\uBA40 B \uC2A4\uD14C\uC774\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 546031321854260381}
@@ -2328,6 +2348,18 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageName
+      value: "\uB178\uBA40 C \uC2A4\uD14C\uC774\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 546031321854260381}
@@ -2547,8 +2579,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 964940749}
   m_HandleRect: {fileID: 964940748}
   m_Direction: 0
-  m_Value: 0.00000006674593
-  m_Size: 0.51215297
+  m_Value: 0
+  m_Size: 0.512153
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2822,6 +2854,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
@@ -3191,6 +3231,18 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageName
+      value: "\uC774\uBCA4 A \uC2A4\uD14C\uC774\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 546031321854260381}
@@ -3444,6 +3496,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965588347}
   m_CullTransparentMesh: 1
+--- !u!114 &977302628 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 34938304214145030, guid: 26cca2dec0ea86742a9a05129d602c24, type: 3}
+  m_PrefabInstance: {fileID: 546031321854260375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &991999068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3588,6 +3651,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
@@ -3989,6 +4060,14 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 546031321854260381}
@@ -4161,6 +4240,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
@@ -4491,8 +4578,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7013cee7eb59c4c85b82559d1867b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapButton
+  stageName: 
+  lockIcon: {fileID: 0}
+  mapIcon: {fileID: 0}
   sceneName: 1
+  alertPanel: {fileID: 0}
   stageAlertConfirmButton: {fileID: 0}
+  stageAlertConfirmText: {fileID: 0}
 --- !u!114 &1429330951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,7 +5582,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1020074158}
   m_Direction: 3
   m_Value: 1
-  m_Size: 0.7086666
+  m_Size: 0.70866674
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5792,6 +5884,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
@@ -6195,6 +6295,18 @@ PrefabInstance:
       propertyPath: sceneName
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageName
+      value: "\uB178\uBA40 D \uC2A4\uD14C\uC774\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
@@ -6923,55 +7035,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2116663822}
-    - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
       objectReference: {fileID: 267677743}
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Show
-      objectReference: {fileID: 0}
-    - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: OnClick
       objectReference: {fileID: 0}
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MoveSceneButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 185857216}
-    - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1398979707203756530, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1542084086034340984, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2111339441318487882, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Pivot.x
@@ -7053,14 +7141,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1406613036, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: sceneName
-      value: 3
+      propertyPath: stageName
+      value: "\uB178\uBA40 A \uC2A4\uD14C\uC774\uC9C0"
       objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: alertPanel
+      value: 
+      objectReference: {fileID: 185857216}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageAlertConfirmText
+      value: 
+      objectReference: {fileID: 977302628}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
@@ -7070,8 +7162,7 @@ PrefabInstance:
       value: Map_NormalA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1580398482296576672, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}

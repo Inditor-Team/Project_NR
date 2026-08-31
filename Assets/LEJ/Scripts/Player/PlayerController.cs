@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
         input.Player.PrimaryAttack.performed +=  TryGunAttack;
         input.Player.SecondaryAttack.performed += TrySwordAttack;
-        //input.Player.Roll.performed += TryRoll;
+        input.Player.Roll.performed += TryRoll;
         input.Player.SpecialSkill.performed += TryProtocol;
         input.Player.Interact.performed += Interact;
         input.Player.Use.performed += Use;

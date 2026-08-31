@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -31,10 +32,10 @@ public class GameManager : MonoBehaviour
             if (instance == null)
                 instance = FindAnyObjectByType<GameManager>();
 
+            DontDestroyOnLoad(instance);
+
             return instance;
         }
-
-        
     }
 
     [SerializeField] private GameObject player;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         get
         {
             if (player == null)
-                player = GameObject.FindWithTag("Player");
+                player = GameObject.FindWithTag("Player").transform.parent.gameObject; //model 의 부모 오브젝트로 되어있음
 
             return player;
         }
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private float life = 5;
+    public float Life => life;
+
     public event UnityAction<int> OnCreditChanged;
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
@@ -73,23 +77,10 @@ public class GameManager : MonoBehaviour
         OnProtocolChanged?.Invoke();
     }
 
-    /// <summary>
-    /// TO DO : SectorManager 의 동일명 함수로 수정하기
-    /// </summary>
-    public void SectionClear() // 맵 내의 적 전부 처리 시 실행
-    {
-        Debug.Log("현재 GameManager 에서 실행됐습니다. SectorManager 의 SectionClear 로 바꿔주세요");
-    }
-
-    public void SectionFail()
-    {
-        Debug.Log("현재 GameManager 에서 실행됐습니다. SectorManager 의 SectionFail 로 바꿔주세요");
-    }
-
     Dictionary<SectorSO.SectorType, bool> clearedSector = new Dictionary<SectorSO.SectorType, bool>();
     public Dictionary<SectorSO.SectorType, bool> ClearedSector => clearedSector;
 
-    void RegisterSectorManagerEvent(SceneController.Scene curScene)
+    public void RegisterSectorManagerEvent(SceneController.Scene curScene)
     {
         //로비, 맵분기 또는 이벤트 맵의 경우 제외
         if (curScene == SceneController.Scene.Scene_Lobby || curScene == SceneController.Scene.Scene_Map)
@@ -101,9 +92,6 @@ public class GameManager : MonoBehaviour
 
     public void UnRegisterSectorManagerEvent()
     {
-        if (SectorManager.Instance == null)
-            return;
-
         SectorManager.Instance.OnSectorClear -= OnSectorClear;
         SectorManager.Instance.OnSectorFail -= OnSectorFailed;
     }
@@ -113,10 +101,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnSectorClear(SectorSO.SectorType sectorType)
     {
+        life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
+        Debug.Log($"{life}ssss");
+
         if (!clearedSector.ContainsKey(sectorType))
             clearedSector.Add(sectorType, false);
 
         clearedSector[sectorType] = true;
+        UnRegisterSectorManagerEvent();
     }
 
     /// <summary>
@@ -128,6 +120,7 @@ public class GameManager : MonoBehaviour
             clearedSector.Add(sectorType, false);
 
         clearedSector[sectorType] = false;
+        UnRegisterSectorManagerEvent();
     }
     
     public void ExitGame()
@@ -141,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     public void FindPlayer()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
     }
 
     private int pauseRequestCount = 0; // UI 창이 여러 개인 경우가 있으니 카운팅 형식으로 변경
@@ -171,10 +164,4 @@ public class GameManager : MonoBehaviour
         GameTime.SetTimeScale(shouldPause ? 0f : GameTime.BeforeWorldTimeScale);
         OnPauseGame?.Invoke(shouldPause);
     }
-    
-    /*public void Pause(bool isPause)
-    {
-        GameTime.SetTimeScale(isPause ? 0f : 1f);
-        OnPauseGame?.Invoke(isPause);
-    }*/
 }

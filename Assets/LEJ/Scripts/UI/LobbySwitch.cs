@@ -35,7 +35,7 @@ public class LobbySwitch : MonoBehaviour, IInteractable
                 if (uiCanvas.activeSelf)
                 {
                     uiCanvas.SetActive(false); // 튜토리얼 UI 켜져있으면 종료
-                    GameManager.Instance.ReleasePause();
+                    GameManager.Instance.ForcedRelease();
                 }
 
                 UIManager.Instance.Show(startAlert);

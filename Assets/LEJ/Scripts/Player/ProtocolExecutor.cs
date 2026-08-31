@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using static PlayerStat;
@@ -16,16 +18,12 @@ public class ProtocolExecutor : MonoBehaviour
 
     private void Start()
     {
+        coolTime = 0;
+
         if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.None)
             SetProtocol(GameManager.Instance.CurProtocol);
 
         GameManager.Instance.OnProtocolChanged += SetProtocol;
-    }
-
-    private void OnDestroy()
-    {
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnProtocolChanged -= SetProtocol;
     }
 
     private void Update()
@@ -33,11 +31,8 @@ public class ProtocolExecutor : MonoBehaviour
         if (stat == null)
             return;
 
-        if (coolTime < 1)
-        {
-            if(GameTime.WorldTimeScale > 0f) // ê²Œì„ ì‹œê°„ì´ ì •ì§€ë˜ì–´ ìˆìœ¼ë©´ ì¿¨íƒ€ì„ë„ ì •ì§€  
-                coolTime += Time.deltaTime / stat.StatDic[PlayerStat.Stat.ProtocolRate];
-        }
+        if (coolTime < 1 && GameTime.WorldTimeScale > 0f)
+            coolTime += Time.deltaTime / stat.StatDic[PlayerStat.Stat.ProtocolRate];
     }
 
     public void RegisterStat(PlayerStat stat)
@@ -79,10 +74,7 @@ public class ProtocolExecutor : MonoBehaviour
 
     public void TryProtocol()
     {
-        if (coolTime < 1)
-            return;
-
-        if (curProtocol == null)
+        if (coolTime < 1 || curProtocol == null)
             return;
 
         DoProtocol();
@@ -94,5 +86,29 @@ public class ProtocolExecutor : MonoBehaviour
     void DoProtocol()
     {
         curProtocol.TryProtocol(stat.StatDic[Stat.ProtocolDuration]);
+
+        //ÇÁ·ÎÅäÄİÀÌ ºí·¹ÀÌ´õÀÏ ¶© ¹«Àû ¸ğµå°¡ µË´Ï´Ù
+        if (GameManager.Instance.CurProtocol == ProtocolCard.Protocol.Blader)
+            InvincibleMode();
+    }
+
+    /// <summary>
+    /// ÇÁ·ÎÅäÄİ È°¼ºÈ­ÀÏ ¶§ ÇÃ·¹ÀÌ¾î°¡ ¹«ÀûÀÌ µË´Ï´Ù
+    /// </summary>
+    void InvincibleMode()
+    {
+        if (InvincibleRoutine != null)
+            InvincibleRoutine = null;
+
+        InvincibleRoutine = StartCoroutine(InvincibleTime());
+    }
+
+    Coroutine InvincibleRoutine;
+    IEnumerator InvincibleTime()
+    {
+        stat.IsInvincible = true;
+        yield return new WaitForSeconds(stat.StatDic[Stat.ProtocolDuration]);
+        stat.IsInvincible = false;
+        InvincibleRoutine = null;
     }
 }

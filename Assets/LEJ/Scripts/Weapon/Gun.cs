@@ -9,15 +9,13 @@ public class Gun : WeaponBase
     [SerializeField] Transform firePoint; //ÃÑ±¸ À§Ä¡
     [SerializeField] SpriteRenderer model;
     public SpriteRenderer Model => model;
-    //[SerializeField] LineRenderer lineRenderer;
-    //[SerializeField] private float laserDuration = 1f;
-    //private float disableTime;
     float maxDistance = 20f;
 
     float speed;
     float damage;
 
     [SerializeField] GameObject bulletPrefab; //ÃÑ¾Ë ÇÁ¸®ÆÕ
+    [SerializeField] GameObject reflectBulletPrefab; //¹Ý»ç ÃÑ¾Ë ÇÁ¸®ÆÕ
     public GameObject BulletPrefab => bulletPrefab;
     private int bulletPoolSize = 20;
     BulletBase curBullet;
@@ -37,6 +35,7 @@ public class Gun : WeaponBase
     private void MakeBulletPool()
     {
         PoolManager.Instance.PoolInit(bulletPrefab, bulletPoolSize);
+        PoolManager.Instance.PoolInit(reflectBulletPrefab, bulletPoolSize);
     }
 
     public void TryAttack(float speed, float damage)
@@ -52,6 +51,7 @@ public class Gun : WeaponBase
 
         Attack();
     }
+
 
     internal override void Attack()
     {
@@ -78,10 +78,9 @@ public class Gun : WeaponBase
         else
             endPosition = startPosition + direction * maxDistance;
 
-        //PlayLaserEffect(startPosition, endPosition);
     }
 
-    public void FireReflectBullet(Vector2 startPos, Vector2 dir, float speed, float damage)
+    public void ReflectAttack(Vector2 startPos, Vector2 dir, float speed, float damage)
     {
         GameObject bulletObject = PoolManager.Instance.Get(bulletPrefab);
 
@@ -101,42 +100,4 @@ public class Gun : WeaponBase
         curBullet.OnFire(dir, speed, damage, bulletPrefab);
     }
 
-    //private Coroutine laserCoroutine;
-
-
-    //public void PlayLaserEffect(Vector2 start, Vector2 end)
-    //{
-    //    if (laserCoroutine == null)
-    //        laserCoroutine = StartCoroutine(PlayLaserRoutine(start, end));
-    //}
-    
-    //private IEnumerator PlayLaserRoutine(Vector2 start, Vector2 end)
-    //{
-    //    const float duration = 0.06f;
-    
-    //    laserTrail.emitting = false;
-    //    laserTrail.Clear();
-
-    //    yield return null;
-
-    //    laserTrail.transform.position = start;
-    //    laserTrail.emitting = true;
-    
-    //    float elapsed = 0f;
-    
-    //    while (elapsed < duration)
-    //    {
-    //        float t = Mathf.Clamp01(elapsed / duration);
-    
-    //        laserTrail.transform.position = Vector2.Lerp(start, end, t);
-    
-    //        elapsed += Time.deltaTime;
-    
-    //        yield return null;
-    //    }
-    //    laserTrail.transform.position = end;
-
-    //    laserTrail.emitting = false;
-    //    laserCoroutine = null;
-    //}
 }

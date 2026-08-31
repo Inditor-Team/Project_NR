@@ -61,7 +61,13 @@ public class EnemyBullet : PoolObjectBase
         
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null) target.TakeDamage(damage);
-        
-        PoolManager.Instance.Release(originPrefab, this.gameObject);
+
+        DestroyBullet();
+    }
+
+    public void DestroyBullet()
+    {
+        if (gameObject.activeSelf)
+            PoolManager.Instance.Release(originPrefab, this.gameObject);
     }
 }

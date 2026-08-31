@@ -11,7 +11,7 @@ public class BulletBase : MonoBehaviour
     private float damage;
     private float speed;
     private Vector2 dir;
-    private float inactiveTime = 2f;
+    private float inactiveTime = 5f;
 
     float timer = 0;
     GameObject originPrefab;
@@ -20,6 +20,7 @@ public class BulletBase : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
+
 
         if (timer > inactiveTime) //총알이 무한정 뻗어나가지 않게 사라지는 시간 설정
             DestroyBullet();
@@ -58,14 +59,10 @@ public class BulletBase : MonoBehaviour
         IDamageable damageable = collision.GetComponent<IDamageable>();
         IInteractable interactable = collision.GetComponent<IInteractable>();
 
-        if (damageable != null)
+        if (interactable != null || damageable != null)
         {
-            damageable.TakeDamage(damage); //데미지 전달
-            DestroyBullet();
-        }
-        if (interactable != null)
-        {
-            interactable.OnInteract();
+            damageable?.TakeDamage(damage);
+            interactable?.OnInteract();
             DestroyBullet();
         }
     }

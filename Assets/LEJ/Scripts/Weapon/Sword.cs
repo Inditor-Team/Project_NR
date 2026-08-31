@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +16,8 @@ public class Sword : WeaponBase
     int swingCount = 0;
 
     public event UnityAction OnHitted;
+
+    public bool inactive = false;
 
     private void Awake()
     {
@@ -50,17 +53,20 @@ public class Sword : WeaponBase
         //적의 총알일 경우
         if (bullet != null)
         {
-            //반대로 날려보내기
-            //bullet.Launch(-bullet.velocity.normalized, bullet.velocity.magnitude, damage);
+            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
+
+            if (inactive) //칼의 무적상태
+                return;
+
             OnHitted?.Invoke();
 
             //임시 이펙트 처리
             effect.SetActive(false);
             effect.SetActive(true);
             Invoke("HideEffect", 0.4f);
-            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
 
             swingCount++;
+
             if (swingCount >= swordLife)
                 OnBroke();
 
@@ -68,7 +74,13 @@ public class Sword : WeaponBase
         }
         else if (damageable != null)
         {
+            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
+
+            if (inactive) //칼의 무적상태
+                return;
+
             damageable.TakeDamage(damage);
+
             OnHitted?.Invoke();
 
             //임시 이펙트 처리
