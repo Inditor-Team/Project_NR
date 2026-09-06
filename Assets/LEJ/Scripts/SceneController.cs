@@ -27,6 +27,7 @@ public class SceneController : MonoBehaviour
         StartBGM();
     }
 
+    // TODO: 스테이지별 숫자 적기
     public enum Scene { None, Scene_Lobby, Scene_Map, 
         Scene_NormalA, Scene_NormalB, Scene_NormalC, Scene_NormalD,
         Scene_HardA, Scene_HardB, 
