@@ -1,10 +1,11 @@
+using System;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Splines;
 
-public class PlayerStat : MonoBehaviour, IDamageable
+public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
 {
     public enum Stat
     {
@@ -52,6 +53,12 @@ public class PlayerStat : MonoBehaviour, IDamageable
     void Start()
     {
         SetLifeByGameManager();
+        SaveSlotManager.Instance.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveSlotManager.Instance.Unregister(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -127,5 +134,17 @@ public class PlayerStat : MonoBehaviour, IDamageable
             statDic[type] += value;
 
         OnUpdateStat?.Invoke(type, value);
+    }
+    
+    // 세이브 관련
+    public void SaveDataTo(SaveDataStruct data)
+    {
+        data.statDic = statDic;
+        data.isStolen = false; // TODO: 상점 훔치는 지
+    }
+
+    public void LoadDataFrom(SaveDataStruct data)
+    {
+        statDic = data.statDic;
     }
 }

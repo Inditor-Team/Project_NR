@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
 public class SaveDataStruct
 {
     // 프로토콜 타입, 크레딧, 보유 아이템? -> 플레이어 데이터 클래스를 아예 따로 생성??
-    public Dictionary<PlayerStat.Stat, float> statDic; // 스탯 통째로 저장
+    public Dictionary<PlayerStat.Stat, float> statDic = new(); // 스탯 통째로 저장
     public SceneController.Scene sectorName; // 섹터 명
     public bool isStolen; // 상점 도둑질했는지
 }

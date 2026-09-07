@@ -4,24 +4,28 @@ using UnityEngine;
 public class SavePanelController : MonoBehaviour
 {
     [SerializeField] private GameObject savePanel;
+    private bool isSavePanelActive = false;
 
-    // 임시 테스트용 코드
-    /*private void Start()
+    public void ShowForSave()
     {
-        FileIOSystem.EnsureSaveDirectoryExists();
-        string testPath = FileIOSystem.GetSlotFilePath(0);
-        FileIOSystem.WriteTextToFile(testPath, "{ \"test\": 123 }");
-        string readBack = FileIOSystem.ReadTextFromFile(testPath);
-        Debug.Log(readBack);
+        SaveSlotManager.Instance.SetMode(SaveLoadMode.Save);
+        Show();
     }
-    */
-
-    // TODO: 세이브 버튼 만들어서 연결하기
-    public void ShowSavePanel()
+    
+    public void ShowForLoad()
+    {
+        SaveSlotManager.Instance.SetMode(SaveLoadMode.Load);
+        Show();
+    }
+    
+    private void Show()
     {
         if (savePanel == null) return;
+        
+        if (isSavePanelActive) return; // 중복 켜지기 방지, 메시지 창 띄우기?
+        isSavePanelActive = true;
+        
         GameManager.Instance.RequestPause();// Pause(true);
-
         UIManager.Instance.Show(savePanel);
     }
 
@@ -29,5 +33,6 @@ public class SavePanelController : MonoBehaviour
     {
         UIManager.Instance.Hide(savePanel);
         GameManager.Instance.ReleasePause();// Pause(false);
+        isSavePanelActive = false;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// SceneManager 대신 사용합니다
 /// </summary>
-public class SceneController : MonoBehaviour
+public class SceneController : MonoBehaviour, ISaveable
 {
     static SceneController instance;
     public static SceneController Instance
@@ -19,12 +20,17 @@ public class SceneController : MonoBehaviour
 
             return instance;
         }
-
     }
 
     private void Start()
     {
         StartBGM();
+        SaveSlotManager.Instance.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveSlotManager.Instance.Unregister(this);
     }
 
     // TODO: 스테이지별 숫자 적기
@@ -76,5 +82,16 @@ public class SceneController : MonoBehaviour
             return;
 
         GameManager.Instance.FindPlayer();
+    }
+    
+    // 세이브 관련
+    public void SaveDataTo(SaveDataStruct data)
+    {
+        data.sectorName = curScene;
+    }
+
+    public void LoadDataFrom(SaveDataStruct data)
+    {
+        ChangeScene(data.sectorName); // 씬 전환
     }
 }

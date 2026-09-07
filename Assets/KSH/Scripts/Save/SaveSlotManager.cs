@@ -10,6 +10,13 @@ public class SaveSlotInfo
     public bool isEmpty;
 }
 
+// 슬롯 접근 상태 (세이브 버튼으로 들어왔는지, 로드 버튼으로 들어왔는지)
+public enum SaveLoadMode
+{
+    Save,
+    Load
+}
+
 /// <summary>
 /// 어떤 슬롯을 세이브/로드/삭제할지 결정하고
 /// FileIOSystem / SaveDataManager(직렬화 레이어 포함)를 조율하는 역할
@@ -34,11 +41,59 @@ public class SaveSlotManager : MonoBehaviour
     }
     
     private const int MaxSlotCount = 5; // 슬롯 개수
+    public SaveLoadMode CurrentMode { get; private set; } // 현재 상태 (세이브/로드)
+    private List<ISaveable> registeredSaveables = new List<ISaveable>();
+    
+    // 세이브 버튼으로 창을 켰는지 로드 버튼으로 창 켰는지
+    public void SetMode(SaveLoadMode mode)
+    {
+        CurrentMode = mode;
+    }
+    
+    public void Register(ISaveable saveable)
+    {
+        if (!registeredSaveables.Contains(saveable))
+            registeredSaveables.Add(saveable);
+    }
+
+    public void Unregister(ISaveable saveable)
+    {
+        registeredSaveables.Remove(saveable);
+    }
+    
+    public bool OnSlotClicked(int slotIndex)
+    {
+        // TODO: 메시지 창 띄우기
+        // 세이브 성공 -> 그냥 리프레시
+        // 로드 성공 -> 창 다 닫고 겜 로드
+        
+        switch (CurrentMode)
+        {
+            case SaveLoadMode.Save:
+                return SaveToSlot(slotIndex);
+
+            case SaveLoadMode.Load:
+                return LoadFromSlot(slotIndex);
+        }
+        Debug.LogError($"[SaveSlotManager] 처리되지 않은 모드: {CurrentMode}");
+        return false;
+    }
 
     // 특정 슬롯에 현재 게임 데이터(상태) 저장
     public bool SaveToSlot(int slotIndex)
     {
         if (!IsValidSlotIndex(slotIndex)) return false; // 슬롯 번호가 0~4를 벗어남, out of index
+        
+        SaveDataStruct data = new SaveDataStruct
+        {
+            statDic = new Dictionary<PlayerStat.Stat, float>()
+        };
+
+        foreach (ISaveable saveable in registeredSaveables)
+            saveable.SaveDataTo(data);
+        
+        SaveDataManager.Instance.SetCurrentData(data);
+
         FileIOSystem.EnsureSaveDirectoryExists(); // 혹시 파일 없으면 생성하기
         string path = FileIOSystem.GetSlotFilePath(slotIndex);
         
@@ -49,11 +104,19 @@ public class SaveSlotManager : MonoBehaviour
     public bool LoadFromSlot(int slotIndex)
     {
         if (!IsValidSlotIndex(slotIndex)) return false;
-        bool isEmpty = IsSlotEmpty(slotIndex); // 슬롯 비어있으면 true
-        if (isEmpty) return false;
+        if (IsSlotEmpty(slotIndex)) return false; // 슬롯 비어있으면 true
 
         string path = FileIOSystem.GetSlotFilePath(slotIndex);
-        return SaveDataManager.Instance.LoadFromFile(path);
+        bool loaded = SaveDataManager.Instance.LoadFromFile(path);
+        
+        if (!loaded) return false;
+
+        // 로드된 데이터를 등록된 모든 시스템에 적용
+        SaveDataStruct data = SaveDataManager.Instance.CurrentData;
+        foreach (ISaveable saveable in registeredSaveables)
+            saveable.LoadDataFrom(data);
+
+        return true;
     }
 
     // 특정 슬롯의 세이브 파일 삭제
