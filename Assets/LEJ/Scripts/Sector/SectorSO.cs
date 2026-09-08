@@ -5,7 +5,7 @@ using static SectorSO;
 [CreateAssetMenu(fileName = "SectorSO", menuName = "LEJ/SectorSO")]
 public class SectorSO : ScriptableObject
 {
-    public enum SectorType { None, Normal, Hard, Store, Event, Boss, Count } //¼öÁ¤ ¿¹Á¤
+    public enum SectorType { None, Normal, Hard, Store, Event, Boss, Count } //ìˆ˜ì • ì˜ˆì •
     public enum EnemyType { None, Wasp, Mine, User, MotherCore, Count }
 
     public SceneController.Scene Scene;
