@@ -3,15 +3,15 @@ using UnityEngine;
 /// <summary>
 /// 맵 내 아이템 스폰과 디스폰을 관리
 /// </summary>
-public class ItemManager : MonoBehaviour
+public class ItemSpawner : MonoBehaviour
 {
-    static ItemManager instance;
-    public static ItemManager Instance
+    static ItemSpawner instance;
+    public static ItemSpawner Instance
     {
         get
         {
             if (instance == null)
-                instance = FindAnyObjectByType<ItemManager>();
+                instance = FindAnyObjectByType<ItemSpawner>();
             return instance;
         }
 

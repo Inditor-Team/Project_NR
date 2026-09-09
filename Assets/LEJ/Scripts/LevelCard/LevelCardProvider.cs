@@ -44,14 +44,23 @@ public class LevelCardProvider : MonoBehaviour
 
         for (int i = 0; i < cardCount; i++)
         {
+            Action onClickAction = null;
+            int index = i;
+
+            //버튼을 눌렀을 때 InventoryManager 에 카드 획득 등록
+            onClickAction += () => {InventoryManager.Instance.GetCard(choosen[index].Id); }; 
+
             //버튼을 눌렀을 때 스탯이 증가하도록 SetStat 을 전달
-            Action setStatAction = null;
             foreach (var element in choosen[i].Elements)
-                setStatAction += () => { SetStat(element.targetStat, element.upgradeAmount); };
-            setStatAction += () => { ui.CloseUI(); };
+            {
+                onClickAction += () => {
+                    SetStat(element.targetStat, element.upgradeAmount);
+                    ui.CloseUI();
+                };
+            }
 
             //ui 에게 설정을 명령
-            ui.SetUIElement(choosen[i], i, setStatAction);
+            ui.SetUIElement(choosen[i], i, onClickAction);
         }
 
         GameManager.Instance.RequestPause();// Pause(true);
@@ -72,6 +81,9 @@ public class LevelCardProvider : MonoBehaviour
     /// </summary>
     LevelCardSO[] ChooseLevelCard(int count)
     {
+        //카드가 3개 미만일 때 스택 오버플로우 방지 
+        if (data.LevelCards.Length < 3) return null;
+
         //TO DO: 확률 구현
         LevelCardSO[] result = new LevelCardSO[count];
         int index = 0;

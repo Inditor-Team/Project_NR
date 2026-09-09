@@ -1,5 +1,7 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// 플레이어의 인벤토리 입니다.
@@ -30,7 +32,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
         if (curItem != null)
         {
             //현재 아이템을 월드 내 스폰 해 뱉어내기
-            ItemManager.Instance.SpawnItem(curItem, itemObject.transform);
+            ItemSpawner.Instance.SpawnItem(curItem, itemObject.transform);
             curItem = itemObject.MyItem; //월드에 있던 아이템을 슬롯에 장착
         }
         else //아이템을 들고 있지 않다면 그대로 슬롯에 장착
@@ -38,6 +40,15 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
 
         if (ui != null)
             ui.UpdateUI(curItem);
+    }
+
+    /// <summary>
+    /// 인벤토리매니저를 통해 이전 씬에서 들고있던 아이템을 바로 장착합니다
+    /// </summary>
+    /// <param name="itemSO"></param>
+    public void HoldItem(ItemSO itemSO)
+    {
+        curItem = itemSO;
     }
 
     public void UseItem()
@@ -69,4 +80,5 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
         if (ui != null)
             ui.UpdateUI(curItem);
     }
+
 }

@@ -35,6 +35,7 @@ public class SectorManager : MonoBehaviour
     {
         remainingCount = curSectorSO.EnemyData.Length;
         GameManager.Instance.RegisterSectorManagerEvent(SceneController.Instance.curScene);
+        InventoryManager.Instance.SetItemOnSectorStart();
     }
 
     public void SpawnEnemy()

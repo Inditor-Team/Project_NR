@@ -71,7 +71,7 @@ public class ItemObject : MonoBehaviour, IInteractable
         {
             holder.HoldItem(this);
             myItem = null;
-            ItemManager.Instance.DespawnItem(gameObject);
+            ItemSpawner.Instance.DespawnItem(gameObject);
         }
     }
 

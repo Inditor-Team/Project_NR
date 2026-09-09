@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FullAutoProtocol
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
   Id: 3
+  CardIcon: {fileID: 21300000, guid: 38e672748823cd949a203f18fd8b52a1, type: 3}
   type: 1
   CardName: "\uC5F0\uC0AC \uD504\uB85C\uD1A0\uCF5C"
   CardDescription: "\uACF5\uACA9 \uAC04\uACA9\uC774 \uC9E7\uC544\uC9C4\uB2E4"

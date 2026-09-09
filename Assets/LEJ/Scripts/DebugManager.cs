@@ -17,7 +17,7 @@ public class DebugManager : MonoBehaviour
 
     public void SpawnItem()
     {
-        ItemManager.Instance.SpawnItem(spawnItem, spawnPos);
+        ItemSpawner.Instance.SpawnItem(spawnItem, spawnPos);
     }
 
     public void SetNeuroAction()

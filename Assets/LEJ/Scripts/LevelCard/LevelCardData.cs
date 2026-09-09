@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,4 +8,18 @@ public class LevelCardData : MonoBehaviour
 {
     [SerializeField] LevelCardSO[] levelCards;
     public LevelCardSO[] LevelCards => levelCards;
+
+    Dictionary<string, LevelCardSO> levelCardDic = new Dictionary<string, LevelCardSO>();
+    public Dictionary<string, LevelCardSO> LevelCardDic => levelCardDic;
+
+    private void Awake()
+    {
+        SetDictionary();
+    }
+
+    private void SetDictionary()
+    {
+        foreach (var levelCard in levelCards)
+            levelCardDic.Add(levelCard.Id, levelCard);
+    }
 }

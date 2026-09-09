@@ -6,6 +6,7 @@ public class LevelCardSO : ScriptableObject
 {
     public enum LevelCardType { None, Attack, Shield, Speed, Evasion, Risk, Count}
     public string Id;
+    public Sprite CardIcon;
     public LevelCardType type;
     public string CardName;
     public string CardDescription;

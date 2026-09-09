@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bioreinforcement2
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
   Id: 2
+  CardIcon: {fileID: 21300000, guid: acb0770d37c2b074881d956a1ddb70e0, type: 3}
   type: 2
   CardName: "\uC0DD\uCCB4 \uBCF4\uAC15ii "
   CardDescription: "\uCD5C\uB300 \uCCB4\uB825\uC774 \uC99D\uAC00\uD55C\uB2E4"

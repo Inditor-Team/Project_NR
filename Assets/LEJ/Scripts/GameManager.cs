@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     }
 
     private int credit = 0; //게임 내 재화
+    public event UnityAction<int> OnCreditChanged;
+
     public int Credit
     {
         get => credit;
@@ -63,8 +65,6 @@ public class GameManager : MonoBehaviour
 
     private float life = 5;
     public float Life => life;
-
-    public event UnityAction<int> OnCreditChanged;
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
@@ -116,6 +116,11 @@ public class GameManager : MonoBehaviour
     public void OnSectorClear(SectorSO.SectorType sectorType)
     {
         life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
+
+        //섹터 종료 시 마지막으로 들고 있던 아이템을 인벤토리 매니저에 등록
+        ItemSO item = player.GetComponent<PlayerInventory>().CurItem;
+        if (item != null)
+            InventoryManager.Instance.RegisterItemOnSectorClose(item);
 
         clearedSector[sectorType] = true;
         Debug.Log($"gameManager 에서 {sectorType} 이 clear true");
