@@ -12,16 +12,16 @@ public class SwordCountUI : MonoBehaviour
     private void Awake()
     {
         if (sword != null)
-            sword.OnHitted += OnHit;
+            sword.OnSwing += OnSwing;
     }
 
     private void OnDestroy()
     {
         if (sword != null)
-            sword.OnHitted -= OnHit;
+            sword.OnSwing -= OnSwing;
     }
 
-    void OnHit()
+    void OnSwing()
     {
         if (swordIcons.Length <= index)
             return;

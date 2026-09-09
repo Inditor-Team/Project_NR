@@ -8,7 +8,7 @@ public class LobbySwitch : MonoBehaviour, IInteractable
 {
     enum SwitchType { None, GameStart, HowTo }
     [SerializeField] SwitchType switchType;
-    [SerializeField] SceneController.Scene nextSceneName = SceneController.Scene.Scene_Map;
+    [SerializeField] SceneController.Scene nextSceneName = SceneController.Scene.Map;
     [SerializeField] GameObject startAlert;
     [SerializeField] GameObject uiCanvas;
 

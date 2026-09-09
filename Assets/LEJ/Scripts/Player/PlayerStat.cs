@@ -53,12 +53,15 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     void Start()
     {
         SetLifeByGameManager();
-        SaveSlotManager.Instance.Register(this);
+
+        if (SaveSlotManager.Instance != null)
+            SaveSlotManager.Instance.Register(this);
     }
 
     private void OnDestroy()
     {
-        SaveSlotManager.Instance.Unregister(this);
+        if (SaveSlotManager.Instance != null)
+            SaveSlotManager.Instance.Unregister(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -83,7 +86,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         SetStat(Stat.BulletFireRate, 0.5f);
 
         SetStat(Stat.ProtocolDuration, 3f);
-        SetStat(Stat.ProtocolRate, 1f);
+        SetStat(Stat.ProtocolRate, 10f);
 
         SetStat(Stat.Life, 5f);
         SetStat(Stat.MaxLife, 5f);

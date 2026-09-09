@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606344f926566f7428195e5a64d1fd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sword
-  hitBox: {fileID: 8939146558667143259}
+  hitBox: {fileID: 2693489210869067455}
   model: {fileID: 6491340747748547709}
   effect: {fileID: 3454971394518095051}
+  swingTime: 0
+  inactive: 0
 --- !u!114 &2669214311529317012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,10 +109,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2587813315296039784}
-  - component: {fileID: 8939146558667143259}
   - component: {fileID: 6491340747748547709}
-  - component: {fileID: 7278306599336355031}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: model (sword)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,18 +132,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7880014701018855835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -140}
---- !u!114 &8939146558667143259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766713149442861874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b4b1ce2c1f57544b76f35f1b75ea8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HitBox
 --- !u!212 &6491340747748547709
 SpriteRenderer:
   serializedVersion: 2
@@ -203,42 +191,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &7278306599336355031
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766713149442861874}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.8
 --- !u!1 &2130022078305305045
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,8 +240,7 @@ MonoBehaviour:
   swordModel: {fileID: 6491340747748547709}
   gun: {fileID: 805145537335099986}
   spectrumPoolSize: 30
-  spectrumFadeDuration: 3
-  spectrumInterval: 0.2
+  spectrumInterval: 0.01
 --- !u!58 &1798268426244501443
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -325,7 +276,88 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.8
+  m_Radius: 1.5
+--- !u!1 &2138972547727852161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7744310441296493761}
+  - component: {fileID: 5703594419819197159}
+  - component: {fileID: 2693489210869067455}
+  m_Layer: 3
+  m_Name: SwordHitBox
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7744310441296493761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138972547727852161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3993123999957123329}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5703594419819197159
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138972547727852161}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.7
+--- !u!114 &2693489210869067455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138972547727852161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b4b1ce2c1f57544b76f35f1b75ea8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordHitBox
 --- !u!1 &2228229680479272070
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +407,7 @@ MonoBehaviour:
   spectrumPoolSize: 30
   spectrumFadeDuration: 2
   spectrumInterval: 0.2
+  colorSpeed: 0.02
 --- !u!1 &2406657997141419777
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +648,7 @@ MonoBehaviour:
   spectrumPoolSize: 30
   spectrumFadeDuration: 3
   spectrumInterval: 0.005
+  colorSpeed: 2
 --- !u!1 &4253029594397454049
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +794,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  model: {fileID: 0}
+  model: {fileID: 5711610164856498049}
 --- !u!1 &4491675949981218699
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &470412082327797489
 Transform:
   m_ObjectHideFlags: 0
@@ -5792,6 +5826,7 @@ Transform:
   m_Children:
   - {fileID: 9070327935403828557}
   - {fileID: 6350759085849897695}
+  - {fileID: 7744310441296493761}
   - {fileID: 7880014701018855835}
   - {fileID: 8257176381231720944}
   - {fileID: 7002312544001858335}
@@ -5822,7 +5857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
   ui: {fileID: 0}
-  playerStat: {fileID: 0}
+  playerStat: {fileID: 4833552546129074219}
   levelCardProvider: {fileID: 0}
 --- !u!114 &1685491047641687502
 MonoBehaviour:

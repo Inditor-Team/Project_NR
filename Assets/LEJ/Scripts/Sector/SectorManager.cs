@@ -65,6 +65,10 @@ public class SectorManager : MonoBehaviour
 
     public void DestroyedEnemy() // 적이 파괴되면 호출
     {
+        //보스씬에서는 적의 파괴가 아닌 보스가 파괴되면 섹터 클리어
+        if (SceneController.Instance.curScene == SceneController.Scene.Boss)
+            return;
+
         remainingCount--;
 
         if (remainingCount <= 0)
@@ -78,11 +82,13 @@ public class SectorManager : MonoBehaviour
     {
         Debug.Log("Section Clear!");
         OnSectorClear?.Invoke(curSectorSO.Type);
+        GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 
     public void SectorFail()
     {
         Debug.Log("Section Fail!");
         OnSectorFail?.Invoke(curSectorSO.Type);
+        GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 }

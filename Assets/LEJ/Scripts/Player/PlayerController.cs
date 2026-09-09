@@ -280,6 +280,7 @@ public class PlayerController : MonoBehaviour
 
         curState = PlayerState.Die;
         animator.DieAnim();
+        rb.simulated = false;
 
         SectorManager.Instance.SectorFail();
 

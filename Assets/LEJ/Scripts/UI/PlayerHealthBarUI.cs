@@ -11,7 +11,7 @@ public class PlayerHealthBar : MonoBehaviour
         stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
         stat.OnUpdateStat += OnUpdateStat;
 
-        OnUpdateStat(PlayerStat.Stat.Life, stat.StatDic[PlayerStat.Stat.Life]);
+        OnUpdateStat(PlayerStat.Stat.Life, GameManager.Instance.Life);
     }
     
     void OnUpdateStat(PlayerStat.Stat type, float value)

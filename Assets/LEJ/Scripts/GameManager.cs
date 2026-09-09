@@ -80,10 +80,24 @@ public class GameManager : MonoBehaviour
     Dictionary<SectorSO.SectorType, bool> clearedSector = new Dictionary<SectorSO.SectorType, bool>();
     public Dictionary<SectorSO.SectorType, bool> ClearedSector => clearedSector;
 
+    private void Start()
+    {
+        ClearedSectorDicInit();
+    }
+
+    /// <summary>
+    /// 섹터 클리어 여부를 저장하는 딕셔너리 초기화
+    /// </summary>
+    void ClearedSectorDicInit()
+    {
+        for (int i = 0; i < (int)SectorSO.SectorType.Count; i++)
+            clearedSector.Add((SectorSO.SectorType)i, false);
+    }
+
     public void RegisterSectorManagerEvent(SceneController.Scene curScene)
     {
         //로비, 맵분기 또는 이벤트 맵의 경우 제외
-        if (curScene == SceneController.Scene.Scene_Lobby || curScene == SceneController.Scene.Scene_Map)
+        if (curScene == SceneController.Scene.Lobby || curScene == SceneController.Scene.Map)
             return;
 
         SectorManager.Instance.OnSectorClear += OnSectorClear;
@@ -102,12 +116,9 @@ public class GameManager : MonoBehaviour
     public void OnSectorClear(SectorSO.SectorType sectorType)
     {
         life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
-        Debug.Log($"{life}ssss");
-
-        if (!clearedSector.ContainsKey(sectorType))
-            clearedSector.Add(sectorType, false);
 
         clearedSector[sectorType] = true;
+        Debug.Log($"gameManager 에서 {sectorType} 이 clear true");
         UnRegisterSectorManagerEvent();
     }
 
@@ -116,9 +127,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnSectorFailed(SectorSO.SectorType sectorType)
     {
-        if (!clearedSector.ContainsKey(sectorType))
-            clearedSector.Add(sectorType, false);
-
         clearedSector[sectorType] = false;
         UnRegisterSectorManagerEvent();
     }

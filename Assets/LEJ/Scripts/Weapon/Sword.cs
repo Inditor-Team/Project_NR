@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +14,8 @@ public class Sword : WeaponBase
     public int SwordLife => swordLife;
     int swingCount = 0;
 
-    public event UnityAction OnHitted;
+    public event UnityAction OnSwing;
+    public float swingTime = 1f;
 
     public bool inactive = false;
 
@@ -58,17 +58,8 @@ public class Sword : WeaponBase
             if (inactive) //칼의 무적상태
                 return;
 
-            OnHitted?.Invoke();
-
-            //임시 이펙트 처리
-            effect.SetActive(false);
-            effect.SetActive(true);
-            Invoke("HideEffect", 0.4f);
-
-            swingCount++;
-
-            if (swingCount >= swordLife)
-                OnBroke();
+            if (swingRoutine == null)
+                swingRoutine = StartCoroutine(SwingTime());
 
             return;
         }
@@ -81,17 +72,8 @@ public class Sword : WeaponBase
 
             damageable.TakeDamage(damage);
 
-            OnHitted?.Invoke();
-
-            //임시 이펙트 처리
-            effect.SetActive(false);
-            effect.SetActive(true);
-            Invoke("HideEffect", 0.4f);
-
-            swingCount++;
-
-            if (swingCount >= swordLife)
-                OnBroke();
+            if (swingRoutine == null)
+                swingRoutine = StartCoroutine(SwingTime());
         }
     }
 
@@ -106,4 +88,24 @@ public class Sword : WeaponBase
         effect.SetActive(false);
     }
 
+    Coroutine swingRoutine;
+    IEnumerator SwingTime()
+    {
+        //임시 이펙트 처리
+        effect.SetActive(false);
+        effect.SetActive(true);
+        Invoke("HideEffect", 0.4f);
+
+        OnSwing?.Invoke();
+        swingCount++;
+
+        if (swingCount >= swordLife)
+        {
+            OnBroke();
+            yield break;
+        }
+
+        yield return new WaitForSeconds(swingTime);
+        swingRoutine = null;
+    }
 }

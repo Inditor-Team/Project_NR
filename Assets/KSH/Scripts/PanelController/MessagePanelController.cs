@@ -7,7 +7,13 @@ public class MessagePanelController : MonoBehaviour
     [SerializeField] private GameObject messagePanel;
     [SerializeField] private TMP_Text desriptionText;
     private Action yesFunction;
-    
+
+    private void Start()
+    {
+        UIManager.Instance.msgController = this;
+        gameObject.SetActive(false);
+    }
+
     public void SetMessagePanel(string text, Action func)
     {
         desriptionText.text = text;

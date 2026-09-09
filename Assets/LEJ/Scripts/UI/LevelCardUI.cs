@@ -58,7 +58,7 @@ public class LevelCardUI : MonoBehaviour
             curElement.choiceButton.onClick.RemoveAllListeners(); 
 
         curElement.choiceButton.onClick.AddListener(() => { buttonAction?.Invoke(); }); //버튼 이벤트 매핑
-        curElement.choiceButton.onClick.AddListener(() => { SceneController.Instance.ChangeScene(SceneController.Scene.Scene_Map); });
+        curElement.choiceButton.onClick.AddListener(() => { SceneController.Instance.ChangeScene(SceneController.Scene.Map); });
 
         //카드 색상 변경 (임시)
         switch (data.type)

@@ -83,7 +83,7 @@ public class BlitzProtocol : ProtocolBase
             enemy.GetComponent<IDamageable>().TakeDamage(100);
             killCount++;
 
-            yield return new WaitForSeconds(0.05f);
+            yield return WaitForSecondsPausable(0.05f);
         }
 
         EndProtocol();
@@ -197,6 +197,17 @@ public class BlitzProtocol : ProtocolBase
 
         spectrum.gameObject.SetActive(false);
         fadeCoroutines[poolIndex] = null;
+    }
+
+    private IEnumerator WaitForSecondsPausable(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            if (!GameManager.Instance.IsPaused)
+                timer += Time.deltaTime;
+            yield return null;
+        }
     }
 
 }

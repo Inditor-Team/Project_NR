@@ -61,7 +61,7 @@ public class BladerProtocol : ProtocolBase
         {
             Effect();
 
-            yield return new WaitForSeconds(spectrumInterval);
+            yield return WaitForSecondsPausable(spectrumInterval);
 
             elapsed += spectrumInterval;
         }
@@ -79,7 +79,7 @@ public class BladerProtocol : ProtocolBase
         if (enemyBullet == null)
             return;
 
-        gun.ReflectAttack(enemyBullet.transform.position, -enemyBullet.velocity.normalized, enemyBullet.velocity.magnitude, damage);
+        gun.ReflectAttack(enemyBullet.transform.position, -enemyBullet.velocity.normalized, enemyBullet.velocity.magnitude);
         enemyBullet.DestroyBullet();
     }
 
@@ -163,5 +163,16 @@ public class BladerProtocol : ProtocolBase
 
         index = 0;
         colorTime = 0f;
+    }
+
+    private IEnumerator WaitForSecondsPausable(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            if (!GameManager.Instance.IsPaused)
+                timer += Time.deltaTime;
+            yield return null;
+        }
     }
 }

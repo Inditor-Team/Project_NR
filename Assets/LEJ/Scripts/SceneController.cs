@@ -25,20 +25,23 @@ public class SceneController : MonoBehaviour, ISaveable
     private void Start()
     {
         StartBGM();
-        SaveSlotManager.Instance.Register(this);
+
+        if (SaveSlotManager.Instance != null)
+            SaveSlotManager.Instance.Register(this);
     }
 
     private void OnDestroy()
     {
-        SaveSlotManager.Instance.Unregister(this);
+        if (SaveSlotManager.Instance != null)
+            SaveSlotManager.Instance.Unregister(this);
     }
 
     // TODO: 스테이지별 숫자 적기
-    public enum Scene { None, Scene_Lobby, Scene_Map, 
-        Scene_NormalA, Scene_NormalB, Scene_NormalC, Scene_NormalD,
-        Scene_HardA, Scene_HardB, 
-        Scene_EventA, Scene_EventB, Scene_Shop,
-        Scene_MiddleBoss,
+    public enum Scene { None, Lobby, Map, 
+        NormalA, NormalB, NormalC, NormalD,
+        HardA, HardB, 
+        EventA, EventB, Shop,
+        Boss,
         Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;
@@ -64,13 +67,13 @@ public class SceneController : MonoBehaviour, ISaveable
     {
         switch (curScene)
         {
-            case Scene.Scene_Lobby:
+            case Scene.Lobby:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Lobby);
                 break;
-            case Scene.Scene_Map:
+            case Scene.Map:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Map);
                 break;
-            case Scene.Scene_NormalA:
+            case Scene.NormalA:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Stage1);
                 break;
         }
@@ -78,7 +81,7 @@ public class SceneController : MonoBehaviour, ISaveable
 
     void FindPlayer()
     {
-        if (curScene == Scene.Scene_Map)
+        if (curScene == Scene.Map)
             return;
 
         GameManager.Instance.FindPlayer();

@@ -186,9 +186,6 @@ public class SwordAttacker : MonoBehaviour
                 0f
             );
 
-            sword.transform.localRotation =
-                Quaternion.Euler(0f, 0f, angle + 30f);
-
             //칼 방향도 같이 회전
             sword.transform.localRotation =
                 Quaternion.Euler(0f, 0f, angle);

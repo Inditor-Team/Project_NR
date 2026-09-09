@@ -26,6 +26,6 @@ public class GameFailUI : MonoBehaviour
 
     void BackToMap()
     {
-        SceneController.Instance.ChangeScene(SceneController.Scene.Scene_Map);
+        SceneController.Instance.ChangeScene(SceneController.Scene.Map);
     }
 }
