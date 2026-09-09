@@ -1,12 +1,10 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraEffect : MonoBehaviour
 {
     [SerializeField] FollowCamera follow;
     [SerializeField] Gun gun;
-    Animator anim;
 
     [Header("»ÁµÈ∏≤ ø¨√‚")]
     [SerializeField] int shakeAmount = 1; //«»ºø ¥‹¿ß
@@ -16,8 +14,6 @@ public class CameraEffect : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
-
         if (gun != null)
             gun.OnShoot += Shake;
     }

@@ -30,6 +30,11 @@ public class Sword : WeaponBase
         effect.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        hitBox.OnHit -= OnHit;
+    }
+
     public void TryAttack(float damage)
     {
         this.damage = damage;

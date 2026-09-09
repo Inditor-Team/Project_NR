@@ -138,22 +138,11 @@ public class BlitzProtocol : ProtocolBase
         spectrum.sortingLayerID = curSprite.sortingLayerID;
         spectrum.sortingOrder = curSprite.sortingOrder - 1;
 
-        Color magenta = new Color(1f, 0f, 1f);
-        Color lime = new Color(0.5f, 1f, 0f);
-        Color cyan = new Color(0f, 1f, 1f);
-
         colorTime += spectrumInterval * colorSpeed;
 
         float t = colorTime % 3f;
 
-        Color color;
-
-        if (t < 1f)
-            color = Color.Lerp(magenta, lime, t);
-        else if (t < 2f)
-            color = Color.Lerp(lime, cyan, t - 1f);
-        else
-            color = Color.Lerp(cyan, magenta, t - 2f);
+        Color color = Color.cyan;
 
         color.a = 0.5f;
         spectrum.color = color;
@@ -177,8 +166,6 @@ public class BlitzProtocol : ProtocolBase
 
         float elapsed = 0f;
 
-        Color color = spectrum.color;
-
         while (elapsed < spectrumFadeDuration)
         {
             float alpha = Mathf.Lerp(
@@ -186,9 +173,6 @@ public class BlitzProtocol : ProtocolBase
                 0f,
                 elapsed / spectrumFadeDuration
             );
-
-            color.a = alpha;
-            spectrum.color = color;
 
             elapsed += Time.deltaTime;
 
