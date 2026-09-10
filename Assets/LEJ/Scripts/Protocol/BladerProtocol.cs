@@ -39,8 +39,6 @@ public class BladerProtocol : ProtocolBase
 
     IEnumerator ProtocolTime()
     {
-        swordAttacker.CircleSwing();
-
         Effect();
 
         yield return WaitForSecondsPausable(duration);

@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6497fe613ffe4e4d8abe40cd677e1b7, type: 3}
-  m_Name: Bioreinforcement2
+  m_Name: InstableCore
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
-  Id: 1
-  CardIcon: {fileID: 21300000, guid: 2d304cfb5b229094da05e3a62407a158, type: 3}
-  type: 1
-  CardName: "\uC0DD\uCCB4 \uBCF4\uAC15ii "
-  CardDescription: "\uCD5C\uB300 \uCCB4\uB825\uC774 \uC99D\uAC00\uD55C\uB2E4"
-  Elements:
-  - targetStat: 14
-    upgradeAmount: 2
-  Weight: 14
+  Id: 12
+  CardIcon: {fileID: 21300000, guid: b410c535b96cffa4db96d65d35eaa674, type: 3}
+  type: 12
+  CardName: "\uBD88\uC548\uC815 \uCF54\uC5B4"
+  CardDescription: "\uC21C\uAC04\uC801\uC73C\uB85C \uC5F0\uC0AC\uD558\uACE0, \uC774\uC18D\uC774
+    \uAC10\uC18C\uD55C\uB2E4"
+  Elements: []
+  Weight: 6

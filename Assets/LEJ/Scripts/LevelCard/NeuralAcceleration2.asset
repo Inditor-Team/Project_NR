@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6497fe613ffe4e4d8abe40cd677e1b7, type: 3}
   m_Name: NeuralAcceleration2
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
-  Id: 5
+  Id: 9
   CardIcon: {fileID: 21300000, guid: ccca5f6252ecffa40af9b1f4d951225f, type: 3}
-  type: 3
+  type: 9
   CardName: "\uC2E0\uACBD\uAC00\uC18Dii"
   CardDescription: "\uC774\uB3D9 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD55C\uB2E4"
-  Probability: 6
   Elements:
   - targetStat: 1
     upgradeAmount: 2
+  Weight: 6

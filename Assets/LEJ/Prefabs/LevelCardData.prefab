@@ -47,6 +47,14 @@ MonoBehaviour:
   levelCards:
   - {fileID: 11400000, guid: 4e0f77d07010a2d46a344744f266f90f, type: 2}
   - {fileID: 11400000, guid: 5352f9ae5e8f12c41837d296567e3d22, type: 2}
+  - {fileID: 11400000, guid: 2c769b39d73a5f246a2a82a67f97bccf, type: 2}
+  - {fileID: 11400000, guid: 3349987c793f17746bc1837b04fc0c02, type: 2}
   - {fileID: 11400000, guid: 160295e2776478f4babef16d3265a85d, type: 2}
+  - {fileID: 11400000, guid: 6a9de80edfe06a24ba41172423c1ecc5, type: 2}
   - {fileID: 11400000, guid: 4b712ba5810fafb45affd7dabb01cf1b, type: 2}
   - {fileID: 11400000, guid: 2a3f5ee1e7cafaa44a8eba472312e6bd, type: 2}
+  - {fileID: 11400000, guid: 5d0f5b15ac02f9e4098467ed639c9111, type: 2}
+  - {fileID: 11400000, guid: 06290244d8688bc4e8661008dcaae612, type: 2}
+  - {fileID: 11400000, guid: 803a43855df8e3f4db3435367c2d01e9, type: 2}
+  - {fileID: 11400000, guid: 2985a08306f258d49a03ce009bb9081b, type: 2}
+  - {fileID: 11400000, guid: bc3ec6a6a23ebab4d8ec47f8ca03b178, type: 2}

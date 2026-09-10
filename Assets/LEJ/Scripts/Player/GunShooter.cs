@@ -26,6 +26,12 @@ public class GunShooter : MonoBehaviour
         lastFireTime = Time.time;
     }
 
+    public void ForceAttack()
+    {
+        gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
+    }
+
     public void ActiveGun(bool isActive)
     {
         gun.gameObject.SetActive(isActive);

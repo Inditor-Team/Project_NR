@@ -66,9 +66,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.1788269
-    width: 0.40386164
-    height: 0.40396997
+    y: 0.040625002
+    width: 0.5966608
+    height: 0.5967774
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowCamera
   target: {fileID: 0}
-  smoothTime: 0.15
+  smoothTime: 0.3
 --- !u!114 &7828221849376192967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +194,9 @@ MonoBehaviour:
   follow: {fileID: 1547069611836759512}
   gun: {fileID: 0}
   shakeAmount: 1
-  shakeDuration: 0.1
+  shakeDuration: 0.08
+  shakeAmountOnDamaged: 3
+  shakeDurationOnDamaged: 0.25
 --- !u!114 &898298361355686866
 MonoBehaviour:
   m_ObjectHideFlags: 0

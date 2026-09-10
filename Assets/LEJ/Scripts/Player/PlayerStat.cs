@@ -1,9 +1,7 @@
-using System;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Splines;
 
 public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
 {
@@ -30,6 +28,8 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         Life, //생명
         MaxLife, //최대 생명
 
+        AdditionalDamage, //데미지량 (카드 효과)
+
         Count
     }
 
@@ -39,6 +39,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     public event UnityAction<Stat, float> OnUpdateStat;
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] SpriteRenderer model;
+    public SpriteRenderer Model => model; 
     bool isInvincible = false; //무적 상태
     public bool IsInvincible { get { return isInvincible; } set { isInvincible = value; } }
 
@@ -62,6 +63,9 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     {
         if (SaveSlotManager.Instance != null)
             SaveSlotManager.Instance.Unregister(this);
+
+        if (recoverProbability > 0f) //회복 알고리즘 카드가 있어 이벤트 등록이 됐었다면 해지
+            SectorManager.Instance.OnDestroyedEnemy += RecoveryAlgorithm;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,6 +94,8 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
 
         SetStat(Stat.Life, 5f);
         SetStat(Stat.MaxLife, 5f);
+
+        SetStat(Stat.AdditionalDamage, 0f);
     }
 
     /// <summary>
@@ -102,20 +108,37 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
 
     public void EarnLife(float amount)
     {
-        UpdateStat(Stat.Life, amount);
+        AddStat(Stat.Life, amount);
     }
+
+    public UnityAction OnDamaged;
 
     public void TakeDamage(float damage)
     {
         if (isInvincible)
             return;
 
+        if (Random.value < evasionProbability) //카드 얻기 전 확률 0
+        {
+            //시각적 효과
+            model.DOColor(Color.green, 0.2f).OnComplete(() =>
+            {
+                model.DOColor(Color.white, 0.2f);
+            });
+
+            return;
+        }
+
+        OnDamaged?.Invoke();
+
+        //데미지 입는 효과
         model.DOColor(Color.red, 0.2f).OnComplete(() =>
         {
             model.DOColor(Color.white, 0.2f);
         });
 
-        UpdateStat(Stat.Life, -damage);
+        //additional damage 는 보통의 경우 0, 오버클럭 획득 시 +1
+        AddStat(Stat.Life, -(damage + statDic[Stat.AdditionalDamage]));
 
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX(Sound_SFX.Player_Hit);
@@ -126,19 +149,38 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         statDic[type] = value;
     }
 
-    public void UpdateStat(Stat type, float value)
+    /// <summary>
+    /// 스탯에 값을 더합니다
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="value"></param>
+    public void AddStat(Stat type, float value)
     {
-        if (type == Stat.RollRate || type == Stat.SwordSwingRate || type == Stat.BulletFireRate || type == Stat.ProtocolRate)
-        {
-            //배율 증가 또는 감소
-            statDic[type] *= value;
-        }
-        else
-            statDic[type] += value;
+        statDic[type] += value;
+
+        //최대 체력 이상으로 가질 수 없습니다
+        if (type == Stat.Life && statDic[Stat.Life] > statDic[Stat.MaxLife])
+            statDic[Stat.Life] = statDic[Stat.MaxLife];
 
         OnUpdateStat?.Invoke(type, value);
     }
-    
+
+    /// <summary>
+    /// 스탯에 값 배율 증가
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="value"></param>
+    public void IncreaseStat(Stat type, float value, bool isDecrease = false)
+    {
+        if (!isDecrease)
+            statDic[type] /= value;
+        else
+            statDic[type] *= value;
+
+        OnUpdateStat?.Invoke(type, value);
+    }
+
+    #region Save
     // 세이브 관련
     public void SaveDataTo(SaveDataStruct data)
     {
@@ -150,4 +192,58 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     {
         statDic = data.statDic;
     }
+    #endregion
+
+    #region SpecialStat
+    public void SpecialToggle(LevelCardSO.LevelCardType type)
+    {
+        bool isA = false;
+        switch (type)
+        {
+            //회복 알고리즘의 경우 처치 시 체력 회복
+            case LevelCardSO.LevelCardType.RecoveryAlgorithmA:
+            case LevelCardSO.LevelCardType.RecoveryAlgorithmB:
+
+                isA = (type == LevelCardSO.LevelCardType.RecoveryAlgorithmA);
+                recoverProbability = isA ? 0.05f : 0.1f; //i 의 경우 5% ii 의 경우 10%
+
+                SectorManager.Instance.OnDestroyedEnemy += RecoveryAlgorithm;
+
+                break;
+
+            //민첩 알고리즘의 경우 일정 확률로 적 공격 방어
+            case LevelCardSO.LevelCardType.EvasionA:
+            case LevelCardSO.LevelCardType.EvasionB:
+
+                isA = (type == LevelCardSO.LevelCardType.EvasionA);
+                evasionProbability = isA ? 0.3f : 0.5f;
+                break;
+
+            //불안정 코어의 경우 일정 확률 연사 및 이속 디버프
+            case LevelCardSO.LevelCardType.InstableCore:
+                instableCoreProbability = 0.05f; //PlayerController 에서 적용
+                break;
+        }
+    }
+
+    float recoverProbability = 0f;
+
+    void RecoveryAlgorithm()
+    {
+        if (Random.value < recoverProbability)
+        {
+            //시각적 효과
+            model.DOColor(Color.green, 0.2f).OnComplete(() =>
+            {
+                model.DOColor(Color.white, 0.2f);
+            });
+
+            AddStat(Stat.Life, 1);
+        }
+    }
+
+    float evasionProbability = 0f;
+    float instableCoreProbability = 0f;
+    public float InstableCoreProbability => instableCoreProbability;
+    #endregion
 }

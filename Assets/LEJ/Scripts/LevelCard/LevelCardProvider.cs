@@ -1,5 +1,5 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 public class LevelCardProvider : MonoBehaviour
 {
-    [SerializeField] LevelCardData data; //추후 리소스를 통해 프리팹 생성으로 참조 또는 시트 연결
     [SerializeField] LevelCardUI ui;
     PlayerStat stat; 
 
@@ -36,28 +35,22 @@ public class LevelCardProvider : MonoBehaviour
             return;
 
         //카드 데이터 중 3개의 카드를 선점
-        LevelCardSO[] choosen = ChooseLevelCard(3);
+        LevelCardSO[] choosen = ChooseLevelCard(cardCount);
 
         //선점된 카드를 ui 로 제공
         if (ui == null)
             return;
 
-        for (int i = 0; i < cardCount; i++)
+        for (int i = 0; i < choosen.Length; i++)
         {
             Action onClickAction = null;
             int index = i;
 
-            //버튼을 눌렀을 때 InventoryManager 에 카드 획득 등록
-            onClickAction += () => {InventoryManager.Instance.GetCard(choosen[index].Id); }; 
-
-            //버튼을 눌렀을 때 스탯이 증가하도록 SetStat 을 전달
-            foreach (var element in choosen[i].Elements)
-            {
-                onClickAction += () => {
-                    SetStat(element.targetStat, element.upgradeAmount);
-                    ui.CloseUI();
-                };
-            }
+            //버튼을 눌렀을 때 InventoryManager 에 카드 획득 등록 및 UI 종료
+            onClickAction += () => {
+                InventoryManager.Instance.GetCard(choosen[index].Id);
+                ui.CloseUI();
+            }; 
 
             //ui 에게 설정을 명령
             ui.SetUIElement(choosen[i], i, onClickAction);
@@ -68,36 +61,63 @@ public class LevelCardProvider : MonoBehaviour
         ui.ShowUI();
     }
 
-    // <summary>
-    /// 플레이어의 스탯을 업그레이드
-    /// </summary>
-    void SetStat(PlayerStat.Stat target, float amount)
-    {
-        stat.UpdateStat(target, amount);
-    }
-
     /// <summary>
     /// 확률에 따라 레벨 카드를 제공
     /// </summary>
     LevelCardSO[] ChooseLevelCard(int count)
     {
-        //카드가 3개 미만일 때 스택 오버플로우 방지 
-        if (data.LevelCards.Length < 3) return null;
+        //뽑을 수 있는 카드 목록
+        List<LevelCardSO> candidates = new List<LevelCardSO>(LevelCardData.Instance.LevelCards);
 
-        //TO DO: 확률 구현
-        LevelCardSO[] result = new LevelCardSO[count];
-        int index = 0;
-        
-        while (index < 3)
+        //요청 개수가 카드 개수보다 많아도 안전하게 처리
+        int resultCount = Mathf.Min(count, candidates.Count);
+
+        List<LevelCardSO> result = new List<LevelCardSO>();
+
+        for (int i = 0; i < resultCount; i++)
         {
-            int randNum = UnityEngine.Random.Range(0, data.LevelCards.Length);
+            //남은 카드들의 전체 가중치
+            float totalWeight = 0f;
 
-            if (result.Contains(data.LevelCards[randNum]))
-                continue;
+            foreach (LevelCardSO card in candidates)
+            {
+                if (card.Weight > 0)
+                    totalWeight += card.Weight;
+            }
 
-            result[index++] = data.LevelCards[randNum];
+            //가중치가 남은 카드가 없으면 종료
+            if (totalWeight <= 0f)
+                break;
+
+            float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+            float accumulatedWeight = 0f;
+
+            LevelCardSO selectedCard = null;
+
+            foreach (LevelCardSO card in candidates)
+            {
+                if (card.Weight <= 0)
+                    continue;
+
+                accumulatedWeight += card.Weight;
+
+                if (randomValue <= accumulatedWeight)
+                {
+                    selectedCard = card;
+                    break;
+                }
+            }
+
+            //선택되지 않았다면 종료
+            if (selectedCard == null)
+                break;
+
+            result.Add(selectedCard);
+
+            //중복 방지를 위해 후보 목록에서 제거
+            candidates.Remove(selectedCard);
         }
 
-        return result;
+        return result.ToArray();
     }
 }

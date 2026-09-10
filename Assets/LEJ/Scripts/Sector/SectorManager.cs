@@ -36,6 +36,7 @@ public class SectorManager : MonoBehaviour
         remainingCount = curSectorSO.EnemyData.Length;
         GameManager.Instance.RegisterSectorManagerEvent(SceneController.Instance.curScene);
         InventoryManager.Instance.SetItemOnSectorStart();
+        InventoryManager.Instance.SetCardStatOnSectorStart();
     }
 
     public void SpawnEnemy()
@@ -63,6 +64,8 @@ public class SectorManager : MonoBehaviour
             Instantiate(curPrefab, curSectorSO.EnemyData[i].spawnPos, Quaternion.identity);
         }
     }
+
+    public event UnityAction OnDestroyedEnemy;
 
     public void DestroyedEnemy() // 적이 파괴되면 호출
     {

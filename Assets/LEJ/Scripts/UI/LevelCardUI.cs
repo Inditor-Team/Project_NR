@@ -59,25 +59,5 @@ public class LevelCardUI : MonoBehaviour
 
         curElement.choiceButton.onClick.AddListener(() => { buttonAction?.Invoke(); }); //버튼 이벤트 매핑
         curElement.choiceButton.onClick.AddListener(() => { SceneController.Instance.ChangeScene(SceneController.Scene.Map); });
-
-        //카드 색상 변경 (임시)
-        switch (data.type)
-        {
-            case LevelCardSO.LevelCardType.Attack:
-                curElement.image.color = Color.red;
-                break;
-            case LevelCardSO.LevelCardType.Shield:
-                curElement.image.color = Color.blue;
-                break;
-            case LevelCardSO.LevelCardType.Evasion:
-                curElement.image.color = Color.yellow;
-                break;
-            case LevelCardSO.LevelCardType.Speed:
-                curElement.image.color = Color.yellowGreen;
-                break;
-            case LevelCardSO.LevelCardType.Risk:
-                curElement.image.color = Color.magenta;
-                break;
-        }
     }
 }

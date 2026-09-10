@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6497fe613ffe4e4d8abe40cd677e1b7, type: 3}
-  m_Name: Bioreinforcement2
+  m_Name: Evasion2
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
-  Id: 1
-  CardIcon: {fileID: 21300000, guid: 2d304cfb5b229094da05e3a62407a158, type: 3}
-  type: 1
-  CardName: "\uC0DD\uCCB4 \uBCF4\uAC15ii "
-  CardDescription: "\uCD5C\uB300 \uCCB4\uB825\uC774 \uC99D\uAC00\uD55C\uB2E4"
+  Id: 5
+  CardIcon: {fileID: 21300000, guid: 848d03369f9170340bb30312e95ebb0b, type: 3}
+  type: 5
+  CardName: "\uBBFC\uCCA9 ii"
+  CardDescription: "\uC77C\uC815 \uD655\uB960\uB85C \uC801\uC758 \uACF5\uACA9\uC744
+    \uBC29\uC5B4\uD55C\uB2E4"
   Elements:
-  - targetStat: 14
-    upgradeAmount: 2
-  Weight: 14
+  - targetStat: 0
+    upgradeAmount: 0
+  Weight: 6

@@ -12,12 +12,9 @@ public class Sword : WeaponBase
     float damage;
     int swordLife = 5;
     public int SwordLife => swordLife;
-    int swingCount = 0;
+    public event UnityAction OnSwordLifeChanged;
 
-    public event UnityAction OnSwing;
-    public float swingTime = 1f;
-
-    public bool inactive = false;
+    bool canConsumeSword = true;
 
     private void Awake()
     {
@@ -48,38 +45,43 @@ public class Sword : WeaponBase
     public void EndAttack()
     {
         hitBox.enabled = false;
+        canConsumeSword = true;
     }
 
     void OnHit(GameObject target)
     {
+        if (!gameObject.activeSelf) //gameObject 가 SetActive false 된 상태에서 Coroutine null 오류 때문에 추가
+            return;
+
         IDamageable damageable = target.GetComponent<IDamageable>();
         EnemyBullet bullet = target.GetComponent<EnemyBullet>();
 
         //적의 총알일 경우
-        if (bullet != null)
-        {
-            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
-
-            if (inactive) //칼의 무적상태
-                return;
-
-            if (swingRoutine == null)
-                swingRoutine = StartCoroutine(SwingTime());
-
+        if (bullet == null && damageable == null)
             return;
-        }
-        else if (damageable != null)
+
+        SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
+
+        //damageable 일 경우 damage 전달
+        damageable?.TakeDamage(damage);
+
+        //임시 이펙트 처리
+        effect.SetActive(false);
+        effect.SetActive(true);
+        Invoke("HideEffect", 0.4f);
+
+        //칼은 한 번 휘두를 때 한 번만 소모 됩니다
+        if (canConsumeSword)
         {
-            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Hit);
-
-            if (inactive) //칼의 무적상태
-                return;
-
-            damageable.TakeDamage(damage);
-
-            if (swingRoutine == null)
-                swingRoutine = StartCoroutine(SwingTime());
+            swordLife--;
+            OnSwordLifeChanged?.Invoke();
         }
+
+        canConsumeSword = false; //칼이 다 휘둘러진 다음 true 가 됩니다
+
+        //칼의 수명이 다하면 부서집니다
+        if (swordLife <= 0)
+            OnBroke();
     }
 
     void OnBroke()
@@ -91,26 +93,5 @@ public class Sword : WeaponBase
     void HideEffect()
     {
         effect.SetActive(false);
-    }
-
-    Coroutine swingRoutine;
-    IEnumerator SwingTime()
-    {
-        //임시 이펙트 처리
-        effect.SetActive(false);
-        effect.SetActive(true);
-        Invoke("HideEffect", 0.4f);
-
-        OnSwing?.Invoke();
-        swingCount++;
-
-        if (swingCount >= swordLife)
-        {
-            OnBroke();
-            yield break;
-        }
-
-        yield return new WaitForSeconds(swingTime);
-        swingRoutine = null;
     }
 }

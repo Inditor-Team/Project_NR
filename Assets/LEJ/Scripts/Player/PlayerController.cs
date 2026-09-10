@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -30,6 +32,10 @@ public class PlayerController : MonoBehaviour
 
     float lastProtocolTime;
     private bool isPaused = false;
+
+    float curSpeed;
+    float moveSpeed;
+    float rollSpeed;
 
     IInteractable curInteractable;
 
@@ -66,6 +72,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPauseGame += Pause;
+
+        moveSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
+        rollSpeed = stat.StatDic[PlayerStat.Stat.RollSpeed];
     }
 
     void OnEnable()
@@ -201,6 +210,10 @@ public class PlayerController : MonoBehaviour
         
         if (gunShooter != null)
             gunShooter.DoAttack();
+
+        //불안정 코어 확률 존재 시
+        if (Random.value < stat.InstableCoreProbability)
+            StartCoroutine(InstableCoreTime());
     }
 
     /// <summary>
@@ -231,16 +244,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        float speed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
-
-        ////프로토콜 여부에 따른 이속 변화 존재(기본 값은 1)
-        //if (protocol != null)
-        //    speed = protocol.IsActive ? moveSpeed * protocol.SpeedMultiplier: moveSpeed;
+        curSpeed = moveSpeed;
 
         if (curState == PlayerState.Roll)
-            speed = stat.StatDic[PlayerStat.Stat.RollSpeed];
+            curSpeed = rollSpeed;
 
-        rb.linearVelocity = moveInput * speed;
+        rb.linearVelocity = moveInput * curSpeed;
     }
 
     public void Pause(bool isPause)
@@ -285,6 +294,24 @@ public class PlayerController : MonoBehaviour
         SectorManager.Instance.SectorFail();
 
         Pause(true);
+    }
+
+    IEnumerator InstableCoreTime()
+    {
+        stat.Model.DOColor(Color.magenta, 2f).OnComplete(() =>
+        {
+            stat.Model.DOColor(Color.white, 0.2f);
+        });
+
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(0.2f); //총알 발사 간격
+            gunShooter.ForceAttack(); //발사 간격과 무관하게 강제 발사
+        }
+
+        moveSpeed *= 0.5f; //이속 감소
+        yield return new WaitForSeconds(2f);
+        moveSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed]; //복구
     }
     #endregion
 }
