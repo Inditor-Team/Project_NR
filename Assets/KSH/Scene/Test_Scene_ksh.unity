@@ -3498,6 +3498,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6585642226804073615, guid: 219cb7f914062ea4ebb03ef7f592ed20, type: 3}
+      propertyPath: m_text
+      value: "...\n\uC804\uC6D0\uC774 \uAEBC\uC84C\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 6964532306404110489, guid: 219cb7f914062ea4ebb03ef7f592ed20, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3582,6 +3586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8881051143308576981, guid: 219cb7f914062ea4ebb03ef7f592ed20, type: 3}
+      propertyPath: m_text
+      value: "(\uD574\uD0B9 \uC2DC\uB3C4)"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3621,7 +3629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1286963172
 SpriteRenderer:
   serializedVersion: 2
@@ -3709,7 +3717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a3845d892040af9981fff84ff26bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteractable
-  startDialogueId: 0
+  startDialogueId: 1
 --- !u!70 &1286963175
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -8433,6 +8441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec58890f0fe3649b991ea257ee6274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaspEnemyController
+  patrolPoints: []
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -8441,7 +8450,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
   healthUI: {fileID: 0}
   healthSlider: {fileID: 0}
-  patrolPoints: []
   enemyShooter: {fileID: 0}
 --- !u!224 &1614520356 stripped
 RectTransform:
@@ -8704,6 +8712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782074125}
   - component: {fileID: 1782074126}
+  - component: {fileID: 1782074127}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -8739,6 +8748,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   bubbleController: {fileID: 1279662584}
+--- !u!114 &1782074127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782074124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f43db11e3ab51489f4b0d9eb8de89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEventBinder
 --- !u!4 &1819104410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
@@ -8972,6 +8993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec58890f0fe3649b991ea257ee6274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaspEnemyController
+  patrolPoints: []
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -8980,7 +9002,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
   healthUI: {fileID: 0}
   healthSlider: {fileID: 0}
-  patrolPoints: []
   enemyShooter: {fileID: 0}
 --- !u!1 &1889881001
 GameObject:
@@ -12065,6 +12086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec58890f0fe3649b991ea257ee6274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaspEnemyController
+  patrolPoints: []
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -12073,7 +12095,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
   healthUI: {fileID: 0}
   healthSlider: {fileID: 0}
-  patrolPoints: []
   enemyShooter: {fileID: 0}
 --- !u!1 &1919652497 stripped
 GameObject:
@@ -12498,6 +12519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec58890f0fe3649b991ea257ee6274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaspEnemyController
+  patrolPoints: []
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -12506,7 +12528,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4ca0f195a4bfa3948b0bd982131eb6d5, type: 2}
   healthUI: {fileID: 0}
   healthSlider: {fileID: 0}
-  patrolPoints: []
   enemyShooter: {fileID: 0}
 --- !u!1 &2130620441
 GameObject:

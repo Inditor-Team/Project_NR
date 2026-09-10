@@ -48,7 +48,7 @@ public class MineEnemyController : EnemyBaseController
     private float resetConfirmTimer;
     
     // 지뢰 관련
-    private float waitTime = 3f; // 터지기 전 대기 시간
+    private float waitTime = 2f; // 터지기 전 대기 시간
     public float mineDropInterval = 1.5f; // 지뢰를 뿌리는 간격
     private float mineDropTimer; // 다음 지뢰까지 타이머
     

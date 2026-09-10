@@ -6,7 +6,7 @@ using DG.Tweening;
 [RequireComponent(typeof(Collider2D))]
 public abstract class EnemyBaseController : MonoBehaviour, IDamageable
 {
-    // [SerializeField] protected Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
+    [SerializeField] protected Transform[] patrolPoints; // 지점별 순찰 방식, NavMeshAgent는 일단 보류
     [SerializeField] protected LayerMask wallLayer; 
     [SerializeField] protected GameObject detectEffect;
     [SerializeField] protected EnemyScope detectScope;
@@ -128,8 +128,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         else
             DoRandomPatrol(isFliped);
     }
-
-    [SerializeField] protected Transform[] patrolPoints;
+    
     private void DoFixedPatrol(bool isFliped)
     {
         patrolNextPosition = patrolPoints[currentPatrolIndex];

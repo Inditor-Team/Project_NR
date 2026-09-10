@@ -13,6 +13,8 @@ public class DialogueOptionStruct
 {
     public string text;
     public string nextId;
+    public string conditionId;
+    public string failNextId; 
 }
 
 [Serializable]
@@ -25,16 +27,15 @@ public class DialogueStruct
     public string nextId;
     public DialogueOptionStruct[] options;
     public string phase;       // 단계 (tutorial, store, eventroom etc...)
+    public string[] onEnterEvents; // 실행 이벤트 목록
+    public string entryConditionId; // 대화 진입 조건 
+    public string entryRedirectId; // 조건이 참이면 보여줄 id
 }
 
 [Serializable]
 public class DialogueData // 전체 데이터 클래스
 {
-    public DialogueData()
-    {
-        dialogues = new List<DialogueStruct>();
-    }
-    public List<DialogueStruct> dialogues;
+    public List<DialogueStruct> dialogues = new();
 }
 
 public class BubbleController : MonoBehaviour, IPointerClickHandler
@@ -114,33 +115,43 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
         {
             bool active = i < options.Length;
             optionsObject[i].SetActive(active);
-
             if (!active) continue;
 
             optionsText[i].text = LocalizationManager.Instance.Get(options[i].text);
-        
-            string capturedNextId = options[i].nextId;
+
+            DialogueOptionStruct capturedOption = options[i]; // nextId 대신 옵션 전체를 캡처
             Button btn = optionsObject[i].GetComponent<Button>();
             btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => OnOptionClicked(capturedNextId));
+            btn.onClick.AddListener(() => OnOptionClicked(capturedOption));
         }
+    }
+
+    private void OnOptionClicked(DialogueOptionStruct option)
+    {
+        string targetId = ResolveTargetId(option);
+
+        if (string.IsNullOrEmpty(targetId))
+        {
+            HideWindow();
+            return;
+        }
+        dialogueDataLoad.RequestNext(targetId); // isEntryPoint는 기본값 false
+    }
+
+    // 조건이 있으면 판정 후 nextId/failNextId 중 실제 목적지를 결정
+    private string ResolveTargetId(DialogueOptionStruct option)
+    {
+        if (string.IsNullOrEmpty(option.conditionId))
+            return option.nextId; // 조건 없는 옵션은 그냥 nextId로
+
+        bool passed = DialogueEventDispatcher.CheckCondition(option.conditionId);
+        return passed ? option.nextId : option.failNextId;
     }
 
     private void HideAllOptions()
     {
         foreach (var obj in optionsObject)
             obj.SetActive(false);
-    }
-
-    // 옵션 클릭 시
-    private void OnOptionClicked(string nextId)
-    {
-        if (string.IsNullOrEmpty(nextId))
-        {
-            HideWindow();
-            return;
-        }
-        dialogueDataLoad.RequestNext(nextId);
     }
     
     #region Show and Hide
@@ -183,7 +194,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
     // id로 대화 시작
     public void StartDialogueById(string id)
     {
-        dialogueDataLoad.RequestNext(id);
+        dialogueDataLoad.RequestNext(id, true);
     }
     
     //텍스트 타이핑효과 코루틴
