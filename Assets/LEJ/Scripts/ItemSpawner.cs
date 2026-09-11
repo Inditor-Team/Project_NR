@@ -12,10 +12,12 @@ public class ItemSpawner : MonoBehaviour
         {
             if (instance == null)
                 instance = FindAnyObjectByType<ItemSpawner>();
+
+            DontDestroyOnLoad(instance);
             return instance;
         }
-
     }
+
 
     [SerializeField] GameObject itemObjectPrefab;
     int poolSize = 10;

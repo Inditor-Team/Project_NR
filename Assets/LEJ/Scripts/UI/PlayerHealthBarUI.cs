@@ -12,6 +12,7 @@ public class PlayerHealthBar : MonoBehaviour
         stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
         stat.OnUpdateStat += OnUpdateStat;
 
+        //섹터 종료 후 저장 된 생명 값으로 설정
         OnUpdateStat(PlayerStat.Stat.Life, GameManager.Instance.Life);
     }
 
@@ -21,6 +22,7 @@ public class PlayerHealthBar : MonoBehaviour
         if (!doOnceAtUpdate) //Start 사이클 타이밍 엇나가서 update 에서 한 번 실행
         {
             SetHealthBarSize();
+            UpdateHealthBar();
             doOnceAtUpdate = true;
         }
     }

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5271650146427294136}
   - component: {fileID: 9024807095980415661}
   m_Layer: 5
-  m_Name: FadeOutCanvas
-  m_TagString: Untagged
+  m_Name: FadeCanvas
+  m_TagString: Fade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,13 +184,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a6eb18e4c62c0cb4badf3b8b3bdbba66, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb7b870be754ffa46b92cec1674cbff9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -200,6 +200,55 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7535278170839567382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3845506221314936137}
+  - component: {fileID: 5916543562489559596}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3845506221314936137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535278170839567382}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 335195360783313946}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5916543562489559596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535278170839567382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0.07
+  sharedProfile: {fileID: 11400000, guid: 0768164260c546342bcb78939d80e106, type: 2}
 --- !u!1 &8690715403658690361
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +265,7 @@ GameObject:
   - component: {fileID: 1547069611836759512}
   - component: {fileID: 7828221849376192967}
   - component: {fileID: 898298361355686866}
+  - component: {fileID: 8307734867858377903}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -236,6 +286,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3845506221314936137}
   - {fileID: 1153887906009457542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -248,7 +299,7 @@ Camera:
   m_GameObject: {fileID: 8690715403658690361}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -266,10 +317,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.025955299
+    x: 0.027006753
     y: 0
-    width: 0.55114955
-    height: 0.55128205
+    width: 0.57347673
+    height: 0.5733333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -321,7 +372,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -380,6 +431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FollowCamera
   target: {fileID: 0}
   smoothTime: 0.3
+  clampMax: {x: 0, y: 0}
+  clampMin: {x: 0, y: 0}
 --- !u!114 &7828221849376192967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,3 +483,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!45 &8307734867858377903
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8690715403658690361}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: fb9b7104c5cef3241bc0502fe633d020, type: 2}

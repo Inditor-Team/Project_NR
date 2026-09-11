@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     float curSpeed;
 
+    public bool disableAttack = false;
+
     IInteractable curInteractable;
 
     enum PlayerState
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPauseGame += Pause;
+        gunShooter.OnShoot += ActiveInstableCore; //총알 발사 시 확률적으로 발현
     }
 
     void OnEnable()
@@ -188,6 +191,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void TrySwordAttack(InputAction.CallbackContext callback)
     {
+        if (disableAttack) return;
         if (isPointerOverUI) return;
         if (curState == PlayerState.Roll) return;
 
@@ -200,15 +204,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void TryGunAttack(InputAction.CallbackContext callback)
     {
+        if (disableAttack) return;
         if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
         if (curState == PlayerState.Roll) return;
         
         if (gunShooter != null)
             gunShooter.DoAttack();
-
-        //불안정 코어 확률 존재 시
-        if (Random.value < stat.InstableCoreProbability)
-            StartCoroutine(InstableCoreTime());
     }
 
     /// <summary>
@@ -291,6 +292,15 @@ public class PlayerController : MonoBehaviour
         Pause(true);
     }
 
+    /// <summary>
+    /// 불안정 코어 카드를 갖고 있을 경우 확률적으로 총알 발사 시 Active 
+    /// </summary>
+    void ActiveInstableCore()
+    {
+        //불안정 코어 확률 존재 시
+        if (Random.value < stat.InstableCoreProbability)
+            StartCoroutine(InstableCoreTime());
+    }
     IEnumerator InstableCoreTime()
     {
         stat.Model.DOColor(Color.magenta, 2f).OnComplete(() =>

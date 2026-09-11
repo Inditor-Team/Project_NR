@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnSectorClear(SectorSO.SectorType sectorType)
     {
+        //섹터 종료 시 현재 생명 저장
         life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
 
         //섹터 종료 시 마지막으로 들고 있던 아이템을 인벤토리 매니저에 등록

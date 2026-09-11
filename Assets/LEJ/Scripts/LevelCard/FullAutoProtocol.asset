@@ -19,7 +19,7 @@ MonoBehaviour:
   CardDescription: "\uACF5\uACA9 \uAC04\uACA9\uC774 \uC9E7\uC544\uC9C4\uB2E4"
   Elements:
   - targetStat: 7
-    upgradeAmount: 0.25
+    upgradeAmount: 0.15
   - targetStat: 10
-    upgradeAmount: 0.25
+    upgradeAmount: 0.15
   Weight: 12

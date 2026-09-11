@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DamagedCore
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   Name: "\uC190\uC0C1\uB41C \uCF54\uC5B4"
-  Sprite: {fileID: 1968411787, guid: 7e03cbf947ee7d848886f4a9d19a2b5a, type: 3}
+  Sprite: {fileID: 21300000, guid: d591d849e5694564485b13cc98025f9a, type: 3}
   Price: 8
   Type: 4
   Amount: 2

@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -40,7 +43,7 @@ public class SceneController : MonoBehaviour, ISaveable
     public enum Scene { None, Lobby, Map, 
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
-        EventA, EventB, Shop,
+        EventA, EventB, Store,
         Boss,
         Count }
     public Scene prevScene = Scene.None;
@@ -52,15 +55,36 @@ public class SceneController : MonoBehaviour, ISaveable
         if (curScene != Scene.None)
             prevScene = curScene;
 
+        if (changeSceneRoutine != null)
+        {
+            StopCoroutine(changeSceneRoutine);
+            changeSceneRoutine = null;
+        }
+        changeSceneRoutine = StartCoroutine(ChangeSceneWithFadeIn(sceneName));
+    }
+
+    Coroutine changeSceneRoutine;
+
+    IEnumerator ChangeSceneWithFadeIn(Scene sceneName)
+    {
+        var fade = GameObject.FindGameObjectWithTag("Fade");
+
+        if (fade != null)
+        {
+            fade.GetComponent<Animator>().Play("FadeIn");
+            yield return new WaitForSeconds(0.5f);
+        }
+
         SceneManager.LoadScene(sceneName.ToString());
         GameManager.Instance.ForcedRelease(); // Pause(false);
-        
+
         curScene = sceneName;
         StartBGM();
         FindPlayer();
         SoundManager.Instance.StopAllSFX(); // 재생 중인 효과음 전체 종료
 
         OnSceneChanged?.Invoke(curScene);
+        changeSceneRoutine = null;
     }
 
     public void StartBGM()
