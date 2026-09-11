@@ -136,7 +136,7 @@ public class EnemyShooter : MonoBehaviour
         while (timer < duration)
         {
             if (!isPaused)
-                timer += Time.deltaTime;
+                timer += GameTime.WorldDeltaTime;
             yield return null;
         }
     }
