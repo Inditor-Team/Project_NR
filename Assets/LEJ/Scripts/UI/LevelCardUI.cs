@@ -42,13 +42,16 @@ public class LevelCardUI : MonoBehaviour
         curElement.cardName.text = data.CardName;
         curElement.cardDescription.text = data.CardDescription;
 
-        //카드 능력치 텍스트 추가
-        string cardAbilityText = "";
+        //카드 배경 이미지
+        curElement.image.sprite = data.CardIcon;
+
+        ////카드 능력치 텍스트 추가
+        //string cardAbilityText = "";
         
-        foreach (var element in data.Elements)
-            cardAbilityText += $"{element.targetStat} 이 {element.upgradeAmount} \n";
+        //foreach (var element in data.Elements)
+        //    cardAbilityText += $"{element.targetStat} 이 {element.upgradeAmount} \n";
         
-        curElement.cardAbility.text = cardAbilityText;
+        //curElement.cardAbility.text = cardAbilityText;
 
         //버튼 이벤트 설정
         if (buttonAction == null)

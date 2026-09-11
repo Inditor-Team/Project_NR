@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
     private bool isPaused = false;
 
     float curSpeed;
-    float moveSpeed;
-    float rollSpeed;
 
     IInteractable curInteractable;
 
@@ -72,9 +70,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPauseGame += Pause;
-
-        moveSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
-        rollSpeed = stat.StatDic[PlayerStat.Stat.RollSpeed];
     }
 
     void OnEnable()
@@ -130,7 +125,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Input
-    void EnableInput()
+    public void EnableInput()
     {
         //Input System 활성화 후 입력 받아오기
         input.Player.Enable();
@@ -143,7 +138,7 @@ public class PlayerController : MonoBehaviour
         input.Player.Use.performed += Use;
     }
 
-    void DisableInput()
+    public void DisableInput()
     {
         input.Player.Disable();
 
@@ -244,10 +239,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        curSpeed = moveSpeed;
+        curSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
 
         if (curState == PlayerState.Roll)
-            curSpeed = rollSpeed;
+            curSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed] * stat.StatDic[PlayerStat.Stat.RollSpeed];
 
         rb.linearVelocity = moveInput * curSpeed;
     }
@@ -309,9 +304,10 @@ public class PlayerController : MonoBehaviour
             gunShooter.ForceAttack(); //발사 간격과 무관하게 강제 발사
         }
 
-        moveSpeed *= 0.5f; //이속 감소
+        float originSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
+        stat.IncreaseStat(PlayerStat.Stat.MoveSpeed, 0.5f); //이속 감소
         yield return new WaitForSeconds(2f);
-        moveSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed]; //복구
+        curSpeed = originSpeed; //복구
     }
     #endregion
 }

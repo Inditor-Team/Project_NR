@@ -121,7 +121,7 @@ public class ProtocolExecutor : MonoBehaviour
         while (timer < duration)
         {
             if (!GameManager.Instance.IsPaused)
-                timer += Time.deltaTime;
+                timer += GameTime.WorldDeltaTime; 
             yield return null;
         }
     }

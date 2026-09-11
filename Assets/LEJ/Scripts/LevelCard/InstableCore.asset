@@ -18,5 +18,7 @@ MonoBehaviour:
   CardName: "\uBD88\uC548\uC815 \uCF54\uC5B4"
   CardDescription: "\uC21C\uAC04\uC801\uC73C\uB85C \uC5F0\uC0AC\uD558\uACE0, \uC774\uC18D\uC774
     \uAC10\uC18C\uD55C\uB2E4"
-  Elements: []
-  Weight: 6
+  Elements:
+  - targetStat: 0
+    upgradeAmount: 0.05
+  Weight: 3

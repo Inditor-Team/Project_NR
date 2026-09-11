@@ -189,7 +189,7 @@ public class BlitzProtocol : ProtocolBase
         while (timer < duration)
         {
             if (!GameManager.Instance.IsPaused)
-                timer += Time.deltaTime;
+                timer += GameTime.WorldDeltaTime; 
             yield return null;
         }
     }

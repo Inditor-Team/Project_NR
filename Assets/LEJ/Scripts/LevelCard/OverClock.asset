@@ -20,7 +20,9 @@ MonoBehaviour:
     \uD53C\uD574\uB7C9\uC774 \uC99D\uAC00\uD55C\uB2E4"
   Elements:
   - targetStat: 9
-    upgradeAmount: 1.5
+    upgradeAmount: 3
   - targetStat: 6
-    upgradeAmount: 1.5
-  Weight: 6
+    upgradeAmount: 3
+  - targetStat: 15
+    upgradeAmount: 2
+  Weight: 3

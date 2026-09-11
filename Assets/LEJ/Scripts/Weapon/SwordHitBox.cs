@@ -29,6 +29,10 @@ public class SwordHitBox : MonoBehaviour, IDamageable
     {
         Debug.Log($"{collision} 이 swordHitBox 에 감지 됨");
 
+        IInteractable interactable = collision.GetComponent<IInteractable>();
+        if (interactable != null)
+            interactable.OnInteract();
+
         hitTargets.Add(collision.gameObject);
         OnHit?.Invoke(collision.gameObject);
     }

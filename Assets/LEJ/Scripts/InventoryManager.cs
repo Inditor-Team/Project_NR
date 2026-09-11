@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,10 +46,42 @@ public class InventoryManager : MonoBehaviour
     #region Card
     public void GetCard(int cardId)
     {
-        myCards[cardSlotIndex] = cardId;
-        OnGetCard?.Invoke(cardId);
+        int slotIndex = -1;
 
-        cardSlotIndex = (cardSlotIndex + 1) % 3; //슬롯 3칸만 쓰도록
+        //2버전 카드 id 들
+        int[] versionTwoIds = new int[4]
+        {
+        (int)LevelCardSO.LevelCardType.BioreinforcementB,
+        (int)LevelCardSO.LevelCardType.EvasionB,
+        (int)LevelCardSO.LevelCardType.NeuralAccelerationB,
+        (int)LevelCardSO.LevelCardType.RecoveryAlgorithmB
+        };
+
+        //지금 가지려는 카드가 2버전이라면
+        if (versionTwoIds.Contains(cardId))
+        {
+            //1버전 카드가 들어있는 슬롯 찾기
+            for (int i = 0; i < myCards.Length; i++)
+            {
+                if (myCards[i] == cardId - 1)
+                {
+                    slotIndex = i;
+                    break;
+                }
+            }
+        }
+
+        //2버전이 아니거나, 혹시 1버전 슬롯을 찾지 못했다면 새 슬롯 사용
+        if (slotIndex == -1)
+        {
+            slotIndex = cardSlotIndex;
+
+            cardSlotIndex = (cardSlotIndex + 1) % 3; //슬롯 3칸만 쓰도록
+        }
+
+        myCards[slotIndex] = cardId;
+
+        OnGetCard?.Invoke(cardId);
     }
     #endregion
 
@@ -95,28 +128,26 @@ public class InventoryManager : MonoBehaviour
                 //생체 보강의 경우 최대 체력 증가
                 case LevelCardSO.LevelCardType.BioreinforcementA:
                 case LevelCardSO.LevelCardType.BioreinforcementB:
+                //신경 가속의 경우 이속 증가
+                case LevelCardSO.LevelCardType.NeuralAccelerationA:
+                case LevelCardSO.LevelCardType.NeuralAccelerationB:
                     playerStat.AddStat(cardDic[cardId].Elements[0].targetStat, cardDic[cardId].Elements[0].upgradeAmount);
                     break;
 
                 //배율 증가 ---
                 //과열 탄창의 경우 공격력 증가, 공격 간격 증가
                 case LevelCardSO.LevelCardType.OverheatedMagazine:
-                //신경 가속의 경우 이속 증가
-                case LevelCardSO.LevelCardType.NeuralAccelerationA:
-                case LevelCardSO.LevelCardType.NeuralAccelerationB:
                 //오버클럭의 경우 공격력 증가 및 피해량 증가
                 case LevelCardSO.LevelCardType.OverClock:
-                    playerStat.IncreaseStat(cardDic[cardId].Elements[0].targetStat, cardDic[cardId].Elements[0].upgradeAmount);
-                    if (cardDic[cardId].Elements[1] != null)
-                        playerStat.IncreaseStat(cardDic[cardId].Elements[1].targetStat, cardDic[cardId].Elements[1].upgradeAmount);
-                    break;
-
-                //배율 감소 ---
                 //연사 프로토콜의 경우 공격 간격 감소
                 case LevelCardSO.LevelCardType.FullAutoProtocol:
                 //보조 기어의 경우 프로토콜 대기 시간 감소
                 case LevelCardSO.LevelCardType.SubGear:
-                    playerStat.IncreaseStat(cardDic[cardId].Elements[0].targetStat, cardDic[cardId].Elements[0].upgradeAmount, true);
+                    playerStat.IncreaseStat(cardDic[cardId].Elements[0].targetStat, cardDic[cardId].Elements[0].upgradeAmount);
+                    if (cardDic[cardId].Elements[1] != null)
+                        playerStat.IncreaseStat(cardDic[cardId].Elements[1].targetStat, cardDic[cardId].Elements[1].upgradeAmount);
+                    if (cardDic[cardId].Elements[2] != null)
+                        playerStat.IncreaseStat(cardDic[cardId].Elements[2].targetStat, cardDic[cardId].Elements[2].upgradeAmount);
                     break;
 
                 //토글 ---
@@ -128,7 +159,7 @@ public class InventoryManager : MonoBehaviour
                 case LevelCardSO.LevelCardType.EvasionB:
                 //불안정 코어의 경우 일정 확률 연사 및 이속 디버프 토글 On
                 case LevelCardSO.LevelCardType.InstableCore:
-                    playerStat.SpecialToggle(cardType);
+                    playerStat.SpecialToggle(cardType, cardDic[cardId].Elements[0].upgradeAmount);
                     break;
 
             }

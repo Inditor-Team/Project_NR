@@ -20,5 +20,5 @@ MonoBehaviour:
     \uBC29\uC5B4\uD55C\uB2E4"
   Elements:
   - targetStat: 0
-    upgradeAmount: 0
+    upgradeAmount: 0.3
   Weight: 6

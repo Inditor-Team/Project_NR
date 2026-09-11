@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -66,10 +67,47 @@ public class LevelCardProvider : MonoBehaviour
     /// </summary>
     LevelCardSO[] ChooseLevelCard(int count)
     {
-        //뽑을 수 있는 카드 목록
-        List<LevelCardSO> candidates = new List<LevelCardSO>(LevelCardData.Instance.LevelCards);
+        //후보자 및 판별 기준 설정
+        List<int> candidates = LevelCardData.Instance.LevelCardDic.Keys.ToList(); //전체 카드
+        int[] myCards = InventoryManager.Instance.MyCards; //갖고 있는 카드
 
-        //요청 개수가 카드 개수보다 많아도 안전하게 처리
+        //2버전 카드 목록 (2버전 id - 1 한 게 1버전입니다)
+        int[] versionTwoIds = new int[4]
+        {
+            (int)LevelCardSO.LevelCardType.BioreinforcementB,
+            (int)LevelCardSO.LevelCardType.EvasionB,
+            (int)LevelCardSO.LevelCardType.NeuralAccelerationB,
+            (int)LevelCardSO.LevelCardType.RecoveryAlgorithmB
+        };
+
+        //처음에는 2버전 카드 제거
+        for (int i = 0; i < versionTwoIds.Length; i++)
+            candidates.Remove(versionTwoIds[i]);
+
+        //후보자 제거
+        for (int i = 0; i < myCards.Length; i++)
+        {
+            int myCard = myCards[i];
+
+            //1버전일 경우
+            //해당 카드의 2버전 ID가 존재한다면
+            if (versionTwoIds.Contains(myCard + 1))
+            {
+                candidates.Remove(myCard); //1버전 제거
+                candidates.Add(myCard + 1); //2버전 포함
+            }
+            //2버전일 경우
+            else if (versionTwoIds.Contains(myCard))
+            {
+                candidates.Remove(myCard - 1); //1버전 제거
+                candidates.Remove(myCard); //2버전 제거
+            }
+            //일반 카드이고 이미 갖고 있다면 제거
+            else
+                candidates.Remove(myCard);
+        }
+
+        //요청 개수가 카드 개수보다 많을 경우 대비
         int resultCount = Mathf.Min(count, candidates.Count);
 
         List<LevelCardSO> result = new List<LevelCardSO>();
@@ -79,10 +117,12 @@ public class LevelCardProvider : MonoBehaviour
             //남은 카드들의 전체 가중치
             float totalWeight = 0f;
 
-            foreach (LevelCardSO card in candidates)
+            foreach (int element in candidates)
             {
-                if (card.Weight > 0)
-                    totalWeight += card.Weight;
+                LevelCardSO curCard = LevelCardData.Instance.LevelCardDic[element];
+
+                if (curCard.Weight > 0)
+                    totalWeight += curCard.Weight;
             }
 
             //가중치가 남은 카드가 없으면 종료
@@ -92,27 +132,29 @@ public class LevelCardProvider : MonoBehaviour
             float randomValue = UnityEngine.Random.Range(0f, totalWeight);
             float accumulatedWeight = 0f;
 
-            LevelCardSO selectedCard = null;
+            int selectedCard = -1;
 
-            foreach (LevelCardSO card in candidates)
+            foreach (int element in candidates)
             {
-                if (card.Weight <= 0)
+                LevelCardSO curCard = LevelCardData.Instance.LevelCardDic[element];
+
+                if (curCard.Weight <= 0)
                     continue;
 
-                accumulatedWeight += card.Weight;
+                accumulatedWeight += curCard.Weight;
 
                 if (randomValue <= accumulatedWeight)
                 {
-                    selectedCard = card;
+                    selectedCard = element;
                     break;
                 }
             }
 
             //선택되지 않았다면 종료
-            if (selectedCard == null)
+            if (selectedCard == -1)
                 break;
 
-            result.Add(selectedCard);
+            result.Add(LevelCardData.Instance.LevelCardDic[selectedCard]);
 
             //중복 방지를 위해 후보 목록에서 제거
             candidates.Remove(selectedCard);

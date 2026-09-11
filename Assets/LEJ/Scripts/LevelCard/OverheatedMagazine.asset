@@ -20,11 +20,11 @@ MonoBehaviour:
     \uAC04\uACA9\uC774 \uAE38\uC5B4\uC9C4\uB2E4"
   Elements:
   - targetStat: 7
-    upgradeAmount: 0.25
+    upgradeAmount: 1.5
   - targetStat: 10
-    upgradeAmount: 0.25
+    upgradeAmount: 1.5
   - targetStat: 6
-    upgradeAmount: 0.25
+    upgradeAmount: 2
   - targetStat: 9
-    upgradeAmount: 0.25
+    upgradeAmount: 2
   Weight: 12
