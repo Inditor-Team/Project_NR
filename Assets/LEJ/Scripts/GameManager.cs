@@ -22,7 +22,7 @@ public static class GameTime
     }
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     static GameManager instance;
     public static GameManager Instance
@@ -36,6 +36,16 @@ public class GameManager : MonoBehaviour
 
             return instance;
         }
+    }
+
+    private void Start()
+    {
+        SaveSlotManager.Instance.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveSlotManager.Instance.Unregister(this);
     }
 
     [SerializeField] private GameObject player;
@@ -163,5 +173,20 @@ public class GameManager : MonoBehaviour
         bool shouldPause = pauseRequestCount > 0;
         GameTime.SetTimeScale(shouldPause ? 0f : GameTime.BeforeWorldTimeScale);
         OnPauseGame?.Invoke(shouldPause);
+    }
+    
+    // 세이브 관련
+    public void SaveDataTo(SaveDataStruct data)
+    {
+        data.credit = credit;
+        data.protocol = curProtocol;
+        data.clearedSector = clearedSector;
+    }
+
+    public void LoadDataFrom(SaveDataStruct data)
+    {
+        credit = data.credit;
+        SetProtocol(data.protocol);
+        clearedSector = data.clearedSector;
     }
 }
