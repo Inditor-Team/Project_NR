@@ -2413,7 +2413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1286963172
 SpriteRenderer:
   serializedVersion: 2
@@ -2501,7 +2501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a3845d892040af9981fff84ff26bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteractable
-  startDialogueId: 0
+  startDialogueId: 3
 --- !u!70 &1286963175
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11469,6 +11469,10 @@ PrefabInstance:
     - target: {fileID: 4838541579150176480, guid: 7e249a92ef1e28d42b1b76f84d340816, type: 3}
       propertyPath: m_Name
       value: MiddleBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838541579150176480, guid: 7e249a92ef1e28d42b1b76f84d340816, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
