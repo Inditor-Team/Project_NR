@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: User
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataBase
   moveSpeed: 0.7
-  health: 2
+  health: 5
   damage: 2

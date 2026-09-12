@@ -13,17 +13,14 @@ public partial class BossController
         switch (attack)
         {
             case BossAttack.Shoot:
-                Debug.Log("AttackPhaseOne: Shoot");
                 ChangeStat(BossStat.PhaseOneFire);
                 ShootAttackStart();
                 break;
             case BossAttack.LandMine:
-                Debug.Log("AttackPhaseOne: LandMine");
                 ChangeStat(BossStat.PhaseOneMove);
                 StartLandMineAttack();
                 break;
             case BossAttack.SpawnUser:
-                Debug.Log("AttackPhaseOne: SpawnUser");
                 ChangeStat(BossStat.PhaseOneMove);
                 LandUserAttack();
                 ChangeStat(BossStat.Wait);
@@ -39,19 +36,16 @@ public partial class BossController
         switch (pattern)
         {
             case BossPattern.ShootAndLandMine:
-                Debug.Log("AttackPhaseTwo: ShootAndLandMine");
                 ChangeStat(BossStat.PhaseTwoFire);
                 ShootAttackStart();
                 StartLandMineAttack();
                 break;
             case BossPattern.ShootAndUser:
-                Debug.Log("AttackPhaseTwo: ShootAndUser");
                 ChangeStat(BossStat.PhaseTwoFire);
                 ShootAttackStart();
                 LandUserAttack();
                 break;
             case BossPattern.LandMineAndUser:
-                Debug.Log("AttackPhaseTwo: LandMineAndUser");
                 ChangeStat(BossStat.PhaseTwoMove);
                 StartLandMineAttack();
                 LandUserAttack();
@@ -111,10 +105,10 @@ public partial class BossController
     {
         landMineElapsed += Time.fixedDeltaTime * GameTime.WorldTimeScale; // 지뢰 설치 사이 간격
         mineDropTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale; // 지뢰 설치 최대 시간(초)
-
+        
         if (mineDropTimer <= 0f)
         {
-            if (enemyPlacer.PlaceMineNear(target.position, 2f, 4.5f))
+            if (enemyPlacer.PlaceMineNear(target.position, minRadius, maxRadius))
                 mineSpawnedCount++;
             mineDropTimer = mineDropInterval;
         }

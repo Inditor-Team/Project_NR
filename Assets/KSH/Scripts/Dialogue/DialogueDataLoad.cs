@@ -64,19 +64,40 @@ public class DialogueDataLoad
         }
     }
     
-    public void RequestNext(string dialogueId)
+    public void RequestNext(string dialogueId, bool isEntryPoint = false)
     {
-        if (!dialogueDict.ContainsKey(dialogueId)) 
+        if (!dialogueDict.TryGetValue(dialogueId, out DialogueStruct entry))
         {
             chatWindow.HideWindow(); // 방어코드
             return;
         }
-        chatWindow.PlayDialogue(dialogueDict[dialogueId]);
-    }
 
-    public void StartDialogueById(string dialogueId) // 나중에 세이브 로드해서 대화가 바?뀌면? 그 때 사용
+        // 진입점 조건 체크, isEntryPoint일 때
+        if (isEntryPoint && !string.IsNullOrEmpty(entry.entryConditionId))
+        {
+            bool blocked = DialogueEventDispatcher.CheckCondition(entry.entryConditionId);
+            if (blocked && !string.IsNullOrEmpty(entry.entryRedirectId))
+            {
+                // 대화 노드 리다이렉트
+                RequestNext(entry.entryRedirectId);
+                return;
+            }
+        }
+
+        // 표시 전에 노드 이벤트를 먼저 실행
+        if (entry.onEnterEvents != null)
+        {
+            foreach (string cmd in entry.onEnterEvents)
+                DialogueEventDispatcher.FireEvent(cmd);
+        }
+
+        // 실제 표시
+        chatWindow.PlayDialogue(entry);
+    }
+    
+    // 외부 호출용
+    public void StartDialogueById(string dialogueId)
     {
-        RequestNext(dialogueId); 
-        // TODO: ShowWindow도 추가하기
+        RequestNext(dialogueId, true);
     }
 }
