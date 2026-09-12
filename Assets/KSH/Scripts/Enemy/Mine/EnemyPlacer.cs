@@ -31,25 +31,41 @@ public class EnemyPlacer : MonoBehaviour
         this.wallLayer = wallLayer;
     }
     
+    // 즉시 배치, 낙하 연출 X
     public void PlaceMine(Vector2 position)
     {
-        GameObject mineObject = PoolManager.Instance.Get(minePrefab);
+        EnemyLandMine enemyLandMine = GetPreparedMine();
+        if (enemyLandMine == null) return;
 
-        if (mineObject == null) return; //null 뜨는 경우가 있어 예외처리
+        enemyLandMine.transform.position = position;
+        
+        // 나중에 설치 효과음 추가
+        // if (SoundManager.Instance != null)
+        // SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
+    }
+
+    // 보스 지뢰 소환, 보스 위치부터 목표 지점으로 낙하
+    private void PlaceMineWithFall(Vector2 targetPosition)
+    {
+        EnemyLandMine enemyLandMine = GetPreparedMine();
+        if (enemyLandMine == null) return;
+
+        enemyLandMine.StartFallSpawn(transform.position, targetPosition);
+    }
+
+    private EnemyLandMine GetPreparedMine()
+    {
+        GameObject mineObject = PoolManager.Instance.Get(minePrefab);
+        if (mineObject == null) return null; //null 뜨는 경우가 있어 예외처리
 
         EnemyLandMine enemyLandMine = mineObject.GetComponent<EnemyLandMine>();
         enemyLandMine.SetValue(waitTime, damage);
         enemyLandMine.OnMineExpired -= RemoveMineFromList;
         enemyLandMine.OnMineExpired += RemoveMineFromList;
         enemyLandMineScript.Add(enemyLandMine);
-        
-        mineObject.transform.position = position;
-        
-        // 나중에 설치 효과음 추가
-        // if (SoundManager.Instance != null)
-            // SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
-    }
 
+        return enemyLandMine;
+    }
     
     // targetPos를 중심으로 minRadius~maxRadius 사이의 랜덤 위치에 지뢰를 설치 시도합니다.
     // 벽과 겹치면 최대 MaxPlaceAttempts회까지 재시도하고, 실패 시 false를 반환합니다.
@@ -61,7 +77,7 @@ public class EnemyPlacer : MonoBehaviour
 
             if (!Physics2D.OverlapCircle(candidate, mineCollisionRadius, wallLayer))
             {
-                PlaceMine(candidate);
+                PlaceMineWithFall(candidate);
                 return true;
             }
         }

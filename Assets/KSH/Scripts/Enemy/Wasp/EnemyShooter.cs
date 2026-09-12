@@ -43,11 +43,10 @@ public class EnemyShooter : MonoBehaviour
         this.damage = damage;
     }
 
-    public void SetCount(int shootTimeCount, int fireCount, float reloadTime)
+    public void SetInterval(float fireInterval, float shootTimeInterval)
     {
-        this.shootTimeCount = shootTimeCount;
-        this.fireCount = fireCount;
-        this.reloadTime = reloadTime;
+        this.fireInterval = fireInterval;
+        this.shootTimeInterval = shootTimeInterval;
     }
     
     public void StartShooting(Transform playerTransform) // 아예 플레이어 transform를 참조하기, 변동되는 position 따라 잡기 위해

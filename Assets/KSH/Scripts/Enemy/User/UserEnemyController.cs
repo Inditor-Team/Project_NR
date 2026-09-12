@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
@@ -9,11 +10,13 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
         Patrol,
         Detect, // 플레이어 인지
         Track, // 추적
+        Falling, // 보스 때 생성 시 낙하
         Dead
     }
     UserStat currentStat = UserStat.Patrol;
     
     [SerializeField] private EnemyScope explodeScope; // 폭발 범위 스코프
+    [SerializeField] private Collider2D explodeCollider;
     
     private Vector2 currentTrackDir;   // 추적 방향
     
@@ -31,6 +34,16 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
     private bool isSpawnForBoss = false;
     public event Action<UserEnemyController> OnUserExpired;
     
+    // 낙하 스폰 연출
+    private float fallDuration = 0.55f;  // 낙하~착지 소요 시간
+    private float fallPeakHeight = 2f;   // 낙하 정점 높이 (월드 유닛)
+    private float shadowMinScale = 0.4f; // 정점에서 그림자 축소 비율
+    private float shadowMaxAlpha = 0.6f; // 착지 상태에서 그림자 기본 알파
+    
+    private Vector3 shadowBaseLocalPos;
+    private Vector3 shadowBaseScale;
+    private Coroutine fallRoutine;
+    
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -41,6 +54,12 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
     {
         base.OnDisable();
         explodeScope.OnScopeTriggerEnter -= DoExplosion;
+        
+        if (fallRoutine != null)
+        {
+            StopCoroutine(fallRoutine);
+            fallRoutine = null;
+        }
     }
     
     public void SetOriginPrefab(GameObject prefab)
@@ -53,7 +72,7 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
         if (currentStat == UserStat.Patrol)
             ChangeStat(UserStat.Detect);
         
-        if (currentStat == UserStat.Dead) return;
+        if (currentStat == UserStat.Dead || currentStat == UserStat.Falling) return;
         
         base.TakeDamage(damegeAmount);
     }
@@ -86,6 +105,9 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
                 break;
             case UserStat.Track:
                 anim.SetBool("isMove", true);
+                break;
+            case UserStat.Falling:
+                anim.SetBool("isMove", false);
                 break;
             case UserStat.Dead: // 한 번만 실행이라 여기서 동작
                 detectEffect.transform.DOKill();
@@ -212,19 +234,71 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
     }
     
     // 보스맵 스폰
-    public void SpawnForBoss(Vector2 spawnPos)
+    public void SpawnForBoss(Vector2 bossPos, Vector2 spawnPos)
     {
-        transform.position = spawnPos;
+        rigid.simulated = true;
         currentTrackDir = Vector2.zero;
         prevTangent = Vector2.zero;
         healthUI.SetActive(true); // 체력 바 표시
         isSpawnForBoss = true; // 보스맵에서 생성된 경우 오브젝트 풀링 적용된 상태
-        ChangeStat(UserStat.Track); // Patrol을 거치지 않고 바로 추적
+
+        if (fallRoutine != null) StopCoroutine(fallRoutine);
+        ChangeStat(UserStat.Falling);
+        fallRoutine = StartCoroutine(FallAndLand(bossPos, spawnPos));
     }
 
     public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
     {
+        if (fallRoutine != null)
+        {
+            StopCoroutine(fallRoutine);
+            fallRoutine = null;
+            rigid.simulated = true;
+            if (explodeCollider != null) explodeCollider.enabled = true;
+        }
         SetDead();
+    }
+    
+    // 낙하
+    private IEnumerator FallAndLand(Vector2 startPos, Vector2 targetPos)
+    {
+        rigid.simulated = false;
+        if (explodeCollider != null) explodeCollider.enabled = false;
+
+        Color spriteColor = sprite.color;
+        spriteColor.a = 0f;
+        sprite.color = spriteColor;
+        
+        transform.position = startPos;
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * GameTime.WorldTimeScale / fallDuration;
+            float clamped = Mathf.Clamp01(t);
+
+            Vector2 groundPos = Vector2.Lerp(startPos, targetPos, clamped);
+            float height = Mathf.Sin(Mathf.PI * clamped) * fallPeakHeight;
+
+            transform.position = new Vector3(groundPos.x, groundPos.y + height, transform.position.z);
+
+            // 페이드 인
+            spriteColor.a = Mathf.Clamp01(clamped / 0.5f);
+            sprite.color = spriteColor;
+            
+            yield return null;
+        }
+
+        // 착지 보정
+        transform.position = targetPos;
+        spriteColor.a = 1f;
+        sprite.color = spriteColor;
+        
+        rigid.simulated = true;
+        if (explodeCollider != null) explodeCollider.enabled = true;
+
+        fallRoutine = null;
+        ChangeStat(UserStat.Track); // Patrol 거치지 않고 바로 추적
     }
     
     protected override bool IsCurrentlyDetecting() => currentStat == UserStat.Detect;

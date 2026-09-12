@@ -178,14 +178,12 @@ public class GameManager : MonoBehaviour, ISaveable
     // 세이브 관련
     public void SaveDataTo(SaveDataStruct data)
     {
-        data.credit = credit;
         data.protocol = curProtocol;
         data.clearedSector = clearedSector;
     }
 
     public void LoadDataFrom(SaveDataStruct data)
     {
-        credit = data.credit;
         SetProtocol(data.protocol);
         clearedSector = data.clearedSector;
     }
