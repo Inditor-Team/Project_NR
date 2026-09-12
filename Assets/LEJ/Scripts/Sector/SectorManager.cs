@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -67,7 +68,7 @@ public class SectorManager : MonoBehaviour
 
     public event UnityAction OnDestroyedEnemy;
 
-    public void DestroyedEnemy() // 적이 파괴되면 호출
+    public void DestroyedEnemy(Vector2 destroyedPos) // 적이 파괴되면 호출
     {
         //보스씬에서는 적의 파괴가 아닌 보스가 파괴되면 섹터 클리어
         if (SceneController.Instance.curScene == SceneController.Scene.Boss)
@@ -77,6 +78,8 @@ public class SectorManager : MonoBehaviour
 
         if (remainingCount <= 0)
             SectorClear();
+
+        ItemSpawner.Instance.SpawnItem(destroyedPos); //아이템 스폰 확률도 내부적으로 처리
     }
 
     public event UnityAction<SectorSO.SectorType> OnSectorClear;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8100822607759497757}
   - component: {fileID: 2918365859888287367}
   m_Layer: 0
-  m_Name: ItemManager
+  m_Name: ItemSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da9dee1bfe330048ab008edcd342219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+  itemSOs:
+  - {fileID: 11400000, guid: 128cd112b86d0e54ea30e443bfa467e9, type: 2}
+  - {fileID: 11400000, guid: e0f888398f9433346a3f74324c5f7a19, type: 2}
+  - {fileID: 11400000, guid: 19013d20cc81a13498c939ae781e1d20, type: 2}
+  - {fileID: 11400000, guid: d1d98c15fbfd24640beae4d1337fdc46, type: 2}
+  - {fileID: 11400000, guid: 0cb72069648fa1042969c313c27e7403, type: 2}
+  - {fileID: 11400000, guid: f7a2cd419d3cc804186c13525ba17f7e, type: 2}
   itemObjectPrefab: {fileID: 2171099668898552625, guid: 6fcb927f4ebf5dd4690d7a87ec8c37d7, type: 3}

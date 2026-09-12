@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: "\uD3D0\uAE30 \uD504\uB85C\uD1A0\uCF5C"
   Sprite: {fileID: 21300000, guid: 38e9ffc7e6d76aa468f66067d8efe588, type: 3}
   Price: 10
+  weight: 2
   Type: 3
   Amount: 0
   SubAmount: 0

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// LevelCardProvider 에 의해 선점된 레벨 카드들을 보여주는 UI 입니다
@@ -9,6 +10,7 @@ public class LevelCardUI : MonoBehaviour
 {
     [SerializeField] LevelCardUIElement prefab;
     private LevelCardUIElement[] elements;
+    [SerializeField] Button skipBttn;
 
     private void Awake()
     {

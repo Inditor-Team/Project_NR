@@ -82,7 +82,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         SetStat(Stat.RollRate, 0.5f);
 
         SetStat(Stat.SwordSwingSpeed, 5f);
-        SetStat(Stat.SwordDamage, 10f);
+        SetStat(Stat.SwordDamage, 5f);
         SetStat(Stat.SwordSwingRate, 0.5f);
 
         SetStat(Stat.BulletSpeed, 30f);
@@ -109,6 +109,12 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     public void EarnLife(float amount)
     {
         AddStat(Stat.Life, amount);
+
+        //시각적 효과
+        model.DOColor(Color.green, 0.2f).OnComplete(() =>
+        {
+            model.DOColor(Color.white, 0.2f);
+        });
     }
 
     public UnityAction OnDamaged;

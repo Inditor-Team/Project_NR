@@ -16,13 +16,13 @@ public class LevelCardProvider : MonoBehaviour
     private void Start()
     {
         stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
-        SectorManager.Instance.OnSectorClear += ProvideByUI;
+        //SectorManager.Instance.OnSectorClear += ProvideByUI;
     }
 
     private void OnDestroy()
     {
-        if (SectorManager.Instance != null)
-            SectorManager.Instance.OnSectorClear -= ProvideByUI;
+        /* if (SectorManager.Instance != null)
+            SectorManager.Instance.OnSectorClear -= ProvideByUI; */
     }
 
     void ProvideByUI(SectorSO.SectorType type)

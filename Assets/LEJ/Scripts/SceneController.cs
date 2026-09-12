@@ -70,10 +70,9 @@ public class SceneController : MonoBehaviour, ISaveable
         var fade = GameObject.FindGameObjectWithTag("Fade");
 
         if (fade != null)
-        {
             fade.GetComponent<Animator>().Play("FadeIn");
-            yield return new WaitForSeconds(0.5f);
-        }
+        
+        yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(sceneName.ToString());
         GameManager.Instance.ForcedRelease(); // Pause(false);

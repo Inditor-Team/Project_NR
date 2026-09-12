@@ -19,17 +19,24 @@ public class SettingPanelController : MonoBehaviour
 
     private void Start()
     {
-        isBGMOff = SoundManager.Instance.bgmVolume == 0;
-        isSFXOff = SoundManager.Instance.sfxVolume == 0;
-        
-        BGMOffImage.SetActive(isBGMOff);
-        SFXOffImage.SetActive(isSFXOff);
-
-        BGMVolume.value = SoundManager.Instance.bgmVolume;
-        SFXVolume.value = SoundManager.Instance.sfxVolume;
-        
         BGMVolume.onValueChanged.AddListener(OnBGMValueChanged);
         SFXVolume.onValueChanged.AddListener(OnSFXValueChanged);
+
+        //isBGMOff = SoundManager.Instance.bgmVolume == 0;
+        //isSFXOff = SoundManager.Instance.sfxVolume == 0;
+
+        //BGMOffImage.SetActive(isBGMOff);
+        //SFXOffImage.SetActive(isSFXOff);
+
+        //BGMVolume.value = SoundManager.Instance.bgmVolume;
+        //SFXVolume.value = SoundManager.Instance.sfxVolume;
+
+        //PlayerPrefs 로 변경
+        BGMVolume.value = PlayerPrefs.GetFloat(SoundManager.Instance.Prefs_BGMVolume);
+        SFXVolume.value = PlayerPrefs.GetFloat(SoundManager.Instance.Prefs_SFXVolume);
+
+        BGMOffImage.SetActive(BGMVolume.value == 0);
+        SFXOffImage.SetActive(SFXVolume.value == 0);
     }
 
     public void ShowSettingPanel()

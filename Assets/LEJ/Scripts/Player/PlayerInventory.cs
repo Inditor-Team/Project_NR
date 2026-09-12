@@ -21,6 +21,12 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     /// <param name="itemObject"></param>
     public void HoldItem(ItemObject itemObject)
     {
+        if (itemObject.MyItem == null)
+        {
+            Debug.Log($"{itemObject.gameObject.name} : item object 의 my item 이 null");
+            return;
+        }
+
         //만약 재화 아이템이라면 획득 시 바로 사용
         if (itemObject.MyItem.Type == ItemSO.ItemType.GetCredit)
         {

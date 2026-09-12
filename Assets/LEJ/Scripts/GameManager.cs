@@ -123,7 +123,12 @@ public class GameManager : MonoBehaviour
         if (item != null)
             InventoryManager.Instance.RegisterItemOnSectorClose(item);
 
+        //상점의 경우 씬은 ShopA 로 설정되어있지만 두 번 방문하므로 끝쪽 ShopB 를 true 로 해줌
+        if (sectorType == SectorSO.SectorType.ShopA && clearedSector[sectorType])
+            clearedSector[SectorSO.SectorType.ShopB] = true;
+
         clearedSector[sectorType] = true;
+
         Debug.Log($"gameManager 에서 {sectorType} 이 clear true");
         UnRegisterSectorManagerEvent();
     }
@@ -148,7 +153,10 @@ public class GameManager : MonoBehaviour
 
     public void FindPlayer()
     {
-        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
+        GameObject playerGO = GameObject.FindWithTag("Player");
+
+        if (playerGO != null)
+            player = GameObject.FindWithTag("Player").transform.parent.gameObject;
     }
 
     private int pauseRequestCount = 0; // UI 창이 여러 개인 경우가 있으니 카운팅 형식으로 변경
