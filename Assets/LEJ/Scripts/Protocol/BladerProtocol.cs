@@ -5,27 +5,12 @@ using UnityEngine;
 public class BladerProtocol : ProtocolBase
 {
     [SerializeField] SwordAttacker swordAttacker;
-    [SerializeField] SpriteRenderer swordModel;
+    [SerializeField] Animator bladerEffectAnim;
+    [SerializeField] SpriteRenderer bladerEffectSR;
     [SerializeField] Gun gun;
 
     float duration;
     float damage;
-
-    //프로토콜 발동 시 스펙트럼 이펙트
-    private SpriteRenderer[] spectrumPool;
-
-    [Header("잔상 이펙트")]
-    [SerializeField] private int spectrumPoolSize = 30;
-    [SerializeField] private float spectrumInterval = 0.1f; //잔상 생성 간격
-
-    private int index = 0;
-
-    private void Start()
-    {
-        InitEffect();
-        
-        GameManager.Instance.OnProtocolChanged += InitEffect; //디버깅용
-    }
 
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
     {
@@ -54,17 +39,9 @@ public class BladerProtocol : ProtocolBase
 
     IEnumerator ProtocolTime()
     {
-        float elapsed = 0f;
-        swordAttacker.CircleSwing();
+        Effect();
 
-        while (elapsed < duration)
-        {
-            Effect();
-
-            yield return new WaitForSeconds(spectrumInterval);
-
-            elapsed += spectrumInterval;
-        }
+        yield return WaitForSecondsPausable(duration);
 
         EndProtocol();
     }
@@ -79,7 +56,7 @@ public class BladerProtocol : ProtocolBase
         if (enemyBullet == null)
             return;
 
-        gun.ReflectAttack(enemyBullet.transform.position, -enemyBullet.velocity.normalized, enemyBullet.velocity.magnitude, damage);
+        gun.ReflectAttack(enemyBullet.transform.position, -enemyBullet.velocity.normalized, enemyBullet.velocity.magnitude);
         enemyBullet.DestroyBullet();
     }
 
@@ -91,77 +68,32 @@ public class BladerProtocol : ProtocolBase
         protocolRoutine = null;
     }
 
-    private void InitEffect()
-    {
-        if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.Blader)
-            return;
-
-        spectrumPool = new SpriteRenderer[spectrumPoolSize];
-
-        for (int i = 0; i < spectrumPoolSize; i++)
-        {
-            GameObject obj = new GameObject($"blader effect {i}");
-
-            obj.transform.SetParent(transform);
-
-            spectrumPool[i] = obj.AddComponent<SpriteRenderer>();
-            obj.SetActive(false);
-        }
-    }
-
-    Color color;
-    float colorTime = 0f;
-    float colorSpeed = 8f;
 
     private void Effect()
     {
-        if (index >= spectrumPoolSize)
-            return;
-
-        SpriteRenderer spectrum = spectrumPool[index];
-
-        spectrum.gameObject.SetActive(true);
-
-        spectrum.sprite = swordModel.sprite;
-        spectrum.flipX = swordModel.flipX;
-        spectrum.flipY = swordModel.flipY;
-
-        spectrum.transform.position = swordModel.transform.position;
-        spectrum.transform.rotation = swordModel.transform.rotation;
-        spectrum.transform.localScale = swordModel.transform.lossyScale;
-
-        spectrum.sortingLayerID = swordModel.sortingLayerID;
-        spectrum.sortingOrder = swordModel.sortingOrder - 3;
-
+        bladerEffectAnim.speed = 3f / duration; //애니메이션이 3초이므로 duration 만큼 시간 조절
+        bladerEffectSR.gameObject.SetActive(true);
         Color magenta = new Color(1f, 0f, 1f);
-        Color lime = new Color(0.5f, 1f, 0f);
-        Color cyan = new Color(0f, 1f, 1f);
 
-        colorTime += spectrumInterval * colorSpeed;
-        float t = colorTime % 3f;
-
-        Color color;
-
-        if (t < 1f)
-            color = Color.Lerp(magenta, lime, t);
-        else if (t < 2f)
-            color = Color.Lerp(lime, cyan, t - 1f);
-        else
-            color = Color.Lerp(cyan, magenta, t - 2f);
-
-        color.a = 0.5f;
-        spectrum.color = color;
-
-        index++;
+        magenta.a = 0.5f;
+        bladerEffectSR.color = magenta;
     }
 
 
     private void EndEffect()
     {
-        for (int i = 0; i < spectrumPoolSize; i++)
-            spectrumPool[i].gameObject.SetActive(false);
+        bladerEffectSR.gameObject.SetActive(false);
+        bladerEffectSR.color = Color.white;
+    }
 
-        index = 0;
-        colorTime = 0f;
+    private IEnumerator WaitForSecondsPausable(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            if (!GameManager.Instance.IsPaused)
+                timer += GameTime.WorldDeltaTime;
+            yield return null;
+        }
     }
 }

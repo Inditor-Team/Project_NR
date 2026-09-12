@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6497fe613ffe4e4d8abe40cd677e1b7, type: 3}
   m_Name: Bioreinforcement
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardSO
-  Id: 1
-  type: 2
+  Id: 0
+  CardIcon: {fileID: 21300000, guid: b0fd3b9d4d8f10849a7c6294338cfac3, type: 3}
+  type: 0
   CardName: "\uC0DD\uCCB4 \uBCF4\uAC15i "
   CardDescription: "\uCD5C\uB300 \uCCB4\uB825\uC774 \uC99D\uAC00\uD55C\uB2E4"
-  Probability: 14
   Elements:
   - targetStat: 14
     upgradeAmount: 1
+  Weight: 8

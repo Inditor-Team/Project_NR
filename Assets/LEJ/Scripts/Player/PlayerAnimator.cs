@@ -11,7 +11,7 @@ public class PlayerAnimator : MonoBehaviour
 
     Vector2 moveInput;
 
-    bool doFlip = false;
+    [SerializeField] bool doFlip = false;
     public bool DoFlip { get { return doFlip; } 
         set { 
             doFlip = value;

@@ -27,6 +27,7 @@ public class ItemObject : MonoBehaviour, IInteractable
     {
         StopFloatAnim();
 
+        myItem = null;
         isInteracted = false;
     }
 
@@ -70,8 +71,10 @@ public class ItemObject : MonoBehaviour, IInteractable
         if (Vector2.Distance(transform.position, collision.transform.position) < 0.1f)
         {
             holder.HoldItem(this);
+
             myItem = null;
-            ItemManager.Instance.DespawnItem(gameObject);
+            isInteracted = false;
+            ItemSpawner.Instance.DespawnItem(gameObject);
         }
     }
 

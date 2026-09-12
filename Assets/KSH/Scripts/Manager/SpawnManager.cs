@@ -30,6 +30,6 @@ public class SpawnManager : MonoBehaviour
         remainingCount--;
 
         if (remainingCount <= 0)
-            SectorManager.Instance.DestroyedEnemy();
+            SectorManager.Instance.DestroyedEnemy(transform.position);
     }
 }

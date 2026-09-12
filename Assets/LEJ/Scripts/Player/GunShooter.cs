@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GunShooter : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GunShooter : MonoBehaviour
 
     PlayerStat stat;
     float lastFireTime;
+
+    public event UnityAction OnShoot;
 
     public void RegisterStat(PlayerStat stat)
     {
@@ -24,6 +27,14 @@ public class GunShooter : MonoBehaviour
         gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
         SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
         lastFireTime = Time.time;
+
+        OnShoot?.Invoke();
+    }
+
+    public void ForceAttack()
+    {
+        gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
     }
 
     public void ActiveGun(bool isActive)

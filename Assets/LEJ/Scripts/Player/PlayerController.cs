@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -30,6 +32,10 @@ public class PlayerController : MonoBehaviour
 
     float lastProtocolTime;
     private bool isPaused = false;
+
+    float curSpeed;
+
+    public bool disableAttack = false;
 
     IInteractable curInteractable;
 
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPauseGame += Pause;
+        gunShooter.OnShoot += ActiveInstableCore; //총알 발사 시 확률적으로 발현
     }
 
     void OnEnable()
@@ -121,7 +128,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Input
-    void EnableInput()
+    public void EnableInput()
     {
         //Input System 활성화 후 입력 받아오기
         input.Player.Enable();
@@ -134,7 +141,7 @@ public class PlayerController : MonoBehaviour
         input.Player.Use.performed += Use;
     }
 
-    void DisableInput()
+    public void DisableInput()
     {
         input.Player.Disable();
 
@@ -184,6 +191,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void TrySwordAttack(InputAction.CallbackContext callback)
     {
+        if (disableAttack) return;
         if (isPointerOverUI) return;
         if (curState == PlayerState.Roll) return;
 
@@ -196,6 +204,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void TryGunAttack(InputAction.CallbackContext callback)
     {
+        if (disableAttack) return;
         if (isPointerOverUI) return; // UI 요소인지 판단, 클릭 이벤트에 적용
         if (curState == PlayerState.Roll) return;
         
@@ -231,16 +240,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        float speed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
-
-        ////프로토콜 여부에 따른 이속 변화 존재(기본 값은 1)
-        //if (protocol != null)
-        //    speed = protocol.IsActive ? moveSpeed * protocol.SpeedMultiplier: moveSpeed;
+        curSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
 
         if (curState == PlayerState.Roll)
-            speed = stat.StatDic[PlayerStat.Stat.RollSpeed];
+            curSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed] * stat.StatDic[PlayerStat.Stat.RollSpeed];
 
-        rb.linearVelocity = moveInput * speed;
+        rb.linearVelocity = moveInput * curSpeed;
     }
 
     public void Pause(bool isPause)
@@ -280,10 +285,39 @@ public class PlayerController : MonoBehaviour
 
         curState = PlayerState.Die;
         animator.DieAnim();
+        rb.simulated = false;
 
         SectorManager.Instance.SectorFail();
 
         Pause(true);
+    }
+
+    /// <summary>
+    /// 불안정 코어 카드를 갖고 있을 경우 확률적으로 총알 발사 시 Active 
+    /// </summary>
+    void ActiveInstableCore()
+    {
+        //불안정 코어 확률 존재 시
+        if (Random.value < stat.InstableCoreProbability)
+            StartCoroutine(InstableCoreTime());
+    }
+    IEnumerator InstableCoreTime()
+    {
+        stat.Model.DOColor(Color.magenta, 2f).OnComplete(() =>
+        {
+            stat.Model.DOColor(Color.white, 0.2f);
+        });
+
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(0.2f); //총알 발사 간격
+            gunShooter.ForceAttack(); //발사 간격과 무관하게 강제 발사
+        }
+
+        float originSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
+        stat.IncreaseStat(PlayerStat.Stat.MoveSpeed, 0.5f); //이속 감소
+        yield return new WaitForSeconds(2f);
+        curSpeed = originSpeed; //복구
     }
     #endregion
 }
