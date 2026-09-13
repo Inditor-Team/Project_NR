@@ -98,7 +98,10 @@ public class ProtocolExecutor : MonoBehaviour
     void InvincibleMode()
     {
         if (InvincibleRoutine != null)
+        {
+            StopCoroutine(InvincibleTime());
             InvincibleRoutine = null;
+        }
 
         InvincibleRoutine = StartCoroutine(InvincibleTime());
     }
@@ -107,8 +110,19 @@ public class ProtocolExecutor : MonoBehaviour
     IEnumerator InvincibleTime()
     {
         stat.IsInvincible = true;
-        yield return new WaitForSeconds(stat.StatDic[Stat.ProtocolDuration]);
+        yield return WaitForSecondsPausable(stat.StatDic[Stat.ProtocolDuration]);
         stat.IsInvincible = false;
         InvincibleRoutine = null;
+    }
+
+    private IEnumerator WaitForSecondsPausable(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            if (!GameManager.Instance.IsPaused)
+                timer += GameTime.WorldDeltaTime; 
+            yield return null;
+        }
     }
 }

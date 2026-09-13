@@ -62,6 +62,15 @@ public class SoundManager : MonoBehaviour
         InitDictionary();
     }
 
+    private void Start()
+    {
+        //PlayerPrefs 에 볼륨 설정이 저장된 적 있다면 해당 값으로 설정
+        if (PlayerPrefs.HasKey(Prefs_BGMVolume))
+            SetBGMVolume(PlayerPrefs.GetFloat(Prefs_BGMVolume));
+        if (PlayerPrefs.HasKey(Prefs_SFXVolume))
+            SetSFXVolume(PlayerPrefs.GetFloat(Prefs_SFXVolume));
+    }
+
     [Header("Audio Clips")]
     [SerializeField] private BGM[] bgmClips; 
     [SerializeField] private SFX[] sfxClips; // TODO: 리소스 추가 후 sfx clip을 Decompress On Load로 설정, enum 순서에 맞게 배치
@@ -79,6 +88,9 @@ public class SoundManager : MonoBehaviour
     
     private int maxSfxSources = 10; // 동시에 재생 가능한 효과음 수
     private bool isFading = false; // 페이드 효과 진행 여부
+
+    public string Prefs_BGMVolume = "BGM_Volume";
+    public string Prefs_SFXVolume = "SFX_Volume";
     
     #region Init 관련 메서드
     private void InitializeAudioSources() // 오디오소스 초기화
@@ -110,6 +122,7 @@ public class SoundManager : MonoBehaviour
             playerMoveSource.playOnAwake = false;
             playerMoveSource.volume = sfxVolume;
         }
+
     }
     
     private void InitDictionary() // Dictionary 초기화
@@ -173,6 +186,7 @@ public class SoundManager : MonoBehaviour
         if (bgmSource == null) InitializeAudioSources();
         
         bgmSource.volume = bgmVolume;
+        PlayerPrefs.SetFloat(Prefs_BGMVolume, bgmVolume);
     }
 
     #endregion
@@ -260,6 +274,8 @@ public class SoundManager : MonoBehaviour
         {
             source.volume = sfxVolume;
         }
+
+        PlayerPrefs.SetFloat(Prefs_SFXVolume, sfxVolume);
     }
     
     #endregion
@@ -295,6 +311,9 @@ public class SoundManager : MonoBehaviour
     {
         SetBGMVolume(bgmVolume);
         SetSFXVolume(sfxVolume);
+
+        PlayerPrefs.SetFloat(Prefs_BGMVolume, bgmVolume);
+        PlayerPrefs.SetFloat(Prefs_SFXVolume, sfxVolume);
     }
     
     #endregion

@@ -80,7 +80,7 @@ public class Gun : WeaponBase
 
     }
 
-    public void ReflectAttack(Vector2 startPos, Vector2 dir, float speed, float damage)
+    public void ReflectAttack(Vector2 startPos, Vector2 dir, float speed)
     {
         GameObject bulletObject = PoolManager.Instance.Get(bulletPrefab);
 

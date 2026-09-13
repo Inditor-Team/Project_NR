@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
     private bool isMove = false;
 
-    [SerializeField] private MessagePanelController msgController;
+    public MessagePanelController msgController;
 
     private void Awake()
     {
@@ -26,6 +26,13 @@ public class UIManager : MonoBehaviour
     
     public void Show(GameObject panel)
     {
+        //닷트윈 에러로 인해 isMove false 가 제대로 처리 되지 않아 강제 패널 활성화
+        if (!panel.activeSelf)
+        {
+            panel.SetActive(true);
+            isMove = false;
+        }
+
         if (!isMove)
         {
             isMove = true;

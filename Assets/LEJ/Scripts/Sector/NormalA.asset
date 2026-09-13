@@ -20,5 +20,13 @@ MonoBehaviour:
     spawnPos: {x: -4.5, y: -1.5}
   - type: 1
     spawnPos: {x: 4.5, y: -1.5}
+  - type: 1
+    spawnPos: {x: 4.5, y: -1.5}
+  - type: 1
+    spawnPos: {x: 4.5, y: -1.5}
+  - type: 1
+    spawnPos: {x: 4.5, y: -1.5}
+  - type: 1
+    spawnPos: {x: 4.5, y: -1.5}
   GridPrefab:
   - {fileID: 1238156184344712356, guid: 52061e9910c5b3846b917e9fc23e527f, type: 3}

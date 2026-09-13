@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -35,6 +36,8 @@ public class SectorManager : MonoBehaviour
     {
         remainingCount = curSectorSO.EnemyData.Length;
         GameManager.Instance.RegisterSectorManagerEvent(SceneController.Instance.curScene);
+        InventoryManager.Instance.SetItemOnSectorStart();
+        InventoryManager.Instance.SetCardStatOnSectorStart();
     }
 
     public void SpawnEnemy()
@@ -63,12 +66,20 @@ public class SectorManager : MonoBehaviour
         }
     }
 
-    public void DestroyedEnemy() // 적이 파괴되면 호출
+    public event UnityAction OnDestroyedEnemy;
+
+    public void DestroyedEnemy(Vector2 destroyedPos) // 적이 파괴되면 호출
     {
+        //보스씬에서는 적의 파괴가 아닌 보스가 파괴되면 섹터 클리어
+        if (SceneController.Instance.curScene == SceneController.Scene.Boss)
+            return;
+
         remainingCount--;
 
         if (remainingCount <= 0)
             SectorClear();
+
+        ItemSpawner.Instance.SpawnItem(destroyedPos); //아이템 스폰 확률도 내부적으로 처리
     }
 
     public event UnityAction<SectorSO.SectorType> OnSectorClear;
@@ -78,11 +89,13 @@ public class SectorManager : MonoBehaviour
     {
         Debug.Log("Section Clear!");
         OnSectorClear?.Invoke(curSectorSO.Type);
+        GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 
     public void SectorFail()
     {
         Debug.Log("Section Fail!");
         OnSectorFail?.Invoke(curSectorSO.Type);
+        GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 }

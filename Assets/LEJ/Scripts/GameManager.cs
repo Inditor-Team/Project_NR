@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     }
 
     private int credit = 0; //게임 내 재화
+    public event UnityAction<int> OnCreditChanged;
+
     public int Credit
     {
         get => credit;
@@ -63,8 +65,6 @@ public class GameManager : MonoBehaviour
 
     private float life = 5;
     public float Life => life;
-
-    public event UnityAction<int> OnCreditChanged;
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
@@ -80,10 +80,24 @@ public class GameManager : MonoBehaviour
     Dictionary<SectorSO.SectorType, bool> clearedSector = new Dictionary<SectorSO.SectorType, bool>();
     public Dictionary<SectorSO.SectorType, bool> ClearedSector => clearedSector;
 
+    private void Start()
+    {
+        ClearedSectorDicInit();
+    }
+
+    /// <summary>
+    /// 섹터 클리어 여부를 저장하는 딕셔너리 초기화
+    /// </summary>
+    void ClearedSectorDicInit()
+    {
+        for (int i = 0; i < (int)SectorSO.SectorType.Count; i++)
+            clearedSector.Add((SectorSO.SectorType)i, false);
+    }
+
     public void RegisterSectorManagerEvent(SceneController.Scene curScene)
     {
         //로비, 맵분기 또는 이벤트 맵의 경우 제외
-        if (curScene == SceneController.Scene.Scene_Lobby || curScene == SceneController.Scene.Scene_Map)
+        if (curScene == SceneController.Scene.Lobby || curScene == SceneController.Scene.Map)
             return;
 
         SectorManager.Instance.OnSectorClear += OnSectorClear;
@@ -101,13 +115,21 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnSectorClear(SectorSO.SectorType sectorType)
     {
+        //섹터 종료 시 현재 생명 저장
         life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
-        Debug.Log($"{life}ssss");
 
-        if (!clearedSector.ContainsKey(sectorType))
-            clearedSector.Add(sectorType, false);
+        //섹터 종료 시 마지막으로 들고 있던 아이템을 인벤토리 매니저에 등록
+        ItemSO item = player.GetComponent<PlayerInventory>().CurItem;
+        if (item != null)
+            InventoryManager.Instance.RegisterItemOnSectorClose(item);
+
+        //상점의 경우 씬은 ShopA 로 설정되어있지만 두 번 방문하므로 끝쪽 ShopB 를 true 로 해줌
+        if (sectorType == SectorSO.SectorType.ShopA && clearedSector[sectorType])
+            clearedSector[SectorSO.SectorType.ShopB] = true;
 
         clearedSector[sectorType] = true;
+
+        Debug.Log($"gameManager 에서 {sectorType} 이 clear true");
         UnRegisterSectorManagerEvent();
     }
 
@@ -116,9 +138,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnSectorFailed(SectorSO.SectorType sectorType)
     {
-        if (!clearedSector.ContainsKey(sectorType))
-            clearedSector.Add(sectorType, false);
-
         clearedSector[sectorType] = false;
         UnRegisterSectorManagerEvent();
     }
@@ -134,7 +153,10 @@ public class GameManager : MonoBehaviour
 
     public void FindPlayer()
     {
-        player = GameObject.FindWithTag("Player").transform.parent.gameObject;
+        GameObject playerGO = GameObject.FindWithTag("Player");
+
+        if (playerGO != null)
+            player = GameObject.FindWithTag("Player").transform.parent.gameObject;
     }
 
     private int pauseRequestCount = 0; // UI 창이 여러 개인 경우가 있으니 카운팅 형식으로 변경

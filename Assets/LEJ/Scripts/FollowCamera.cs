@@ -11,6 +11,10 @@ public class FollowCamera : MonoBehaviour
 
     private Vector3 velocity;
 
+    [Header("카메라 위치 제한 최대, 최소값 X, Y")]
+    [SerializeField] Vector2 clampMax;
+    [SerializeField] Vector2 clampMin;
+
     private void LateUpdate()
     {
         if (target == null)
@@ -19,5 +23,16 @@ public class FollowCamera : MonoBehaviour
         Vector3 targetPosition = target.position + offset;
 
         transform.position = Vector3.SmoothDamp(transform.position,targetPosition,ref velocity,smoothTime);
+
+        //카메라 위치 제한
+        if (transform.position.x > clampMax.x)
+            transform.position = new Vector3(clampMax.x, transform.position.y, transform.position.z);
+        if (transform.position.x < clampMin.x)
+            transform.position = new Vector3(clampMin.x, transform.position.y, transform.position.z);
+
+        if (transform.position.y > clampMax.y)
+            transform.position = new Vector3(transform.position.x, clampMax.y, transform.position.z);
+        if (transform.position.y < clampMin.y)
+            transform.position = new Vector3(transform.position.x, clampMin.y, transform.position.z);
     }
 }

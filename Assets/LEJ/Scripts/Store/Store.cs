@@ -35,7 +35,7 @@ public class Store : MonoBehaviour
         {
             tables[i].SetMyIndex(i);
             
-            saleItemObjects[i] = ItemManager.Instance.SpawnItem(saleItems[i], tables[i].transform); //테이블에 팔 아이템을 스폰합니다
+            saleItemObjects[i] = ItemSpawner.Instance.SpawnItem(saleItems[i], tables[i].transform); //테이블에 팔 아이템을 스폰합니다
             saleItemObjects[i].GetComponent<Collider2D>().enabled = false; //플레이어가 가져가지 못 하게 콜라이더를 끕니다
 
             tables[i].OnTriggered += OnLook;

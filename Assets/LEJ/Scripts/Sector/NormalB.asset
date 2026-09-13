@@ -13,14 +13,22 @@ MonoBehaviour:
   m_Name: NormalB
   m_EditorClassIdentifier: Assembly-CSharp::SectorSO
   Scene: 4
-  Type: 1
+  Type: 2
   PlayerSpanwPos: {x: 0, y: -7}
   EnemyData:
   - type: 1
     spawnPos: {x: 2, y: 1}
-  - type: 2
-    spawnPos: {x: -7, y: 3}
   - type: 1
+    spawnPos: {x: -3, y: 8}
+  - type: 1
+    spawnPos: {x: -3, y: 8}
+  - type: 2
+    spawnPos: {x: -3, y: 8}
+  - type: 2
+    spawnPos: {x: -3, y: 8}
+  - type: 2
+    spawnPos: {x: -3, y: 8}
+  - type: 2
     spawnPos: {x: -3, y: 8}
   GridPrefab:
   - {fileID: 7895863436608420910, guid: c5e4110166a39ab499a7e48e73cf5a58, type: 3}

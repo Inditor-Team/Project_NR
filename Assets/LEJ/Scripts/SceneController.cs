@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -25,20 +28,23 @@ public class SceneController : MonoBehaviour, ISaveable
     private void Start()
     {
         StartBGM();
-        SaveSlotManager.Instance.Register(this);
+
+        if (SaveSlotManager.Instance != null)
+            SaveSlotManager.Instance.Register(this);
     }
 
     private void OnDestroy()
     {
-        SaveSlotManager.Instance.Unregister(this);
+        if (SaveSlotManager.Instance != null)
+            SaveSlotManager.Instance.Unregister(this);
     }
 
     // TODO: 스테이지별 숫자 적기
-    public enum Scene { None, Scene_Lobby, Scene_Map, 
-        Scene_NormalA, Scene_NormalB, Scene_NormalC, Scene_NormalD,
-        Scene_HardA, Scene_HardB, 
-        Scene_EventA, Scene_EventB, Scene_Shop,
-        Scene_MiddleBoss,
+    public enum Scene { None, Lobby, Map, 
+        NormalA, NormalB, NormalC, NormalD,
+        HardA, HardB, 
+        EventA, EventB, Store,
+        Boss,
         Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;
@@ -49,28 +55,48 @@ public class SceneController : MonoBehaviour, ISaveable
         if (curScene != Scene.None)
             prevScene = curScene;
 
+        if (changeSceneRoutine != null)
+        {
+            StopCoroutine(changeSceneRoutine);
+            changeSceneRoutine = null;
+        }
+        changeSceneRoutine = StartCoroutine(ChangeSceneWithFadeIn(sceneName));
+    }
+
+    Coroutine changeSceneRoutine;
+
+    IEnumerator ChangeSceneWithFadeIn(Scene sceneName)
+    {
+        var fade = GameObject.FindGameObjectWithTag("Fade");
+
+        if (fade != null)
+            fade.GetComponent<Animator>().Play("FadeIn");
+        
+        yield return new WaitForSeconds(0.5f);
+
         SceneManager.LoadScene(sceneName.ToString());
         GameManager.Instance.ForcedRelease(); // Pause(false);
-        
+
         curScene = sceneName;
         StartBGM();
         FindPlayer();
         SoundManager.Instance.StopAllSFX(); // 재생 중인 효과음 전체 종료
 
         OnSceneChanged?.Invoke(curScene);
+        changeSceneRoutine = null;
     }
 
     public void StartBGM()
     {
         switch (curScene)
         {
-            case Scene.Scene_Lobby:
+            case Scene.Lobby:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Lobby);
                 break;
-            case Scene.Scene_Map:
+            case Scene.Map:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Map);
                 break;
-            case Scene.Scene_NormalA:
+            case Scene.NormalA:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Stage1);
                 break;
         }
@@ -78,7 +104,7 @@ public class SceneController : MonoBehaviour, ISaveable
 
     void FindPlayer()
     {
-        if (curScene == Scene.Scene_Map)
+        if (curScene == Scene.Map)
             return;
 
         GameManager.Instance.FindPlayer();

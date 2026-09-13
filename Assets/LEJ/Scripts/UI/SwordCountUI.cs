@@ -12,20 +12,20 @@ public class SwordCountUI : MonoBehaviour
     private void Awake()
     {
         if (sword != null)
-            sword.OnHitted += OnHit;
+            sword.OnSwordLifeChanged += OnSwordLifeChanged;
     }
 
     private void OnDestroy()
     {
         if (sword != null)
-            sword.OnHitted -= OnHit;
+            sword.OnSwordLifeChanged -= OnSwordLifeChanged;
     }
 
-    void OnHit()
+    void OnSwordLifeChanged()
     {
         if (swordIcons.Length <= index)
             return;
 
-        swordIcons[index++].gameObject.SetActive(false);
+        swordIcons[sword.SwordLife].gameObject.SetActive(false);
     }
 }
