@@ -8,6 +8,9 @@ public class SaveDataStruct
     public Dictionary<PlayerStat.Stat, float> statDic = new(); // 스탯 통째로 저장
     public SceneController.Scene sectorName; // 섹터 명
     public bool isStolen; // 상점 도둑질했는지
+    public int credit;
+    public ProtocolCard.Protocol protocol;
+    public Dictionary<SectorSO.SectorType, bool> clearedSector = new();
 }
 
 public class SaveDataManager : MonoBehaviour

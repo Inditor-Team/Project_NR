@@ -1,10 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using System.Collections;
 
 public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
 {
-    private enum MineState { Idle, Armed, Exploding }
+    private enum MineState { Idle, Armed, Exploding, Falling }
     private MineState state;
 
     
@@ -23,6 +24,12 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
     private SpriteRenderer sprite;
     private Animator anim;
 
+    // 낙하 스폰 연출
+    private float fallDuration = 0.5f;
+    private float fallPeakHeight = 2f;
+    private Coroutine fallRoutine;
+    private Vector2 fallTargetPos; // 낙하 목표 위치
+    
     public event Action<EnemyLandMine> OnMineExpired;
     
     public void SetOriginPrefab(GameObject prefab) => originPrefab = prefab;
@@ -46,6 +53,15 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
         sprite.color = Color.white;
         bombEffectSprite.DOKill();
         SetBombEffectAlpha(0f);
+    }
+
+    private void OnDisable()
+    {
+        if (fallRoutine != null)
+        {
+            StopCoroutine(fallRoutine);
+            fallRoutine = null;
+        }
     }
 
     private void FixedUpdate()
@@ -115,8 +131,67 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
 
     public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
     {
+        if (state == MineState.Falling) // 낙하 중이면 즉시 타겟 위치로 이동 후 폭파
+        {
+            if (fallRoutine != null)
+            {
+                StopCoroutine(fallRoutine);
+                fallRoutine = null;
+            }
+            transform.position = fallTargetPos;
+            Color c = sprite.color;
+            c.a = 1f;
+            sprite.color = c;
+        }
+        
         // 바로 폭파 가능한 상태로 만들기
         state = MineState.Armed;
         waitTime = 0f;
+    }
+    
+    public void StartFallSpawn(Vector2 startPos, Vector2 targetPos)
+    {
+        fallTargetPos = targetPos;
+
+        if (fallRoutine != null) StopCoroutine(fallRoutine);
+        state = MineState.Falling;
+        fallRoutine = StartCoroutine(FallAndLand(startPos, targetPos));
+    }
+
+    private IEnumerator FallAndLand(Vector2 startPos, Vector2 targetPos)
+    {
+        Color spriteColor = sprite.color;
+        spriteColor.a = 0f;
+        sprite.color = spriteColor;
+
+        transform.position = startPos;
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * GameTime.WorldTimeScale / fallDuration;
+            float clamped = Mathf.Clamp01(t);
+
+            Vector2 groundPos = Vector2.Lerp(startPos, targetPos, clamped);
+            float height = Mathf.Sin(Mathf.PI * clamped) * fallPeakHeight;
+
+            transform.position = new Vector3(groundPos.x, groundPos.y + height, transform.position.z);
+
+            spriteColor.a = Mathf.Clamp01(clamped / 0.5f);
+            sprite.color = spriteColor;
+
+            yield return null;
+        }
+
+        // 착지 보정
+        transform.position = targetPos;
+        spriteColor.a = 1f;
+        sprite.color = spriteColor;
+
+        fallRoutine = null;
+
+        // 착지 완료 후 armDelay 카운트 시작
+        state = MineState.Idle;
+        armTimer = armDelay;
     }
 }

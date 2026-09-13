@@ -789,6 +789,7 @@ MonoBehaviour:
   healthUI: {fileID: 6023039564563549091}
   healthSlider: {fileID: 7831573339444688938}
   explodeScope: {fileID: 2733768677855299986}
+  explodeCollider: {fileID: 7848332786733853453}
   wallCheckDistance: 1.2
 --- !u!95 &4249809354998220521
 Animator:

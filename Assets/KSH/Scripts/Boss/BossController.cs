@@ -89,6 +89,8 @@ public partial class BossController : MonoBehaviour, IDamageable
     private int mineSpawnedCount; // 현재까지 설치한 개수
     private int mineTargetCount; // 목표 지뢰 설치 개수
     private bool attackIncludesLandMine; // 현재 공격에 지뢰 설치가 포함되어 있는지
+    private float minRadius = 2f; // 지뢰 설치 최소 범위
+    private float maxRadius = 4.5f; 
     
     // 회복 패턴 관련
     private bool isHealed = false;
@@ -171,10 +173,7 @@ public partial class BossController : MonoBehaviour, IDamageable
         
         if (health <= maxHealth * 0.25 && !isHealed) // 1번만 회복 패턴 들어가게?
         {
-             // 회복 패턴 진입
-             Debug.Log("회복 패턴 진입");
              ChangeStat(BossStat.Heal);
-             // 회복하는 애니메이션 재생?
         } 
         else if (health <= maxHealth / 2 && !isPhaseTwo) // 페이즈 전환
         {
@@ -214,6 +213,18 @@ public partial class BossController : MonoBehaviour, IDamageable
     public void OnPhaseSwitchAnimationOver() // 페이즈 전환 끝나고 호출되는 함수
     {
         ChangeStat(BossStat.Wait);
+        
+        // 이속, 지뢰 설치 위치, 사격 속도 변경
+        defaultSpeed *= 1.5f; // 본래 0.6, 1.5배시 0.9
+        enemyShooter.SetInterval(0.3f, 1.5f); // 기존: 0.5, 2
+        minRadius = 1f; // 테스트 필요
+        maxRadius = 3f;
+    }
+
+    public void OnHealSuccessAnimationOver() // 힐 성공 애니메이션 끝나고 호출되는 함수
+    {
+        HealHealth();
+        ChangeStat(BossStat.Wait);
     }
 
     #endregion
@@ -222,7 +233,6 @@ public partial class BossController : MonoBehaviour, IDamageable
     {
         currentStat = newStat;
         if(isFire) ShootAttackEnd(); // 혹시 모르는 처리
-        Debug.Log($"BossStat : {newStat}");
         
         switch (newStat)
         {
@@ -249,6 +259,7 @@ public partial class BossController : MonoBehaviour, IDamageable
             case BossStat.Heal:
                 anim.SetBool("isMove", false); // 정지
                 anim.SetBool("isFire", false);
+                anim.SetTrigger("isCureStart");
                 isHealed = true;
                 healStartHealth = health; // 현재 체력 저장
                 healTimer = 0f;
@@ -282,9 +293,16 @@ public partial class BossController : MonoBehaviour, IDamageable
                 healTimer += Time.fixedDeltaTime * GameTime.WorldTimeScale;
                 if (healTimer >= healMaxTime)
                 {
+                    anim.SetTrigger("endCure");
                     if((healStartHealth - health) < goalDamageAmount) // 목포 피해량 미달성 시
-                        HealHealth(); // 회복
-                    ChangeStat(BossStat.Wait);
+                    {
+                        anim.SetBool("isCureSuccess", true);
+                    }
+                    else
+                    {
+                        anim.SetBool("isCureSuccess", false);
+                        ChangeStat(BossStat.Wait);
+                    }
                 }
                 break;
         }
@@ -363,18 +381,15 @@ public partial class BossController : MonoBehaviour, IDamageable
 
         return slideDir.normalized;
     }
-
+    
     private void HealHealth()
     {
-        health += healAmount;
-        // TODO: 회복 완료 애니메이션 혹은 이펙트?? 일단 파랗게 점멸
         sprite.DOColor(Color.blue, 0.2f).OnComplete(() =>
         {
             sprite.DOColor(Color.white, 0.2f);
         });
         
+        health += healAmount;
         healthSlider.value = health / maxHealth;
-        
-        Debug.Log("회복 완료 !");
     }
 }

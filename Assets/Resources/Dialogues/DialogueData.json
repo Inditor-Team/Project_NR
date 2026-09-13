@@ -5,9 +5,260 @@
       "npcId": "introNPC",
       "name": "NAME_INTRO_NPC",
       "text": "DLG_INTRO_NPC_1",
+      "nextId": "intro_npc_2",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_2",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_2",
+      "nextId": "intro_npc_3",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_3",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_3",
+      "nextId": "intro_npc_4",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [
+        "NPC_ACTION:move_to_window"
+      ],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_4",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_4",
+      "nextId": "intro_npc_5",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_5",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_5",
+      "nextId": "intro_npc_6",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_6",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_6",
+      "nextId": "intro_npc_7",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_7",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_7",
+      "nextId": "intro_npc_8",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_8",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_8",
+      "nextId": "intro_npc_9",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_9",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_9",
+      "nextId": "intro_npc_10",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_10",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_10",
+      "nextId": "intro_npc_11",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_11",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_11",
+      "nextId": "intro_npc_12",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [
+        "NPC_ACTION:move_close_to_player"
+      ],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_12",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_12",
+      "nextId": "intro_npc_13",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_13",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_13",
+      "nextId": "intro_npc_14",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_14",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_14",
+      "nextId": "intro_npc_15",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [
+        "NPC_ACTION:move_to_window"
+      ],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_15",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_15",
+      "nextId": "intro_npc_16",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_16",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_16",
+      "nextId": "intro_npc_17",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_17",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_17",
+      "nextId": "intro_npc_18",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_18",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_18",
+      "nextId": "intro_npc_19",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_19",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_19",
+      "nextId": "intro_npc_20",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_20",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_20",
+      "nextId": "intro_npc_21",
+      "options": [],
+      "phase": "intro",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "intro_npc_21",
+      "npcId": "introNPC",
+      "name": "NAME_INTRO_NPC",
+      "text": "DLG_INTRO_NPC_21",
       "nextId": "",
       "options": [],
-      "phase": "intro"
+      "phase": "intro",
+      "onEnterEvents": [
+        "NPC_ACTION:show_goggles"
+      ],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_1",
@@ -16,7 +267,10 @@
       "text": "DLG_STORE_NPC_1",
       "nextId": "store_npc_2",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "CHECK_FLAG:shop_terminal_dead",
+      "entryRedirectId": "store_npc_8"
     },
     {
       "id": "store_npc_2",
@@ -25,11 +279,14 @@
       "text": "DLG_STORE_NPC_2",
       "nextId": "",
       "options": [
-        {"text": "OPT_STORE_NPC_2_1", "nextId": "store_npc_3"},
-        {"text": "OPT_STORE_NPC_2_2", "nextId": ""},
-        {"text": "OPT_STORE_NPC_2_3", "nextId": "store_npc_5"}
+        {"text": "OPT_STORE_NPC_2_1", "nextId": "store_npc_3", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_STORE_NPC_2_2", "nextId": "", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_STORE_NPC_2_3", "nextId": "store_npc_5", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_3",
@@ -38,11 +295,14 @@
       "text": "DLG_STORE_NPC_3",
       "nextId": "",
       "options": [
-        {"text": "OPT_STORE_NPC_3_1", "nextId": "store_npc_3_1"},
-        {"text": "OPT_STORE_NPC_3_2", "nextId": "store_npc_3_2"},
-        {"text": "OPT_STORE_NPC_3_3", "nextId": "store_npc_3_3"}
+        {"text": "OPT_STORE_NPC_3_1", "nextId": "store_npc_3_1", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_STORE_NPC_3_2", "nextId": "store_npc_3_2", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_STORE_NPC_3_3", "nextId": "store_npc_3_3", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_3_1",
@@ -51,10 +311,13 @@
       "text": "DLG_STORE_NPC_3_1",
       "nextId": "",
       "options": [
-        {"text": "OPT_STORE_NPC_3_1_1", "nextId": "store_npc_4_success"},
-        {"text": "OPT_STORE_NPC_3_1_2", "nextId": ""}
+        {"text": "OPT_STORE_NPC_3_1_1", "nextId": "store_npc_4_success_item1", "conditionId": "HAS_CREDIT:100", "failNextId": "store_npc_4_fail"},
+        {"text": "OPT_STORE_NPC_3_1_2", "nextId": "", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_3_2",
@@ -63,31 +326,64 @@
       "text": "DLG_STORE_NPC_3_2",
       "nextId": "",
       "options": [
-        {"text": "OPT_STORE_NPC_3_2_1", "nextId": "store_npc_4_success"},
-        {"text": "OPT_STORE_NPC_3_2_2", "nextId": ""}
+        {"text": "OPT_STORE_NPC_3_1_1", "nextId": "store_npc_4_success_item2", "conditionId": "HAS_CREDIT:200", "failNextId": "store_npc_4_fail"},
+        {"text": "OPT_STORE_NPC_3_1_2", "nextId": "", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_3_3",
       "npcId": "storeNPC",
       "name": "NAME_STORE_OWNER",
       "text": "DLG_STORE_NPC_3_3",
-      "nextId": "",
+      "nextId": "", 
       "options": [
-        {"text": "OPT_STORE_NPC_3_3_1", "nextId": "store_npc_4_success"},
-        {"text": "OPT_STORE_NPC_3_3_2", "nextId": ""}
+        {"text": "OPT_STORE_NPC_3_1_1", "nextId": "store_npc_4_success_item3", "conditionId": "HAS_CREDIT:300", "failNextId": "store_npc_4_fail"},
+        {"text": "OPT_STORE_NPC_3_1_2", "nextId": "", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
-      "id": "store_npc_4_success",
+      "id": "store_npc_4_success_item1",
       "npcId": "storeNPC",
       "name": "NAME_STORE_OWNER",
       "text": "DLG_STORE_NPC_4_SUCCESS",
       "nextId": "",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": ["ADD_CREDIT:-100", "GIVE_RANDOM_ITEM:common_pool:1"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "store_npc_4_success_item2",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_4_SUCCESS",
+      "nextId": "",
+      "options": [],
+      "phase": "store",
+      "onEnterEvents": ["ADD_CREDIT:-200", "GIVE_RANDOM_ITEM:rare_pool:1"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "store_npc_4_success_item3",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_4_SUCCESS",
+      "nextId": "",
+      "options": [],
+      "phase": "store",
+      "onEnterEvents": ["ADD_CREDIT:-300", "GIVE_RANDOM_ITEM:epic_pool:1"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_4_fail",
@@ -96,7 +392,10 @@
       "text": "DLG_STORE_NPC_4_FAIL",
       "nextId": "",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_5",
@@ -105,10 +404,13 @@
       "text": "DLG_STORE_NPC_5",
       "nextId": "",
       "options": [
-        {"text": "OPT_STORE_NPC_5_1", "nextId": "store_npc_6_success"},
-        {"text": "OPT_STORE_NPC_5_2", "nextId": ""}
+        {"text": "OPT_STORE_NPC_3_1_1", "nextId": "store_npc_6_success", "conditionId": "RANDOM_CHANCE:50", "failNextId": "store_npc_6_fail"},
+        {"text": "OPT_STORE_NPC_3_1_2", "nextId": "", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_6_success",
@@ -117,7 +419,10 @@
       "text": "DLG_STORE_NPC_6_SUCCESS",
       "nextId": "store_npc_7",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": ["GIVE_RANDOM_ITEM:hack_pool:1"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_6_fail",
@@ -126,7 +431,10 @@
       "text": "DLG_STORE_NPC_6_FAIL",
       "nextId": "store_npc_8",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_7",
@@ -135,7 +443,10 @@
       "text": "DLG_STORE_NPC_7",
       "nextId": "store_npc_8",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": ["SET_FLAG:hacked_shop"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "store_npc_8",
@@ -144,7 +455,10 @@
       "text": "DLG_STORE_NPC_8",
       "nextId": "",
       "options": [],
-      "phase": "store"
+      "phase": "store",
+      "onEnterEvents": ["SET_FLAG:shop_terminal_dead"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_A_1",
@@ -153,11 +467,14 @@
       "text": "DLG_EVENT_NPC_A_1",
       "nextId": "",
       "options": [
-        {"text": "OPT_EVENT_NPC_A_1_1", "nextId": "event_npc_A_1_1"},
-        {"text": "OPT_EVENT_NPC_A_1_2", "nextId": "event_npc_A_2"},
-        {"text": "OPT_EVENT_NPC_A_1_3", "nextId": "event_npc_A_4"}
+        {"text": "OPT_EVENT_NPC_A_1_1", "nextId": "event_npc_A_1_1", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_EVENT_NPC_A_1_2", "nextId": "event_npc_A_2", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_EVENT_NPC_A_1_3", "nextId": "event_npc_A_4", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "eventA"
+      "phase": "eventA",
+      "onEnterEvents": [],
+      "entryConditionId": "CHECK_FLAG:eventA_pod_used",
+      "entryRedirectId": "event_npc_A_5"
     },
     {
       "id": "event_npc_A_1_1",
@@ -166,7 +483,10 @@
       "text": "DLG_EVENT_NPC_A_1_1",
       "nextId": "",
       "options": [],
-      "phase": "eventA"
+      "phase": "eventA",
+      "onEnterEvents": ["HEAL:2", "SET_FLAG:eventA_pod_used"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_A_2",
@@ -175,10 +495,13 @@
       "text": "DLG_EVENT_NPC_A_2",
       "nextId": "",
       "options": [
-        {"text": "OPT_EVENT_NPC_A_2_1", "nextId": "event_npc_A_2_1"},
-        {"text": "OPT_EVENT_NPC_A_2_2", "nextId": ""}
+        {"text": "OPT_EVENT_NPC_A_2_1", "nextId": "event_npc_A_2_1", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_EVENT_NPC_A_2_2", "nextId": "", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "eventA"
+      "phase": "eventA",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_A_2_1",
@@ -187,7 +510,10 @@
       "text": "DLG_EVENT_NPC_A_2_1",
       "nextId": "",
       "options": [],
-      "phase": "eventA"
+      "phase": "eventA",
+      "onEnterEvents": ["ADD_MAX_HP:1", "SET_FLAG:eventA_pod_used"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_A_4",
@@ -196,7 +522,10 @@
       "text": "DLG_EVENT_NPC_A_4",
       "nextId": "",
       "options": [],
-      "phase": "eventA"
+      "phase": "eventA",
+      "onEnterEvents": ["ADD_CREDIT:50", "SET_FLAG:eventA_pod_used"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_A_5",
@@ -205,7 +534,10 @@
       "text": "DLG_EVENT_NPC_A_5",
       "nextId": "",
       "options": [],
-      "phase": "eventA"
+      "phase": "eventA",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_B_1",
@@ -214,11 +546,14 @@
       "text": "DLG_EVENT_NPC_B_1",
       "nextId": "",
       "options": [
-        {"text": "OPT_EVENT_NPC_B_1_1", "nextId": "event_npc_B_1_1"},
-        {"text": "OPT_EVENT_NPC_B_1_2", "nextId": "event_npc_B_1_2"},
-        {"text": "OPT_EVENT_NPC_B_1_3", "nextId": "event_npc_B_1_3"}
+        {"text": "OPT_EVENT_NPC_B_1_1", "nextId": "event_npc_B_1_1", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_EVENT_NPC_B_1_2", "nextId": "event_npc_B_1_2", "conditionId": "", "failNextId": ""},
+        {"text": "OPT_EVENT_NPC_B_1_3", "nextId": "event_npc_B_1_3", "conditionId": "", "failNextId": ""}
       ],
-      "phase": "eventB"
+      "phase": "eventB",
+      "onEnterEvents": [],
+      "entryConditionId": "CHECK_FLAG:eventB_NPC_used",
+      "entryRedirectId": "event_npc_B_2"
     },
     {
       "id": "event_npc_B_1_1",
@@ -227,7 +562,10 @@
       "text": "DLG_EVENT_NPC_B_1_1",
       "nextId": "",
       "options": [],
-      "phase": "eventB"
+      "phase": "eventB",
+      "onEnterEvents": ["OPEN_UI:RiskCardSelect", "SET_FLAG:eventB_NPC_used"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_B_1_2",
@@ -236,7 +574,10 @@
       "text": "DLG_EVENT_NPC_B_1_2",
       "nextId": "",
       "options": [],
-      "phase": "eventB"
+      "phase": "eventB",
+      "onEnterEvents": ["OPEN_UI:StatChangePopup", "SET_FLAG:eventB_NPC_used"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     },
     {
       "id": "event_npc_B_1_3",
@@ -245,7 +586,22 @@
       "text": "DLG_EVENT_NPC_B_1_3",
       "nextId": "",
       "options": [],
-      "phase": "eventB"
+      "phase": "eventB",
+      "onEnterEvents": ["HEAL:2", "SET_FLAG:eventB_NPC_used"],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "event_npc_B_2",
+      "npcId": "eventNPCB",
+      "name": "NAME_EVENT_NPCB",
+      "text": "DLG_EVENT_NPC_B_2",
+      "nextId": "",
+      "options": [],
+      "phase": "eventB",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
     }
   ]
 }

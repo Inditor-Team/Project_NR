@@ -83,7 +83,7 @@ public class SpawnUserEnemy : MonoBehaviour
         userScript.OnUserExpired -= RemoveMineFromList; // 혹시 모르는 중복 방지
         userScript.OnUserExpired += RemoveMineFromList;
         userList.Add(userScript); // 리스트에 저장
-        userScript.SpawnForBoss(pos);
+        userScript.SpawnForBoss(transform.position, pos);
     }
     
     private void RemoveMineFromList(UserEnemyController obj)
