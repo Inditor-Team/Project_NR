@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, ISaveable
 {
     public static InventoryManager Instance { get; private set; }
 
@@ -17,6 +17,16 @@ public class InventoryManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
+    }
+
+    private void Start()
+    {
+        SaveSlotManager.Instance.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveSlotManager.Instance.Unregister(this);
     }
 
     //현재 가지고 있는 카드들 id
@@ -168,4 +178,21 @@ public class InventoryManager : MonoBehaviour
         }
     }
     #endregion
+    
+    // 세이브 관련
+    public void SaveDataTo(SaveDataStruct data)
+    {
+        data.credit = CurCredit;
+        data.item = CurItem;
+        data.cards = MyCards;
+    }
+
+    public void LoadDataFrom(SaveDataStruct data)
+    {
+        SetCredit(data.credit);
+        
+        // TODO: 하단 항목 테스트 필요
+        curItem = data.item; // 아이템 적용
+        myCards = data.cards; // 카드 적용
+    }
 }

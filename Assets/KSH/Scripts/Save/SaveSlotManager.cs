@@ -168,9 +168,8 @@ public class SaveSlotManager : MonoBehaviour
                 else
                 {
                     float hp = data.statDic.GetValueOrDefault(PlayerStat.Stat.Life, 0f); // Life 값이 null이면 0 반환
-                    string stageName = data.sectorName.ToString().Substring(6); // 일단 임시로 앞에 Scene_ 글자만 삭제
                     // TODO: 스테이지 번호로 변경하기
-                    info.saveInfo = $"Stage {stageName} (HP: {hp})"; 
+                    info.saveInfo = $"Stage {data.sectorName.ToString()} (HP: {hp})"; 
                     info.saveDateAndTime = FileIOSystem.GetLastWriteTime(path).ToString("yyyy.MM.dd.HH:mm");
                 }
             }
