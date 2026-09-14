@@ -38,16 +38,6 @@ public class GameManager : MonoBehaviour, ISaveable
         }
     }
 
-    private void Start()
-    {
-        SaveSlotManager.Instance.Register(this);
-    }
-
-    private void OnDestroy()
-    {
-        SaveSlotManager.Instance.Unregister(this);
-    }
-
     [SerializeField] private GameObject player;
     public GameObject Player
     {
@@ -93,6 +83,12 @@ public class GameManager : MonoBehaviour, ISaveable
     private void Start()
     {
         ClearedSectorDicInit();
+        SaveSlotManager.Instance.Register(this);
+    }
+    
+    private void OnDestroy()
+    {
+        SaveSlotManager.Instance.Unregister(this);
     }
 
     /// <summary>
