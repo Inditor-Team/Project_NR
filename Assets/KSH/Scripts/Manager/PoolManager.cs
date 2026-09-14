@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public interface IPoolObjectBase
 {
-    public abstract void SetOriginPrefab(GameObject prefab);
+    public void SetOriginPrefab(GameObject prefab);
 }
 
 public class PoolManager : MonoBehaviour
@@ -66,9 +66,7 @@ public class PoolManager : MonoBehaviour
     public void Release(GameObject prefab, GameObject instance) // 오브젝트 반납
     {
         if (pools.ContainsKey(prefab))
-        {
             pools[prefab].Release(instance);
-        }
     }
 
     public void ClearPool() // 씬 전환 등으로 풀을 비울 때 사용

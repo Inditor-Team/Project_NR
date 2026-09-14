@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
             panel.transform.localPosition = new Vector3(0, -300, 0);
             
             panel.transform.DOLocalMoveY(panel.transform.localPosition.y + 300f, 0.5f)
-                 .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
+                 .SetEase(Ease.OutCubic).OnComplete(() => 
             {
                 isMove = false; 
             });
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
             SoundManager.Instance.PlaySFX(Sound_SFX.UICancel); // 타이밍 조절
             
             panel.transform.DOLocalMoveY(panel.transform.localPosition.y - 1000f, 0.5f)
-                 .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
+                 .SetEase(Ease.OutCubic).OnComplete(() => 
             {
                 panel.SetActive(false);
                 isMove = false; 
