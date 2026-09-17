@@ -29,7 +29,8 @@ public class WriteText : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeRoutine());
+        if (gameObject.activeSelf)
+            typingCoroutine = StartCoroutine(TypeRoutine());
     }
 
     public void Play(string newText)

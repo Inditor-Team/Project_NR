@@ -578,10 +578,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1185407723, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 73cb323e02e1acd4084aa4ae082014d0, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 11
@@ -909,11 +925,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99976414
+      value: 0.9999215
       objectReference: {fileID: 0}
     - target: {fileID: 6347301497467763399, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_Enabled
@@ -1716,6 +1732,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 4
@@ -2385,6 +2421,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 5
@@ -2799,21 +2855,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1659750652, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.023620894
       objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.754717
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
@@ -3114,10 +3186,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1425526290, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 0413765089e7d464681dcc7146b39c26, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 9
@@ -3567,10 +3655,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1425526290, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 0413765089e7d464681dcc7146b39c26, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 10
@@ -4018,10 +4122,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 78531156, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 88542ba43d8768848a5c75b5cfb67b87, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 12
@@ -4242,10 +4362,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1185407723, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 73cb323e02e1acd4084aa4ae082014d0, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 11
@@ -5494,7 +5630,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1020074159}
   m_HandleRect: {fileID: 1020074158}
   m_Direction: 3
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0.7086667
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5809,10 +5945,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1659750652, guid: a5b21f03b4a0c174c9753e94dd5df95a, type: 3}
+      objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.023620894
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
+      objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 8
@@ -6298,6 +6462,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
       value: 6
@@ -6796,6 +6980,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
       value: "\uB178\uBA40 A \uC2A4\uD14C\uC774\uC9C0"
