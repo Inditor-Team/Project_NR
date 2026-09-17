@@ -43,6 +43,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TMP_Text bubbleText;
     [SerializeField] private Image clickIndicator;
     [SerializeField] private GameObject chatWindowObject; // 대화 종료용 이벤트 (예시 플레이어 일시 정지 해제 등)
+    [SerializeField] private TextWidthFitter textWidth;
 
     [Header("옵션")] 
     [SerializeField] private GameObject[] optionsObject;
@@ -92,6 +93,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
     // 타이핑 완료 후 호출
     private void OnTypingComplete()
     {
+        textWidth.UpdateWidth();
         if (currentEntry.options != null && currentEntry.options.Length > 0)
             ShowOptions(currentEntry.options); // 클릭 인디케이터 대신 선택지 표시
         else
@@ -118,6 +120,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
             if (!active) continue;
 
             optionsText[i].text = LocalizationManager.Instance.Get(options[i].text);
+            optionsObject[i].GetComponent<TextWidthFitter>().UpdateWidth(); // 옵션 크기 설정
 
             DialogueOptionStruct capturedOption = options[i]; // nextId 대신 옵션 전체를 캡처
             Button btn = optionsObject[i].GetComponent<Button>();
@@ -205,6 +208,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
         {
             strText.Append(text[i]);
             bubbleText.text = strText.ToString();
+            textWidth.UpdateWidth();
             yield return new WaitForSeconds(0.05f);
             // TODO: 타이핑 효과음 추가
         }

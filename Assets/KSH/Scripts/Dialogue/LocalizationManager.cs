@@ -16,7 +16,8 @@ public class LocalizationManager : MonoBehaviour
 
     private Dictionary<string, string> currentTable;
     private Language currentLanguage = Language.KO;
-
+    public Language CurLang => currentLanguage;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
