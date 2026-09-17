@@ -63,15 +63,10 @@ public class SaveSlotManager : MonoBehaviour
     
     public bool OnSlotClicked(int slotIndex)
     {
-        // TODO: 메시지 창 띄우기
-        // 세이브 성공 -> 그냥 리프레시
-        // 로드 성공 -> 창 다 닫고 겜 로드
-        
         switch (CurrentMode)
         {
             case SaveLoadMode.Save:
                 return SaveToSlot(slotIndex);
-
             case SaveLoadMode.Load:
                 return LoadFromSlot(slotIndex);
         }

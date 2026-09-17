@@ -1,8 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 { 
@@ -65,12 +63,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // TODO: UI > msgController > UI 뭔가 이상한 흐름이라 나중에 리팩토링 하기
     public void SetMsgPanel(string text, Action func)
     {
-        if (msgController == null)
-        {
+        if (msgController == null) // 혹시라도 없을 때 대비
             msgController = FindFirstObjectByType<MessagePanelController>(FindObjectsInactive.Include);
-        }
+        
         msgController.SetMessagePanel(text, func);
+    }
+
+    public void HideMsgPanel()
+    {
+        msgController.HideMessagePanel();
     }
 }
