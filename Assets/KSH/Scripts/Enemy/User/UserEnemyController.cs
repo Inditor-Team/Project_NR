@@ -37,16 +37,14 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
     // 낙하 스폰 연출
     private float fallDuration = 0.55f;  // 낙하~착지 소요 시간
     private float fallPeakHeight = 2f;   // 낙하 정점 높이 (월드 유닛)
-    private float shadowMinScale = 0.4f; // 정점에서 그림자 축소 비율
-    private float shadowMaxAlpha = 0.6f; // 착지 상태에서 그림자 기본 알파
-    
-    private Vector3 shadowBaseLocalPos;
-    private Vector3 shadowBaseScale;
     private Coroutine fallRoutine;
+    
+    private RigidbodyConstraints2D originalConstraints;
     
     protected override void OnEnable()
     {
         base.OnEnable();
+        originalConstraints = rigid.constraints;
         explodeScope.OnScopeTriggerEnter += DoExplosion;
     }
 
@@ -231,6 +229,19 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
     public override void Pause(bool isPause)
     {
         isPaused = isPause;
+        
+        if (isPause) // 다른 콜라이더랑 겹쳤을 때 밀림 방지
+        {
+            rigid.linearVelocity = Vector2.zero;
+            rigid.angularVelocity = 0f;
+            rigid.constraints =
+                originalConstraints |
+                RigidbodyConstraints2D.FreezePosition;
+        }
+        else
+        {
+            rigid.constraints = originalConstraints;
+        }
     }
     
     // 보스맵 스폰
@@ -249,6 +260,7 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
 
     public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
     {
+        isPaused = true; // 이동 금지
         if (fallRoutine != null)
         {
             StopCoroutine(fallRoutine);

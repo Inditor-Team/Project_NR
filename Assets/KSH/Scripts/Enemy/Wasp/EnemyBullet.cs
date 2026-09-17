@@ -11,16 +11,17 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
     private Vector2 direction;
     private float speed;
     private float damage;
+
+    private Animator anim;
     
     private GameObject originPrefab; // 오리진 프리팹
-
     [SerializeField] LayerMask playerLayer;
-    
     public event Action<EnemyBullet> OnBulletExpired; // 총알 사라졌을 때 호출
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -76,7 +77,13 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
 
     public void ExpireByBossDeath() // 강제 삭제, 보스맵 전용
     {
-        // 혹은 폭파 이펙트
+        speed = 0f; // 이동 못 하게 처리
+        anim.SetTrigger("isExplosion");
+        // TODO: 폭파 사운드
+    }
+
+    public void OnExplosionAnimationEnd()
+    {
         DestroyBullet();
     }
 }
