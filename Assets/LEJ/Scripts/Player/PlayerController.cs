@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
         if (GameManager.Instance != null)
             GameManager.Instance.OnPauseGame -= Pause;
+        gunShooter.OnShoot -= ActiveInstableCore;
     }
 
     void Update()
@@ -243,7 +244,7 @@ public class PlayerController : MonoBehaviour
         curSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed];
 
         if (curState == PlayerState.Roll)
-            curSpeed = stat.StatDic[PlayerStat.Stat.MoveSpeed] * stat.StatDic[PlayerStat.Stat.RollSpeed];
+            curSpeed *= stat.StatDic[PlayerStat.Stat.RollSpeed];
 
         rb.linearVelocity = moveInput * curSpeed;
     }
@@ -318,6 +319,7 @@ public class PlayerController : MonoBehaviour
         stat.IncreaseStat(PlayerStat.Stat.MoveSpeed, 0.5f); //이속 감소
         yield return new WaitForSeconds(2f);
         curSpeed = originSpeed; //복구
+        stat.StatDic[PlayerStat.Stat.MoveSpeed] = originSpeed; // 스탯 복구
     }
     #endregion
 }

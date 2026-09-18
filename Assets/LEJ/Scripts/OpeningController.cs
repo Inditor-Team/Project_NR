@@ -35,6 +35,7 @@ public class OpeningController : MonoBehaviour
 
     private bool isCommand;
     private bool isFinished;
+    private bool isCommandsEnd; // commands 종료 체크
 
     private Coroutine openingCoroutine;
 
@@ -47,7 +48,7 @@ public class OpeningController : MonoBehaviour
 
     private void Update()
     {
-        if (isFinished)
+        if (isFinished || isCommandsEnd)
             return;
 
         if (!Input.GetMouseButtonDown(0))
@@ -90,7 +91,18 @@ public class OpeningController : MonoBehaviour
             writeText.gameObject.SetActive(false);
             npcInteractable.OnInteract();
             isCommand = false;
+            isCommandsEnd = true;
         }
+    }
+
+    public void MoveNPCToWidnow()
+    {
+        StartCoroutine(MoveNPC(windowPoint.position));
+    }
+
+    public void MoveNPCToPlayer()
+    {
+        StartCoroutine(MoveNPC(whisperPoint.position));
     }
 
     private IEnumerator MoveNPC(Vector3 target)
@@ -111,7 +123,7 @@ public class OpeningController : MonoBehaviour
         npc.position = target;
     }
 
-    private IEnumerator ShowRedGoggle()
+    public IEnumerator ShowRedGoggle()
     {
         redGoggleObject.SetActive(true);
 
@@ -138,11 +150,13 @@ public class OpeningController : MonoBehaviour
         FinishOpening();
     }
 
-    private void FinishOpening()
+    public void FinishOpening()
     {
         isFinished = true;
         isCommand = false;
 
         gameObject.SetActive(false);
+        // 로비 이동 전 약간의 대기 시간 필요?
+        SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
     }
 }
