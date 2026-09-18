@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Events;
 
 public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
@@ -43,6 +44,9 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     bool isInvincible = false; //무적 상태
     public bool IsInvincible { get { return isInvincible; } set { isInvincible = value; } }
 
+    private Coroutine damagedCoreCoroutine;
+    private readonly Dictionary<Stat, float> damagedCoreBonus = new();
+
     void Awake()
     {
         for (int i = 1; i < (int)Stat.Count; i++)
@@ -65,7 +69,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
             SaveSlotManager.Instance.Unregister(this);
 
         if (recoverProbability > 0f) //회복 알고리즘 카드가 있어 이벤트 등록이 됐었다면 해지
-            SectorManager.Instance.OnDestroyedEnemy += RecoveryAlgorithm;
+            SectorManager.Instance.OnDestroyedEnemy -= RecoveryAlgorithm;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -185,6 +189,96 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         OnUpdateStat?.Invoke(type, value);
     }
 
+    /// <summary>
+    /// 손상된 코어를 사용해 일정 시간 동안 전투 능력치를 강화합니다.
+    /// amount : 증가 비율 (0.5 = 50%)
+    /// duration : 지속 시간
+    /// </summary>
+    public void UseDamagedCore(float amount, float duration)
+    {
+        // 이미 사용 중이라면 기존 버프를 먼저 제거
+        if (damagedCoreCoroutine != null)
+        {
+            StopCoroutine(damagedCoreCoroutine);
+            RemoveDamagedCoreBuff();
+        }
+
+        damagedCoreCoroutine = StartCoroutine(
+            DamagedCoreCoroutine(amount, duration)
+        );
+    }
+
+    private IEnumerator DamagedCoreCoroutine(float amount, float duration)
+    {
+        damagedCoreBonus.Clear();
+
+        Stat[] increaseStats =
+        {
+            Stat.MoveSpeed,
+            Stat.RollSpeed,
+            Stat.RollDuration,
+    
+            Stat.SwordSwingSpeed,
+            Stat.SwordDamage,
+    
+            Stat.BulletSpeed,
+            Stat.BulletDamage,
+    
+            Stat.ProtocolDuration
+        };
+
+        // 높을수록 좋아지는 능력치
+        foreach (Stat stat in increaseStats)
+        {
+            float bonus = statDic[stat] * amount;
+
+            damagedCoreBonus.Add(stat, bonus);
+            AddStat(stat, bonus);
+        }
+
+        Stat[] rateStats =
+        {
+            Stat.RollRate,
+            Stat.SwordSwingRate,
+            Stat.BulletFireRate,
+            Stat.ProtocolRate
+        };
+
+        // 낮을수록 좋아지는 쿨타임 계열
+        foreach (Stat stat in rateStats)
+        {
+            // 50% 강화라면 1 / 1.5배
+            float newValue = statDic[stat] / (1f + amount);
+            float bonus = newValue - statDic[stat];
+
+            damagedCoreBonus.Add(stat, bonus);
+            AddStat(stat, bonus);
+        }
+
+        // 연출
+        model.DOColor(Color.yellow, 0.2f);
+
+        yield return new WaitForSeconds(duration);
+
+        RemoveDamagedCoreBuff();
+
+        model.DOColor(Color.white, 0.2f);
+
+        damagedCoreCoroutine = null;
+    }
+
+    /// <summary>
+    /// 손상된 코어로 변경했던 값만 되돌립니다.
+    /// 버프 도중 획득한 카드 효과는 유지됩니다.
+    /// </summary>
+    private void RemoveDamagedCoreBuff()
+    {
+        foreach (var bonus in damagedCoreBonus)
+            AddStat(bonus.Key, -bonus.Value);
+
+        damagedCoreBonus.Clear();
+    }
+
     #region Save
     // 세이브 관련
     public void SaveDataTo(SaveDataStruct data)
@@ -209,6 +303,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
             case LevelCardSO.LevelCardType.RecoveryAlgorithmA:
             case LevelCardSO.LevelCardType.RecoveryAlgorithmB:
                 recoverProbability = amount;
+                SectorManager.Instance.OnDestroyedEnemy -= RecoveryAlgorithm;
                 SectorManager.Instance.OnDestroyedEnemy += RecoveryAlgorithm;
 
                 break;

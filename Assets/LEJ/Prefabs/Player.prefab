@@ -49,8 +49,6 @@ MonoBehaviour:
   hitBox: {fileID: 2693489210869067455}
   model: {fileID: 6491340747748547709}
   effect: {fileID: 3454971394518095051}
-  swingTime: 0
-  inactive: 0
 --- !u!114 &2669214311529317012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +405,6 @@ MonoBehaviour:
   spectrumPoolSize: 30
   spectrumFadeDuration: 2
   spectrumInterval: 0.2
-  colorSpeed: 0.02
 --- !u!1 &2406657997141419777
 GameObject:
   m_ObjectHideFlags: 0
@@ -5830,6 +5827,7 @@ Transform:
   - {fileID: 7880014701018855835}
   - {fileID: 8257176381231720944}
   - {fileID: 7002312544001858335}
+  - {fileID: 4718036438395077170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5325577800453619318
@@ -5844,6 +5842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482e6d351dc4e164d8811ee268accab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  disableAttack: 0
 --- !u!114 &8742136761707381778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5859,6 +5858,11 @@ MonoBehaviour:
   ui: {fileID: 0}
   playerStat: {fileID: 4833552546129074219}
   levelCardProvider: {fileID: 0}
+  blankBulletRadius: 10
+  enemyBulletLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  blankBulletEffectPrefab: {fileID: 5342179875135399557}
 --- !u!114 &1685491047641687502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5873,6 +5877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
   rotateByAnim: {fileID: 4915982081667667700}
   model: {fileID: 5711610164856498049}
+  doFlip: 0
 --- !u!114 &4915982081667667700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6252,3 +6257,80 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &2038906240082828998
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3993123999957123329}
+    m_Modifications:
+    - target: {fileID: 1533577227061207770, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_Name
+      value: BlankBulletEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533577227061207770, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+--- !u!4 &4718036438395077170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6715556749611736308, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+  m_PrefabInstance: {fileID: 2038906240082828998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5342179875135399557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6226395976829597763, guid: 992be7c580bdc4c4fb6de6466338725c, type: 3}
+  m_PrefabInstance: {fileID: 2038906240082828998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d0933882749c24da172877673b9685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlankBulletEffect

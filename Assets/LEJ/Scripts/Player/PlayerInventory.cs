@@ -12,6 +12,14 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     [SerializeField] PlayerStat playerStat; //추후 매니저에서 Player 참조 시 그쪽으로 연결
     [SerializeField] LevelCardProvider levelCardProvider; //추후 맵매니저에서 참조하기
 
+    [Header("Blank Bullet")]
+    [SerializeField] private float blankBulletRadius = 10f;
+    [SerializeField] private LayerMask enemyBulletLayer;
+    [SerializeField] private BlankBulletEffect blankBulletEffectPrefab;
+    
+    [Header("Damaged Core")]
+    [SerializeField] private float damagedCoreDuration = 10f;
+
     private ItemSO curItem;
     public ItemSO CurItem => curItem;
 
@@ -55,6 +63,9 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     public void HoldItem(ItemSO itemSO)
     {
         curItem = itemSO;
+
+        if (ui != null)
+            ui.UpdateUI(curItem);
     }
 
     public void UseItem()
@@ -65,7 +76,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
         switch (curItem.Type)
         {
             case ItemSO.ItemType.DamagedCore:
-                //TO DO : 코어 손상 아이템 사용 구현
+                playerStat.UseDamagedCore(curItem.Amount, damagedCoreDuration);
                 break;
             case ItemSO.ItemType.GetCard:
                 levelCardProvider.ProvideByUI();
@@ -77,14 +88,41 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 playerStat.EarnLife(curItem.Amount);
                 break;
             case ItemSO.ItemType.BlankBullet:
-                //TO DO : 공포탄 아이템 사용 구현
+                UseBlankBullet();
                 break;
+
         }
 
         curItem = null;
 
         if (ui != null)
             ui.UpdateUI(curItem);
+    }
+
+    /// <summary>
+    /// 플레이어 주변의 적 탄환을 제거합니다.
+    /// </summary>
+    private void UseBlankBullet()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            transform.position,
+            blankBulletRadius,
+            enemyBulletLayer
+        );
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.TryGetComponent(out EnemyBullet bullet))
+                bullet.Expire();
+        }
+
+        BlankBulletEffect effect = Instantiate(
+            blankBulletEffectPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        effect.Play(blankBulletRadius);
     }
 
 }

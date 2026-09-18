@@ -79,4 +79,18 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
         // 혹은 폭파 이펙트
         DestroyBullet();
     }
+
+    /// <summary>
+    /// 공포탄 등의 외부 효과로 탄환을 제거합니다.
+    /// </summary>
+    public void Expire()
+    {
+        if (isReleased)
+            return;
+
+        isReleased = true;
+
+        PoolManager.Instance.Release(originPrefab, gameObject);
+        OnBulletExpired?.Invoke(this);
+    }
 }

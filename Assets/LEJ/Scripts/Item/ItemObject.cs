@@ -33,10 +33,11 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     private void DoFloatAnim()
     {
-        Vector3 targetPosition = transform.position + Vector3.up * moveDistance;
+        Vector3 targetPosition =
+            sprite.transform.localPosition + Vector3.up * moveDistance;
 
-        floatingTween = transform
-            .DOMove(targetPosition, moveDuration)
+        floatingTween = sprite.transform
+            .DOLocalMove(targetPosition, moveDuration)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
     }

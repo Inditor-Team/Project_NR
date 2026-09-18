@@ -1,92 +1,173 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
-/// <summary>
-/// 가판대(Table) 과 판매 아이템 데이터, 판매 기능을 담당합니다
-/// </summary>
 public class Store : MonoBehaviour
 {
-    [SerializeField] LayerMask playerLayer;
+    [Header("Reference")]
+    [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private PlayerStat playerStat;
 
-    [SerializeField] StoreTable[] tables;
-    [SerializeField] ItemSO[] saleItems;
-    
-    [SerializeField] GameObject bubble;
-    [SerializeField] TMP_Text bubbleText;
+    [Header("Shop")]
+    [SerializeField] private ItemSO[] itemPool;
+    [SerializeField] private int itemCount = 3;
 
-    GameObject[] saleItemObjects;
-    bool isPlayerNear = false;
+    private ItemSO[] shopItems;
+    public ItemSO[] ShopItems => shopItems;
+
+
+    [SerializeField] private ItemObject itemObjectPrefab;
+    [SerializeField] private Transform itemSpawnPoint;
+
+    [Header("Item Rail")]
+    [SerializeField] private float railDistance = 3f;
+    [SerializeField] private float railDuration = 0.7f;
+
+    [Header("Hack")]
+    [Range(0f, 1f)]
+    [SerializeField] private float hackSuccessProbability = 0.5f;
+    [SerializeField] private float hackFailDamage = 1f;
+
+
+    private bool isHackAttempted;
+    public bool IsHackAttempted => isHackAttempted;
+
+    public event UnityAction OnHackSuccess;
+    public event UnityAction OnHackFailed;
 
     private void Start()
     {
-        saleItemObjects = new GameObject[tables.Length];
-
-        InitTables();
+        GenerateItems();
     }
 
-    private void Update()
+    /// <summary>
+    /// 중복되지 않는 아이템을 무작위로 뽑습니다.
+    /// </summary>
+    public void GenerateItems()
     {
-        bubble.SetActive(isPlayerNear);
-    }
+        int count = Mathf.Min(itemCount, itemPool.Length);
 
-    void InitTables()
-    {
-        for (int i = 0; i < tables.Length; i++)
+        shopItems = new ItemSO[count];
+
+        List<ItemSO> candidates = new List<ItemSO>(itemPool);
+
+        for (int i = 0; i < count; i++)
         {
-            tables[i].SetMyIndex(i);
-            
-            saleItemObjects[i] = ItemSpawner.Instance.SpawnItem(saleItems[i], tables[i].transform); //테이블에 팔 아이템을 스폰합니다
-            saleItemObjects[i].GetComponent<Collider2D>().enabled = false; //플레이어가 가져가지 못 하게 콜라이더를 끕니다
+            int randomIndex = UnityEngine.Random.Range(0, candidates.Count);
 
-            tables[i].OnTriggered += OnLook;
-            tables[i].OnInteracted += OnSold;
+            shopItems[i] = candidates[randomIndex];
+            candidates.RemoveAt(randomIndex);
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    /// <summary>
+    /// 선택한 아이템을 구매합니다
+    /// </summary>
+    /// <param name="index"></param>
+    public void BuyItem(int index)
     {
-        if ((playerLayer.value & (1 << collision.gameObject.layer)) == 0)
+        if (!IsValidIndex(index))
             return;
 
-        isPlayerNear = true;
+        ItemSO item = shopItems[index];
 
-        bubbleText.text = "반가워요 \n저는 상인이에용";
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if ((playerLayer.value & (1 << collision.gameObject.layer)) == 0)
+        if (GameManager.Instance.Credit < item.Price)
             return;
 
-        isPlayerNear = false;
+        GameManager.Instance.Credit -= item.Price;
+
+        SpawnItem(item);
+
+        shopItems[index] = null;
     }
 
     /// <summary>
-    /// n번째 테이블의 상품에 플레이어가 다가갔을 때 말풍선을 세팅합니다
+    /// 구매한 아이템을 레일 위에 생성합니다.
     /// </summary>
-    /// <param name="tableIndex"></param>
-    void OnLook(int tableIndex)
+    public void SpawnItem(ItemSO item)
     {
-        bubbleText.text = $"{saleItems[tableIndex].Name}(은)는 {saleItems[tableIndex].Price} 크레딧 입니다.";
+        ItemObject itemObject = Instantiate(
+            itemObjectPrefab,
+            itemSpawnPoint.position,
+            Quaternion.identity
+        );
+
+        itemObject.SetItem(item);
+
+        StartCoroutine(MoveItem(itemObject.transform));
     }
 
     /// <summary>
-    /// n번째 테이블의 상품에 플레이어가 인터랙션 했을 때 물건을 팝니다
+    /// 생성된 아이템을 오른쪽으로 이동시킵니다.
     /// </summary>
-    /// <param name="tableIndex"></param>
-    void OnSold(int tableIndex)
+    private IEnumerator MoveItem(Transform item)
     {
-        GameManager.Instance.Credit -= saleItems[tableIndex].Price;
+        Vector3 startPos = item.position;
+        Vector3 endPos = startPos + Vector3.left * railDistance;
 
-        //아이템 오브젝트의 콜라이더를 켜 플레이어가 가져갈 수 있게 합니다
-        saleItemObjects[tableIndex].GetComponent<Collider2D>().enabled = true;
-        saleItemObjects[tableIndex].GetComponent<ItemObject>().OnInteract();
+        float time = 0f;
 
-        //상품이 판매 된 테이블은 테이블 기능을 상실합니다
-        tables[tableIndex].OnTriggered -= OnLook;
-        tables[tableIndex].OnInteracted -= OnSold;
+        while (time < railDuration)
+        {
+            if (item == null)
+                yield break;
 
-        tables[tableIndex].GetComponent<Collider2D>().enabled = false;
-        tables[tableIndex].GetComponent<StoreTable>().enabled = false; 
+            time += Time.unscaledDeltaTime;
+
+            float t = Mathf.Clamp01(time / railDuration);
+            item.position = Vector3.Lerp(startPos, endPos, t);
+
+            yield return null;
+        }
+
+        if (item != null)
+            item.position = endPos;
+    }
+
+    /// <summary>
+    /// 해킹을 시도합니다.
+    /// </summary>
+    public void TryHack()
+    {
+        if (isHackAttempted)
+            return;
+
+        isHackAttempted = true;
+
+        if (UnityEngine.Random.value <= hackSuccessProbability)
+        {
+            StartCoroutine(SpawnAllItems());
+            OnHackSuccess?.Invoke();
+            return;
+        }
+
+        playerStat.TakeDamage(hackFailDamage);
+        OnHackFailed?.Invoke();
+    }
+
+
+    private bool IsValidIndex(int index)
+    {
+        return shopItems != null
+            && index >= 0
+            && index < shopItems.Length
+            && shopItems[index] != null;
+    }
+
+    private IEnumerator SpawnAllItems()
+    {
+        for (int i = 0; i < shopItems.Length; i++)
+        {
+            if (shopItems[i] == null)
+                continue;
+
+            SpawnItem(shopItems[i]);
+            shopItems[i] = null;
+
+            yield return new WaitForSecondsRealtime(0.15f);
+        }
     }
 }
