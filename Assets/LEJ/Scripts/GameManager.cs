@@ -205,4 +205,23 @@ public class GameManager : MonoBehaviour, ISaveable
         SetProtocol(data.protocol);
         clearedSector = data.clearedSector;
     }
+
+    /// <summary>
+    /// 플레이어의 최대 체력을 조절합니다
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddMaxLife(int value)
+    {
+        player.GetComponent<PlayerController>().Stat.AddStat(PlayerStat.Stat.MaxLife, value);
+    }
+
+    /// <summary>
+    /// 플레이어 체력을 조절합니다
+    /// 최대 체력 이상으로 가질 수 없습니다.
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddLife(int value)
+    {
+        player.GetComponent<PlayerController>().Stat.AddStat(PlayerStat.Stat.Life, value);
+    }
 }
