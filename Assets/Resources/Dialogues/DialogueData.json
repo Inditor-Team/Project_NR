@@ -94,7 +94,9 @@
       "nextId": "intro_npc_9",
       "options": [],
       "phase": "intro",
-      "onEnterEvents": [],
+      "onEnterEvents": [
+        "NPC_ACTION:show_goggles"
+      ],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -255,7 +257,7 @@
       "options": [],
       "phase": "intro",
       "onEnterEvents": [
-        "NPC_ACTION:show_goggles"
+        "NPC_ACTION:end_intro"
       ],
       "entryConditionId": "",
       "entryRedirectId": ""

@@ -19,7 +19,7 @@ public class OpeningController : MonoBehaviour
 
     [Header("Red Goggle")]
     [SerializeField] private GameObject redGoggleObject;
-    [SerializeField] private float goggleShowDuration = 1.5f;
+    [SerializeField] private float goggleShowDuration = 3f;
 
     [Header("Opening")]
     [SerializeField] private GameObject blackScreen;
@@ -35,6 +35,7 @@ public class OpeningController : MonoBehaviour
 
     private bool isCommand;
     private bool isFinished;
+    private bool isCommandsEnd; // commands 종료 체크
 
     private Coroutine openingCoroutine;
 
@@ -47,7 +48,7 @@ public class OpeningController : MonoBehaviour
 
     private void Update()
     {
-        if (isFinished)
+        if (isFinished || isCommandsEnd)
             return;
 
         if (!Input.GetMouseButtonDown(0))
@@ -90,7 +91,18 @@ public class OpeningController : MonoBehaviour
             writeText.gameObject.SetActive(false);
             npcInteractable.OnInteract();
             isCommand = false;
+            isCommandsEnd = true;
         }
+    }
+
+    public void MoveNPCToWidnow()
+    {
+        StartCoroutine(MoveNPC(windowPoint.position));
+    }
+
+    public void MoveNPCToPlayer()
+    {
+        StartCoroutine(MoveNPC(whisperPoint.position));
     }
 
     private IEnumerator MoveNPC(Vector3 target)
@@ -111,7 +123,7 @@ public class OpeningController : MonoBehaviour
         npc.position = target;
     }
 
-    private IEnumerator ShowRedGoggle()
+    public IEnumerator ShowRedGoggle()
     {
         redGoggleObject.SetActive(true);
 
@@ -138,11 +150,17 @@ public class OpeningController : MonoBehaviour
         FinishOpening();
     }
 
-    private void FinishOpening()
+    public void FinishOpening()
     {
         isFinished = true;
         isCommand = false;
 
-        gameObject.SetActive(false);
+        StartCoroutine(ChangeScene()); // 약간 대기 후 씬 이동
+    }
+    
+    public IEnumerator ChangeScene()
+    {
+        yield return new WaitForSecondsRealtime(3f); // 일단 임시로 3초 대기
+        SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
     }
 }

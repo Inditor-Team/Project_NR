@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     public bool IsBubbleWindowOpen()
     {
+        if (bubbleController == null) FindBubbleController();
         return bubbleController.IsBubbleWindowOpen();
     }
 

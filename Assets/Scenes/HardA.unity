@@ -1629,52 +1629,12 @@ MonoBehaviour:
   ui: {fileID: 4171229102293132205}
   playerStat: {fileID: 1038823586}
   levelCardProvider: {fileID: 956013900}
---- !u!1 &1040492682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1040492683}
-  - component: {fileID: 1040492684}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1040492683
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040492682}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -115, y: -95, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1711870976}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1040492684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040492682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6ddaf2e99923649a2b165050197d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 1038823582}
-  curProtocol: 2
+  blankBulletRadius: 10
+  enemyBulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  blankBulletEffectPrefab: {fileID: 0}
+  damagedCoreDuration: 10
 --- !u!1 &1187409247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,52 +2057,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
   m_PrefabInstance: {fileID: 1289290300}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1359292410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1359292411}
-  - component: {fileID: 1359292412}
-  m_Layer: 0
-  m_Name: SceneController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1359292411
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359292410}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1711870976}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1359292412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359292410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a462ba31549cd9248b060f7de45b4348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneController
-  prevScene: 0
-  curScene: 1
 --- !u!1001 &1362115653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10619,14 +10533,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1040492683}
   - {fileID: 1937179484}
   - {fileID: 1187409248}
   - {fileID: 979483464}
   - {fileID: 1753095493}
   - {fileID: 62801744}
   - {fileID: 438537051}
-  - {fileID: 1359292411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1753095492
@@ -23390,16 +23302,16 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 42779770244216300}
-  - {fileID: 1202019542}
+  - {fileID: 3153394400369154530}
   - {fileID: 108868725386705343}
   - {fileID: 4477857246801058507}
   - {fileID: 4380750719964402529}
   - {fileID: 6247360352754115674}
   - {fileID: 4060378117112414110}
   - {fileID: 8580722540356859787}
-  - {fileID: 3153394400369154530}
   - {fileID: 9083525640737344411}
   - {fileID: 8785347958355905579}
+  - {fileID: 1202019542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

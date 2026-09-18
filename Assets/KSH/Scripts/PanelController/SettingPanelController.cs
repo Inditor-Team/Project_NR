@@ -22,16 +22,9 @@ public class SettingPanelController : MonoBehaviour
         BGMVolume.onValueChanged.AddListener(OnBGMValueChanged);
         SFXVolume.onValueChanged.AddListener(OnSFXValueChanged);
 
-        //isBGMOff = SoundManager.Instance.bgmVolume == 0;
-        //isSFXOff = SoundManager.Instance.sfxVolume == 0;
+        isBGMOff = PlayerPrefs.GetFloat(SoundManager.Instance.Prefs_BGMVolume) == 0;
+        isSFXOff = PlayerPrefs.GetFloat(SoundManager.Instance.Prefs_SFXVolume) == 0;
 
-        //BGMOffImage.SetActive(isBGMOff);
-        //SFXOffImage.SetActive(isSFXOff);
-
-        //BGMVolume.value = SoundManager.Instance.bgmVolume;
-        //SFXVolume.value = SoundManager.Instance.sfxVolume;
-
-        //PlayerPrefs 로 변경
         BGMVolume.value = PlayerPrefs.GetFloat(SoundManager.Instance.Prefs_BGMVolume);
         SFXVolume.value = PlayerPrefs.GetFloat(SoundManager.Instance.Prefs_SFXVolume);
 

@@ -4,6 +4,7 @@ using UnityEngine;
 // 대화 데이터 이벤트 관련, 이벤트 등록 및 조건 체크
 public class DialogueEventBinder : MonoBehaviour
 {
+    private OpeningController openingCon;
     private readonly HashSet<string> flags = new();
     private struct ShopItemData
     {
@@ -34,7 +35,8 @@ public class DialogueEventBinder : MonoBehaviour
         DialogueEventDispatcher.RegisterEvent("GIVE_RANDOM_ITEM", HandleGiveRandomItem);
         DialogueEventDispatcher.RegisterEvent("SET_FLAG", HandleSetFlag);
         DialogueEventDispatcher.RegisterEvent("OPEN_UI", HandleOpenUI);
-        DialogueEventDispatcher.RegisterEvent("BUY_ITEM", HandleBuyItem); 
+        DialogueEventDispatcher.RegisterEvent("BUY_ITEM", HandleBuyItem);
+        DialogueEventDispatcher.RegisterEvent("NPC_ACTION", HandleNPC);
     }
 
     private void RegisterConditions()
@@ -46,14 +48,51 @@ public class DialogueEventBinder : MonoBehaviour
     }
 
     # region 이벤트 핸들러
+    
+    private void HandleNPC(string[] args)
+    {
+        Debug.Log("HandleNPC : " + args[0]);
+        if (openingCon == null)
+        {
+            openingCon = FindFirstObjectByType<OpeningController>();
+        }
+        if (args[0].Equals("move_to_window"))
+        {
+            openingCon.MoveNPCToWidnow();
+        }
+        
+        if (args[0].Equals("move_close_to_player"))
+        {
+            openingCon.MoveNPCToPlayer();
+        }
+        
+        if (args[0].Equals("show_goggles"))
+        {
+            StartCoroutine(openingCon.ShowRedGoggle());
+        }
+        
+        if (args[0].Equals("end_intro"))
+        {
+            openingCon.FinishOpening();
+        }
+    }
+    
     private void HandleHeal(string[] args)
     {
         Debug.Log("체력 회복 : " + args[0]);
+        if (int.TryParse(args[0], out resultInt))
+            GameManager.Instance.AddLife(resultInt);
+        else
+            Debug.LogError("체력 회복 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
 
     private void HandleAddMaxHp(string[] args)
     {
         Debug.Log("최대 체력 증가 : " + args[0]);
+        if (int.TryParse(args[0], out resultInt))
+            GameManager.Instance.AddMaxLife(resultInt);
+        else
+            Debug.LogError("최대 체력 증가, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
 
     private void HandleAddCredit(string[] args)
@@ -61,7 +100,6 @@ public class DialogueEventBinder : MonoBehaviour
         Debug.Log("크레딧 변경 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
             InventoryManager.Instance.SetCredit(resultInt);
-        
         else
             Debug.LogError("크레딧 조건 체크 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
