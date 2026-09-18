@@ -48,6 +48,11 @@
     {"key": "OPT_STORE_NPC_3_3", "value": "아이템3 - 300"},
     {"key": "OPT_STORE_NPC_3_1_1", "value": "예"},
     {"key": "OPT_STORE_NPC_3_1_2", "value": "아니오"},
+
+    {"key": "ITEM_NAME_COMMON1", "value": "회복약"},
+    {"key": "ITEM_NAME_RARE2", "value": "카드"},
+    {"key": "ITEM_NAME_EPIC3", "value": "물약"},
+    {"key": "OPT_STORE_ITEM_LABEL", "value": "{0} - {1}"},
     
     {"key": "TEMP_COMMENT_4", "value": "아래로 이벤트A NPC 대사입니다"},
     {"key": "DLG_EVENT_NPC_A_1", "value": "깨진 정비 포드다.\n...아직 작동 중인듯하다."},

@@ -343,7 +343,7 @@
         {
           "text": "OPT_STORE_NPC_3_1_1",
           "nextId": "store_npc_4_success_item1",
-          "conditionId": "HAS_CREDIT:100",
+          "conditionId": "HAS_CREDIT_FOR_ITEM:20",
           "failNextId": "store_npc_4_fail"
         },
         {
@@ -368,7 +368,7 @@
         {
           "text": "OPT_STORE_NPC_3_1_1",
           "nextId": "store_npc_4_success_item2",
-          "conditionId": "HAS_CREDIT:200",
+          "conditionId": "HAS_CREDIT_FOR_ITEM:50",
           "failNextId": "store_npc_4_fail"
         },
         {
@@ -393,7 +393,7 @@
         {
           "text": "OPT_STORE_NPC_3_1_1",
           "nextId": "store_npc_4_success_item3",
-          "conditionId": "HAS_CREDIT:300",
+          "conditionId": "HAS_CREDIT_FOR_ITEM:100",
           "failNextId": "store_npc_4_fail"
         },
         {
@@ -416,10 +416,7 @@
       "nextId": "",
       "options": [],
       "phase": "store",
-      "onEnterEvents": [
-        "ADD_CREDIT:-100",
-        "GIVE_RANDOM_ITEM:common_pool:1"
-      ],
+      "onEnterEvents": ["BUY_ITEM:common_item1"],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -431,10 +428,7 @@
       "nextId": "",
       "options": [],
       "phase": "store",
-      "onEnterEvents": [
-        "ADD_CREDIT:-200",
-        "GIVE_RANDOM_ITEM:rare_pool:1"
-      ],
+      "onEnterEvents": ["BUY_ITEM:common_item2"],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -446,10 +440,7 @@
       "nextId": "",
       "options": [],
       "phase": "store",
-      "onEnterEvents": [
-        "ADD_CREDIT:-300",
-        "GIVE_RANDOM_ITEM:epic_pool:1"
-      ],
+      "onEnterEvents": ["BUY_ITEM:common_item3"],
       "entryConditionId": "",
       "entryRedirectId": ""
     },

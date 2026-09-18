@@ -44,7 +44,7 @@ public class SaveSlotUIItem : MonoBehaviour
             {
                 // 일단은 메시지창으로 띄우는데 나중에는 UI 상으로 눈에 띄게 하기
                 // TODO: 세이브 성공 사운드
-                UIManager.Instance.SetMsgPanel("세이브 성공!", UIManager.Instance.HideMsgPanel);
+                UIManager.Instance.SetMsgPanel("세이브에 성공하였습니다.", UIManager.Instance.HideMsgPanel);
                 isSaveSuccess?.Invoke(); // 리프레시
             }
         });
