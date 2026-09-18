@@ -22,15 +22,24 @@ public class MessagePanelController : MonoBehaviour
         UIManager.Instance.Show(messagePanel);
     }
 
+    public void HideMessagePanel()
+    {
+        UIManager.Instance.Hide(messagePanel);
+    }
+
     public void OnClickYesButton()
     {
         SoundManager.Instance.PlaySFX(Sound_SFX.UIConfirm);
-        yesFunction?.Invoke();
+        Action funcToRun = yesFunction; 
+        yesFunction = null;
+        
+        funcToRun?.Invoke();
     }
     
     public void OnClickNoButton()
     {
         SoundManager.Instance.PlaySFX(Sound_SFX.UICancel);
+        yesFunction = null;
         UIManager.Instance.Hide(messagePanel);
     }
 }

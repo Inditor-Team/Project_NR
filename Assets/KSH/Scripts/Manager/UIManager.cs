@@ -1,8 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 { 
@@ -42,7 +40,7 @@ public class UIManager : MonoBehaviour
             panel.transform.localPosition = new Vector3(0, -300, 0);
             
             panel.transform.DOLocalMoveY(panel.transform.localPosition.y + 300f, 0.5f)
-                 .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
+                 .SetEase(Ease.OutCubic).OnComplete(() => 
             {
                 isMove = false; 
             });
@@ -57,7 +55,7 @@ public class UIManager : MonoBehaviour
             SoundManager.Instance.PlaySFX(Sound_SFX.UICancel); // 타이밍 조절
             
             panel.transform.DOLocalMoveY(panel.transform.localPosition.y - 1000f, 0.5f)
-                 .SetEase(Ease.OutCubic).SetUpdate(UpdateType.Normal, true).OnComplete(() => 
+                 .SetEase(Ease.OutCubic).OnComplete(() => 
             {
                 panel.SetActive(false);
                 isMove = false; 
@@ -65,12 +63,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // TODO: UI > msgController > UI 뭔가 이상한 흐름이라 나중에 리팩토링 하기
     public void SetMsgPanel(string text, Action func)
     {
-        if (msgController == null)
-        {
+        if (msgController == null) // 혹시라도 없을 때 대비
             msgController = FindFirstObjectByType<MessagePanelController>(FindObjectsInactive.Include);
-        }
+        
         msgController.SetMessagePanel(text, func);
+    }
+
+    public void HideMsgPanel()
+    {
+        msgController.HideMessagePanel();
     }
 }

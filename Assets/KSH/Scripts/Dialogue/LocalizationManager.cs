@@ -16,7 +16,8 @@ public class LocalizationManager : MonoBehaviour
 
     private Dictionary<string, string> currentTable;
     private Language currentLanguage = Language.KO;
-
+    public Language CurLang => currentLanguage;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -53,5 +54,19 @@ public class LocalizationManager : MonoBehaviour
 
         Debug.LogWarning($"로컬라이징 키 없음: {key}");
         return key; // 키를 못 찾으면 키를 그냥 리턴
+    }
+    
+    public string GetFormat(string key, params object[] args) // 대화 이벤트용
+    {
+        string template = Get(key);
+        try
+        {
+            return string.Format(template, args);
+        }
+        catch (FormatException)
+        {
+            Debug.LogError($"로컬라이징 포맷 실패 : key={key}, template={template}");
+            return template;
+        }
     }
 }

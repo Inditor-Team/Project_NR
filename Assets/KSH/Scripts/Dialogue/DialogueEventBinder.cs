@@ -5,6 +5,20 @@ using UnityEngine;
 public class DialogueEventBinder : MonoBehaviour
 {
     private readonly HashSet<string> flags = new();
+    private struct ShopItemData
+    {
+        public string NameKey; // 아이템 이름 로컬라이제이션 키
+        public int Price;
+    }
+
+    private static readonly Dictionary<string, ShopItemData> shopItems = new()
+    {
+        ["common_item1"] = new ShopItemData { NameKey = "ITEM_NAME_COMMON1", Price = 100},
+        ["common_item2"] = new ShopItemData { NameKey = "ITEM_NAME_COMMON2", Price = 200},
+        ["common_item3"] = new ShopItemData { NameKey = "ITEM_NAME_COMMON3", Price = 300},
+    };
+    
+    private int resultInt; // 값 변환에 사용 
     
     private void Awake()
     {
@@ -14,44 +28,21 @@ public class DialogueEventBinder : MonoBehaviour
 
     private void RegisterEvents()
     {
-        DialogueEventDispatcher.RegisterEvent(
-            "HEAL",
-            HandleHeal);
-
-        DialogueEventDispatcher.RegisterEvent(
-            "ADD_MAX_HP",
-            HandleAddMaxHp);
-
-        DialogueEventDispatcher.RegisterEvent(
-            "ADD_CREDIT",
-            HandleAddCredit);
-
-        DialogueEventDispatcher.RegisterEvent(
-            "GIVE_RANDOM_ITEM",
-            HandleGiveRandomItem);
-
-        DialogueEventDispatcher.RegisterEvent(
-            "SET_FLAG",
-            HandleSetFlag);
-
-        DialogueEventDispatcher.RegisterEvent(
-            "OPEN_UI",
-            HandleOpenUI);
+        DialogueEventDispatcher.RegisterEvent("HEAL", HandleHeal);
+        DialogueEventDispatcher.RegisterEvent("ADD_MAX_HP", HandleAddMaxHp);
+        DialogueEventDispatcher.RegisterEvent("ADD_CREDIT", HandleAddCredit);
+        DialogueEventDispatcher.RegisterEvent("GIVE_RANDOM_ITEM", HandleGiveRandomItem);
+        DialogueEventDispatcher.RegisterEvent("SET_FLAG", HandleSetFlag);
+        DialogueEventDispatcher.RegisterEvent("OPEN_UI", HandleOpenUI);
+        DialogueEventDispatcher.RegisterEvent("BUY_ITEM", HandleBuyItem); 
     }
 
     private void RegisterConditions()
     {
-        DialogueEventDispatcher.RegisterCondition(
-            "HAS_CREDIT",
-            CheckHasCredit);
-
-        DialogueEventDispatcher.RegisterCondition(
-            "CHECK_FLAG",
-            CheckFlag);
-
-        DialogueEventDispatcher.RegisterCondition(
-            "RANDOM_CHANCE",
-            CheckRandomChance);
+        DialogueEventDispatcher.RegisterCondition("HAS_CREDIT", CheckHasCredit);
+        DialogueEventDispatcher.RegisterCondition("CHECK_FLAG", CheckFlag);
+        DialogueEventDispatcher.RegisterCondition("RANDOM_CHANCE", CheckRandomChance);
+        DialogueEventDispatcher.RegisterCondition("HAS_CREDIT_FOR_ITEM", CheckHasCreditForItem);
     }
 
     # region 이벤트 핸들러
@@ -68,11 +59,43 @@ public class DialogueEventBinder : MonoBehaviour
     private void HandleAddCredit(string[] args)
     {
         Debug.Log("크레딧 변경 : " + args[0]);
+        if (int.TryParse(args[0], out resultInt))
+            InventoryManager.Instance.SetCredit(resultInt);
+        
+        else
+            Debug.LogError("크레딧 조건 체크 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
 
     private void HandleGiveRandomItem(string[] args)
     {
         Debug.Log("랜덤 아이템 지급" + " / Pool : " + args[0] + " / Count : " + args[1]);
+    }
+    
+    private void HandleBuyItem(string[] args)
+    {
+        string itemId = args[0];
+        if (!shopItems.TryGetValue(itemId, out var item))
+        {
+            Debug.LogError($"등록되지 않은 상점 아이템 ID : {itemId}");
+            return;
+        }
+
+        InventoryManager.Instance.SetCredit(item.Price);
+        Debug.Log($"아이템 구매 완료 : {itemId} / 가격 : {item.Price}");
+
+        // TODO: 아이템 지급 메서드
+    }
+
+    public static string GetShopItemLabel(string itemId)
+    {
+        if (!shopItems.TryGetValue(itemId, out var item))
+        {
+            Debug.LogError($"등록되지 않은 상점 아이템 ID : {itemId}");
+            return itemId;
+        }
+
+        string itemName = LocalizationManager.Instance.Get(item.NameKey);
+        return LocalizationManager.Instance.GetFormat("OPT_STORE_ITEM_LABEL", itemName, item.Price);
     }
 
     private void HandleSetFlag(string[] args)
@@ -91,12 +114,31 @@ public class DialogueEventBinder : MonoBehaviour
     # endregion 
 
     #region 조건 체크
+    private bool CheckHasCreditForItem(string[] args)
+    {
+        string itemId = args[0];
+        if (!shopItems.TryGetValue(itemId, out var item))
+        {
+            Debug.LogError($"등록되지 않은 상점 아이템 ID : {itemId}");
+            return false;
+        }
+
+        bool canBuy = InventoryManager.Instance.CurCredit >= item.Price;
+        Debug.Log($"아이템 구매 가능 검사 / {itemId} / 가격 : {item.Price} / 결과 : {canBuy}");
+        return canBuy;
+    }
 
     private bool CheckHasCredit(string[] args)
     {
         Debug.Log("크레딧 보유량 검사 : " + args[0]);
 
-        return true;
+        if (int.TryParse(args[0], out resultInt))
+        {
+            return resultInt <= InventoryManager.Instance.CurCredit;
+        }
+        
+        Debug.LogError("크레딧 조건 체크 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
+        return false;
     }
 
     private bool CheckFlag(string[] args)
@@ -109,7 +151,7 @@ public class DialogueEventBinder : MonoBehaviour
         return hasFlag;
     }
 
-    private bool CheckRandomChance(string[] args)
+    private bool CheckRandomChance(string[] args) // 상점 해킹 시 사용, 현재 50% 혹률
     {
         if (!int.TryParse(args[0], out int chance))
         {
