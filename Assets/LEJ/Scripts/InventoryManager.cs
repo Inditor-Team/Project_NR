@@ -183,7 +183,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public void SaveDataTo(SaveDataStruct data)
     {
         data.credit = CurCredit;
-        data.item = CurItem;
+        // data.item = CurItem;
         data.cards = MyCards;
     }
 
@@ -192,7 +192,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
         SetCredit(data.credit);
         
         // TODO: 하단 항목 테스트 필요
-        curItem = data.item; // 아이템 적용
+        // curItem = data.item; // 아이템 적용
         myCards = data.cards; // 카드 적용
     }
 }

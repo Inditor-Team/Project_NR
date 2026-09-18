@@ -19,7 +19,7 @@ public class OpeningController : MonoBehaviour
 
     [Header("Red Goggle")]
     [SerializeField] private GameObject redGoggleObject;
-    [SerializeField] private float goggleShowDuration = 1.5f;
+    [SerializeField] private float goggleShowDuration = 3f;
 
     [Header("Opening")]
     [SerializeField] private GameObject blackScreen;
@@ -155,8 +155,12 @@ public class OpeningController : MonoBehaviour
         isFinished = true;
         isCommand = false;
 
-        gameObject.SetActive(false);
-        // 로비 이동 전 약간의 대기 시간 필요?
+        StartCoroutine(ChangeScene()); // 약간 대기 후 씬 이동
+    }
+    
+    public IEnumerator ChangeScene()
+    {
+        yield return new WaitForSecondsRealtime(3f); // 일단 임시로 3초 대기
         SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
     }
 }

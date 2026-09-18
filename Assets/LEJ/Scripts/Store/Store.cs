@@ -31,7 +31,6 @@ public class Store : MonoBehaviour
     [SerializeField] private float hackSuccessProbability = 0.5f;
     [SerializeField] private float hackFailDamage = 1f;
 
-
     private bool isHackAttempted;
     public bool IsHackAttempted => isHackAttempted;
 
@@ -71,16 +70,8 @@ public class Store : MonoBehaviour
     {
         if (!IsValidIndex(index))
             return;
-
         ItemSO item = shopItems[index];
-
-        if (GameManager.Instance.Credit < item.Price)
-            return;
-
-        GameManager.Instance.Credit -= item.Price;
-
         SpawnItem(item);
-
         shopItems[index] = null;
     }
 
@@ -130,25 +121,20 @@ public class Store : MonoBehaviour
     /// <summary>
     /// 해킹을 시도합니다.
     /// </summary>
-    public void TryHack()
+    public void TryHack(bool isSuccess)
     {
-        if (isHackAttempted)
-            return;
-
-        isHackAttempted = true;
-
-        if (UnityEngine.Random.value <= hackSuccessProbability)
+        if (isSuccess)
         {
             StartCoroutine(SpawnAllItems());
             OnHackSuccess?.Invoke();
-            return;
         }
-
-        playerStat.TakeDamage(hackFailDamage);
-        OnHackFailed?.Invoke();
+        else
+        {
+            playerStat.TakeDamage(hackFailDamage);
+            OnHackFailed?.Invoke();
+        }
     }
-
-
+    
     private bool IsValidIndex(int index)
     {
         return shopItems != null

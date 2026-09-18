@@ -11,7 +11,6 @@ public class SaveDataStruct
     public ProtocolCard.Protocol protocol;
     public Dictionary<SectorSO.SectorType, bool> clearedSector = new();
     public int credit;
-    public ItemSO item;
     public int[] cards;
 }
 
