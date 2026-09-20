@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static SectorSO;
 
 public static class GameTime
 {
@@ -77,12 +78,16 @@ public class GameManager : MonoBehaviour, ISaveable
         OnProtocolChanged?.Invoke();
     }
 
-    Dictionary<SectorSO.SectorType, bool> clearedSector = new Dictionary<SectorSO.SectorType, bool>();
-    public Dictionary<SectorSO.SectorType, bool> ClearedSector => clearedSector;
+    Dictionary<SceneController.Scene, bool> clearedSector = new Dictionary<SceneController.Scene, bool>();
+    public Dictionary<SceneController.Scene, bool> ClearedSector => clearedSector;
+
+    void Awake()
+    {
+        ClearedSectorDicInit();
+    }
 
     private void Start()
     {
-        ClearedSectorDicInit();
         SaveSlotManager.Instance.Register(this);
     }
     
@@ -96,8 +101,8 @@ public class GameManager : MonoBehaviour, ISaveable
     /// </summary>
     void ClearedSectorDicInit()
     {
-        for (int i = 0; i < (int)SectorSO.SectorType.Count; i++)
-            clearedSector.Add((SectorSO.SectorType)i, false);
+        for (int i = 0; i < (int)SceneController.Scene.Count; i++)
+            clearedSector.Add((SceneController.Scene)i, false);
     }
 
     public void RegisterSectorManagerEvent(SceneController.Scene curScene)
@@ -119,7 +124,7 @@ public class GameManager : MonoBehaviour, ISaveable
     /// <summary>
     /// SectorManager 로 부터 Sector 의 클리어 여부를 받습니다
     /// </summary>
-    public void OnSectorClear(SectorSO.SectorType sectorType)
+    public void OnSectorClear(SceneController.Scene sectorType)
     {
         //섹터 종료 시 현재 생명 저장
         life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
@@ -130,21 +135,32 @@ public class GameManager : MonoBehaviour, ISaveable
             InventoryManager.Instance.RegisterItemOnSectorClose(item);
 
         //상점의 경우 씬은 ShopA 로 설정되어있지만 두 번 방문하므로 끝쪽 ShopB 를 true 로 해줌
-        if (sectorType == SectorSO.SectorType.ShopA && clearedSector[sectorType])
-            clearedSector[SectorSO.SectorType.ShopB] = true;
+        if (sectorType == SceneController.Scene.ShopA && clearedSector[sectorType])
+            clearedSector[SceneController.Scene.ShopB] = true;
 
         clearedSector[sectorType] = true;
 
-        Debug.Log($"gameManager 에서 {sectorType} 이 clear true");
+        Debug_ClearedSectorLog();
+
         UnRegisterSectorManagerEvent();
+    }
+
+    private void Debug_ClearedSectorLog()
+    {
+        foreach (var element in clearedSector.Keys)
+        {
+            Debug.Log($"gameManager 의 cleared sector {element} 이 cleared {clearedSector[element]}");
+        }
     }
 
     /// <summary>
     /// SectorManager 로 부터 Sector 의 클리어 여부를 받습니다
     /// </summary>
-    public void OnSectorFailed(SectorSO.SectorType sectorType)
+    public void OnSectorFailed(SceneController.Scene sectorType)
     {
         clearedSector[sectorType] = false;
+
+        Debug_ClearedSectorLog();
         UnRegisterSectorManagerEvent();
     }
     

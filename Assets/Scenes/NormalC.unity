@@ -1283,7 +1283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.99968594
       objectReference: {fileID: 0}
     - target: {fileID: 7828221849376192967, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: gun
@@ -2270,6 +2270,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
   m_PrefabInstance: {fileID: 1468086305}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468756923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468756925}
+  - component: {fileID: 1468756924}
+  m_Layer: 0
+  m_Name: CurSectorRegister
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1468756924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468756923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f6182622b93bb449b3d358a546f500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CurSectorDataRegister
+  mySectorSO: {fileID: 11400000, guid: 3e6f69d8673c44840acf09493c645ab6, type: 2}
+--- !u!4 &1468756925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468756923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 115, y: 95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1495659952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22291,7 +22336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8bcb10cedc7674f9950a70938d3287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoToPrev
-  targetScene: 2
+  targetScene: 3
 --- !u!222 &4346047536528789022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39565,3 +39610,4 @@ SceneRoots:
   - {fileID: 1662249586}
   - {fileID: 739723735}
   - {fileID: 2036750469}
+  - {fileID: 1468756925}

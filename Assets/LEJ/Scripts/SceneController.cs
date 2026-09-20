@@ -31,6 +31,13 @@ public class SceneController : MonoBehaviour, ISaveable
 
         if (SaveSlotManager.Instance != null)
             SaveSlotManager.Instance.Register(this);
+
+        //SkipOpening PlayerPrefs 가 설정된 적 있다면
+        if (PlayerPrefs.GetInt(SkipOpeningKey, -1) > -1)
+            skipOpeningBttn.SetActive(true);
+        else
+            skipOpeningBttn.SetActive(false);
+
     }
 
     private void OnDestroy()
@@ -39,11 +46,14 @@ public class SceneController : MonoBehaviour, ISaveable
             SaveSlotManager.Instance.Unregister(this);
     }
 
+    public string SkipOpeningKey = "SkipOpening";
+    [SerializeField] GameObject skipOpeningBttn;
+
     // TODO: 스테이지별 숫자 적기
-    public enum Scene { None, Lobby, Map, 
+    public enum Scene { None, Intro, Lobby, Map, 
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
-        EventA, EventB, Store,
+        EventA, EventB, ShopA, ShopB,
         Boss,
         Count }
     public Scene prevScene = Scene.None;
@@ -55,12 +65,13 @@ public class SceneController : MonoBehaviour, ISaveable
         if (curScene != Scene.None)
             prevScene = curScene;
 
-        if (changeSceneRoutine != null)
+        //로비에 처음 들어오는 거라면 스킵 가능하게 PlayerPrefs 설정
+        if (sceneName == Scene.Lobby && PlayerPrefs.GetInt(SkipOpeningKey, -1) < 0)
         {
-            StopCoroutine(changeSceneRoutine);
-            changeSceneRoutine = null;
+            PlayerPrefs.SetInt(SkipOpeningKey, 0);
         }
-        changeSceneRoutine = StartCoroutine(ChangeSceneWithFadeIn(sceneName));
+
+        StartCoroutine(ChangeSceneWithFadeIn(sceneName));
     }
 
     Coroutine changeSceneRoutine;
@@ -83,13 +94,15 @@ public class SceneController : MonoBehaviour, ISaveable
         SoundManager.Instance.StopAllSFX(); // 재생 중인 효과음 전체 종료
 
         OnSceneChanged?.Invoke(curScene);
-        changeSceneRoutine = null;
     }
 
     public void StartBGM()
     {
         switch (curScene)
         {
+            case Scene.Intro:
+                SoundManager.Instance.PlayBGM(Sound_BGM.Intro, true, 3); //인트로 BGM 추가
+                break;
             case Scene.Lobby:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Lobby);
                 break;
