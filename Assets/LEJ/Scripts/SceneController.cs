@@ -50,7 +50,7 @@ public class SceneController : MonoBehaviour, ISaveable
     [SerializeField] GameObject skipOpeningBttn;
 
     // TODO: 스테이지별 숫자 적기
-    public enum Scene { None, Intro, Lobby, Map, 
+    public enum Scene { None, Opening, Lobby, Map, 
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
         EventA, EventB, ShopA, ShopB,
@@ -85,7 +85,10 @@ public class SceneController : MonoBehaviour, ISaveable
         
         yield return new WaitForSeconds(0.5f);
 
-        SceneManager.LoadScene(sceneName.ToString());
+        if (sceneName == Scene.ShopA || sceneName == Scene.ShopB)
+            SceneManager.LoadScene("Store");
+        else
+            SceneManager.LoadScene(sceneName.ToString());
         GameManager.Instance.ForcedRelease(); // Pause(false);
 
         curScene = sceneName;
@@ -100,7 +103,7 @@ public class SceneController : MonoBehaviour, ISaveable
     {
         switch (curScene)
         {
-            case Scene.Intro:
+            case Scene.Opening:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Intro, true, 3); //인트로 BGM 추가
                 break;
             case Scene.Lobby:

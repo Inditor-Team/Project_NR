@@ -1217,6 +1217,10 @@ PrefabInstance:
       propertyPath: clampMin.y
       value: -1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3807174220120179887, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4125229532989951642, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1231,7 +1235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99972165
+      value: 0.99968594
       objectReference: {fileID: 0}
     - target: {fileID: 7828221849376192967, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: gun
@@ -1292,11 +1296,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   bgmClips:
   - type: 1
-    clip: {fileID: 8300000, guid: fd8150ae1a8e3ba47a5f1d9fdb14e585, type: 3}
+    clip: {fileID: 8300000, guid: 705ec4cd22c912e4881c5bd4d682d0cf, type: 3}
   - type: 2
     clip: {fileID: 8300000, guid: f9e63b6d46777614e88bde6ca2889c4b, type: 3}
   - type: 3
     clip: {fileID: 8300000, guid: 27b87059a8178d24cbc8abb371d4879f, type: 3}
+  - type: 4
+    clip: {fileID: 8300000, guid: 03fd77da873bbbc44bc3faf8ada7ba04, type: 3}
   sfxClips:
   - type: 1
     clip: {fileID: 8300000, guid: 3f72a9a94acc93c44b464684438f4e1d, type: 3}
@@ -1311,7 +1317,7 @@ MonoBehaviour:
   - type: 6
     clip: {fileID: 8300000, guid: c242bda56642b1647b560707226fbad8, type: 3}
   - type: 7
-    clip: {fileID: 8300000, guid: 007b8240625ac694491b9c6eef2230c1, type: 3}
+    clip: {fileID: 8300000, guid: c2379a9574a5d934c9ebcd30d67cae04, type: 3}
   - type: 8
     clip: {fileID: 8300000, guid: ba1362517a6f6184b9b1a660e9298916, type: 3}
   - type: 9

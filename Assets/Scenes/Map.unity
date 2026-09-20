@@ -937,7 +937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99972165
+      value: 0.99968594
       objectReference: {fileID: 0}
     - target: {fileID: 6347301497467763399, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_Enabled
@@ -2558,8 +2558,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 964940749}
   m_HandleRect: {fileID: 964940748}
   m_Direction: 0
-  m_Value: -0.000000066745955
-  m_Size: 0.512153
+  m_Value: 0
+  m_Size: 0.51215297
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4877,7 +4877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8bcb10cedc7674f9950a70938d3287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoToPrev
-  targetScene: 1
+  targetScene: 2
 --- !u!1 &1537012178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5660,8 +5660,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1020074159}
   m_HandleRect: {fileID: 1020074158}
   m_Direction: 3
-  m_Value: 1.0000002
-  m_Size: 0.70866674
+  m_Value: 1
+  m_Size: 0.7086667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

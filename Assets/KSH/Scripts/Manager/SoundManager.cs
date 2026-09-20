@@ -52,6 +52,8 @@ public class SoundManager : MonoBehaviour
             if (instance == null)
                 instance = FindAnyObjectByType<SoundManager>();
 
+            DontDestroyOnLoad(instance);
+
             return instance;
         }
 

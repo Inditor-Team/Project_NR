@@ -41,6 +41,9 @@ public class OpeningController : MonoBehaviour
 
     private void Start()
     {
+        blackScreen.SetActive(true);
+        blackScreen.GetComponent<Animator>().enabled = false;
+
         redGoggleObject.SetActive(false);
 
         openingCoroutine = StartCoroutine(StartOpening());
@@ -69,8 +72,6 @@ public class OpeningController : MonoBehaviour
 
     private IEnumerator StartOpening()
     {
-        blackScreen.SetActive(true);
-
         yield return new WaitForSecondsRealtime(commandDelay);
 
         isCommand = true;
@@ -84,10 +85,13 @@ public class OpeningController : MonoBehaviour
         if (commandIndex < commands.Length)
         {
             writeText.Play(commands[commandIndex]);
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
+
             return;
         }
         else
         {
+            blackScreen.GetComponent<Animator>().enabled = true;
             writeText.gameObject.SetActive(false);
             npcInteractable.OnInteract();
             isCommand = false;

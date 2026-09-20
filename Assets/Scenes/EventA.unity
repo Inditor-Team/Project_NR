@@ -5080,6 +5080,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5843439243219640206, guid: 029b50a429ae77440b2ca290640ac62a, type: 3}
+      propertyPath: targetScene
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843439243219640206, guid: 029b50a429ae77440b2ca290640ac62a, type: 3}
       propertyPath: isEventScene
       value: 1
       objectReference: {fileID: 0}
