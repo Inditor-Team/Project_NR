@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8fcc4690e770944862f26532844ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exit
-  targetScene: 2
+  targetScene: 3
+  levelCardProvider: {fileID: 0}
   myModel: {fileID: 2464086517048987556}
   isEventScene: 0
 --- !u!1 &2464086517048987556

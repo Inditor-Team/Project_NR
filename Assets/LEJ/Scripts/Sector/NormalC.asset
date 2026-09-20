@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328350586aad97b42a770c4a8494fe46, type: 3}
   m_Name: NormalC
   m_EditorClassIdentifier: Assembly-CSharp::SectorSO
-  Scene: 5
-  Type: 3
+  Scene: 6
   PlayerSpanwPos: {x: 0, y: -7}
   EnemyData:
   - type: 2

@@ -32,7 +32,7 @@ public class Exit : MonoBehaviour
             SectorManager.Instance.OnSectorClear -= Appear;
     }
 
-    void Appear(SectorSO.SectorType type)
+    void Appear(SceneController.Scene type)
     {
         isAppear = true;
         myModel.SetActive(isAppear);

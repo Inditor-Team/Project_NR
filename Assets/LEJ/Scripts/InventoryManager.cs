@@ -48,7 +48,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public void SetCredit(int amount)
     {
         curCredit += amount;
-        OnCreditChanged();
+        OnCreditChanged?.Invoke();
     }
 
     #endregion

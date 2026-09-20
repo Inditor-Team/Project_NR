@@ -40,6 +40,11 @@ public class SectorManager : MonoBehaviour
         InventoryManager.Instance.SetCardStatOnSectorStart();
     }
 
+    public void RegisterCurSector(SectorSO curSectorSO)
+    {
+        this.curSectorSO = curSectorSO;
+        Debug.Log($"SectorManager 의 curSector 가 {curSectorSO.Scene} 으로 변경");
+    }
     public void SpawnEnemy()
     {
         if (curSectorSO == null)
@@ -82,20 +87,20 @@ public class SectorManager : MonoBehaviour
         ItemSpawner.Instance.SpawnItem(destroyedPos); //아이템 스폰 확률도 내부적으로 처리
     }
 
-    public event UnityAction<SectorSO.SectorType> OnSectorClear;
-    public event UnityAction<SectorSO.SectorType> OnSectorFail;
+    public event UnityAction<SceneController.Scene> OnSectorClear;
+    public event UnityAction<SceneController.Scene> OnSectorFail;
 
     public void SectorClear() // 맵 내의 적 전부 처리 시 실행
     {
         Debug.Log("Section Clear!");
-        OnSectorClear?.Invoke(curSectorSO.Type);
+        OnSectorClear?.Invoke(curSectorSO.Scene);
         GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 
     public void SectorFail()
     {
         Debug.Log("Section Fail!");
-        OnSectorFail?.Invoke(curSectorSO.Type);
+        OnSectorFail?.Invoke(curSectorSO.Scene);
         GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 }

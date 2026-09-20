@@ -18,7 +18,7 @@ public class GameFailUI : MonoBehaviour
             SectorManager.Instance.OnSectorFail -= Play;
     }
 
-    void Play(SectorSO.SectorType type)
+    void Play(SceneController.Scene type)
     {
         anim.enabled = true;
         Invoke("BackToMap", 1.1f);

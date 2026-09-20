@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Sound_BGM
+public enum Sound_BGM //인트로 추가 
 {
-    None, Lobby, Map, Stage1, Count
+    None, Intro, Lobby, Map, Stage1,Ending, Count 
 }
 
 public enum Sound_SFX
@@ -51,6 +51,8 @@ public class SoundManager : MonoBehaviour
         {
             if (instance == null)
                 instance = FindAnyObjectByType<SoundManager>();
+
+            DontDestroyOnLoad(instance);
 
             return instance;
         }
@@ -153,7 +155,7 @@ public class SoundManager : MonoBehaviour
         if (clip == null) return;
         if (bgmSource == null) InitializeAudioSources(); // 초기화 안됐을 경우 다시 초기화
         if (bgmSource.clip == clip && bgmSource.isPlaying) return; // 중복 재생 막기
-        
+
         if (fade && !isFading)
         {
             StartCoroutine(FadeBGM(clip, fadeTime)); // TODO: 코루틴 객체 참조 변수 추가 -> 재생 중인지 확인하기

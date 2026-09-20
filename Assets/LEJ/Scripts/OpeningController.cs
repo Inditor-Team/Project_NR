@@ -41,6 +41,9 @@ public class OpeningController : MonoBehaviour
 
     private void Start()
     {
+        blackScreen.SetActive(true);
+        blackScreen.GetComponent<Animator>().enabled = false;
+
         redGoggleObject.SetActive(false);
 
         openingCoroutine = StartCoroutine(StartOpening());
@@ -69,8 +72,6 @@ public class OpeningController : MonoBehaviour
 
     private IEnumerator StartOpening()
     {
-        blackScreen.SetActive(true);
-
         yield return new WaitForSecondsRealtime(commandDelay);
 
         isCommand = true;
@@ -84,10 +85,13 @@ public class OpeningController : MonoBehaviour
         if (commandIndex < commands.Length)
         {
             writeText.Play(commands[commandIndex]);
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
+
             return;
         }
         else
         {
+            blackScreen.GetComponent<Animator>().enabled = true;
             writeText.gameObject.SetActive(false);
             npcInteractable.OnInteract();
             isCommand = false;
@@ -143,8 +147,11 @@ public class OpeningController : MonoBehaviour
         StopAllCoroutines();
 
         writeText.Skip();
+        
+        //전환 될 때 어색한 부분이 있어 임의로 추가했습니다
+        writeText.gameObject.SetActive(false);
+        blackScreen.SetActive(true); 
 
-        blackScreen.SetActive(false);
         redGoggleObject.SetActive(false);
 
         FinishOpening();
@@ -160,7 +167,7 @@ public class OpeningController : MonoBehaviour
     
     public IEnumerator ChangeScene()
     {
-        yield return new WaitForSecondsRealtime(3f); // 일단 임시로 3초 대기
+        yield return new WaitForSecondsRealtime(1f); //1초로 살짝 수정했습니다!
         SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
     }
 }

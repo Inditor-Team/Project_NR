@@ -25,7 +25,7 @@ public class LevelCardProvider : MonoBehaviour
             SectorManager.Instance.OnSectorClear -= ProvideByUI; */
     }
 
-    void ProvideByUI(SectorSO.SectorType type)
+    void ProvideByUI(SceneController.Scene type)
     {
         ProvideByUI();
     }

@@ -41,7 +41,7 @@ public class EXPManager : MonoBehaviour
         levelCardProvider.ProvideByUI();
     }
 
-    void ProvideLevelCard(SectorSO.SectorType type)
+    void ProvideLevelCard(SceneController.Scene type)
     {
         if (levelCardProvider == null)
             return;

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328350586aad97b42a770c4a8494fe46, type: 3}
   m_Name: EventA
   m_EditorClassIdentifier: Assembly-CSharp::SectorSO
-  Scene: 9
-  Type: 7
+  Scene: 10
   PlayerSpanwPos: {x: 0, y: -7}
   EnemyData:
   - type: 1

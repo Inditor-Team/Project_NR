@@ -578,29 +578,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5302487836138550329, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73cb323e02e1acd4084aa4ae082014d0, type: 3}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 73cb323e02e1acd4084aa4ae082014d0, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -616,20 +612,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorB
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[1]'
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_ShopA
@@ -929,7 +937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.99968594
       objectReference: {fileID: 0}
     - target: {fileID: 6347301497467763399, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_Enabled
@@ -1753,8 +1761,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -1774,16 +1786,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_NormalB
@@ -2376,28 +2396,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -2413,20 +2425,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorB
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[1]'
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_NormalC
@@ -2842,8 +2866,12 @@ PrefabInstance:
       value: 0.754717
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -2863,16 +2891,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755508525078153460, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f71bd8ba0de2c884bb3334a5f6275641, type: 3}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_HardA
@@ -3140,6 +3180,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5302487836138550329, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0413765089e7d464681dcc7146b39c26, type: 3}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Type
       value: 1
@@ -3161,8 +3205,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0413765089e7d464681dcc7146b39c26, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -3182,16 +3230,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_EventA
@@ -3609,29 +3665,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5302487836138550329, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0413765089e7d464681dcc7146b39c26, type: 3}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0413765089e7d464681dcc7146b39c26, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -3647,16 +3699,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_EventB
@@ -4076,29 +4136,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5302487836138550329, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 88542ba43d8768848a5c75b5cfb67b87, type: 3}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 88542ba43d8768848a5c75b5cfb67b87, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -4114,16 +4170,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_MiddleBoss
@@ -4316,29 +4380,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5302487836138550329, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73cb323e02e1acd4084aa4ae082014d0, type: 3}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 73cb323e02e1acd4084aa4ae082014d0, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -4354,24 +4414,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorB
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorC
-      value: 6
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[1]'
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[2]'
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_ShopB
@@ -4801,7 +4877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8bcb10cedc7674f9950a70938d3287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoToPrev
-  targetScene: 1
+  targetScene: 2
 --- !u!1 &1537012178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5900,21 +5976,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5932,8 +5996,12 @@ PrefabInstance:
       value: 0.754717
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -5949,16 +6017,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755508525078153460, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f71bd8ba0de2c884bb3334a5f6275641, type: 3}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_HardB
@@ -6003,6 +6083,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1783541439}
     m_Modifications:
+    - target: {fileID: 34938304214145030, guid: 26cca2dec0ea86742a9a05129d602c24, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 34938304214145030, guid: 26cca2dec0ea86742a9a05129d602c24, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 903293143234859481, guid: 26cca2dec0ea86742a9a05129d602c24, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6417,28 +6505,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2003618866, guid: 1928ed71218a7864aa3725ed68e7d1a9, type: 3}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_FillMethod
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367180808959089646, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.88
-      objectReference: {fileID: 0}
     - target: {fileID: 5607547910220244031, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sceneName
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
@@ -6454,16 +6534,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: prevSectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmButton
       value: 
       objectReference: {fileID: 1849743705}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: 'prevSectors.Array.data[0]'
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7916420274779049387, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: m_Name
       value: Map_NormalD
@@ -6953,6 +7041,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6afba0ce3ea0d6b4fa0620c66afe51f3, type: 3}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: curSector
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: sceneName
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageName
       value: "\uB178\uBA40 A \uC2A4\uD14C\uC774\uC9C0"

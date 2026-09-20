@@ -9,7 +9,7 @@ public class SaveDataStruct
     public SceneController.Scene sectorName; // 섹터 명
     public bool isStolen; // 상점 도둑질했는지
     public ProtocolCard.Protocol protocol;
-    public Dictionary<SectorSO.SectorType, bool> clearedSector = new();
+    public Dictionary<SceneController.Scene, bool> clearedSector = new();
     public int credit;
     public int[] cards;
 }
