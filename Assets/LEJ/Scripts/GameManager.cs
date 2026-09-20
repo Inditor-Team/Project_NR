@@ -140,18 +140,10 @@ public class GameManager : MonoBehaviour, ISaveable
 
         clearedSector[sectorType] = true;
 
-        Debug_ClearedSectorLog();
 
         UnRegisterSectorManagerEvent();
     }
 
-    private void Debug_ClearedSectorLog()
-    {
-        foreach (var element in clearedSector.Keys)
-        {
-            Debug.Log($"gameManager 의 cleared sector {element} 이 cleared {clearedSector[element]}");
-        }
-    }
 
     /// <summary>
     /// SectorManager 로 부터 Sector 의 클리어 여부를 받습니다
@@ -160,7 +152,6 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         clearedSector[sectorType] = false;
 
-        Debug_ClearedSectorLog();
         UnRegisterSectorManagerEvent();
     }
     

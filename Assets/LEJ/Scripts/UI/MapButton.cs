@@ -14,23 +14,22 @@ public class MapButton : MonoBehaviour
     [SerializeField] Button stageAlertConfirmButton;
     [SerializeField] TMP_Text stageAlertConfirmText;
 
-    private void Start()
+    private void OnEnable()
     {
         bool canEnter = CanEnterStage();
 
         if (!canEnter)
         {
-            mapIcon.SetTrigger("Lock");
-            return; 
+            mapIcon.Play("Lock");
+            return;
         }
 
         //선행 스테이지를 막 깬 경우라면 Unlock 재생
-        if (canEnter && prevSectors.Length == 0 || canEnter && prevSectors.Contains(SceneController.Instance.prevScene))
-            mapIcon.SetTrigger("Unlock");
+        if (canEnter && prevSectors.Contains(SceneController.Instance.prevScene))
+            mapIcon.Play("Unlock");
         else
-            mapIcon.SetTrigger("Map");
+            mapIcon.Play("Map");
     }
-
     public void OnClick()
     {
         //이전 스테이지 A, B, C 중 하나 이상 클리어 되었다면
