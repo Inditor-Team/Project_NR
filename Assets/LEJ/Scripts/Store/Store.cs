@@ -41,6 +41,26 @@ public class Store : MonoBehaviour
     {
         GenerateItems();
     }
+    
+    public int SlotCount => shopItems != null ? shopItems.Length : 0;
+
+    // 슬롯에 판매 중인 아이템이 있으면 true
+    public bool TryGetItem(int index, out ItemSO item)
+    {
+        item = null;
+        if (!IsValidIndex(index))
+            return false;
+
+        item = shopItems[index];
+        return true;
+    }
+
+    // 구매 등으로 비었거나, 슬롯 범위를 벗어난 경우 true
+    public bool IsSoldOut(int index)
+    {
+        return !IsValidIndex(index);
+    }
+
 
     /// <summary>
     /// 중복되지 않는 아이템을 무작위로 뽑습니다.
@@ -66,13 +86,14 @@ public class Store : MonoBehaviour
     /// 선택한 아이템을 구매합니다
     /// </summary>
     /// <param name="index"></param>
-    public void BuyItem(int index)
+    public bool BuyItem(int index)
     {
         if (!IsValidIndex(index))
-            return;
-        ItemSO item = shopItems[index];
-        SpawnItem(item);
+            return false;
+
+        SpawnItem(shopItems[index]);
         shopItems[index] = null;
+        return true;
     }
 
     /// <summary>
@@ -123,6 +144,10 @@ public class Store : MonoBehaviour
     /// </summary>
     public void TryHack(bool isSuccess)
     {
+        if (isHackAttempted)
+            return;
+        isHackAttempted = true;
+
         if (isSuccess)
         {
             StartCoroutine(SpawnAllItems());

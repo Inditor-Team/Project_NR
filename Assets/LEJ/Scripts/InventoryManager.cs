@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public event UnityAction<int> OnGetCard;
 
     //현재 가진 재화
-    private int curCredit;
+    [SerializeField] private int curCredit;
     public int CurCredit => curCredit;
     public event UnityAction OnCreditChanged;
 

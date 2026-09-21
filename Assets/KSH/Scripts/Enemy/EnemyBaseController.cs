@@ -31,7 +31,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
     // 기본 속성
     protected float defaultSpeed;
     protected float maxHealth;
-    protected float health;
+    [SerializeField] protected float health;
     protected float damage;
     
     protected bool isPaused; // 정지 관련

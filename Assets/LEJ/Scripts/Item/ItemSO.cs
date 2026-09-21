@@ -6,11 +6,11 @@ public class ItemSO : ScriptableObject
     public enum ItemType 
     { 
         None, 
-        GetCredit, //ÀçÈ­
-        GetHP, //Ã¼·Â È¸º¹
-        GetCard, //Ä«µå È¹µæ
-        DamagedCore, //¼Õ»óµÈ ÄÚ¾î
-        BlankBullet, //°øÆ÷Åº
+        GetCredit, //ì¬í™”
+        GetHP, //ì²´ë ¥ íšŒë³µ
+        GetCard, //ì¹´ë“œ íšë“
+        DamagedCore, //ì†ìƒëœ ì½”ì–´
+        BlankBullet, //ê³µí¬íƒ„
         Count 
     }
     public string Name;
@@ -18,6 +18,6 @@ public class ItemSO : ScriptableObject
     public int Price;
     public int weight;
     public ItemType Type;
-    public float Amount; //Ã¼·Â È¸º¹ ¾ç, °øÆ÷Åº ¹üÀ§, ¼Õ»óµÈ ÄÚ¾î ½ºÅÈ »ó½Â °ª¿¡ ¾²ÀÓ
-    public float SubAmount; //¼Õ»óµÈ ÄÚ¾î ½ºÅÈ »ó½Â ½Ã°£¿¡ ¾²ÀÓ
+    public float Amount; //ì²´ë ¥ íšŒë³µ ì–‘, ê³µí¬íƒ„ ë²”ìœ„, ì†ìƒëœ ì½”ì–´ ìŠ¤íƒ¯ ìƒìŠ¹ ê°’ì— ì“°ì„
+    public float SubAmount; //ì†ìƒëœ ì½”ì–´ ìŠ¤íƒ¯ ìƒìŠ¹ ì‹œê°„ì— ì“°ì„
 }

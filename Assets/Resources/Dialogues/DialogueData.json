@@ -314,20 +314,20 @@
         {
           "text": "OPT_STORE_NPC_3_1",
           "nextId": "store_npc_3_1",
-          "conditionId": "",
-          "failNextId": ""
+          "conditionId": "SHOP_ITEM_AVAILABLE:0",
+          "failNextId": "store_npc_3_soldout"
         },
         {
           "text": "OPT_STORE_NPC_3_2",
           "nextId": "store_npc_3_2",
-          "conditionId": "",
-          "failNextId": ""
+          "conditionId": "SHOP_ITEM_AVAILABLE:1",
+          "failNextId": "store_npc_3_soldout"
         },
         {
           "text": "OPT_STORE_NPC_3_3",
           "nextId": "store_npc_3_3",
-          "conditionId": "",
-          "failNextId": ""
+          "conditionId": "SHOP_ITEM_AVAILABLE:2",
+          "failNextId": "store_npc_3_soldout"
         }
       ],
       "phase": "store",
@@ -345,7 +345,7 @@
         {
           "text": "OPT_STORE_NPC_3_1_1",
           "nextId": "store_npc_4_success_item1",
-          "conditionId": "HAS_CREDIT_FOR_ITEM:20",
+          "conditionId": "HAS_CREDIT_FOR_ITEM:0",
           "failNextId": "store_npc_4_fail"
         },
         {
@@ -370,7 +370,7 @@
         {
           "text": "OPT_STORE_NPC_3_1_1",
           "nextId": "store_npc_4_success_item2",
-          "conditionId": "HAS_CREDIT_FOR_ITEM:50",
+          "conditionId": "HAS_CREDIT_FOR_ITEM:1",
           "failNextId": "store_npc_4_fail"
         },
         {
@@ -395,7 +395,7 @@
         {
           "text": "OPT_STORE_NPC_3_1_1",
           "nextId": "store_npc_4_success_item3",
-          "conditionId": "HAS_CREDIT_FOR_ITEM:100",
+          "conditionId": "HAS_CREDIT_FOR_ITEM:2",
           "failNextId": "store_npc_4_fail"
         },
         {
@@ -411,6 +411,18 @@
       "entryRedirectId": ""
     },
     {
+      "id": "store_npc_3_soldout",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_SOLD_OUT",
+      "nextId": "",
+      "options": [],
+      "phase": "store",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
       "id": "store_npc_4_success_item1",
       "npcId": "storeNPC",
       "name": "NAME_STORE_OWNER",
@@ -418,7 +430,7 @@
       "nextId": "",
       "options": [],
       "phase": "store",
-      "onEnterEvents": ["BUY_ITEM:common_item1"],
+      "onEnterEvents": ["BUY_ITEM:0"],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -430,7 +442,7 @@
       "nextId": "",
       "options": [],
       "phase": "store",
-      "onEnterEvents": ["BUY_ITEM:common_item2"],
+      "onEnterEvents": ["BUY_ITEM:1"],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -442,7 +454,7 @@
       "nextId": "",
       "options": [],
       "phase": "store",
-      "onEnterEvents": ["BUY_ITEM:common_item3"],
+      "onEnterEvents": ["BUY_ITEM:2"],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -492,7 +504,7 @@
       "options": [],
       "phase": "store",
       "onEnterEvents": [
-        "GIVE_RANDOM_ITEM:hack_pool:1"
+        "STORE_HACK:success"
       ],
       "entryConditionId": "",
       "entryRedirectId": ""
@@ -505,7 +517,9 @@
       "nextId": "store_npc_8",
       "options": [],
       "phase": "store",
-      "onEnterEvents": [],
+      "onEnterEvents": [
+        "STORE_HACK:fail"
+      ],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
