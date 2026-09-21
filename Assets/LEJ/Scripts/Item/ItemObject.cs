@@ -5,13 +5,13 @@ using UnityEngine.AdaptivePerformance;
 using UnityEngine.WSA;
 
 /// <summary>
-/// ¿ùµå »ó ¾ÆÀÌÅÛ ¿ÀºêÁ§Æ®ÀÔ´Ï´Ù.
+/// ì›”ë“œ ìƒ ì•„ì´í…œ ì˜¤ë¸Œì íŠ¸ì…ë‹ˆë‹¤.
 /// </summary>
 public class ItemObject : MonoBehaviour, IInteractable
 {
     [SerializeField] SpriteRenderer sprite;
 
-    //ÇöÀç ¿ÀºêÁ§Æ®ÀÇ ¾ÆÀÌÅÛ Á¤º¸
+    //í˜„ì¬ ì˜¤ë¸Œì íŠ¸ì˜ ì•„ì´í…œ ì •ë³´
     [SerializeField] ItemSO myItem;
     public ItemSO MyItem => myItem;
 
@@ -63,7 +63,7 @@ public class ItemObject : MonoBehaviour, IInteractable
         if (holder == null)
             return;
 
-        if (!isInteracted) //ÇÃ·¹ÀÌ¾î¿¡ ÀÇÇØ »óÈ£ÀÛ¿ë µÆÀ» ¶§ ÁÖ¿öÁü
+        if (!isInteracted) //í”Œë ˆì´ì–´ì— ì˜í•´ ìƒí˜¸ì‘ìš© ëì„ ë•Œ ì£¼ì›Œì§
             return;
 
         StopFloatAnim();

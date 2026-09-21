@@ -4146,7 +4146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99968594
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8684915198725219236, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_IsActive
@@ -4472,7 +4472,7 @@ PrefabInstance:
     - target: {fileID: 7042261072849041251, guid: 7ecf6867ecb4b9e4cb3e1fb25d3cb409, type: 3}
       propertyPath: curSectorSO
       value: 
-      objectReference: {fileID: 11400000, guid: 84f518f14f48a67479c0000716f892e8, type: 2}
+      objectReference: {fileID: 11400000, guid: 593e11a197104f54f86dfb92e551afd1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5185,52 +5185,6 @@ Sprite:
   m_Bones: []
   m_ScriptableObjects: []
   m_SpriteID: 
---- !u!1 &1957779152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1957779153}
-  - component: {fileID: 1957779154}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1957779153
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957779152}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1957779154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957779152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6ddaf2e99923649a2b165050197d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 0}
-  curProtocol: 3
 --- !u!1001 &1994385674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36306,7 +36260,6 @@ SceneRoots:
   - {fileID: 1154452070}
   - {fileID: 989727139}
   - {fileID: 986808464}
-  - {fileID: 1957779153}
   - {fileID: 116994664}
   - {fileID: 1122478293}
   - {fileID: 296527934}

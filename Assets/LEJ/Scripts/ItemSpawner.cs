@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ¸Ê ³» ¾ÆÀÌÅÛ ½ºÆù°ú µğ½ºÆùÀ» °ü¸®
+/// ë§µ ë‚´ ì•„ì´í…œ ìŠ¤í°ê³¼ ë””ìŠ¤í°ì„ ê´€ë¦¬
 /// </summary>
 public class ItemSpawner : MonoBehaviour
 {
@@ -32,34 +32,34 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnItem(Vector2 spawnPos)
     {
-        //¾ÆÀÌÅÛ ½ºÆù È®·ü Àû¿ë
+        //ì•„ì´í…œ ìŠ¤í° í™•ë¥  ì ìš©
         if (Random.value > itemSpawnProbability)
             return;
 
-        //Ç® ¸Å´ÏÀú¿¡¼­ ¿ÀºêÁ§Æ® °¡Á®¿À±â
+        //í’€ ë§¤ë‹ˆì €ì—ì„œ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
         GameObject newGO = PoolManager.Instance.Get(itemObjectPrefab);
         newGO.transform.position = spawnPos;
 
-        //°¡ÁßÄ¡ Àû¿ë ÇØ ½ºÆù µÉ ¾ÆÀÌÅÛ °í¸£±â
+        //ê°€ì¤‘ì¹˜ ì ìš© í•´ ìŠ¤í° ë  ì•„ì´í…œ ê³ ë¥´ê¸°
         ItemSO pickItem = PickItem();
 
         if (pickItem == null)
             return;
         
-        //ItemObject ·Î ¾ÆÀÌÅÛ Á¤º¸ ¼¼ÆÃ
+        //ItemObject ë¡œ ì•„ì´í…œ ì •ë³´ ì„¸íŒ…
         newGO.GetComponent<ItemObject>().SetItem(pickItem);
 
-        //½ºÆù À§Ä¡ ¼¼ÆÃ
+        //ìŠ¤í° ìœ„ì¹˜ ì„¸íŒ…
         newGO.SetActive(true);
     }
 
     public GameObject SpawnItem(ItemSO item, Transform spawnPos)
     {
-        //Ç® ¸Å´ÏÀú¿¡¼­ ¿ÀºêÁ§Æ® °¡Á®¿À±â
+        //í’€ ë§¤ë‹ˆì €ì—ì„œ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
         GameObject newGO = PoolManager.Instance.Get(itemObjectPrefab);
         newGO.transform.position = spawnPos.position;
         
-        //ItemObject ·Î ¾ÆÀÌÅÛ Á¤º¸ ¼¼ÆÃ
+        //ItemObject ë¡œ ì•„ì´í…œ ì •ë³´ ì„¸íŒ…
         newGO.GetComponent<ItemObject>().SetItem(item);
 
         newGO.SetActive(true);
@@ -69,12 +69,12 @@ public class ItemSpawner : MonoBehaviour
 
     public void DespawnItem(GameObject instance)
     {
-        //Ç® ¸Å´ÏÀú¿¡¼­ ¿ÀºêÁ§Æ® ¹İÈ¯
+        //í’€ ë§¤ë‹ˆì €ì—ì„œ ì˜¤ë¸Œì íŠ¸ ë°˜í™˜
         PoolManager.Instance.Release(itemObjectPrefab, instance);
     }
 
     /// <summary>
-    /// °¡ÁßÄ¡¸¦ Àû¿ëÇØ ¾ÆÀÌÅÛÀ» °í¸¨´Ï´Ù
+    /// ê°€ì¤‘ì¹˜ë¥¼ ì ìš©í•´ ì•„ì´í…œì„ ê³ ë¦…ë‹ˆë‹¤
     /// </summary>
     /// <returns></returns>
     ItemSO PickItem()

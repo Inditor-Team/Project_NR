@@ -6,20 +6,8 @@ public class DialogueEventBinder : MonoBehaviour
 {
     private OpeningController openingCon;
     private readonly HashSet<string> flags = new();
-    private struct ShopItemData
-    {
-        public string NameKey; // 아이템 이름 로컬라이제이션 키
-        public int Price;
-    }
-
-    private static readonly Dictionary<string, ShopItemData> shopItems = new()
-    {
-        ["common_item1"] = new ShopItemData { NameKey = "ITEM_NAME_COMMON1", Price = 100},
-        ["common_item2"] = new ShopItemData { NameKey = "ITEM_NAME_COMMON2", Price = 200},
-        ["common_item3"] = new ShopItemData { NameKey = "ITEM_NAME_COMMON3", Price = 300},
-    };
-    
     private int resultInt; // 값 변환에 사용 
+    private static Store store;
     
     private void Awake()
     {
@@ -36,6 +24,7 @@ public class DialogueEventBinder : MonoBehaviour
         DialogueEventDispatcher.RegisterEvent("SET_FLAG", HandleSetFlag);
         DialogueEventDispatcher.RegisterEvent("OPEN_UI", HandleOpenUI);
         DialogueEventDispatcher.RegisterEvent("BUY_ITEM", HandleBuyItem);
+        DialogueEventDispatcher.RegisterEvent("STORE_HACK", HandleStoreHack);
         DialogueEventDispatcher.RegisterEvent("NPC_ACTION", HandleNPC);
     }
 
@@ -45,7 +34,29 @@ public class DialogueEventBinder : MonoBehaviour
         DialogueEventDispatcher.RegisterCondition("CHECK_FLAG", CheckFlag);
         DialogueEventDispatcher.RegisterCondition("RANDOM_CHANCE", CheckRandomChance);
         DialogueEventDispatcher.RegisterCondition("HAS_CREDIT_FOR_ITEM", CheckHasCreditForItem);
+        DialogueEventDispatcher.RegisterCondition("SHOP_ITEM_AVAILABLE", CheckShopItemAvailable); // 추가
     }
+    
+    # region 상점 관련
+    private static Store GetStore()
+    {
+        if (store == null) // Unity null 체크: 씬 전환으로 파괴된 경우도 재탐색
+            store = FindFirstObjectByType<Store>();
+        return store;
+    }
+
+    private static bool TryParseSlot(string[] args, out int slot)
+    {
+        slot = -1;
+        if (args == null || args.Length == 0 || !int.TryParse(args[0], out slot))
+        {
+            Debug.LogError("상점 슬롯 인덱스 변환 실패");
+            return false;
+        }
+        return true;
+    }
+    
+    # endregion
 
     # region 이벤트 핸들러
     
@@ -111,29 +122,45 @@ public class DialogueEventBinder : MonoBehaviour
     
     private void HandleBuyItem(string[] args)
     {
-        string itemId = args[0];
-        if (!shopItems.TryGetValue(itemId, out var item))
+        if (!TryParseSlot(args, out int slot)) return;
+
+        Store s = GetStore();
+        if (s == null)
         {
-            Debug.LogError($"등록되지 않은 상점 아이템 ID : {itemId}");
+            Debug.LogError("Store를 찾을 수 없음"); 
             return;
         }
 
-        InventoryManager.Instance.SetCredit(item.Price);
-        Debug.Log($"아이템 구매 완료 : {itemId} / 가격 : {item.Price}");
-
-        // TODO: 아이템 지급 메서드
-    }
-
-    public static string GetShopItemLabel(string itemId)
-    {
-        if (!shopItems.TryGetValue(itemId, out var item))
+        if (!s.TryGetItem(slot, out ItemSO item))
         {
-            Debug.LogError($"등록되지 않은 상점 아이템 ID : {itemId}");
-            return itemId;
+            Debug.LogError($"구매 불가 슬롯 : {slot}");
+            return;
         }
 
-        string itemName = LocalizationManager.Instance.Get(item.NameKey);
-        return LocalizationManager.Instance.GetFormat("OPT_STORE_ITEM_LABEL", itemName, item.Price);
+        // 혹시 모르니 한 번 더 조건 체크
+        if (InventoryManager.Instance.CurCredit < item.Price)
+        {
+            Debug.LogWarning($"크레딧 부족 : {item.Name} / {item.Price}");
+            return;
+        }
+
+        InventoryManager.Instance.SetCredit(-item.Price); // ※ 아래 확인 사항 참고
+        s.BuyItem(slot);
+
+        Debug.Log($"아이템 구매 완료 : {item.Name} / 가격 : {item.Price}");
+    }
+
+    // 해킹 결과는 대화 JSON의 RANDOM_CHANCE 분기 결과를 Store에 전달
+    private void HandleStoreHack(string[] args)
+    {
+        Store s = GetStore();
+        if (s == null)
+        {
+            Debug.LogError("Store를 찾을 수 없음"); 
+            return;
+        }
+
+        s.TryHack(args.Length > 0 && args[0] == "success");
     }
 
     private void HandleSetFlag(string[] args)
@@ -152,17 +179,23 @@ public class DialogueEventBinder : MonoBehaviour
     # endregion 
 
     #region 조건 체크
+    private bool CheckShopItemAvailable(string[] args)
+    {
+        if (!TryParseSlot(args, out int slot)) return false;
+
+        Store s = GetStore();
+        return s != null && !s.IsSoldOut(slot);
+    }
+
     private bool CheckHasCreditForItem(string[] args)
     {
-        string itemId = args[0];
-        if (!shopItems.TryGetValue(itemId, out var item))
-        {
-            Debug.LogError($"등록되지 않은 상점 아이템 ID : {itemId}");
-            return false;
-        }
+        if (!TryParseSlot(args, out int slot)) return false;
+
+        Store s = GetStore();
+        if (s == null || !s.TryGetItem(slot, out ItemSO item)) return false;
 
         bool canBuy = InventoryManager.Instance.CurCredit >= item.Price;
-        Debug.Log($"아이템 구매 가능 검사 / {itemId} / 가격 : {item.Price} / 결과 : {canBuy}");
+        Debug.Log($"구매 가능 검사 / {item.Name} / 가격 : {item.Price} / 결과 : {canBuy}");
         return canBuy;
     }
 

@@ -72,7 +72,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
     public void PlayDialogue(DialogueStruct entry)
     {
         currentEntry = entry;
-        inputText = LocalizationManager.Instance.Get(entry.text);
+        inputText = ResolveText(entry.text);
         HideAllOptions();
         
         // 클릭 인디케이터 활성화
@@ -119,7 +119,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
             optionsObject[i].SetActive(active);
             if (!active) continue;
 
-            optionsText[i].text = LocalizationManager.Instance.Get(options[i].text);
+            optionsText[i].text = ResolveText(options[i].text);
             optionsObject[i].GetComponent<TextWidthFitter>().UpdateWidth(); // 옵션 크기 설정
 
             DialogueOptionStruct capturedOption = options[i]; // nextId 대신 옵션 전체를 캡처
@@ -256,4 +256,70 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
                 OnAdvanceClicked();   // 옵션 없는 노드만 클릭으로 진행
         }
     }
+
+    #region 상점 관련
+
+    // 동적 텍스트
+    private static readonly Dictionary<string, int> shopOptionSlots = new()
+    {
+        ["OPT_STORE_NPC_3_1"] = 0,
+        ["OPT_STORE_NPC_3_2"] = 1,
+        ["OPT_STORE_NPC_3_3"] = 2,
+    };
+
+    private static readonly Dictionary<string, int> shopConfirmSlots = new()
+    {
+        ["DLG_STORE_NPC_3_1"] = 0,
+        ["DLG_STORE_NPC_3_2"] = 1,
+        ["DLG_STORE_NPC_3_3"] = 2,
+    };
+
+    private Store store;
+
+    private bool IsShopScene()
+    {
+        if (SceneController.Instance == null)
+            return false;
+
+        return SceneController.Instance.curScene == SceneController.Scene.ShopA
+               || SceneController.Instance.curScene == SceneController.Scene.ShopB;
+    }
+
+    private bool TryGetShopItem(int slot, out ItemSO item)
+    {
+        item = null;
+        if (store == null) store = FindFirstObjectByType<Store>();
+
+        return store != null && store.TryGetItem(slot, out item);
+    }
+
+    // 텍스트 키를 실제 문자열로 변환
+    private string ResolveText(string key)
+    {
+        var loc = LocalizationManager.Instance;
+
+        // 상점 스테이지가 아닐 경우
+        if (!IsShopScene())
+            return loc.Get(key);
+
+        // 옵션 버튼: "아이템1 - 100" / 품절
+        if (shopOptionSlots.TryGetValue(key, out int optSlot))
+        {
+            return TryGetShopItem(optSlot, out ItemSO item)
+                ? loc.GetFormat("OPT_STORE_ITEM_LABEL", item.Name, item.Price)
+                : loc.Get("OPT_STORE_ITEM_SOLD_OUT");
+        }
+
+        // 확인 대사: "아이템1, 구매할 거야?"
+        if (shopConfirmSlots.TryGetValue(key, out int cfmSlot))
+        {
+            return TryGetShopItem(cfmSlot, out ItemSO item)
+                ? loc.GetFormat(key, item.Name)
+                : loc.Get("OPT_STORE_ITEM_SOLD_OUT");
+        }
+
+        return loc.Get(key);
+    }
+
+    #endregion
 }
