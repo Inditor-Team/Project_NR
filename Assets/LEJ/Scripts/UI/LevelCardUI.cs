@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -63,6 +64,5 @@ public class LevelCardUI : MonoBehaviour
             curElement.choiceButton.onClick.RemoveAllListeners(); 
 
         curElement.choiceButton.onClick.AddListener(() => { buttonAction?.Invoke(); }); //버튼 이벤트 매핑
-        curElement.choiceButton.onClick.AddListener(() => { SceneController.Instance.ChangeScene(SceneController.Scene.Map); });
     }
 }

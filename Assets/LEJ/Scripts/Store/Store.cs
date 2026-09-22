@@ -23,8 +23,8 @@ public class Store : MonoBehaviour
     [SerializeField] private Transform itemSpawnPoint;
 
     [Header("Item Rail")]
-    [SerializeField] private float railDistance = 3f;
-    [SerializeField] private float railDuration = 0.7f;
+    [SerializeField] private float railDistance = 10f;
+    [SerializeField] private float railDuration = 0.5f;
 
     [Header("Hack")]
     [Range(0f, 1f)]
@@ -101,13 +101,7 @@ public class Store : MonoBehaviour
     /// </summary>
     public void SpawnItem(ItemSO item)
     {
-        ItemObject itemObject = Instantiate(
-            itemObjectPrefab,
-            itemSpawnPoint.position,
-            Quaternion.identity
-        );
-
-        itemObject.SetItem(item);
+        GameObject itemObject = ItemSpawner.Instance.SpawnItem(item, itemSpawnPoint);
 
         StartCoroutine(MoveItem(itemObject.transform));
     }
@@ -137,6 +131,8 @@ public class Store : MonoBehaviour
 
         if (item != null)
             item.position = endPos;
+
+        StopAllCoroutines();
     }
 
     /// <summary>

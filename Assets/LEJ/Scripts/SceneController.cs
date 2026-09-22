@@ -78,6 +78,10 @@ public class SceneController : MonoBehaviour, ISaveable
 
     IEnumerator ChangeSceneWithFadeIn(Scene sceneName)
     {
+        //섹터가 끝나고 이동 되는 Map 씬인지만 체크, 클리어 된 섹터인지 체크
+        if (sceneName == Scene.Map && GameManager.Instance.ClearedSector[curScene])
+            GameManager.Instance.OnChangeSceneWhenSectorCleared();
+
         var fade = GameObject.FindGameObjectWithTag("Fade");
 
         if (fade != null)
@@ -89,6 +93,7 @@ public class SceneController : MonoBehaviour, ISaveable
             SceneManager.LoadScene("Store");
         else
             SceneManager.LoadScene(sceneName.ToString());
+
         GameManager.Instance.ForcedRelease(); // Pause(false);
 
         curScene = sceneName;

@@ -9,6 +9,11 @@ public class BlankBulletEffect : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float duration = 0.4f;
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     /// <summary>
     /// 지정된 반지름 크기로 이펙트를 재생합니다.
     /// </summary>
@@ -17,6 +22,7 @@ public class BlankBulletEffect : MonoBehaviour
         // 기본 원형 Sprite의 지름을 기준으로 크기 설정
         transform.localScale = Vector3.one * radius * 2f;
 
+        gameObject.SetActive(true);
         StartCoroutine(FadeOut());
     }
 
@@ -39,6 +45,6 @@ public class BlankBulletEffect : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 43072969}
   - component: {fileID: 43072970}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 65586802}
   - component: {fileID: 65586801}
   - component: {fileID: 65586800}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1641,7 +1641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 388527207}
   - component: {fileID: 388527208}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3867,7 +3867,7 @@ GameObject:
   - component: {fileID: 864834976}
   - component: {fileID: 864834975}
   - component: {fileID: 864834974}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4920,7 +4920,7 @@ GameObject:
   - component: {fileID: 1014673623}
   - component: {fileID: 1014673622}
   - component: {fileID: 1014673621}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9700,7 +9700,7 @@ GameObject:
   - component: {fileID: 1857434809}
   - component: {fileID: 1857434811}
   - component: {fileID: 1857434810}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: GameStartSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10831,7 +10831,7 @@ GameObject:
   - component: {fileID: 2025973225}
   - component: {fileID: 2025973224}
   - component: {fileID: 2025973223}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11257,7 +11257,7 @@ GameObject:
   - component: {fileID: 2063333731}
   - component: {fileID: 2063333733}
   - component: {fileID: 2063333732}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: HowtoSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -68,7 +68,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         if (SaveSlotManager.Instance != null)
             SaveSlotManager.Instance.Unregister(this);
 
-        if (recoverProbability > 0f) //회복 알고리즘 카드가 있어 이벤트 등록이 됐었다면 해지
+        if (recoverProbability > 0f && SectorManager.Instance != null) //회복 알고리즘 카드가 있어 이벤트 등록이 됐었다면 해지
             SectorManager.Instance.OnDestroyedEnemy -= RecoveryAlgorithm;
     }
 
@@ -81,7 +81,7 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     void SetDefaultStat()
     {
         SetStat(Stat.MoveSpeed, 3f);
-        SetStat(Stat.RollSpeed, 3f);
+        SetStat(Stat.RollSpeed, 3.5f);
         SetStat(Stat.RollDuration, 0.3f);
         SetStat(Stat.RollRate, 0.5f);
 
@@ -166,7 +166,6 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     /// <param name="value"></param>
     public void AddStat(Stat type, float value)
     {
-        Debug.Log($"{type} 이 {statDic[type]} 에서 {statDic[type] + value} 로 변경 됨");
         statDic[type] += value;
 
         //최대 체력 이상으로 가질 수 없습니다
@@ -215,8 +214,6 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
         Stat[] increaseStats =
         {
             Stat.MoveSpeed,
-            Stat.RollSpeed,
-            Stat.RollDuration,
     
             Stat.SwordSwingSpeed,
             Stat.SwordDamage,

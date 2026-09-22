@@ -115,14 +115,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (curInteractable != null)
+            return;
+
         //현재 상호작용 가능한 오브젝트와 트리거 됐다면 캐싱합니다
         curInteractable = collision.gameObject.GetComponent<IInteractable>();
+        if (curInteractable != null)
+            Debug.Log($"플레이어가 {collision.gameObject}와 상호작용 할 수 있음");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         //기존에 캐싱했던 상호작용 가능한 오브젝트와 트리커 Exit 됐다면 캐싱을 풉니다
-        if (curInteractable != null && curInteractable == collision.gameObject.GetComponent<IInteractable>())
+        if (curInteractable != null)
             curInteractable = null;
     }
 
@@ -268,6 +273,7 @@ public class PlayerController : MonoBehaviour
         if (curInteractable == null)
             return;
 
+        Debug.Log($"플레이어가 상호작용을 시도");
         curInteractable.OnInteract();
     }
 
