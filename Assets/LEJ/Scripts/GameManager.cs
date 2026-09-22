@@ -51,21 +51,11 @@ public class GameManager : MonoBehaviour, ISaveable
         }
     }
 
-    private int credit = 0; //게임 내 재화
-    public event UnityAction<int> OnCreditChanged;
-
-    public int Credit
-    {
-        get => credit;
-        set
-        {
-            credit = value;
-            OnCreditChanged?.Invoke(credit);
-        }
-    }
-
     private float life = 5;
     public float Life => life;
+
+    private ItemSO tempItemCaching;
+    public ItemSO TempItemCaching => tempItemCaching;
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
@@ -126,22 +116,11 @@ public class GameManager : MonoBehaviour, ISaveable
     /// </summary>
     public void OnSectorClear(SceneController.Scene sectorType)
     {
-        //섹터 종료 시 현재 생명 저장
-        life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
-
-        //섹터 종료 시 마지막으로 들고 있던 아이템을 인벤토리 매니저에 등록
-        ItemSO item = player.GetComponent<PlayerInventory>().CurItem;
-        if (item != null)
-            InventoryManager.Instance.RegisterItemOnSectorClose(item);
-
         //상점의 경우 씬은 ShopA 로 설정되어있지만 두 번 방문하므로 끝쪽 ShopB 를 true 로 해줌
         if (sectorType == SceneController.Scene.ShopA && clearedSector[sectorType])
             clearedSector[SceneController.Scene.ShopB] = true;
 
         clearedSector[sectorType] = true;
-
-
-        UnRegisterSectorManagerEvent();
     }
 
 
@@ -151,10 +130,22 @@ public class GameManager : MonoBehaviour, ISaveable
     public void OnSectorFailed(SceneController.Scene sectorType)
     {
         clearedSector[sectorType] = false;
-
-        UnRegisterSectorManagerEvent();
     }
-    
+
+    /// <summary>
+    /// 섹터 클리어가 됐을 때 씬 변경 시 남아있는 생명, 아이템을 이어받습니다
+    /// </summary>
+    public void OnChangeSceneWhenSectorCleared()
+    {
+        //씬 변경 시 현재 생명 저장
+        life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
+
+        //씬 변경 시 마지막으로 들고 있던 아이템을 인벤토리 매니저에 등록
+        ItemSO item = player.GetComponent<PlayerInventory>().CurItem;
+
+        tempItemCaching = item;
+    }
+
     public void ExitGame()
     {
         #if UNITY_EDITOR 

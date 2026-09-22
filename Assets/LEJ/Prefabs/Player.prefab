@@ -5862,7 +5862,8 @@ MonoBehaviour:
   enemyBulletLayer:
     serializedVersion: 2
     m_Bits: 512
-  blankBulletEffectPrefab: {fileID: 5342179875135399557}
+  blankBulletEffect: {fileID: 5342179875135399557}
+  damagedCoreDuration: 10
 --- !u!114 &1685491047641687502
 MonoBehaviour:
   m_ObjectHideFlags: 0

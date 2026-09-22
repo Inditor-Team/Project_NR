@@ -30,7 +30,7 @@ public class LevelCardProvider : MonoBehaviour
         ProvideByUI();
     }
 
-    public void ProvideByUI()
+    public void ProvideByUI(bool isSectorClear = true)
     {
         if (ui == null)
             return;
@@ -51,6 +51,11 @@ public class LevelCardProvider : MonoBehaviour
             onClickAction += () => {
                 InventoryManager.Instance.GetCard(choosen[index].Id);
                 ui.CloseUI();
+
+                if (isSectorClear) //섹터 클리어의 경우 씬 전환 또한 제공
+                    SceneController.Instance.ChangeScene(SceneController.Scene.Map);
+                else
+                    GameManager.Instance.ReleasePause();
             }; 
 
             //ui 에게 설정을 명령

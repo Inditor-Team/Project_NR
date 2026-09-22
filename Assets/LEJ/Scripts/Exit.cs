@@ -44,8 +44,14 @@ public class Exit : MonoBehaviour
         if (collision.tag != "Player")
             return;
 
+        
         if (isAppear)
         {
+            GameObject playerObj = GameManager.Instance.Player;
+            //빨려들어가게
+            playerObj.transform.position = Vector3.Lerp(playerObj.transform.position, transform.position, Time.deltaTime * 10f);
+
+
             if (!isEventScene && levelCardProvider != null)
                 levelCardProvider.ProvideByUI();
             else

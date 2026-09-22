@@ -8,13 +8,13 @@ public class CreditText : MonoBehaviour
     void Start()
     {
         text = GetComponent<TMP_Text>();
-        GameManager.Instance.OnCreditChanged += UpdateText;
+        InventoryManager.Instance.OnCreditChanged += UpdateText;
 
-        UpdateText(GameManager.Instance.Credit);
+        UpdateText();
     }
 
-    void UpdateText(int credit)
+    void UpdateText()
     {
-        text.text = $"Å©·¹µ÷: {credit}";
+        text.text = $"Credit {InventoryManager.Instance.CurCredit}$";
     }
 }

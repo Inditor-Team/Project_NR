@@ -56,6 +56,8 @@ public class ItemObject : MonoBehaviour, IInteractable
         DoFloatAnim();
     }
 
+    float timer = 0f;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         IItemHolder holder = collision.GetComponent<IItemHolder>();
@@ -66,8 +68,10 @@ public class ItemObject : MonoBehaviour, IInteractable
         if (!isInteracted) //플레이어에 의해 상호작용 됐을 때 주워짐
             return;
 
+        timer += Time.deltaTime * 2; //안 먹을 수록 배속 걸기
+
         StopFloatAnim();
-        transform.position = Vector2.MoveTowards(transform.position, collision.transform.position, magneticMoveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, collision.transform.position, magneticMoveSpeed * Time.deltaTime + timer);
 
         if (Vector2.Distance(transform.position, collision.transform.position) < 0.1f)
         {
@@ -82,5 +86,6 @@ public class ItemObject : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         isInteracted = true;
+        timer = 0f;
     }
 }

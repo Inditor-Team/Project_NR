@@ -96,26 +96,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
     #endregion
 
     #region Item
-    /// <summary>
-    /// 섹터가 끝날 시에 플레이어 슬롯에 들고있는 아이템 정보를 저장합니다
-    /// </summary>
-    /// <param name="item"></param>
-    public void RegisterItemOnSectorClose(ItemSO item)
-    {
-        this.curItem = item;
-    }
-
-    /// <summary>
-    /// 섹터 시작 시에 플레이어 슬롯에 들고 있게 합니다
-    /// </summary>
-    public void SetItemOnSectorStart()
-    {
-        if (curItem == null)
-            return;
-
-        GameManager.Instance.Player.GetComponent<PlayerInventory>().HoldItem(curItem);
-        curItem = null;
-    }
 
     /// <summary>
     /// 섹터 시작 시에 보유하고 있는 카드의 능력치를 적용합니다

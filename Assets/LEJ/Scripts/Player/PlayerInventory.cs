@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 /// <summary>
 /// 플레이어의 인벤토리 입니다.
@@ -15,7 +12,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     [Header("Blank Bullet")]
     [SerializeField] private float blankBulletRadius = 10f;
     [SerializeField] private LayerMask enemyBulletLayer;
-    [SerializeField] private BlankBulletEffect blankBulletEffectPrefab;
+    [SerializeField] private BlankBulletEffect blankBulletEffect;
     
     [Header("Damaged Core")]
     [SerializeField] private float damagedCoreDuration = 10f;
@@ -23,22 +20,39 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     private ItemSO curItem;
     public ItemSO CurItem => curItem;
 
+    void Start()
+    {
+        SetItemByGameManager();
+    }
+
+    /// <summary>
+    /// 씬이 바꼈을 때 게임매니저에 캐싱된 사용되지 않은 아이템을 가져옵니다
+    /// </summary>
+    void SetItemByGameManager()
+    {
+        curItem = null;
+
+        if (GameManager.Instance.TempItemCaching == null)
+            return;
+
+        HoldItem(GameManager.Instance.TempItemCaching);
+    }
+
     /// <summary>
     /// 획득 할 때 플레이어의 슬롯이 비어있지 않다면, 기존 아이템을 땅에 떨구고 새로운 아이템을 슬롯에 장착합니다.
     /// </summary>
     /// <param name="itemObject"></param>
     public void HoldItem(ItemObject itemObject)
     {
-        if (itemObject.MyItem == null)
-        {
-            Debug.Log($"{itemObject.gameObject.name} : item object 의 my item 이 null");
+        ItemSO newItem = itemObject.MyItem;
+
+        if (newItem == null)
             return;
-        }
 
         //만약 재화 아이템이라면 획득 시 바로 사용
         if (itemObject.MyItem.Type == ItemSO.ItemType.GetCredit)
         {
-            GameManager.Instance.Credit += (int)itemObject.MyItem.Amount;
+            InventoryManager.Instance.SetCredit((int)itemObject.MyItem.Amount);
             return;
         }
 
@@ -47,10 +61,10 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
         {
             //현재 아이템을 월드 내 스폰 해 뱉어내기
             ItemSpawner.Instance.SpawnItem(curItem, itemObject.transform);
-            curItem = itemObject.MyItem; //월드에 있던 아이템을 슬롯에 장착
         }
-        else //아이템을 들고 있지 않다면 그대로 슬롯에 장착
-            curItem = itemObject.MyItem; //슬롯에 장착 
+
+        //아이템을 들고 있지 않다면 그대로 슬롯에 장착
+        curItem = newItem; //슬롯에 장착 
 
         if (ui != null)
             ui.UpdateUI(curItem);
@@ -79,10 +93,10 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 playerStat.UseDamagedCore(curItem.Amount, damagedCoreDuration);
                 break;
             case ItemSO.ItemType.GetCard:
-                levelCardProvider.ProvideByUI();
+                levelCardProvider.ProvideByUI(false);
                 break;
             case ItemSO.ItemType.GetCredit:
-                GameManager.Instance.Credit += (int)curItem.Amount;
+                InventoryManager.Instance.SetCredit((int)curItem.Amount);
                 break;
             case ItemSO.ItemType.GetHP:
                 playerStat.EarnLife(curItem.Amount);
@@ -116,13 +130,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 bullet.Expire();
         }
 
-        BlankBulletEffect effect = Instantiate(
-            blankBulletEffectPrefab,
-            transform.position,
-            Quaternion.identity
-        );
-
-        effect.Play(blankBulletRadius);
+        blankBulletEffect.Play(blankBulletRadius);
     }
 
 }

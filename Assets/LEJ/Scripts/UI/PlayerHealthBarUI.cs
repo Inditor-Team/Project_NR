@@ -16,6 +16,11 @@ public class PlayerHealthBar : MonoBehaviour
         OnUpdateStat(PlayerStat.Stat.Life, GameManager.Instance.Life);
     }
 
+    private void OnDestroy()
+    {
+        stat.OnUpdateStat -= OnUpdateStat;
+    }
+
     bool doOnceAtUpdate = false;
     private void Update()
     {
@@ -36,6 +41,7 @@ public class PlayerHealthBar : MonoBehaviour
     void UpdateHealthBar()
     {
         slider.value = stat.StatDic[PlayerStat.Stat.Life];
+        Debug.Log($"PlayerHealthBarUI: 플레이어 체력은 {stat.StatDic[PlayerStat.Stat.Life]} slider.value 는 {slider.value}");
     }
 
     float increaseAmount = 50f;
