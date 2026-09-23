@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 2
   CardIcon: {fileID: 21300000, guid: 6770ad6de0388e8489644750505a1d35, type: 3}
   type: 2
-  CardName: "\uD68C\uBCF5 \uC54C\uACE0\uB9AC\uC998i"
+  CardName: "\uD68C\uBCF5 \uC54C\uACE0\uB9AC\uC998 i"
   CardDescription: "\uC801 \uCC98\uCE58 \uC2DC \uC77C\uC815 \uD655\uB960\uB85C \uCCB4\uB825\uC744
     \uD68C\uBCF5\uD55C\uB2E4"
   Elements:
