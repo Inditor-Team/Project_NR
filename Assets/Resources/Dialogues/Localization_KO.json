@@ -51,6 +51,13 @@
     {"key": "OPT_STORE_NPC_3_1_2", "value": "아니오"},
     {"key": "OPT_STORE_ITEM_LABEL", "value": "{0} - {1}"},
     {"key": "OPT_STORE_ITEM_SOLD_OUT", "value": "품절"},
+
+    {"key": "TEMP_COMMENT_3_1", "value": "아래로 상점2(재방문) NPC 대사입니다"},
+    {"key": "DLG_STORE_NPC_NO_HACK_LEAVE", "value": "“다음이 마더코어네.\n힘내라.”"},
+    {"key": "DLG_STORE_NPC_HACK_WARN", "value": "“다음엔 그러지 마”"},
+    {"key": "DLG_STORE_NPC_DEAD_REVISIT_1", "value": "단말기의 전원이 꺼져있다..."},
+    {"key": "DLG_STORE_NPC_DEAD_REVISIT_2", "value": "영원히 켜지지 않을 것 같다."},
+    {"key": "DLG_STORE_NPC_AGAIN", "value": "“또 거래할래?”"},
     
     {"key": "TEMP_COMMENT_4", "value": "아래로 이벤트A NPC 대사입니다"},
     {"key": "DLG_EVENT_NPC_A_1", "value": "깨진 정비 포드다.\n...아직 작동 중인듯하다."},

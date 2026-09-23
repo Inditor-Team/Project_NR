@@ -281,7 +281,6 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     public void SaveDataTo(SaveDataStruct data)
     {
         data.statDic = statDic;
-        data.isStolen = false; // TODO: 상점 훔치는 지
     }
 
     public void LoadDataFrom(SaveDataStruct data)

@@ -34,9 +34,6 @@ public class Store : MonoBehaviour
     private bool isHackAttempted;
     public bool IsHackAttempted => isHackAttempted;
 
-    public event UnityAction OnHackSuccess;
-    public event UnityAction OnHackFailed;
-
     private void Start()
     {
         GenerateItems();
@@ -147,12 +144,10 @@ public class Store : MonoBehaviour
         if (isSuccess)
         {
             StartCoroutine(SpawnAllItems());
-            OnHackSuccess?.Invoke();
         }
         else
         {
             playerStat.TakeDamage(hackFailDamage);
-            OnHackFailed?.Invoke();
         }
     }
     

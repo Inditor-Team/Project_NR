@@ -8,6 +8,7 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     private HashSet<string> flags = new();
     private int resultInt; // 값 변환에 사용 
     private static Store store;
+    public bool storeHackFlag, attemptHack; // 상점 해킹 관련 플래그
     public static DialogueEventBinder Instance { get; private set; }
     
     private void Awake()
@@ -28,6 +29,8 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     private void Start()
     {
         SaveSlotManager.Instance.Register(this);
+        storeHackFlag = false;
+        attemptHack = false;
     }
     
     private void OnDestroy()
@@ -54,7 +57,7 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
         DialogueEventDispatcher.RegisterCondition("CHECK_FLAG", CheckFlag);
         DialogueEventDispatcher.RegisterCondition("RANDOM_CHANCE", CheckRandomChance);
         DialogueEventDispatcher.RegisterCondition("HAS_CREDIT_FOR_ITEM", CheckHasCreditForItem);
-        DialogueEventDispatcher.RegisterCondition("SHOP_ITEM_AVAILABLE", CheckShopItemAvailable); // 추가
+        DialogueEventDispatcher.RegisterCondition("SHOP_ITEM_AVAILABLE", CheckShopItemAvailable);
     }
     
     # region 상점 관련
@@ -170,7 +173,6 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
         Debug.Log($"아이템 구매 완료 : {item.Name} / 가격 : {item.Price}");
     }
 
-    // 해킹 결과는 대화 JSON의 RANDOM_CHANCE 분기 결과를 Store에 전달
     private void HandleStoreHack(string[] args)
     {
         Store s = GetStore();
@@ -180,7 +182,19 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
             return;
         }
 
-        s.TryHack(args.Length > 0 && args[0] == "success");
+        bool success = args.Length > 0 && args[0] == "success";
+        s.TryHack(success);
+
+        flags.Add("store_hack_attempt"); // 해킹 시도 플래그
+        attemptHack = true;
+
+        if (success)
+        {
+            flags.Add("store_hack_success"); // 해킹 성공 플래그
+            storeHackFlag = true;
+        }
+
+        Debug.Log($"상점 해킹 플래그 저장 : success={success} / attemptHack={attemptHack} / storeHackFlag={storeHackFlag}");
     }
 
     private void HandleSetFlag(string[] args)
@@ -194,6 +208,15 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     private void HandleOpenUI(string[] args)
     {
         Debug.Log("UI 열기 : " + args[0]); // 리스크 카드 표기, 능력치 변화 띄우기??
+
+        if (args[0].Equals("RiskCardSelect"))
+        {
+            // 리스트 카드 표시
+        }
+        else if (args[0].Equals("StatChangePopup"))
+        {
+            // 능력치 변화 관련, UI 표기? 그냥 능력치 변화만?
+        }
     }
 
     # endregion 
@@ -264,13 +287,15 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     public void SaveDataTo(SaveDataStruct data)
     {
         data.flags = flags;
-        Debug.Log("SaveDataTo flags");
+        data.storeHackFlag = storeHackFlag;
+        data.attemptHack = attemptHack;
     }
 
     public void LoadDataFrom(SaveDataStruct data)
     {
         flags = data.flags;
-        Debug.Log("LoadDataFrom flags");
+        storeHackFlag = data.storeHackFlag;
+        attemptHack = data.attemptHack;
     }
     
     # endregion
