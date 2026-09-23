@@ -1,13 +1,13 @@
 using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾îÀÇ ÀÎº¥Åä¸® ÀÔ´Ï´Ù.
+/// í”Œë ˆì´ì–´ì˜ ì¸ë²¤í† ë¦¬ ì…ë‹ˆë‹¤.
 /// </summary>
 public class PlayerInventory : MonoBehaviour, IItemHolder
 {
     [SerializeField] ItemSlotUI ui;
-    [SerializeField] PlayerStat playerStat; //ÃßÈÄ ¸Å´ÏÀú¿¡¼­ Player ÂüÁ¶ ½Ã ±×ÂÊÀ¸·Î ¿¬°á
-    [SerializeField] LevelCardProvider levelCardProvider; //ÃßÈÄ ¸Ê¸Å´ÏÀú¿¡¼­ ÂüÁ¶ÇÏ±â
+    [SerializeField] PlayerStat playerStat; //ì¶”í›„ ë§¤ë‹ˆì €ì—ì„œ Player ì°¸ì¡° ì‹œ ê·¸ìª½ìœ¼ë¡œ ì—°ê²°
+    [SerializeField] LevelCardProvider levelCardProvider; //ì¶”í›„ ë§µë§¤ë‹ˆì €ì—ì„œ ì°¸ì¡°í•˜ê¸°
 
     [Header("Blank Bullet")]
     [SerializeField] private float blankBulletRadius = 10f;
@@ -26,7 +26,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     }
 
     /// <summary>
-    /// ¾ÀÀÌ ¹Ù²¼À» ¶§ °ÔÀÓ¸Å´ÏÀú¿¡ Ä³½ÌµÈ »ç¿ëµÇÁö ¾ÊÀº ¾ÆÀÌÅÛÀ» °¡Á®¿É´Ï´Ù
+    /// ì”¬ì´ ë°”ê¼ˆì„ ë•Œ ê²Œì„ë§¤ë‹ˆì €ì— ìºì‹±ëœ ì‚¬ìš©ë˜ì§€ ì•Šì€ ì•„ì´í…œì„ ê°€ì ¸ì˜µë‹ˆë‹¤
     /// </summary>
     void SetItemByGameManager()
     {
@@ -39,7 +39,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     }
 
     /// <summary>
-    /// È¹µæ ÇÒ ¶§ ÇÃ·¹ÀÌ¾îÀÇ ½½·ÔÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é, ±âÁ¸ ¾ÆÀÌÅÛÀ» ¶¥¿¡ ¶³±¸°í »õ·Î¿î ¾ÆÀÌÅÛÀ» ½½·Ô¿¡ ÀåÂøÇÕ´Ï´Ù.
+    /// íšë“ í•  ë•Œ í”Œë ˆì´ì–´ì˜ ìŠ¬ë¡¯ì´ ë¹„ì–´ìˆì§€ ì•Šë‹¤ë©´, ê¸°ì¡´ ì•„ì´í…œì„ ë•…ì— ë–¨êµ¬ê³  ìƒˆë¡œìš´ ì•„ì´í…œì„ ìŠ¬ë¡¯ì— ì¥ì°©í•©ë‹ˆë‹¤.
     /// </summary>
     /// <param name="itemObject"></param>
     public void HoldItem(ItemObject itemObject)
@@ -49,29 +49,29 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
         if (newItem == null)
             return;
 
-        //¸¸¾à ÀçÈ­ ¾ÆÀÌÅÛÀÌ¶ó¸é È¹µæ ½Ã ¹Ù·Î »ç¿ë
+        //ë§Œì•½ ì¬í™” ì•„ì´í…œì´ë¼ë©´ íšë“ ì‹œ ë°”ë¡œ ì‚¬ìš©
         if (itemObject.MyItem.Type == ItemSO.ItemType.GetCredit)
         {
-            InventoryManager.Instance.SetCredit((int)itemObject.MyItem.Amount);
+            InventoryManager.Instance.AddCredit((int)itemObject.MyItem.Amount);
             return;
         }
 
-        //ÀÌ¹Ì ¾ÆÀÌÅÛÀ» µé°í ÀÖ´Ù¸é, È¹µæÇÏ·Á´Â ¾ÆÀÌÅÛ°ú ±³Ã¼
+        //ì´ë¯¸ ì•„ì´í…œì„ ë“¤ê³  ìˆë‹¤ë©´, íšë“í•˜ë ¤ëŠ” ì•„ì´í…œê³¼ êµì²´
         if (curItem != null)
         {
-            //ÇöÀç ¾ÆÀÌÅÛÀ» ¿ùµå ³» ½ºÆù ÇØ ¹ñ¾î³»±â
+            //í˜„ì¬ ì•„ì´í…œì„ ì›”ë“œ ë‚´ ìŠ¤í° í•´ ë±‰ì–´ë‚´ê¸°
             ItemSpawner.Instance.SpawnItem(curItem, itemObject.transform);
         }
 
-        //¾ÆÀÌÅÛÀ» µé°í ÀÖÁö ¾Ê´Ù¸é ±×´ë·Î ½½·Ô¿¡ ÀåÂø
-        curItem = newItem; //½½·Ô¿¡ ÀåÂø 
+        //ì•„ì´í…œì„ ë“¤ê³  ìˆì§€ ì•Šë‹¤ë©´ ê·¸ëŒ€ë¡œ ìŠ¬ë¡¯ì— ì¥ì°©
+        curItem = newItem; //ìŠ¬ë¡¯ì— ì¥ì°© 
 
         if (ui != null)
             ui.UpdateUI(curItem);
     }
 
     /// <summary>
-    /// ÀÎº¥Åä¸®¸Å´ÏÀú¸¦ ÅëÇØ ÀÌÀü ¾À¿¡¼­ µé°íÀÖ´ø ¾ÆÀÌÅÛÀ» ¹Ù·Î ÀåÂøÇÕ´Ï´Ù
+    /// ì¸ë²¤í† ë¦¬ë§¤ë‹ˆì €ë¥¼ í†µí•´ ì´ì „ ì”¬ì—ì„œ ë“¤ê³ ìˆë˜ ì•„ì´í…œì„ ë°”ë¡œ ì¥ì°©í•©ë‹ˆë‹¤
     /// </summary>
     /// <param name="itemSO"></param>
     public void HoldItem(ItemSO itemSO)
@@ -96,7 +96,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 levelCardProvider.ProvideByUI(false);
                 break;
             case ItemSO.ItemType.GetCredit:
-                InventoryManager.Instance.SetCredit((int)curItem.Amount);
+                InventoryManager.Instance.AddCredit((int)curItem.Amount);
                 break;
             case ItemSO.ItemType.GetHP:
                 playerStat.EarnLife(curItem.Amount);
@@ -114,7 +114,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
     }
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾î ÁÖº¯ÀÇ Àû ÅºÈ¯À» Á¦°ÅÇÕ´Ï´Ù.
+    /// í”Œë ˆì´ì–´ ì£¼ë³€ì˜ ì  íƒ„í™˜ì„ ì œê±°í•©ë‹ˆë‹¤.
     /// </summary>
     private void UseBlankBullet()
     {

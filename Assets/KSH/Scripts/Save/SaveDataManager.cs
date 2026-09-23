@@ -7,11 +7,13 @@ public class SaveDataStruct
     // 프로토콜 타입, 크레딧, 보유 아이템? -> 플레이어 데이터 클래스를 아예 따로 생성??
     public Dictionary<PlayerStat.Stat, float> statDic = new(); // 스탯 통째로 저장
     public SceneController.Scene sectorName; // 섹터 명
-    public bool isStolen; // 상점 도둑질했는지
+    public bool storeHackFlag; // 상점 도둑질했는지
+    public bool attemptHack;
     public ProtocolCard.Protocol protocol;
     public Dictionary<SceneController.Scene, bool> clearedSector = new();
     public int credit;
     public int[] cards;
+    public HashSet<string> flags; // 대화 플래그
 }
 
 public class SaveDataManager : MonoBehaviour

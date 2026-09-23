@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour, ISaveable
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
-
     public event UnityAction OnProtocolChanged;
 
     public void SetProtocol(ProtocolCard.Protocol protocol)

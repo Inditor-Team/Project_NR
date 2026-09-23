@@ -79,7 +79,7 @@ public class DialogueDataLoad
             if (blocked && !string.IsNullOrEmpty(entry.entryRedirectId))
             {
                 // 대화 노드 리다이렉트
-                RequestNext(entry.entryRedirectId);
+                RequestNext(entry.entryRedirectId, true);
                 return;
             }
         }

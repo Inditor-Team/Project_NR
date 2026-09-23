@@ -518,7 +518,8 @@
       "options": [],
       "phase": "store",
       "onEnterEvents": [
-        "STORE_HACK:fail"
+        "STORE_HACK:fail",
+        "SET_FLAG:store_hack_failed"
       ],
       "entryConditionId": "",
       "entryRedirectId": ""
@@ -560,6 +561,81 @@
       "onEnterEvents": [
         "SET_FLAG:shop_terminal_dead"
       ],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "store2_npc_0",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_NO_HACK_LEAVE",
+      "nextId": "store2_npc_again",
+      "options": [],
+      "phase": "store2",
+      "onEnterEvents": [],
+      "entryConditionId": "CHECK_FLAG:store_hack_attempt",
+      "entryRedirectId": "store2_npc_hackcheck"
+    },
+    {
+      "id": "store2_npc_hackcheck",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_DEAD_REVISIT_1",
+      "nextId": "store2_dead_2",
+      "options": [],
+      "phase": "store2",
+      "onEnterEvents": [],
+      "entryConditionId": "CHECK_FLAG:store_hack_failed",
+      "entryRedirectId": "store2_npc_warncheck"
+    },
+    {
+      "id": "store2_npc_warncheck",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_HACK_WARN",
+      "nextId": "",
+      "options": [],
+      "phase": "store2",
+      "onEnterEvents": [
+        "SET_FLAG:store_hack_warned"
+      ],
+      "entryConditionId": "CHECK_FLAG:store_hack_warned",
+      "entryRedirectId": "store2_npc_again"
+    },
+    {
+      "id": "store2_dead_2",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_DEAD_REVISIT_2",
+      "nextId": "",
+      "options": [],
+      "phase": "store2",
+      "onEnterEvents": [],
+      "entryConditionId": "",
+      "entryRedirectId": ""
+    },
+    {
+      "id": "store2_npc_again",
+      "npcId": "storeNPC",
+      "name": "NAME_STORE_OWNER",
+      "text": "DLG_STORE_NPC_AGAIN",
+      "nextId": "",
+      "options": [
+        {
+          "text": "OPT_STORE_NPC_2_1",
+          "nextId": "store_npc_2",
+          "conditionId": "",
+          "failNextId": ""
+        },
+        {
+          "text": "OPT_STORE_NPC_2_2",
+          "nextId": "",
+          "conditionId": "",
+          "failNextId": ""
+        }
+      ],
+      "phase": "store2",
+      "onEnterEvents": [],
       "entryConditionId": "",
       "entryRedirectId": ""
     },
@@ -670,7 +746,7 @@
       "options": [],
       "phase": "eventA",
       "onEnterEvents": [
-        "ADD_CREDIT:50",
+        "ADD_CREDIT:20",
         "SET_FLAG:eventA_pod_used"
       ],
       "entryConditionId": "",
