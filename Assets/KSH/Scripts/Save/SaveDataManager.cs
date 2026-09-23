@@ -12,6 +12,7 @@ public class SaveDataStruct
     public Dictionary<SceneController.Scene, bool> clearedSector = new();
     public int credit;
     public int[] cards;
+    public HashSet<string> flags; // 대화 플래그
 }
 
 public class SaveDataManager : MonoBehaviour

@@ -670,7 +670,7 @@
       "options": [],
       "phase": "eventA",
       "onEnterEvents": [
-        "ADD_CREDIT:50",
+        "ADD_CREDIT:20",
         "SET_FLAG:eventA_pod_used"
       ],
       "entryConditionId": "",

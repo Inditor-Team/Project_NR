@@ -28,7 +28,7 @@ public class SaveSlotUIItem : MonoBehaviour
     private void HandleClick()
     {
         string msg = SaveSlotManager.Instance.CurrentMode == SaveLoadMode.Save ?
-            $"슬롯 {SlotIndex}에 세이브 하시겠습니까?" : $"슬롯 {SlotIndex}를 로드하시겠습니까?";
+            $"슬롯 {SlotIndex + 1}에 세이브 하시겠습니까?" : $"슬롯 {SlotIndex + 1}를 로드하시겠습니까?";
         
         UIManager.Instance.SetMsgPanel(msg,  () =>
         {
@@ -36,6 +36,7 @@ public class SaveSlotUIItem : MonoBehaviour
             if (!success) // 세이브 혹은 로드 실패
             {
                 Debug.LogError("세이브 슬롯 클릭 이벤트 처리 실패");
+                UIManager.Instance.SetMsgPanel("처리에 실패하였습니다.", UIManager.Instance.HideMsgPanel);
                 return;
             }
             

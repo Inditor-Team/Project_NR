@@ -2,17 +2,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 대화 데이터 이벤트 관련, 이벤트 등록 및 조건 체크
-public class DialogueEventBinder : MonoBehaviour
+public class DialogueEventBinder : MonoBehaviour, ISaveable
 {
     private OpeningController openingCon;
-    private readonly HashSet<string> flags = new();
+    private HashSet<string> flags = new();
     private int resultInt; // 값 변환에 사용 
     private static Store store;
+    public static DialogueEventBinder Instance { get; private set; }
     
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         RegisterEvents();
         RegisterConditions();
+    }
+    
+    private void Start()
+    {
+        SaveSlotManager.Instance.Register(this);
+    }
+    
+    private void OnDestroy()
+    {
+        SaveSlotManager.Instance.Unregister(this);
     }
 
     private void RegisterEvents()
@@ -238,4 +258,20 @@ public class DialogueEventBinder : MonoBehaviour
     }
     
     #endregion
+    
+    # region 세이브 관련
+    
+    public void SaveDataTo(SaveDataStruct data)
+    {
+        data.flags = flags;
+        Debug.Log("SaveDataTo flags");
+    }
+
+    public void LoadDataFrom(SaveDataStruct data)
+    {
+        flags = data.flags;
+        Debug.Log("LoadDataFrom flags");
+    }
+    
+    # endregion
 }
