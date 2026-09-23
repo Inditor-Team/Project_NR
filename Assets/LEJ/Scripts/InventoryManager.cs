@@ -45,9 +45,15 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public ItemSO CurItem => curItem;
 
     #region Credit
-    public void SetCredit(int amount)
+    public void AddCredit(int addAmount)
     {
-        curCredit += amount;
+        curCredit += addAmount;
+        OnCreditChanged?.Invoke();
+    }
+    
+    public void SetCredit(int newAmount)
+    {
+        curCredit = newAmount;
         OnCreditChanged?.Invoke();
     }
 

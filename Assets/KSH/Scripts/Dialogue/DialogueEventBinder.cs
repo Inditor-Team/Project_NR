@@ -110,7 +110,7 @@ public class DialogueEventBinder : MonoBehaviour
     {
         Debug.Log("크레딧 변경 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
-            InventoryManager.Instance.SetCredit(resultInt);
+            InventoryManager.Instance.AddCredit(resultInt);
         else
             Debug.LogError("크레딧 조건 체크 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
@@ -144,7 +144,7 @@ public class DialogueEventBinder : MonoBehaviour
             return;
         }
 
-        InventoryManager.Instance.SetCredit(-item.Price); // ※ 아래 확인 사항 참고
+        InventoryManager.Instance.AddCredit(-item.Price);
         s.BuyItem(slot);
 
         Debug.Log($"아이템 구매 완료 : {item.Name} / 가격 : {item.Price}");
