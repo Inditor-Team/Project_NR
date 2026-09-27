@@ -1351,11 +1351,11 @@ PrefabInstance:
       objectReference: {fileID: 1112763877}
     - target: {fileID: 7261124725291619734, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.07273
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7261124725291619734, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.28783
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7261124725291619734, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2505,7 +2505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99968594
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7828221849376192967, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: gun

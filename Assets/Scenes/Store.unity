@@ -2356,6 +2356,10 @@ PrefabInstance:
       propertyPath: playerStat
       value: 
       objectReference: {fileID: 665934134}
+    - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
+      propertyPath: levelCardProvider
+      value: 
+      objectReference: {fileID: 1320493248}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4212,7 +4216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99968594
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8684915198725219236, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_IsActive
@@ -4228,6 +4232,78 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
+--- !u!1001 &1320493247
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 942101534827865380, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_Name
+      value: LevelCardProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356750427694622704, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 7612211323032773998}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+--- !u!114 &1320493248 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2356750427694622704, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+  m_PrefabInstance: {fileID: 1320493247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc7e0d6ba269124e8634b28fd001334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelCardProvider
 --- !u!1 &1325682588
 GameObject:
   m_ObjectHideFlags: 0
@@ -36394,3 +36470,4 @@ SceneRoots:
   - {fileID: 1994385674}
   - {fileID: 1406649325}
   - {fileID: 1325682590}
+  - {fileID: 1320493247}

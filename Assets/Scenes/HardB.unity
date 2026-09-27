@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99968594
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7828221849376192967, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: gun
@@ -697,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 5843439243219640206, guid: 029b50a429ae77440b2ca290640ac62a, type: 3}
       propertyPath: levelCardProvider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1457850258}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1019,6 +1019,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed6e6a421641dc49962376458a7b696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelCardUI
+--- !u!114 &472093178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322358806892604327, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+  m_PrefabInstance: {fileID: 472093176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac05e3bdf0052146a81d20dba223ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
 --- !u!1001 &533665954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1872,6 +1883,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+--- !u!114 &1457850258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2356750427694622704, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+  m_PrefabInstance: {fileID: 1457850257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc7e0d6ba269124e8634b28fd001334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelCardProvider
 --- !u!1 &1475896422
 GameObject:
   m_ObjectHideFlags: 0
@@ -9428,7 +9450,7 @@ PrefabInstance:
     - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: ui
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 472093178}
     - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: playerStat
       value: 
@@ -9436,7 +9458,7 @@ PrefabInstance:
     - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: levelCardProvider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1457850258}
     - target: {fileID: 8848816453803726603, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: gun
       value: 
@@ -9465,9 +9487,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6152121639868676899, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1635126811}
     - targetCorrespondingSourceObject: {fileID: 2130022078305305045, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1635126810}
@@ -9572,27 +9591,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.8
---- !u!114 &1635126811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635126809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d0b553a7d18534f9c1ceb93b7d3916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  ui: {fileID: 0}
-  playerStat: {fileID: 1635126806}
-  levelCardProvider: {fileID: 0}
-  blankBulletRadius: 10
-  enemyBulletLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  blankBulletEffect: {fileID: 0}
-  damagedCoreDuration: 10
 --- !u!1 &1708556701
 GameObject:
   m_ObjectHideFlags: 0
