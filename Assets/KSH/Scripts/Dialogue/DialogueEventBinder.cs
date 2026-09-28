@@ -208,10 +208,12 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     private void HandleOpenUI(string[] args)
     {
         Debug.Log("UI 열기 : " + args[0]); // 리스크 카드 표기, 능력치 변화 띄우기??
+        LevelCardProvider levelCard = FindFirstObjectByType<LevelCardProvider>();
 
         if (args[0].Equals("RiskCardSelect"))
         {
-            // 리스트 카드 표시
+            // 리스트 카드 표시, 일단 카드 표시로
+            levelCard.ProvideByUI(false);
         }
         else if (args[0].Equals("StatChangePopup"))
         {
