@@ -437,6 +437,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8587279532876572266, guid: 70aa30e2c4635c9489becf6265bdedb7, type: 3}
   m_PrefabInstance: {fileID: 416513375}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &424081775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 942101534827865380, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_Name
+      value: LevelCardProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356750427694622704, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 427170851}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353828450126540603, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+--- !u!114 &424081776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2356750427694622704, guid: cf34c926f8e899047994cc69ef637cf3, type: 3}
+  m_PrefabInstance: {fileID: 424081775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc7e0d6ba269124e8634b28fd001334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelCardProvider
 --- !u!1 &425351431
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +613,10 @@ PrefabInstance:
     - target: {fileID: 2294011119993181861, guid: 0817821482e040449bdec5aed07819e5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455498911395846774, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 3579866606024006346, guid: 0817821482e040449bdec5aed07819e5, type: 3}
       propertyPath: sword
@@ -735,6 +811,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+--- !u!114 &427170851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4538805683625632138, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+  m_PrefabInstance: {fileID: 427170850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed6e6a421641dc49962376458a7b696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelCardUI
+--- !u!114 &427170852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322358806892604327, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+  m_PrefabInstance: {fileID: 427170850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac05e3bdf0052146a81d20dba223ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
 --- !u!1 &451608948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1341,7 @@ PrefabInstance:
     - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: ui
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 427170852}
     - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: playerStat
       value: 
@@ -1251,7 +1349,7 @@ PrefabInstance:
     - target: {fileID: 8742136761707381778, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: levelCardProvider
       value: 
-      objectReference: {fileID: 923011891}
+      objectReference: {fileID: 424081776}
     - target: {fileID: 8848816453803726603, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       propertyPath: gun
       value: 
@@ -1280,9 +1378,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6152121639868676899, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 729379799}
     - targetCorrespondingSourceObject: {fileID: 2130022078305305045, guid: abdf0a97b8e8131449110f6a5170b79e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 729379798}
@@ -1387,123 +1482,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.8
---- !u!114 &729379799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729379790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d0b553a7d18534f9c1ceb93b7d3916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  ui: {fileID: 0}
-  playerStat: {fileID: 729379794}
-  levelCardProvider: {fileID: 923011891}
-  blankBulletRadius: 10
-  enemyBulletLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  blankBulletEffect: {fileID: 0}
-  damagedCoreDuration: 10
---- !u!1 &856931425
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 856931427}
-  - component: {fileID: 856931426}
-  m_Layer: 0
-  m_Name: LevelCardData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &856931426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856931425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c113cf0dd8db1f34a91d7ef67262a0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelCardData
-  levelCards:
-  - {fileID: 11400000, guid: 5efe72981b3d5cf43b6eeb2213b8c6f1, type: 2}
-  - {fileID: 11400000, guid: 5a51e3d4fc8d4974a9c0869415dc333b, type: 2}
-  - {fileID: 11400000, guid: c178fcec2c13f8f49a9f435774d17284, type: 2}
-  - {fileID: 11400000, guid: 2616b4372dce56d4ebadc8419627b4af, type: 2}
-  - {fileID: 11400000, guid: e395ac80154bfd94e914b9b9ca1a8b87, type: 2}
---- !u!4 &856931427
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856931425}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 923011892}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &923011890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 923011892}
-  - component: {fileID: 923011891}
-  m_Layer: 0
-  m_Name: LevelCardProvider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &923011891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923011890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc7e0d6ba269124e8634b28fd001334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelCardProvider
-  ui: {fileID: 0}
---- !u!4 &923011892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923011890}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 856931427}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178051411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402884137744101862, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99968594
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7828221849376192967, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
       propertyPath: gun
@@ -9906,7 +9884,7 @@ PrefabInstance:
     - target: {fileID: 5843439243219640206, guid: 029b50a429ae77440b2ca290640ac62a, type: 3}
       propertyPath: levelCardProvider
       value: 
-      objectReference: {fileID: 923011891}
+      objectReference: {fileID: 424081776}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10092,10 +10070,10 @@ SceneRoots:
   - {fileID: 1410497162}
   - {fileID: 1475896426}
   - {fileID: 425351432}
-  - {fileID: 923011892}
   - {fileID: 1178051414}
   - {fileID: 729379789}
   - {fileID: 1191139762}
   - {fileID: 1681281101}
   - {fileID: 1300043317}
   - {fileID: 427170850}
+  - {fileID: 424081775}

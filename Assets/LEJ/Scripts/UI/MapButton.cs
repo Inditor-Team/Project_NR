@@ -11,8 +11,6 @@ public class MapButton : MonoBehaviour
     [SerializeField] Animator mapIcon;
     public SceneController.Scene curSector;
     public SceneController.Scene[] prevSectors;
-    [SerializeField] Button stageAlertConfirmButton;
-    [SerializeField] TMP_Text stageAlertConfirmText;
 
     private void OnEnable()
     {
@@ -40,11 +38,8 @@ public class MapButton : MonoBehaviour
         if (GameManager.Instance.ClearedSector[curSector])
             return;
 
-        stageAlertConfirmText.text = $"{stageName} 로 이동하시겠습니까?";
-        stageAlertConfirmButton.onClick.RemoveAllListeners();
-        stageAlertConfirmButton.onClick.AddListener(() => { SceneController.Instance.ChangeScene(curSector); });
-
-        UIManager.Instance.Show(UIManager.Instance.msgController.gameObject);
+        UIManager.Instance.SetMsgPanel($"{stageName} 로 이동하시겠습니까?", 
+            () => SceneController.Instance.ChangeScene(curSector));
     }
 
     private bool CanEnterStage()

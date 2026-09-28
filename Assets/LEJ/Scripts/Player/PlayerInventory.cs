@@ -93,7 +93,8 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 playerStat.UseDamagedCore(curItem.Amount, damagedCoreDuration);
                 break;
             case ItemSO.ItemType.GetCard:
-                levelCardProvider.ProvideByUI(false);
+                if(levelCardProvider != null) // 혹시 모르는 null 체크
+                    levelCardProvider.ProvideByUI(false);
                 break;
             case ItemSO.ItemType.GetCredit:
                 InventoryManager.Instance.AddCredit((int)curItem.Amount);
