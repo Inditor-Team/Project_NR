@@ -264,7 +264,6 @@ GameObject:
   - component: {fileID: 4150823664901954194}
   - component: {fileID: 1547069611836759512}
   - component: {fileID: 7828221849376192967}
-  - component: {fileID: 898298361355686866}
   - component: {fileID: 8307734867858377903}
   m_Layer: 0
   m_Name: Main Camera
@@ -317,10 +316,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.027006753
+    x: 0.21562502
     y: 0
-    width: 0.57347673
-    height: 0.5733333
+    width: 0.31944445
+    height: 0.31944445
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -451,38 +450,6 @@ MonoBehaviour:
   shakeDuration: 0.08
   shakeAmountOnDamaged: 3
   shakeDurationOnDamaged: 0.25
---- !u!114 &898298361355686866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8690715403658690361}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBrain
-  ShowDebugText: 0
-  ShowCameraFrustum: 1
-  IgnoreTimeScale: 0
-  WorldUpOverride: {fileID: 0}
-  ChannelMask: -1
-  UpdateMethod: 2
-  BlendUpdateMethod: 1
-  LensModeOverride:
-    Enabled: 0
-    DefaultMode: 2
-  DefaultBlend:
-    Style: 1
-    Time: 2
-    CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  CustomBlends: {fileID: 0}
 --- !u!45 &8307734867858377903
 Skybox:
   m_ObjectHideFlags: 0

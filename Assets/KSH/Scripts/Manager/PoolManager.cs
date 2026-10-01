@@ -55,10 +55,10 @@ public class PoolManager : MonoBehaviour
         }
     }
     
-    public GameObject Get(GameObject prefab) // 오브젝트 풀을 가져올 때 사용
+    public GameObject Get(GameObject prefab) // 풀에서 오브젝트를 가져올 때 사용
     {
         if (!pools.ContainsKey(prefab))
-            MakeInitPool(prefab, 10); //null나는 경우가 있어 수정
+            MakeInitPool(prefab, 10); 
 
         return pools[prefab].Get();
     }
@@ -67,6 +67,8 @@ public class PoolManager : MonoBehaviour
     {
         if (pools.ContainsKey(prefab))
             pools[prefab].Release(instance);
+        else
+            Destroy(instance); // 풀 없으면 파괴
     }
 
     public void ClearPool() // 씬 전환 등으로 풀을 비울 때 사용
