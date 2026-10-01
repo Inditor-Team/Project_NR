@@ -217,7 +217,14 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
         }
         else if (args[0].Equals("StatChangePopup"))
         {
-            // 능력치 변화 관련, UI 표기? 그냥 능력치 변화만?
+            PlayerStat playerStat = GameObject.FindWithTag("Player").GetComponent<PlayerStat>();
+
+            if (playerStat != null)
+            {
+                playerStat.IncreaseStat(PlayerStat.Stat.BulletDamage, 4f); // 데미지 4배
+                playerStat.IncreaseStat(PlayerStat.Stat.BulletFireRate, 3f); // 발사 속도 3배 저하
+                // TODO: 능력치 변화 관련, UI 표기?
+            }
         }
     }
 
