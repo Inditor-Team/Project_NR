@@ -27,8 +27,15 @@ public class SaveSlotUIItem : MonoBehaviour
     
     private void HandleClick()
     {
-        string msg = SaveSlotManager.Instance.CurrentMode == SaveLoadMode.Save ?
-            $"슬롯 {SlotIndex + 1}에 세이브 하시겠습니까?" : $"슬롯 {SlotIndex + 1}를 로드하시겠습니까?";
+        bool isSaveMode = SaveSlotManager.Instance.CurrentMode == SaveLoadMode.Save;
+        string msg;
+
+        if (isSaveMode) // 세이브 모드일 때 텍스트 설정
+            msg = LocalizationManager.Instance.CurLang == Language.KO ? 
+                $"슬롯 {SlotIndex + 1}에 세이브 하시겠습니까?" : $"Save to slot {SlotIndex + 1} ?";
+        else // 로드 모드
+            msg = LocalizationManager.Instance.CurLang == Language.KO ? 
+                $"슬롯 {{SlotIndex + 1}}을(를) 로드하시겠습니까?" : $"Load to slot {SlotIndex + 1} ?";
         
         UIManager.Instance.SetMsgPanel(msg,  () =>
         {
@@ -36,7 +43,7 @@ public class SaveSlotUIItem : MonoBehaviour
             if (!success) // 세이브 혹은 로드 실패
             {
                 Debug.LogError("세이브 슬롯 클릭 이벤트 처리 실패");
-                UIManager.Instance.SetMsgPanel("처리에 실패하였습니다.", UIManager.Instance.HideMsgPanel);
+                UIManager.Instance.SetMsgPanel("Operation failed.", UIManager.Instance.HideMsgPanel);
                 return;
             }
             
@@ -45,7 +52,9 @@ public class SaveSlotUIItem : MonoBehaviour
             {
                 // 일단은 메시지창으로 띄우는데 나중에는 UI 상으로 눈에 띄게 하기
                 // TODO: 세이브 성공 사운드
-                UIManager.Instance.SetMsgPanel("세이브에 성공하였습니다.", UIManager.Instance.HideMsgPanel);
+                string successMsg = LocalizationManager.Instance.CurLang == Language.KO ? 
+                    "세이브에 성공하였습니다." : "Game saved successfully";
+                UIManager.Instance.SetMsgPanel(successMsg, UIManager.Instance.HideMsgPanel);
                 isSaveSuccess?.Invoke(); // 리프레시
             }
         });

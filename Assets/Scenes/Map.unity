@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 222099865}
   - component: {fileID: 222099867}
   - component: {fileID: 222099866}
+  - component: {fileID: 222099868}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -251,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBA54\uC778\uD654\uBA74\uC73C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d48f3a5c8af41844b5265644fed0487, type: 2}
   m_sharedMaterial: {fileID: 5226560957484350678, guid: 5d48f3a5c8af41844b5265644fed0487, type: 2}
@@ -331,6 +332,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222099864}
   m_CullTransparentMesh: 1
+--- !u!114 &222099868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222099864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:51905bbfb0ff1c84f81ed2799ca6db54
+    m_TableEntryReference:
+      m_KeyId: 1475265461805056
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 222099866}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!224 &267677742 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2111339441318487882, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
@@ -617,6 +658,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorB
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Shop A
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
@@ -1228,6 +1273,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Normal B
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
@@ -1861,6 +1910,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Normal C
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
@@ -2323,6 +2376,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Hard A
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
@@ -2660,6 +2717,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Event A
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
@@ -3129,6 +3190,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Event B
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
@@ -3602,6 +3667,10 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
@@ -3852,6 +3921,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorC
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Shop B
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
@@ -4408,8 +4481,9 @@ GameObject:
   - component: {fileID: 1602434414}
   - component: {fileID: 1602434416}
   - component: {fileID: 1602434415}
+  - component: {fileID: 1602434417}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Select Map Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4454,7 +4528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB9F5 \uC120\uD0DD"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d48f3a5c8af41844b5265644fed0487, type: 2}
   m_sharedMaterial: {fileID: 5226560957484350678, guid: 5d48f3a5c8af41844b5265644fed0487, type: 2}
@@ -4534,6 +4608,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602434413}
   m_CullTransparentMesh: 1
+--- !u!114 &1602434417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602434413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:51905bbfb0ff1c84f81ed2799ca6db54
+    m_TableEntryReference:
+      m_KeyId: 1475080857903104
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1602434415}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1612743590
 GameObject:
   m_ObjectHideFlags: 0
@@ -5551,6 +5665,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Hard B
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
       value: 
       objectReference: {fileID: 1849743697}
@@ -6228,6 +6346,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: prevSectorA
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Normal D
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText
@@ -6917,6 +7039,10 @@ PrefabInstance:
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: sectorType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
+      propertyPath: stageNameEN
+      value: Normal A
       objectReference: {fileID: 0}
     - target: {fileID: 6163788192536077432, guid: 75632ba86f3657e44a8edd67ce7cfce9, type: 3}
       propertyPath: stageAlertConfirmText

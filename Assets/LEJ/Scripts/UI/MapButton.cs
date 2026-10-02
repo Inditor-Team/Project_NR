@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MapButton : MonoBehaviour
 {
     public string stageName;
+    public string stageNameEN; // 영어 버전
     [SerializeField] Animator mapIcon;
     public SceneController.Scene curSector;
     public SceneController.Scene[] prevSectors;
@@ -38,8 +39,9 @@ public class MapButton : MonoBehaviour
         if (GameManager.Instance.ClearedSector[curSector])
             return;
 
-        UIManager.Instance.SetMsgPanel($"{stageName} 로 이동하시겠습니까?", 
-            () => SceneController.Instance.ChangeScene(curSector));
+        string msg = LocalizationManager.Instance.CurLang == Language.KO ? 
+            $"{stageName} 로 이동하시겠습니까?" : $"Go to {stageNameEN}";
+        UIManager.Instance.SetMsgPanel(msg, () => SceneController.Instance.ChangeScene(curSector));
     }
 
     private bool CanEnterStage()
