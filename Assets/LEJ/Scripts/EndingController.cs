@@ -17,7 +17,13 @@ public class EndingScene : MonoBehaviour
         "나도 너와 같았어. 오르비스의 명령에 따르는 개였지. 진실을 알기 전까지는.",
         "Z. 너 자신을 위해 움직인다는 게 무엇인지 생각해 봐."
     };
-
+    
+    private readonly string[] dialoguesEN =
+    {
+        "I was just like you. A dog following Orbis's orders... until I learned the TRUTH.",
+        "Z. Think about what it means to act for yourself."
+    };
+    
     private int dialogueIndex = -1;
     private bool isFinished;
 
@@ -42,7 +48,10 @@ public class EndingScene : MonoBehaviour
 
         if (dialogueIndex < dialogues.Length)
         {
-            writeText.Play(dialogues[dialogueIndex]);
+            if (LocalizationManager.Instance.CurLang == Language.KO)   
+                writeText.Play(dialogues[dialogueIndex]);
+            else
+                writeText.Play(dialoguesEN[dialogueIndex]);
             return;
         }
 

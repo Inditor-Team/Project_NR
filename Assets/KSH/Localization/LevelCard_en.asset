@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LevelCard_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8ae8324bde8003f4d925d6397f3eb516, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 102631268352
+    m_Localized: Biological Augmentation i
+    m_Metadata:
+      m_Items: []
+  - m_Id: 105336594432
+    m_Localized: Increases maximum health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964153892864
+    m_Localized: Biological Augmentation ii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965940666368
+    m_Localized: Increases maximum health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1061403025408
+    m_Localized: Agility i
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1066050314240
+    m_Localized: Has a chance to block enemy attacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1235013656576
+    m_Localized: Agility ii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1236632657920
+    m_Localized: Has a chance to block enemy attacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1414752165888
+    m_Localized: Rapid Fire Protocol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1417230999552
+    m_Localized: Reduces the interval between attacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1731002687488
+    m_Localized: Unstable Core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1732923678720
+    m_Localized: Temporarily increases fire rate and reduces movement speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1902864293888
+    m_Localized: Neural Acceleration i
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1905594785792
+    m_Localized: Increases movement speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2087451418624
+    m_Localized: Increases movement speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2085673033728
+    m_Localized: Neural Acceleration ii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2229629935616
+    m_Localized: Overclock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2231194411008
+    m_Localized: Greatly increases attack power, but increases damage taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2416616202240
+    m_Localized: Overheat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2419111813120
+    m_Localized: Increases attack power, but increases the interval between attacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2608568524800
+    m_Localized: Recovery Algorithm i
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2610720202752
+    m_Localized: Has a chance to restore health when defeating an enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2755780206592
+    m_Localized: Has a chance to restore health when defeating an enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2754198953984
+    m_Localized: Recovery Algorithm ii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2865788411904
+    m_Localized: Auxiliary Gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2866509832192
+    m_Localized: Reduces Protocol cooldown
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

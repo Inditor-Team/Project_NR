@@ -71,7 +71,7 @@ public class EnemyBullet : MonoBehaviour, IPoolObjectBase
 
     public void DestroyBullet()
     {
-        if (gameObject.activeSelf) // 중복 Release 방지?
+        if (gameObject.activeSelf) // 중복 Release 방지
             PoolManager.Instance.Release(originPrefab, gameObject);
     }
 

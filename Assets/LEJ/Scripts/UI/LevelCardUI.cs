@@ -42,8 +42,8 @@ public class LevelCardUI : MonoBehaviour
         LevelCardUIElement curElement = elements[index];
 
         //카드 이름과 설명 텍스트
-        curElement.cardName.text = data.CardName;
-        curElement.cardDescription.text = data.CardDescription;
+        curElement.cardName.text = data.CardName.GetLocalizedString();
+        curElement.cardDescription.text = data.CardDescription.GetLocalizedString();
 
         //카드 배경 이미지
         curElement.image.sprite = data.CardIcon;

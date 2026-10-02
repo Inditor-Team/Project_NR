@@ -15,10 +15,28 @@ MonoBehaviour:
   Id: 12
   CardIcon: {fileID: 21300000, guid: b410c535b96cffa4db96d65d35eaa674, type: 3}
   type: 12
-  CardName: "\uBD88\uC548\uC815 \uCF54\uC5B4"
-  CardDescription: "\uC21C\uAC04\uC801\uC73C\uB85C \uC5F0\uC0AC\uD558\uACE0, \uC774\uC18D\uC774
-    \uAC10\uC18C\uD55C\uB2E4"
+  CardName:
+    m_TableReference:
+      m_TableCollectionName: GUID:8ae8324bde8003f4d925d6397f3eb516
+    m_TableEntryReference:
+      m_KeyId: 1731002687488
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  CardDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:8ae8324bde8003f4d925d6397f3eb516
+    m_TableEntryReference:
+      m_KeyId: 1732923678720
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Elements:
   - targetStat: 0
     upgradeAmount: 0.05
   Weight: 3
+  references:
+    version: 2
+    RefIds: []

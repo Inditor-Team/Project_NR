@@ -134,6 +134,14 @@ MonoBehaviour:
     m_Localized: (Interact with the switch to end the tutorial)
     m_Metadata:
       m_Items: []
+  - m_Id: 1475080857903104
+    m_Localized: Map Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1475265461805056
+    m_Localized: Return to Main Menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

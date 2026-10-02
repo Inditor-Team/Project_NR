@@ -1,29 +1,30 @@
 using System;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [CreateAssetMenu(fileName = "LevelCardSO", menuName = "LEJ/LevelCardSO")]
 public class LevelCardSO : ScriptableObject
 {
     public enum LevelCardType { None = -1, 
-        BioreinforcementA = 0, //»ýÃ¼º¸°­
-        BioreinforcementB, //»ýÃ¼º¸°­
-        RecoveryAlgorithmA, //È¸º¹ ¾Ë°í¸®Áò
-        RecoveryAlgorithmB, //È¸º¹ ¾Ë°í¸®Áò
-        EvasionA, //È¸ÇÇ
-        EvasionB, //È¸ÇÇ
-        OverheatedMagazine, //°ú¿­ ÅºÃ¢
-        FullAutoProtocol, //¿¬»ç ÇÁ·ÎÅäÄÝ
-        NeuralAccelerationA, //½Å°æ °¡¼Ó
-        NeuralAccelerationB, //½Å°æ °¡¼Ó
-        SubGear, //º¸Á¶ ±â¾î
-        OverClock, //¿À¹öÅ¬·°
-        InstableCore //ºÒ¾ÈÁ¤ ÄÚ¾î
+        BioreinforcementA = 0, //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
+        BioreinforcementB, //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
+        RecoveryAlgorithmA, //È¸ï¿½ï¿½ ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½
+        RecoveryAlgorithmB, //È¸ï¿½ï¿½ ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½
+        EvasionA, //È¸ï¿½ï¿½
+        EvasionB, //È¸ï¿½ï¿½
+        OverheatedMagazine, //ï¿½ï¿½ï¿½ï¿½ ÅºÃ¢
+        FullAutoProtocol, //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        NeuralAccelerationA, //ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½
+        NeuralAccelerationB, //ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½
+        SubGear, //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        OverClock, //ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½
+        InstableCore //ï¿½Ò¾ï¿½ï¿½ï¿½ ï¿½Ú¾ï¿½
         }
     public int Id;
     public Sprite CardIcon;
     public LevelCardType type;
-    public string CardName;
-    public string CardDescription;
+    public LocalizedString CardName;
+    public LocalizedString CardDescription;
     public LevelCardElement[] Elements;
     public float Weight;
 }

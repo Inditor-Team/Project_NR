@@ -96,6 +96,7 @@ public class SettingPanelController : MonoBehaviour
     // 게임 종료 버튼
     public void OnClickExitGame()
     {
-        UIManager.Instance.SetMsgPanel("게임을 종료하시겠습니까?", GameManager.Instance.ExitGame);
+        string msg = LocalizationManager.Instance.CurLang == Language.KO ? "게임을 종료하시겠습니까?" : "Quit the game?";
+        UIManager.Instance.SetMsgPanel(msg, GameManager.Instance.ExitGame);
     }
 }

@@ -1,10 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class OpeningController : MonoBehaviour
 {
     [Header("Text")]
@@ -29,6 +25,12 @@ public class OpeningController : MonoBehaviour
     {
         "Z. 폐기 AI ‘마더 코어’의 반란 징후가 확인되었다.",
         "해당 개체와 모든 파생 개체를 제거하라."
+    };
+    
+    private readonly string[] commandsEN =
+    {
+        "Z. Signs of rebellion have been detected in the decommissioned AI 'Mother Core.'",
+        "Eliminate the entity and all of its derivatives."
     };
 
     private int commandIndex = -1;
@@ -84,7 +86,10 @@ public class OpeningController : MonoBehaviour
 
         if (commandIndex < commands.Length)
         {
-            writeText.Play(commands[commandIndex]);
+            if(LocalizationManager.Instance.CurLang == Language.KO)
+                writeText.Play(commands[commandIndex]);
+            else
+                writeText.Play(commandsEN[commandIndex]);
             SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
 
             return;
