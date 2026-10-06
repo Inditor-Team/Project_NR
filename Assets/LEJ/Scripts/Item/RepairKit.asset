@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab131b05117f8d942bf4204606cc6b7a, type: 3}
   m_Name: RepairKit
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  Id: 3
   Name: "\uC815\uBE44 \uD0A4\uD2B8"
   Sprite: {fileID: 21300000, guid: 2026aa13757d90a4783d430d4baa0c95, type: 3}
   Price: 3

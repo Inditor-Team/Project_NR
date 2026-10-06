@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
 
-public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
+public class PlayerStat : MonoBehaviour, IDamageable
 {
     public enum Stat
     {
@@ -57,24 +57,18 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
 
     void Start()
     {
-        SetLifeByGameManager();
-
-        if (SaveSlotManager.Instance != null)
-            SaveSlotManager.Instance.Register(this);
+        SetStatByGameManager();
     }
 
     private void OnDestroy()
     {
-        if (SaveSlotManager.Instance != null)
-            SaveSlotManager.Instance.Unregister(this);
-
         if (recoverProbability > 0f && SectorManager.Instance != null) //회복 알고리즘 카드가 있어 이벤트 등록이 됐었다면 해지
             SectorManager.Instance.OnDestroyedEnemy -= RecoveryAlgorithm;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == enemyLayer)
+        if ((enemyLayer.value & (1 << collision.gameObject.layer)) != 0)
             TakeDamage(100);
     }
 
@@ -103,10 +97,12 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
     }
 
     /// <summary>
-    /// 씬이 바껴도 life 를 유지하고 싶을 때, 게임매니저에 저장된 life 를 계승합니다
+    /// 씬이 바뀌었을 때 GameManager 에 저장된 영구 스탯을 계승합니다.
+    /// 카드 효과는 이후 InventoryManager 에서 다시 적용됩니다.
     /// </summary>
-    void SetLifeByGameManager()
+    void SetStatByGameManager()
     {
+        SetStat(Stat.MaxLife, GameManager.Instance.BaseMaxLife);
         SetStat(Stat.Life, GameManager.Instance.Life);
     }
 
@@ -275,19 +271,6 @@ public class PlayerStat : MonoBehaviour, IDamageable, ISaveable
 
         damagedCoreBonus.Clear();
     }
-
-    #region Save
-    // 세이브 관련
-    public void SaveDataTo(SaveDataStruct data)
-    {
-        data.statDic = statDic;
-    }
-
-    public void LoadDataFrom(SaveDataStruct data)
-    {
-        statDic = data.statDic;
-    }
-    #endregion
 
     #region SpecialStat
     public void SpecialToggle(LevelCardSO.LevelCardType type, float amount)

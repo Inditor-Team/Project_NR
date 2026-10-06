@@ -3,6 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemSO", menuName = "LEJ/ItemSO")]
 public class ItemSO : ScriptableObject
 {
+    public enum ItemId
+    {
+        None = 0,
+        Credit,
+        EmergencyPatch,
+        RepairKit,
+        WasteProtocol,
+        DamagedCore,
+        BlankBullet
+    }
+
+    public ItemId Id;
+
     public enum ItemType 
     { 
         None, 
@@ -13,6 +26,7 @@ public class ItemSO : ScriptableObject
         BlankBullet, //공포탄
         Count 
     }
+
     public string Name;
     public Sprite Sprite;
     public int Price;

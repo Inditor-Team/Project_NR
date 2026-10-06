@@ -128,8 +128,6 @@ public class Store : MonoBehaviour
 
         if (item != null)
             item.position = endPos;
-
-        StopAllCoroutines();
     }
 
     /// <summary>

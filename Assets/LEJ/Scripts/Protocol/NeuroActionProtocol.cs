@@ -32,6 +32,12 @@ public class NeuroActionProtocol : ProtocolBase
         GameManager.Instance.OnProtocolChanged += InitEffect; //µð¹ö±ë¿ë
     }
 
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= InitEffect;
+    }
+
     internal override void TryProtocol(float duration)
     {
         this.duration = duration;
@@ -88,6 +94,9 @@ public class NeuroActionProtocol : ProtocolBase
 
     void InitEffect()
     {
+        if (spectrumPool != null)
+            return;
+
         if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.NeuroAction)
             return;
 

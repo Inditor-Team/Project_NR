@@ -60,8 +60,26 @@ public class SceneController : MonoBehaviour, ISaveable
     public Scene curScene = Scene.None;
     public event UnityAction<Scene> OnSceneChanged;
 
+    public static bool IsStageScene(Scene scene)
+    {
+        return scene >= Scene.NormalA && scene < Scene.Count;
+    }
+
     public void ChangeScene(Scene sceneName)
     {
+        if (changeSceneRoutine != null)
+            return;
+
+        //입장 전 상태를 저장
+        if (IsStageScene(sceneName) && !IsStageScene(curScene))
+        {
+            GameManager.Instance.BeginStage();
+            InventoryManager.Instance.CaptureStageEntryState();
+
+            if (StageSaveSnapshotProxy.Instance != null)
+                StageSaveSnapshotProxy.Instance.CaptureStageEntryState();
+        }
+
         if (curScene != Scene.None)
             prevScene = curScene;
 
@@ -71,7 +89,7 @@ public class SceneController : MonoBehaviour, ISaveable
             PlayerPrefs.SetInt(SkipOpeningKey, 0);
         }
 
-        StartCoroutine(ChangeSceneWithFadeIn(sceneName));
+        changeSceneRoutine = StartCoroutine(ChangeSceneWithFadeIn(sceneName));
     }
 
     Coroutine changeSceneRoutine;
@@ -102,6 +120,8 @@ public class SceneController : MonoBehaviour, ISaveable
         SoundManager.Instance.StopAllSFX(); // 재생 중인 효과음 전체 종료
 
         OnSceneChanged?.Invoke(curScene);
+
+        changeSceneRoutine = null;
     }
 
     public void StartBGM()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab131b05117f8d942bf4204606cc6b7a, type: 3}
   m_Name: EmergencyPatch
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  Id: 2
   Name: "\uC751\uAE09 \uD328\uCE58"
   Sprite: {fileID: 21300000, guid: ac2664babadb3094a900634b8c475cdc, type: 3}
   Price: 2

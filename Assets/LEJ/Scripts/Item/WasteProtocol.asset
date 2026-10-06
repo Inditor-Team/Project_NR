@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab131b05117f8d942bf4204606cc6b7a, type: 3}
   m_Name: WasteProtocol
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  Id: 4
   Name: "\uD3D0\uAE30 \uD504\uB85C\uD1A0\uCF5C"
   Sprite: {fileID: 21300000, guid: 38e9ffc7e6d76aa468f66067d8efe588, type: 3}
   Price: 2

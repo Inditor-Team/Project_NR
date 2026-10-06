@@ -27,13 +27,16 @@ public class SwordHitBox : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!hitTargets.Add(collision.gameObject))
+            return;
+
         Debug.Log($"{collision} ÀÌ swordHitBox ¿¡ °¨Áö µÊ");
 
         IInteractable interactable = collision.GetComponent<IInteractable>();
+
         if (interactable != null)
             interactable.OnInteract();
 
-        hitTargets.Add(collision.gameObject);
         OnHit?.Invoke(collision.gameObject);
     }
 
