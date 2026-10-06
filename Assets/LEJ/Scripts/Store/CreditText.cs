@@ -13,6 +13,12 @@ public class CreditText : MonoBehaviour
         UpdateText();
     }
 
+    private void OnDestroy()
+    {
+        if (InventoryManager.Instance != null)
+            InventoryManager.Instance.OnCreditChanged -= UpdateText;
+    }
+
     void UpdateText()
     {
         text.text = $"Credit {InventoryManager.Instance.CurCredit}$";

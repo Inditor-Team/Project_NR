@@ -35,6 +35,12 @@ public class BlitzProtocol : ProtocolBase
         GameManager.Instance.OnProtocolChanged += InitEffect; //µð¹ö±ë¿ë
     }
 
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= InitEffect;
+    }
+
     public override void UpgradeProtocol(ProtocolCard.Buff type, float level)
     {
     }
@@ -100,6 +106,9 @@ public class BlitzProtocol : ProtocolBase
 
     void InitEffect()
     {
+        if (spectrumPool != null)
+            return;
+
         if (GameManager.Instance.CurProtocol != ProtocolCard.Protocol.Blitz)
             return;
 

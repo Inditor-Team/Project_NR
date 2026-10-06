@@ -26,6 +26,21 @@ public class ProtocolExecutor : MonoBehaviour
         GameManager.Instance.OnProtocolChanged += SetProtocol;
     }
 
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnProtocolChanged -= SetProtocol;
+
+        if (InvincibleRoutine != null)
+        {
+            StopCoroutine(InvincibleRoutine);
+            InvincibleRoutine = null;
+        }
+
+        if (stat != null)
+            stat.IsInvincible = false;
+    }
+
     private void Update()
     {
         if (stat == null)
@@ -99,7 +114,7 @@ public class ProtocolExecutor : MonoBehaviour
     {
         if (InvincibleRoutine != null)
         {
-            StopCoroutine(InvincibleTime());
+            StopCoroutine(InvincibleRoutine);
             InvincibleRoutine = null;
         }
 

@@ -64,7 +64,7 @@ public class EndingScene : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(returnDelay);
 
-        SceneManager.LoadScene(lobbySceneName);
+        SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
     }
 
 }

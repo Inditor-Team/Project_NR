@@ -21,8 +21,8 @@ public class BulletBase : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-
-        if (timer > inactiveTime) //총알이 무한정 뻗어나가지 않게 사라지는 시간 설정
+        //총알이 무한정 뻗어나가지 않게 사라지는 시간 설정
+        if (timer > inactiveTime)
             DestroyBullet();
     }
 
@@ -69,6 +69,9 @@ public class BulletBase : MonoBehaviour
 
     private void DestroyBullet()
     {
+        if (!gameObject.activeSelf) //풀 중복 회수 방지
+            return;
+        
         PoolManager.Instance.Release(originPrefab, this.gameObject); //오브젝트 풀 내 자신 비활성화
     }
 }

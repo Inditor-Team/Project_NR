@@ -29,20 +29,40 @@ public class InventoryManager : MonoBehaviour, ISaveable
         SaveSlotManager.Instance.Unregister(this);
     }
 
+    private const int CardSlotCount = 3;
+    private const int SavedItemIndex = 3;
+    private const int SavedCardSlotIndex = 4;
+
     //현재 가지고 있는 카드들 id
-    private int[] myCards = new int[3] { -1, -1, -1 };
+    private int[] myCards = new int[CardSlotCount] { -1, -1, -1 };
     public int[] MyCards => myCards;
     int cardSlotIndex = 0;
     public event UnityAction<int> OnGetCard;
+
+    //스테이지 입장 시점 스냅샷
+    private int[] stageEntryCards = new int[CardSlotCount] { -1, -1, -1 };
+    private int stageEntryCredit;
+    private int stageEntryCardSlotIndex;
+    private bool hasStageEntrySnapshot;
 
     //현재 가진 재화
     [SerializeField] private int curCredit;
     public int CurCredit => curCredit;
     public event UnityAction OnCreditChanged;
 
-    //현재 가진 아이템
-    private ItemSO curItem;
-    public ItemSO CurItem => curItem;
+    [Header("Item Save")]
+    [SerializeField] private ItemSO[] itemDatabase;
+
+    /// <summary>
+    /// 스테이지 입장 시점을 저장
+    /// </summary>
+    public void CaptureStageEntryState()
+    {
+        stageEntryCards = (int[])myCards.Clone();
+        stageEntryCredit = curCredit;
+        stageEntryCardSlotIndex = cardSlotIndex;
+        hasStageEntrySnapshot = true;
+    }
 
     #region Credit
     public void AddCredit(int addAmount)
@@ -120,65 +140,115 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
             switch (cardType)
             {
-                //증가 ---
-                //생체 보강의 경우 최대 체력 증가
-                case LevelCardSO.LevelCardType.BioreinforcementA:
-                case LevelCardSO.LevelCardType.BioreinforcementB:
-                //신경 가속의 경우 이속 증가
-                case LevelCardSO.LevelCardType.NeuralAccelerationA:
-                case LevelCardSO.LevelCardType.NeuralAccelerationB:
-                    playerStat.AddStat(cardDic[cardId].Elements[0].targetStat, cardDic[cardId].Elements[0].upgradeAmount);
-                    break;
-
-                //배율 증가 ---
-                //과열 탄창의 경우 공격력 증가, 공격 간격 증가
                 case LevelCardSO.LevelCardType.OverheatedMagazine:
-                //오버클럭의 경우 공격력 증가 및 피해량 증가
                 case LevelCardSO.LevelCardType.OverClock:
-                //연사 프로토콜의 경우 공격 간격 감소
                 case LevelCardSO.LevelCardType.FullAutoProtocol:
-                //보조 기어의 경우 프로토콜 대기 시간 감소
                 case LevelCardSO.LevelCardType.SubGear:
-                    playerStat.IncreaseStat(cardDic[cardId].Elements[0].targetStat, cardDic[cardId].Elements[0].upgradeAmount);
-                    if (cardDic[cardId].Elements[1] != null)
-                        playerStat.IncreaseStat(cardDic[cardId].Elements[1].targetStat, cardDic[cardId].Elements[1].upgradeAmount);
-                    if (cardDic[cardId].Elements[2] != null)
-                        playerStat.IncreaseStat(cardDic[cardId].Elements[2].targetStat, cardDic[cardId].Elements[2].upgradeAmount);
-                    break;
+                    foreach (var element in cardDic[cardId].Elements)
+                    {
+                        if (element == null)
+                            continue;
 
-                //토글 ---
-                //회복 알고리즘의 경우 처치 시 체력 회복 토글 On
-                case LevelCardSO.LevelCardType.RecoveryAlgorithmA:
-                case LevelCardSO.LevelCardType.RecoveryAlgorithmB:
-                //민첩 알고리즘의 경우 일정 확률로 적 공격 방어 토글 On
-                case LevelCardSO.LevelCardType.EvasionA:
-                case LevelCardSO.LevelCardType.EvasionB:
-                //불안정 코어의 경우 일정 확률 연사 및 이속 디버프 토글 On
-                case LevelCardSO.LevelCardType.InstableCore:
-                    playerStat.SpecialToggle(cardType, cardDic[cardId].Elements[0].upgradeAmount);
+                        playerStat.IncreaseStat(
+                            element.targetStat,
+                            element.upgradeAmount
+                        );
+                    }
                     break;
-
             }
 
             Debug.Log($"{(LevelCardSO.LevelCardType)(myCards[i])} 효과 적용");
         }
     }
     #endregion
-    
-    // 세이브 관련
+
+    /// <summary>
+    /// 세이브 데이터에 인벤토리 상태 저장
+    /// </summary>
+    /// <param name="data"></param>
     public void SaveDataTo(SaveDataStruct data)
     {
-        data.credit = CurCredit;
-        // data.item = CurItem;
-        data.cards = MyCards;
+        bool useStageEntry =
+            SceneController.IsStageScene(SceneController.Instance.curScene)
+            && hasStageEntrySnapshot;
+
+        int[] cardsToSave = useStageEntry ? stageEntryCards : myCards;
+        int creditToSave = useStageEntry ? stageEntryCredit : curCredit;
+        int slotIndexToSave = useStageEntry ? stageEntryCardSlotIndex : cardSlotIndex;
+
+        data.credit = creditToSave;
+
+        data.cards = new int[5];
+
+        for (int i = 0; i < CardSlotCount; i++)
+            data.cards[i] = cardsToSave[i];
+
+        ItemSO item = GameManager.Instance.TempItemCaching;
+
+        data.cards[SavedItemIndex] =
+            item != null ? (int)item.Id : (int)ItemSO.ItemId.None;
+
+        data.cards[SavedCardSlotIndex] = slotIndexToSave;
     }
 
     public void LoadDataFrom(SaveDataStruct data)
     {
         SetCredit(data.credit);
-        
-        // TODO: 하단 항목 테스트 필요
-        // curItem = data.item; // 아이템 적용
-        myCards = data.cards; // 카드 적용
+
+        for (int i = 0; i < CardSlotCount; i++)
+        {
+            if (data.cards != null && i < data.cards.Length)
+                myCards[i] = data.cards[i];
+            else
+                myCards[i] = -1;
+        }
+
+        if (data.cards != null && data.cards.Length > SavedCardSlotIndex)
+        {
+            int savedSlotIndex = data.cards[SavedCardSlotIndex];
+
+            if (savedSlotIndex >= 0 && savedSlotIndex < CardSlotCount)
+                cardSlotIndex = savedSlotIndex;
+            else
+                SetCardSlotIndexByCards();
+        }
+        else
+        {
+            SetCardSlotIndexByCards();
+        }
+
+        ItemSO.ItemId itemId = ItemSO.ItemId.None;
+
+        if (data.cards != null && data.cards.Length > SavedItemIndex)
+            itemId = (ItemSO.ItemId)data.cards[SavedItemIndex];
+
+        GameManager.Instance.SetTempItemCaching(FindItemById(itemId));
+
+        CaptureStageEntryState();
     }
+
+    private void SetCardSlotIndexByCards()
+    {
+        for (int i = 0; i < myCards.Length; i++)
+        {
+            if (myCards[i] == -1)
+            {
+                cardSlotIndex = i;
+                return;
+            }
+        }
+
+        cardSlotIndex = 0;
+    }
+
+    private ItemSO FindItemById(ItemSO.ItemId id)
+    {
+        if (id == ItemSO.ItemId.None)
+            return null;
+
+        return itemDatabase.FirstOrDefault(
+            item => item != null && item.Id == id
+        );
+    }
+
 }

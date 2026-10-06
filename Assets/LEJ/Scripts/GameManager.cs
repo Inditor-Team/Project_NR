@@ -51,11 +51,21 @@ public class GameManager : MonoBehaviour, ISaveable
         }
     }
 
-    private float life = 5;
+    private float life = 5f;
     public float Life => life;
+
+    private float baseMaxLife = 5f;
+    public float BaseMaxLife => baseMaxLife;
+
+    //스테이지 안에서 얻은 최대 체력 증가량(임시로 두고 클리어 시 실제 적용)
+    private float tempMaxLife = 0f;
 
     private ItemSO tempItemCaching;
     public ItemSO TempItemCaching => tempItemCaching;
+    public void SetTempItemCaching(ItemSO item)
+    {
+        tempItemCaching = item;
+    }
 
     [SerializeField] private ProtocolCard.Protocol curProtocol = ProtocolCard.Protocol.None;
     public ProtocolCard.Protocol CurProtocol => curProtocol;
@@ -122,6 +132,13 @@ public class GameManager : MonoBehaviour, ISaveable
         clearedSector[sectorType] = true;
     }
 
+    /// <summary>
+    /// 새로운 스테이지 진입 시 임시로 저장할 최대체력 초기화
+    /// </summary>
+    public void BeginStage()
+    {
+        tempMaxLife = 0f;
+    }
 
     /// <summary>
     /// SectorManager 로 부터 Sector 의 클리어 여부를 받습니다
@@ -129,6 +146,9 @@ public class GameManager : MonoBehaviour, ISaveable
     public void OnSectorFailed(SceneController.Scene sectorType)
     {
         clearedSector[sectorType] = false;
+
+        //스테이지 클리어가 됐을 때만 최대체력 증가량 보존
+        tempMaxLife = 0f;
     }
 
     /// <summary>
@@ -136,12 +156,17 @@ public class GameManager : MonoBehaviour, ISaveable
     /// </summary>
     public void OnChangeSceneWhenSectorCleared()
     {
-        //씬 변경 시 현재 생명 저장
-        life = player.GetComponent<PlayerController>().Stat.StatDic[PlayerStat.Stat.Life];
+        PlayerStat stat = player.GetComponent<PlayerController>().Stat;
 
-        //씬 변경 시 마지막으로 들고 있던 아이템을 인벤토리 매니저에 등록
+        //클리어한 경우에만 현재 체력을 저장
+        life = stat.StatDic[PlayerStat.Stat.Life];
+
+        //영구 체력 역시 확정
+        baseMaxLife += tempMaxLife;
+        tempMaxLife = 0f;
+
+        //사용 안 된 아이템을 다음 스테이지로 넘기기 위해 저장
         ItemSO item = player.GetComponent<PlayerInventory>().CurItem;
-
         tempItemCaching = item;
     }
 
@@ -189,18 +214,42 @@ public class GameManager : MonoBehaviour, ISaveable
         GameTime.SetTimeScale(shouldPause ? 0f : GameTime.BeforeWorldTimeScale);
         OnPauseGame?.Invoke(shouldPause);
     }
-    
-    // 세이브 관련
+
     public void SaveDataTo(SaveDataStruct data)
     {
         data.protocol = curProtocol;
-        data.clearedSector = clearedSector;
+        data.clearedSector = new Dictionary<SceneController.Scene, bool>(clearedSector);
+
+        //PlayerStat의 스테이지 진입 전 값을 저장
+        data.statDic[PlayerStat.Stat.Life] = life;
+        data.statDic[PlayerStat.Stat.MaxLife] = baseMaxLife;
+
+        data.statDic[PlayerStat.Stat.None] = 1f;
     }
 
     public void LoadDataFrom(SaveDataStruct data)
     {
         SetProtocol(data.protocol);
-        clearedSector = data.clearedSector;
+
+        for (int i = 0; i < (int)SceneController.Scene.Count; i++)
+            clearedSector[(SceneController.Scene)i] = false;
+
+        if (data.clearedSector != null)
+        {
+            foreach (var sector in data.clearedSector)
+                clearedSector[sector.Key] = sector.Value;
+        }
+
+        if (data.statDic != null)
+        {
+            if (data.statDic.TryGetValue(PlayerStat.Stat.Life, out float savedLife))
+                life = savedLife;
+
+            if (data.statDic.TryGetValue(PlayerStat.Stat.MaxLife, out float savedMaxLife))
+                baseMaxLife = savedMaxLife;
+        }
+
+        tempMaxLife = 0f;
     }
 
     /// <summary>
@@ -210,6 +259,11 @@ public class GameManager : MonoBehaviour, ISaveable
     public void AddMaxLife(int value)
     {
         player.GetComponent<PlayerController>().Stat.AddStat(PlayerStat.Stat.MaxLife, value);
+
+        if (SceneController.IsStageScene(SceneController.Instance.curScene))
+            tempMaxLife += value;
+        else
+            baseMaxLife += value;
     }
 
     /// <summary>

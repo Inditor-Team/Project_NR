@@ -35,7 +35,10 @@ public class Gun : WeaponBase
     private void MakeBulletPool()
     {
         PoolManager.Instance.PoolInit(bulletPrefab, bulletPoolSize);
-        PoolManager.Instance.PoolInit(reflectBulletPrefab, bulletPoolSize);
+
+        //블레이더 프로토콜의 경우 반사 총알을 위한 추가 풀이 필요합니다
+        if (GameManager.Instance.CurProtocol == ProtocolCard.Protocol.Blader)
+            PoolManager.Instance.PoolInit(reflectBulletPrefab, bulletPoolSize);
     }
 
     public void TryAttack(float speed, float damage)
@@ -82,7 +85,7 @@ public class Gun : WeaponBase
 
     public void ReflectAttack(Vector2 startPos, Vector2 dir, float speed)
     {
-        GameObject bulletObject = PoolManager.Instance.Get(bulletPrefab);
+        GameObject bulletObject = PoolManager.Instance.Get(reflectBulletPrefab);
 
         if (bulletObject == null)
             return;
@@ -97,7 +100,17 @@ public class Gun : WeaponBase
         curBullet.transform.position = startPos;
         curBullet.GetComponent<SpriteRenderer>().color = Color.green;
 
-        curBullet.OnFire(dir, speed, damage, bulletPrefab);
+        float reflectDamage =
+            GameManager.Instance.Player
+                .GetComponent<PlayerController>()
+                .Stat.StatDic[PlayerStat.Stat.BulletDamage];
+
+        curBullet.OnFire(
+            dir,
+            speed,
+            reflectDamage,
+            reflectBulletPrefab
+        );
     }
 
 }
