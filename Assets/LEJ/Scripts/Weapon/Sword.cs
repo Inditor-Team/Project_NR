@@ -15,13 +15,14 @@ public class Sword : WeaponBase
     public event UnityAction OnSwordLifeChanged;
 
     bool canConsumeSword = true;
-
     private void Awake()
     {
         if (hitBox != null)
         {
+            hitBox.enabled = true;
             hitBox.OnHit += OnHit;
-            hitBox.enabled = false;
+
+            hitBox.SetHitboxActive(false);
         }
 
         effect.SetActive(false);
@@ -32,6 +33,12 @@ public class Sword : WeaponBase
         hitBox.OnHit -= OnHit;
     }
 
+    private void OnDisable()
+    {
+        if (hitBox != null)
+            hitBox.SetHitboxActive(false);
+    }
+
     public void TryAttack(float damage)
     {
         this.damage = damage;
@@ -39,12 +46,15 @@ public class Sword : WeaponBase
 
     internal override void Attack()
     {
-        hitBox.enabled = true;
+        if (hitBox != null)
+            hitBox.SetHitboxActive(true);
     }
 
     public void EndAttack()
     {
-        hitBox.enabled = false;
+        if (hitBox != null)
+            hitBox.SetHitboxActive(false);
+
         canConsumeSword = true;
     }
 
@@ -83,11 +93,12 @@ public class Sword : WeaponBase
         if (swordLife <= 0)
             OnBroke();
     }
-
     void OnBroke()
     {
-        hitBox.enabled = false;
-        this.gameObject.SetActive(false);
+        if (hitBox != null)
+            hitBox.SetHitboxActive(false);
+
+        gameObject.SetActive(false);
     }
 
     void HideEffect()

@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,24 +6,51 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class SwordHitBox : MonoBehaviour, IDamageable
 {
-    HashSet<GameObject> hitTargets = new(); //하나의 적이 여러 번 공격 인정 되는 것을 방지
-    public event UnityAction<GameObject> OnHit;
-    Collider2D col;
+    private HashSet<GameObject> hitTargets = new();
 
-    void Awake()
+    public event UnityAction<GameObject> OnHit;
+
+    private Collider2D col;
+    private bool isAttacking = false;
+
+    private void Awake()
     {
         col = GetComponent<Collider2D>();
+
+        isAttacking = false;
+        col.enabled = false;
     }
 
     private void OnEnable()
     {
-        col.enabled = true;
-        hitTargets.Clear();
+        if (col == null)
+            col = GetComponent<Collider2D>();
+
+        col.enabled = isAttacking;
     }
 
     private void OnDisable()
     {
-        col.enabled = false;
+        isAttacking = false;
+
+        if (col != null)
+            col.enabled = false;
+    }
+
+    /// <summary>
+    /// 실제 공격 중에만 충돌 판정 활성화
+    /// </summary>
+    public void SetHitboxActive(bool active)
+    {
+        if (col == null)
+            col = GetComponent<Collider2D>();
+
+        isAttacking = active;
+
+        if (active)
+            hitTargets.Clear();
+
+        col.enabled = active && isActiveAndEnabled;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,18 +60,17 @@ public class SwordHitBox : MonoBehaviour, IDamageable
 
         Debug.Log($"{collision} 이 swordHitBox 에 감지 됨");
 
-        IInteractable interactable = collision.GetComponent<IInteractable>();
-
-        if (interactable != null)
-            interactable.OnInteract();
+        if (!hitTargets.Add(collision.gameObject))
+            return;
 
         OnHit?.Invoke(collision.gameObject);
     }
 
     public void TakeDamage(float damage)
     {
-        //현재 enemyBullet 은 Player tag 와 IDamageable 이 적용되어있기 때문에
-        //Sword 에 IDamageable 을 넣어 실제 데미지를 입진 않는 것으로 탄환을 막는 것을 구현했습니다
+        if (!isAttacking)
+            return;
+
         Debug.Log("칼이 총알을 가름");
     }
 }

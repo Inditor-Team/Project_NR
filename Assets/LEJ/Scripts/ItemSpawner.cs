@@ -30,28 +30,25 @@ public class ItemSpawner : MonoBehaviour
         PoolManager.Instance.MakeInitPool(itemObjectPrefab, poolSize);
     }
 
+
     public void SpawnItem(Vector2 spawnPos)
     {
-        //아이템 스폰 확률 적용
         if (Random.value > itemSpawnProbability)
             return;
 
-        //풀 매니저에서 오브젝트 가져오기
-        GameObject newGO = PoolManager.Instance.Get(itemObjectPrefab);
-        newGO.transform.position = spawnPos;
-
-        //가중치 적용 해 스폰 될 아이템 고르기
+        // 아이템 데이터부터 선택
         ItemSO pickItem = PickItem();
 
         if (pickItem == null)
             return;
-        
-        //ItemObject 로 아이템 정보 세팅
-        newGO.GetComponent<ItemObject>().SetItem(pickItem);
 
-        //스폰 위치 세팅
-        newGO.SetActive(true);
+        GameObject newGO =
+            PoolManager.Instance.Get(itemObjectPrefab);
+
+        newGO.transform.position = spawnPos;
+        newGO.GetComponent<ItemObject>().SetItem(pickItem);
     }
+
 
     public GameObject SpawnItem(ItemSO item, Transform spawnPos)
     {
