@@ -1,5 +1,4 @@
 using System.Linq;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -93,14 +92,14 @@ public class SectorManager : MonoBehaviour
     public void SectorClear() // 맵 내의 적 전부 처리 시 실행
     {
         Debug.Log("Section Clear!");
-        OnSectorClear?.Invoke(curSectorSO.Scene);
+        OnSectorClear?.Invoke(SceneController.Instance.curScene);
         GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 
     public void SectorFail()
     {
         Debug.Log("Section Fail!");
-        OnSectorFail?.Invoke(curSectorSO.Scene);
+        OnSectorFail?.Invoke(SceneController.Instance.curScene);
         GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 }

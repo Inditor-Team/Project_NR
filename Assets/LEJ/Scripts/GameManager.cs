@@ -125,11 +125,9 @@ public class GameManager : MonoBehaviour, ISaveable
     /// </summary>
     public void OnSectorClear(SceneController.Scene sectorType)
     {
-        //상점의 경우 씬은 ShopA 로 설정되어있지만 두 번 방문하므로 끝쪽 ShopB 를 true 로 해줌
-        if (sectorType == SceneController.Scene.ShopA && clearedSector[sectorType])
-            clearedSector[SceneController.Scene.ShopB] = true;
-
         clearedSector[sectorType] = true;
+
+        Debug.Log($"{sectorType} 클리어 완료");
     }
 
     /// <summary>
