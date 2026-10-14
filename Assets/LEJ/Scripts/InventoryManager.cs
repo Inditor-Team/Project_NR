@@ -30,31 +30,44 @@ public class InventoryManager : MonoBehaviour, ISaveable
     }
 
     private const int CardSlotCount = 3;
-    private const int SavedItemIndex = 3;
-    private const int SavedCardSlotIndex = 4;
 
-    //ÇöÀç °¡Áö°í ÀÖ´Â Ä«µåµé id
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Ä«ï¿½ï¿½ï¿½ id
     private int[] myCards = new int[CardSlotCount] { -1, -1, -1 };
     public int[] MyCards => myCards;
     int cardSlotIndex = 0;
     public event UnityAction<int> OnGetCard;
 
-    //½ºÅ×ÀÌÁö ÀÔÀå ½ÃÁ¡ ½º³À¼¦
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private int[] stageEntryCards = new int[CardSlotCount] { -1, -1, -1 };
     private int stageEntryCredit;
     private int stageEntryCardSlotIndex;
     private bool hasStageEntrySnapshot;
 
-    //ÇöÀç °¡Áø ÀçÈ­
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­
     [SerializeField] private int curCredit;
     public int CurCredit => curCredit;
     public event UnityAction OnCreditChanged;
 
-    [Header("Item Save")]
-    [SerializeField] private ItemSO[] itemDatabase;
+    /*[Header("Item Save")]
+    [SerializeField] private ItemSO[] itemDatabase;*/
 
+    private ItemDatabase itemDatabase;
+    private ItemDatabase ItemDB
+    {
+        get
+        {
+            if (itemDatabase == null)
+            {
+                itemDatabase = Resources.Load<ItemDatabase>("ItemDatabase");
+                if (itemDatabase == null)
+                    Debug.LogError("[InventoryManager] Resources/ItemDatabase ì—ì…‹ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+            }
+            return itemDatabase;
+        }
+    }
+    
     /// <summary>
-    /// ½ºÅ×ÀÌÁö ÀÔÀå ½ÃÁ¡À» ÀúÀå
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void CaptureStageEntryState()
     {
@@ -84,7 +97,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         int slotIndex = -1;
 
-        //2¹öÀü Ä«µå id µé
+        //2ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ id ï¿½ï¿½
         int[] versionTwoIds = new int[4]
         {
         (int)LevelCardSO.LevelCardType.BioreinforcementB,
@@ -93,10 +106,10 @@ public class InventoryManager : MonoBehaviour, ISaveable
         (int)LevelCardSO.LevelCardType.RecoveryAlgorithmB
         };
 
-        //Áö±İ °¡Áö·Á´Â Ä«µå°¡ 2¹öÀüÀÌ¶ó¸é
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å°¡ 2ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
         if (versionTwoIds.Contains(cardId))
         {
-            //1¹öÀü Ä«µå°¡ µé¾îÀÖ´Â ½½·Ô Ã£±â
+            //1ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
             for (int i = 0; i < myCards.Length; i++)
             {
                 if (myCards[i] == cardId - 1)
@@ -107,12 +120,12 @@ public class InventoryManager : MonoBehaviour, ISaveable
             }
         }
 
-        //2¹öÀüÀÌ ¾Æ´Ï°Å³ª, È¤½Ã 1¹öÀü ½½·ÔÀ» Ã£Áö ¸øÇß´Ù¸é »õ ½½·Ô »ç¿ë
+        //2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï°Å³ï¿½, È¤ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ß´Ù¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (slotIndex == -1)
         {
             slotIndex = cardSlotIndex;
 
-            cardSlotIndex = (cardSlotIndex + 1) % 3; //½½·Ô 3Ä­¸¸ ¾²µµ·Ï
+            cardSlotIndex = (cardSlotIndex + 1) % 3; //ï¿½ï¿½ï¿½ï¿½ 3Ä­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         }
 
         myCards[slotIndex] = cardId;
@@ -124,7 +137,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     #region Item
 
     /// <summary>
-    /// ¼½ÅÍ ½ÃÀÛ ½Ã¿¡ º¸À¯ÇÏ°í ÀÖ´Â Ä«µåÀÇ ´É·ÂÄ¡¸¦ Àû¿ëÇÕ´Ï´Ù
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ö´ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½É·ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
     /// </summary>
     public void SetCardStatOnSectorStart()
     {
@@ -157,13 +170,13 @@ public class InventoryManager : MonoBehaviour, ISaveable
                     break;
             }
 
-            Debug.Log($"{(LevelCardSO.LevelCardType)(myCards[i])} È¿°ú Àû¿ë");
+            Debug.Log($"{(LevelCardSO.LevelCardType)(myCards[i])} È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
     }
     #endregion
 
     /// <summary>
-    /// ¼¼ÀÌºê µ¥ÀÌÅÍ¿¡ ÀÎº¥Åä¸® »óÅÂ ÀúÀå
+    /// ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="data"></param>
     public void SaveDataTo(SaveDataStruct data)
@@ -173,57 +186,33 @@ public class InventoryManager : MonoBehaviour, ISaveable
             && hasStageEntrySnapshot;
 
         int[] cardsToSave = useStageEntry ? stageEntryCards : myCards;
-        int creditToSave = useStageEntry ? stageEntryCredit : curCredit;
-        int slotIndexToSave = useStageEntry ? stageEntryCardSlotIndex : cardSlotIndex;
 
-        data.credit = creditToSave;
-
-        data.cards = new int[5];
-
-        for (int i = 0; i < CardSlotCount; i++)
-            data.cards[i] = cardsToSave[i];
+        data.credit = useStageEntry ? stageEntryCredit : curCredit;
+        data.cards = cardsToSave != null ? (int[])cardsToSave.Clone() : new int[CardSlotCount];
+        data.cardSlotIndex = useStageEntry ? stageEntryCardSlotIndex : cardSlotIndex;
 
         ItemSO item = GameManager.Instance.TempItemCaching;
-
-        data.cards[SavedItemIndex] =
-            item != null ? (int)item.Id : (int)ItemSO.ItemId.None;
-
-        data.cards[SavedCardSlotIndex] = slotIndexToSave;
+        data.itemId = item != null ? item.Id : ItemId.None;
     }
 
     public void LoadDataFrom(SaveDataStruct data)
     {
         SetCredit(data.credit);
-
-        for (int i = 0; i < CardSlotCount; i++)
+        myCards = new int[CardSlotCount];
+        if (data.cards != null)
         {
-            if (data.cards != null && i < data.cards.Length)
-                myCards[i] = data.cards[i];
-            else
-                myCards[i] = -1;
+            int len = Mathf.Min(data.cards.Length, CardSlotCount);
+            System.Array.Copy(data.cards, myCards, len);
         }
 
-        if (data.cards != null && data.cards.Length > SavedCardSlotIndex)
-        {
-            int savedSlotIndex = data.cards[SavedCardSlotIndex];
-
-            if (savedSlotIndex >= 0 && savedSlotIndex < CardSlotCount)
-                cardSlotIndex = savedSlotIndex;
-            else
-                SetCardSlotIndexByCards();
-        }
+        // ìŠ¬ë¡¯ ì¸ë±ìŠ¤
+        if (data.cardSlotIndex >= 0 && data.cardSlotIndex < CardSlotCount)
+            cardSlotIndex = data.cardSlotIndex;
         else
-        {
             SetCardSlotIndexByCards();
-        }
 
-        ItemSO.ItemId itemId = ItemSO.ItemId.None;
-
-        if (data.cards != null && data.cards.Length > SavedItemIndex)
-            itemId = (ItemSO.ItemId)data.cards[SavedItemIndex];
-
+        ItemId itemId = data.itemId;
         GameManager.Instance.SetTempItemCaching(FindItemById(itemId));
-
         CaptureStageEntryState();
     }
 
@@ -241,14 +230,8 @@ public class InventoryManager : MonoBehaviour, ISaveable
         cardSlotIndex = 0;
     }
 
-    private ItemSO FindItemById(ItemSO.ItemId id)
+    private ItemSO FindItemById(ItemId id)
     {
-        if (id == ItemSO.ItemId.None)
-            return null;
-
-        return itemDatabase.FirstOrDefault(
-            item => item != null && item.Id == id
-        );
+        return ItemDB != null ? ItemDB.Get(id) : null;
     }
-
 }

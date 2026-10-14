@@ -108,7 +108,7 @@ public class ItemObject : MonoBehaviour
             return;
 
         // 재화는 언제나 자동 획득
-        if (myItem.Type == ItemSO.ItemType.GetCredit)
+        if (myItem.Type == ItemType.GetCredit)
         {
             StartMagnet(inventory, false);
             return;
@@ -145,7 +145,7 @@ public class ItemObject : MonoBehaviour
         // 자동 획득은 기존 아이템을 교체하지 않음
         if (!canReplace &&
             inventory.CurItem != null &&
-            myItem.Type != ItemSO.ItemType.GetCredit)
+            myItem.Type != ItemType.GetCredit)
             return;
 
         targetInventory = inventory;
@@ -170,7 +170,7 @@ public class ItemObject : MonoBehaviour
         // 자동 획득 중 슬롯이 차면 교체하지 않고 중단
         if (!allowReplacement &&
             targetInventory.CurItem != null &&
-            myItem.Type != ItemSO.ItemType.GetCredit)
+            myItem.Type != ItemType.GetCredit)
         {
             CancelMagnet();
             return;

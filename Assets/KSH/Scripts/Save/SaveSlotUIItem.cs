@@ -35,7 +35,7 @@ public class SaveSlotUIItem : MonoBehaviour
                 $"슬롯 {SlotIndex + 1}에 세이브 하시겠습니까?" : $"Save to slot {SlotIndex + 1} ?";
         else // 로드 모드
             msg = LocalizationManager.Instance.CurLang == Language.KO ? 
-                $"슬롯 {{SlotIndex + 1}}을(를) 로드하시겠습니까?" : $"Load to slot {SlotIndex + 1} ?";
+                $"슬롯 {SlotIndex + 1}을(를) 로드하시겠습니까?" : $"Load to slot {SlotIndex + 1} ?";
         
         UIManager.Instance.SetMsgPanel(msg,  () =>
         {
