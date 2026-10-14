@@ -1,32 +1,31 @@
 using UnityEngine;
 
+public enum ItemId
+{
+    None = 0,
+    Credit,
+    EmergencyPatch,
+    RepairKit,
+    WasteProtocol,
+    DamagedCore,
+    BlankBullet
+}
+
+public enum ItemType 
+{ 
+    None, 
+    GetCredit, //재화
+    GetHP, //체력 회복
+    GetCard, //카드 획득
+    DamagedCore, //손상된 코어
+    BlankBullet, //공포탄
+    Count 
+}
+
 [CreateAssetMenu(fileName = "ItemSO", menuName = "LEJ/ItemSO")]
 public class ItemSO : ScriptableObject
 {
-    public enum ItemId
-    {
-        None = 0,
-        Credit,
-        EmergencyPatch,
-        RepairKit,
-        WasteProtocol,
-        DamagedCore,
-        BlankBullet
-    }
-
     public ItemId Id;
-
-    public enum ItemType 
-    { 
-        None, 
-        GetCredit, //재화
-        GetHP, //체력 회복
-        GetCard, //카드 획득
-        DamagedCore, //손상된 코어
-        BlankBullet, //공포탄
-        Count 
-    }
-
     public string Name;
     public Sprite Sprite;
     public int Price;

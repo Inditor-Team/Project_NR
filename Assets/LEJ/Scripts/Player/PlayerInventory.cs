@@ -50,7 +50,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
             return;
 
         //만약 재화 아이템이라면 획득 시 바로 사용
-        if (itemObject.MyItem.Type == ItemSO.ItemType.GetCredit)
+        if (itemObject.MyItem.Type == ItemType.GetCredit)
         {
             InventoryManager.Instance.AddCredit((int)itemObject.MyItem.Amount);
             return;
@@ -89,20 +89,20 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
 
         switch (curItem.Type)
         {
-            case ItemSO.ItemType.DamagedCore:
+            case ItemType.DamagedCore:
                 playerStat.UseDamagedCore(curItem.Amount, damagedCoreDuration);
                 break;
-            case ItemSO.ItemType.GetCard:
+            case ItemType.GetCard:
                 if(levelCardProvider != null) // 혹시 모르는 null 체크
                     levelCardProvider.ProvideByUI(false);
                 break;
-            case ItemSO.ItemType.GetCredit:
+            case ItemType.GetCredit:
                 InventoryManager.Instance.AddCredit((int)curItem.Amount);
                 break;
-            case ItemSO.ItemType.GetHP:
+            case ItemType.GetHP:
                 playerStat.EarnLife(curItem.Amount);
                 break;
-            case ItemSO.ItemType.BlankBullet:
+            case ItemType.BlankBullet:
                 UseBlankBullet();
                 break;
 
