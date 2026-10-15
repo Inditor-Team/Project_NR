@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -54,7 +51,7 @@ public class SceneController : MonoBehaviour, ISaveable
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
         EventA, EventB, ShopA, ShopB,
-        Boss,
+        Boss, Ending,
         Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;

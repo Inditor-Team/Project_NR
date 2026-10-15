@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Gun : WeaponBase
 {
-    [Tooltip("ÃÑ±¸ À§Ä¡")]
-    [SerializeField] Transform firePoint; //ÃÑ±¸ À§Ä¡
+    [Tooltip("ï¿½Ñ±ï¿½ ï¿½ï¿½Ä¡")]
+    [SerializeField] Transform firePoint; //ï¿½Ñ±ï¿½ ï¿½ï¿½Ä¡
     [SerializeField] SpriteRenderer model;
     public SpriteRenderer Model => model;
     float maxDistance = 20f;
@@ -14,8 +12,8 @@ public class Gun : WeaponBase
     float speed;
     float damage;
 
-    [SerializeField] GameObject bulletPrefab; //ÃÑ¾Ë ÇÁ¸®ÆÕ
-    [SerializeField] GameObject reflectBulletPrefab; //¹İ»ç ÃÑ¾Ë ÇÁ¸®ÆÕ
+    [SerializeField] GameObject bulletPrefab; //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] GameObject reflectBulletPrefab; //ï¿½İ»ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public GameObject BulletPrefab => bulletPrefab;
     private int bulletPoolSize = 20;
     BulletBase curBullet;
@@ -29,28 +27,19 @@ public class Gun : WeaponBase
     private void Start()
     {
         originColor = bulletPrefab.GetComponent<SpriteRenderer>().color;
-        MakeBulletPool();
-    }
-
-    private void MakeBulletPool()
-    {
-        PoolManager.Instance.PoolInit(bulletPrefab, bulletPoolSize);
-
-        //ºí·¹ÀÌ´õ ÇÁ·ÎÅäÄİÀÇ °æ¿ì ¹İ»ç ÃÑ¾ËÀ» À§ÇÑ Ãß°¡ Ç®ÀÌ ÇÊ¿äÇÕ´Ï´Ù
-        if (GameManager.Instance.CurProtocol == ProtocolCard.Protocol.Blader)
-            PoolManager.Instance.PoolInit(reflectBulletPrefab, bulletPoolSize);
+        // MakeBulletPool(); // ì´ë¯¸ í’€ ë§¤ë‹ˆì €ì—ì„œ ë§Œë“¤ì–´ì„œ í•´ë‹¹ ì½”ë“œ ì œì™¸
     }
 
     public void TryAttack(float speed, float damage)
     {
         this.damage = damage;
         
-        // ÃÑ¾Ë »ç¿ë
+        // ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½
         this.speed = speed;
 
         curBullet = PoolManager.Instance.Get(bulletPrefab).GetComponent<BulletBase>();
         curBullet.GetComponent<SpriteRenderer>().color = originColor;
-        curBullet.transform.position = firePoint.position; //ÃÑ¾Ë À§Ä¡ ÃÊ±âÈ­
+        curBullet.transform.position = firePoint.position; //ï¿½Ñ¾ï¿½ ï¿½ï¿½Ä¡ ï¿½Ê±ï¿½È­
 
         Attack();
     }
@@ -60,7 +49,7 @@ public class Gun : WeaponBase
     {
         OnShoot?.Invoke();
 
-        // ÃÑ¾Ë »ç¿ë
+        // ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½
         if (curBullet == null)
             return;
 

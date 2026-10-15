@@ -1,4 +1,3 @@
-using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 
 public class Exit : MonoBehaviour
@@ -16,10 +15,10 @@ public class Exit : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        //ÀÌº¥Æ® ¸ÊÀÇ °æ¿ì ¹Ù·Î ³ª°¥ ¼ö ÀÖ°Ô ÃâÀÔ±¸°¡ ¿­¸³´Ï´Ù
+        //ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½
         if (isEventScene)
             isAppear = true;
-        else //ÀüÅõ ¸ÊÀÇ °æ¿ì SectorClear ½Ã¿¡ ¸ğ½ÀÀ» µå·¯³»°í ¾ÀÀ» ³ª°¥ ¼ö ÀÖ°Ô µË´Ï´Ù
+        else //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ SectorClear ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å·¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½Ë´Ï´ï¿½
             SectorManager.Instance.OnSectorClear += Appear;
 
         myModel.SetActive(isAppear);
@@ -48,7 +47,7 @@ public class Exit : MonoBehaviour
         if (isAppear)
         {
             GameObject playerObj = GameManager.Instance.Player;
-            //»¡·Áµé¾î°¡°Ô
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î°¡ï¿½ï¿½
             playerObj.transform.position = Vector3.Lerp(playerObj.transform.position, transform.position, Time.deltaTime * 10f);
 
 
@@ -56,7 +55,7 @@ public class Exit : MonoBehaviour
                 levelCardProvider.ProvideByUI();
             else
             {
-                SectorManager.Instance.SectorClear();
+                SectorManager.Instance.SectorClear(); // ?? íë¦„ ê°œì„  í•„ìš”
                 SceneController.Instance.ChangeScene(targetScene);
             }
         }
