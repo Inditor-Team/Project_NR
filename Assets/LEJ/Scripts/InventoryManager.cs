@@ -189,7 +189,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
         data.credit = useStageEntry ? stageEntryCredit : curCredit;
         data.cards = cardsToSave != null ? (int[])cardsToSave.Clone() : new int[CardSlotCount];
-        data.cardSlotIndex = useStageEntry ? stageEntryCardSlotIndex : cardSlotIndex;
 
         ItemSO item = GameManager.Instance.TempItemCaching;
         data.itemId = item != null ? item.Id : ItemId.None;
@@ -204,12 +203,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
             int len = Mathf.Min(data.cards.Length, CardSlotCount);
             System.Array.Copy(data.cards, myCards, len);
         }
-
-        // 슬롯 인덱스
-        if (data.cardSlotIndex >= 0 && data.cardSlotIndex < CardSlotCount)
-            cardSlotIndex = data.cardSlotIndex;
-        else
-            SetCardSlotIndexByCards();
+        SetCardSlotIndexByCards();
 
         ItemId itemId = data.itemId;
         GameManager.Instance.SetTempItemCaching(FindItemById(itemId));
