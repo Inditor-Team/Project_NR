@@ -7,7 +7,8 @@ public enum DialogueID
     event_npc_B_1,
     intro_npc_1,
     end_npc_1,
-    store2_npc_0
+    store2_npc_0,
+    buy_goggle_1
 }
 
 public class NpcInteractable : MonoBehaviour, IInteractable
