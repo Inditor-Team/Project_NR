@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// 맵 내 아이템 스폰과 디스폰을 관리
@@ -21,9 +22,14 @@ public class ItemSpawner : MonoBehaviour
 
     [SerializeField] List<ItemSO> itemSOs;
     [SerializeField] GameObject itemObjectPrefab;
-    int poolSize = 10;
+    int poolSize = 3;
 
     float itemSpawnProbability = 0.4f;
+
+    private void Start()
+    {
+        SetPool();
+    }
 
     public void SetPool()
     {

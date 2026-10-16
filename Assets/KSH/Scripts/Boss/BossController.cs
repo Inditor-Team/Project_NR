@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -206,8 +205,7 @@ public partial class BossController : MonoBehaviour, IDamageable
 
     public void OnDeadAnimationOver() // dead 애니메이션 재생 종료 후 호출
     {
-        // TODO: SectorManager에 중간 보스 제거 메소드 추가 필요, 엔딩 연출 재생도 거기서
-        // SectorManager.Instance.DestroyedEnemy(); 
+        SectorManager.Instance.ClearMiddleBoss();
     }
 
     public void OnPhaseSwitchAnimationOver() // 페이즈 전환 끝나고 호출되는 함수

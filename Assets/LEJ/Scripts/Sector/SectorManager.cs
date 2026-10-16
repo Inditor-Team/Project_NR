@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -100,6 +99,13 @@ public class SectorManager : MonoBehaviour
     {
         Debug.Log("Section Fail!");
         OnSectorFail?.Invoke(SceneController.Instance.curScene);
+        GameManager.Instance.UnRegisterSectorManagerEvent();
+    }
+
+    public void ClearMiddleBoss()
+    {
+        Debug.Log("Boss Clear!");
+        SceneController.Instance.ChangeScene(SceneController.Scene.Ending);
         GameManager.Instance.UnRegisterSectorManagerEvent();
     }
 }
