@@ -101,6 +101,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
                 break;
             case ItemType.GetHP:
                 playerStat.EarnLife(curItem.Amount);
+                PlayerFloatingText.instance.ShowFloatingText((int)curItem.Amount, TextEffect.Heal);
                 break;
             case ItemType.BlankBullet:
                 UseBlankBullet();

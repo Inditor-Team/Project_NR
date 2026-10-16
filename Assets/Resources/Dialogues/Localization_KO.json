@@ -39,8 +39,8 @@
     {"key": "DLG_STORE_NPC_7", "value": "무언가 큰 잘못을\n한 느낌이다."},
     {"key": "DLG_STORE_NPC_8", "value": "“...”"},
     {"key": "DLG_STORE_NPC_9", "value": "단말기의\n전원이 꺼졌다."},
-    {"key": "DLG_BUY_GOGGLE_1", "value":  "고글을 구매하고 싶니?"},
-    {"key": "DLG_BUY_GOGGLE_2", "value":  "99,900 크레딧을 구해와~!"},
+    {"key": "DLG_BUY_GOGGLE_1", "value":  "“고글을 구매하고 싶니?“"},
+    {"key": "DLG_BUY_GOGGLE_2", "value":  "“99,900 크레딧을 구해와~!“"},
     
     {"key": "TEMP_COMMENT_3", "value": "아래로 상점 대화 옵션 텍스트 입니다"},
     {"key": "OPT_STORE_NPC_2_1", "value": "예"},
