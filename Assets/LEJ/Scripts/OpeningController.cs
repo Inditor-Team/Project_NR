@@ -84,13 +84,15 @@ public class OpeningController : MonoBehaviour
     {
         commandIndex++;
 
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
+
         if (commandIndex < commands.Length)
         {
             if(LocalizationManager.Instance.CurLang == Language.KO)
                 writeText.Play(commands[commandIndex]);
             else
                 writeText.Play(commandsEN[commandIndex]);
-            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
 
             return;
         }
@@ -107,11 +109,17 @@ public class OpeningController : MonoBehaviour
     public void MoveNPCToWidnow()
     {
         StartCoroutine(MoveNPC(windowPoint.position));
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.ComputerSoundA);
     }
 
     public void MoveNPCToPlayer()
     {
         StartCoroutine(MoveNPC(whisperPoint.position));
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.ComputerSoundB);
     }
 
     private IEnumerator MoveNPC(Vector3 target)
@@ -139,6 +147,7 @@ public class OpeningController : MonoBehaviour
         yield return new WaitForSecondsRealtime(goggleShowDuration);
 
         redGoggleObject.SetActive(false);
+
     }
 
     /// <summary>
@@ -164,6 +173,8 @@ public class OpeningController : MonoBehaviour
 
     public void FinishOpening()
     {
+        SoundManager.Instance.PlaySFX(Sound_SFX.Robot_Laugh);
+
         isFinished = true;
         isCommand = false;
 

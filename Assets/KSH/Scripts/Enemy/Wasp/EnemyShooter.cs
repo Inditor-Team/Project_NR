@@ -124,8 +124,6 @@ public class EnemyShooter : MonoBehaviour
         enemyBulletScript.OnBulletExpired += RemoveBulletFromList;
         bulletList.Add(enemyBulletScript); // 리스트에 저장
 
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
     }
     
     // 일시 정지 때 쓸 코루틴 용 시간 함수

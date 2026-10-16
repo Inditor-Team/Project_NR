@@ -86,6 +86,12 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
     private void EnterArmedState()
     {
         // TODO: 카운트 효과음 추가
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Mine_Install); //설치
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Mine_Time); //카운트
+
         state = MineState.Armed;
         sprite.DOColor(Color.red, 0.2f).SetLoops(-1, LoopType.Yoyo);
         bombEffectSprite.DOFade(0.35f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
@@ -112,8 +118,12 @@ public class EnemyLandMine : MonoBehaviour, IPoolObjectBase
         
         bombEffectSprite.DOKill();
         SetBombEffectAlpha(1f); 
-        anim.SetTrigger("isBomb"); 
+        anim.SetTrigger("isBomb");
+
         // TODO: 폭발 효과음 추가
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Mine_Explode);
+
         bombEffectSprite.DOFade(0f, 0.5f).OnComplete(() =>
         {
             anim.Rebind(); // 애니메이션 초기화

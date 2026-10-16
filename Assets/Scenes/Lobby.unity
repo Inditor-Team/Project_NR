@@ -4070,6 +4070,7 @@ GameObject:
   - component: {fileID: 847435587}
   - component: {fileID: 847435586}
   - component: {fileID: 847435589}
+  - component: {fileID: 847435590}
   m_Layer: 5
   m_Name: choice button
   m_TagString: Untagged
@@ -4264,6 +4265,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &847435590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847435584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8371ea33b864f84dddf3eeed7c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayProtocolGlassSound
 --- !u!1 &864834972
 GameObject:
   m_ObjectHideFlags: 0
@@ -29752,6 +29765,7 @@ GameObject:
   - component: {fileID: 1703904956554844355}
   - component: {fileID: 3987516524484687135}
   - component: {fileID: 8177128400658530341}
+  - component: {fileID: 8177128400658530342}
   m_Layer: 5
   m_Name: choice button
   m_TagString: Untagged
@@ -30075,6 +30089,7 @@ GameObject:
   - component: {fileID: 1650647673532577289}
   - component: {fileID: 3898915448777448405}
   - component: {fileID: 8091560728404261108}
+  - component: {fileID: 8091560728404261109}
   m_Layer: 5
   m_Name: choice button
   m_TagString: Untagged
@@ -41680,6 +41695,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8091560728404261109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703098785655673609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8371ea33b864f84dddf3eeed7c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayProtocolGlassSound
 --- !u!1 &8094301214653736610
 GameObject:
   m_ObjectHideFlags: 0
@@ -41974,6 +42001,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8177128400658530342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614492774905068995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8371ea33b864f84dddf3eeed7c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayProtocolGlassSound
 --- !u!1 &8178669328934693234
 GameObject:
   m_ObjectHideFlags: 0
