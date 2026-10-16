@@ -110,6 +110,9 @@ public class PlayerStat : MonoBehaviour, IDamageable
     {
         AddStat(Stat.Life, amount);
 
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.HP_UpA);
+
         //시각적 효과
         model.DOColor(Color.green, 0.2f).OnComplete(() =>
         {
@@ -182,6 +185,9 @@ public class PlayerStat : MonoBehaviour, IDamageable
         statDic[type] *= value;
 
         OnUpdateStat?.Invoke(type, value);
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.HP_UpB); //스탯 업에 대한 사운드
     }
 
     /// <summary>

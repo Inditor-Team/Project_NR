@@ -68,6 +68,8 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
 
         if (ui != null)
             ui.UpdateUI(curItem);
+
+        SoundManager.Instance.PlaySFX(Sound_SFX.UISelect_Normal);
     }
 
     /// <summary>

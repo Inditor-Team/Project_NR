@@ -41,7 +41,11 @@ public class MapButton : MonoBehaviour
 
         string msg = LocalizationManager.Instance.CurLang == Language.KO ? 
             $"{stageName} 로 이동하시겠습니까?" : $"Go to {stageNameEN}";
-        UIManager.Instance.SetMsgPanel(msg, () => SceneController.Instance.ChangeScene(curSector));
+        UIManager.Instance.SetMsgPanel(msg, () =>
+        {
+            SceneController.Instance.ChangeScene(curSector);
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIPlay);
+        });
     }
 
     private bool CanEnterStage()

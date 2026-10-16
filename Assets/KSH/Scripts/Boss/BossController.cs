@@ -198,8 +198,8 @@ public partial class BossController : MonoBehaviour, IDamageable
         enemyPlacer.ClearAllMines(); // 지뢰 제거
         spawnUserEnemy.ClearAllUsers(); // 유저 제거
         
-        // TODO: 사망 효과음 변경?
-        SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Dead);
+        // TODO: 사망 효과음 변경
+        SoundManager.Instance.PlaySFX(Sound_SFX.Boss_Dead); //변경
     }
 
     #region 애니메이션 끝날 때 실행되는 함수
@@ -254,7 +254,9 @@ public partial class BossController : MonoBehaviour, IDamageable
                 anim.SetTrigger("switchPhase");
                 anim.SetBool("isPhaseTwo", true);
                 isPhaseTwo = true;
-                // TODO: 페이즈 전환 효과음?
+                // TODO: 페이즈 전환 효과음
+                if (SoundManager.Instance != null)
+                    SoundManager.Instance.PlaySFX(Sound_SFX.Boss_Transition);
                 break;
             case BossStat.Heal:
                 anim.SetBool("isMove", false); // 정지

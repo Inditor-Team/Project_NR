@@ -65,18 +65,56 @@ MonoBehaviour:
   - type: 6
     clip: {fileID: 8300000, guid: c242bda56642b1647b560707226fbad8, type: 3}
   - type: 7
-    clip: {fileID: 8300000, guid: 007b8240625ac694491b9c6eef2230c1, type: 3}
+    clip: {fileID: 8300000, guid: 7eb476fbded425f45864802728f7d5a6, type: 3}
   - type: 8
-    clip: {fileID: 8300000, guid: ba1362517a6f6184b9b1a660e9298916, type: 3}
+    clip: {fileID: 8300000, guid: c2379a9574a5d934c9ebcd30d67cae04, type: 3}
   - type: 9
     clip: {fileID: 8300000, guid: 696acbbb30ea4604faaf08d0f1c49e3b, type: 3}
   - type: 10
-    clip: {fileID: 8300000, guid: 8d7f8ec2eea576e4a843f0ab739fbbc9, type: 3}
+    clip: {fileID: 8300000, guid: 9e0648e86fff68648bc847920655feb1, type: 3}
   - type: 11
-    clip: {fileID: 8300000, guid: b528ebd5c33bb0540b66b5ce3db2dc36, type: 3}
+    clip: {fileID: 8300000, guid: 8d7f8ec2eea576e4a843f0ab739fbbc9, type: 3}
   - type: 12
-    clip: {fileID: 8300000, guid: 0e61048b52b01ea4e80584000a42a422, type: 3}
+    clip: {fileID: 8300000, guid: b528ebd5c33bb0540b66b5ce3db2dc36, type: 3}
   - type: 13
+    clip: {fileID: 8300000, guid: 0e61048b52b01ea4e80584000a42a422, type: 3}
+  - type: 19
+    clip: {fileID: 8300000, guid: bbef970700014634788c7e33a1db4c87, type: 3}
+  - type: 20
+    clip: {fileID: 8300000, guid: 59509ad5a4f48bc4abb85830c5e38149, type: 3}
+  - type: 23
+    clip: {fileID: 8300000, guid: 6337f58d164839545aa49a71ade02b39, type: 3}
+  - type: 21
+    clip: {fileID: 8300000, guid: 25d9c0db05321c743a024eaabb28d949, type: 3}
+  - type: 22
+    clip: {fileID: 8300000, guid: d1c451ae94f1429448df9c49ab809cd9, type: 3}
+  - type: 24
+    clip: {fileID: 8300000, guid: 25758d18e1c6bfe43bced61d502dec85, type: 3}
+  - type: 25
+    clip: {fileID: 8300000, guid: 30570564fe1f0cc4594b354b267e94fd, type: 3}
+  - type: 26
+    clip: {fileID: 8300000, guid: c4fb66be174d39143b7332a75eebf04b, type: 3}
+  - type: 27
+    clip: {fileID: 8300000, guid: 4f64671600de46d41901976b796a9c47, type: 3}
+  - type: 28
+    clip: {fileID: 8300000, guid: a7294247e5beb024b9abf9b38dbe297e, type: 3}
+  - type: 29
+    clip: {fileID: 8300000, guid: 6c5d06302cf6da242ad90d398daee3bd, type: 3}
+  - type: 18
+    clip: {fileID: 8300000, guid: b23dd5fe25085944784aba431754bf90, type: 3}
+  - type: 15
+    clip: {fileID: 8300000, guid: 9fad3feb33d7a6b4581e32224576b51f, type: 3}
+  - type: 16
+    clip: {fileID: 8300000, guid: 28926c92c9541964eb58c2af5268e3b6, type: 3}
+  - type: 17
+    clip: {fileID: 8300000, guid: 1e3a72454a4491e419ca9e8cb6f32c4e, type: 3}
+  - type: 14
     clip: {fileID: 8300000, guid: d3f259b4eee03124f901ae8dfce51b8d, type: 3}
+  - type: 23
+    clip: {fileID: 8300000, guid: 78f4ba3e2afa1084a87c3140da0024d1, type: 3}
+  - type: 30
+    clip: {fileID: 8300000, guid: 6c5d06302cf6da242ad90d398daee3bd, type: 3}
   bgmVolume: 0.2
   sfxVolume: 1
+  Prefs_BGMVolume: BGM_Volume
+  Prefs_SFXVolume: SFX_Volume

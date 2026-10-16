@@ -36,6 +36,9 @@ public class Store : MonoBehaviour
 
     private void Start()
     {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlaySFX(Sound_SFX.StoreNPCSound); //컴퓨터 가동 효과음
+
         GenerateItems();
     }
     

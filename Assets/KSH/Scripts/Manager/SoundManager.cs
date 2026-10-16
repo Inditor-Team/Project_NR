@@ -17,6 +17,7 @@ public enum Sound_SFX
     Player_NeuroAction,
     Player_Hit,
     Player_Dead,
+    Player_Roll,
 
     Enemy_Dead,
     Enemy_Attack,
@@ -25,7 +26,33 @@ public enum Sound_SFX
     UIConfirm,
     UICancel,
     UIText,
-    Count
+    UIPlay,
+    UISelect_Positive,
+    UISelect_Normal,
+    UIHover,
+
+    Boss_Dead,
+    Boss_Transition,
+
+    ComputerSoundA,
+    ComputerSoundB,
+    
+    Robot_Laugh,
+
+    StoreNPCSound,
+
+    HP_UpA,
+    HP_UpB,
+
+    Mine_Explode,
+    Mine_Install,
+    Mine_Time,
+
+    ProtocolGlass,
+    Robot_Hurted,
+
+
+    Count,
 }
 
 [Serializable]
