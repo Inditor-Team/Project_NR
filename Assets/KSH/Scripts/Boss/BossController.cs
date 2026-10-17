@@ -9,6 +9,7 @@ public partial class BossController : MonoBehaviour, IDamageable
     
     private enum BossAttack // 일반 공격 종류
     {
+        None = -1,
         Shoot = 0,
         LandMine = 1,
         SpawnUser = 2
@@ -16,6 +17,7 @@ public partial class BossController : MonoBehaviour, IDamageable
 
     private enum BossPattern // 페이즈2 공격 패턴
     {
+        None = -1,
         ShootAndLandMine = 0,
         ShootAndUser = 1,
         LandMineAndUser = 2
@@ -116,6 +118,9 @@ public partial class BossController : MonoBehaviour, IDamageable
         currentStat = BossStat.Wait;
         
         healthSlider.value = health / maxHealth;
+        
+        currentAttack = BossAttack.None;
+        currentPattern = BossPattern.None;
     }
 
     private void Start()

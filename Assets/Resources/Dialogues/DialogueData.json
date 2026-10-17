@@ -871,19 +871,7 @@
       "text": "DLG_END_NPC_2",
       "nextId": "",
       "options": [],
-      "phase": "intro",
-      "onEnterEvents": [],
-      "entryConditionId": "",
-      "entryRedirectId": ""
-    },
-    {
-      "id": "buy_goggle_1",
-      "npcId": "storeNPC",
-      "name": "NAME_STORE_OWNER",
-      "text": "DLG_BUY_GOGGLE_1",
-      "nextId": "",
-      "options": [],
-      "phase": "store",
+      "phase": "end",
       "onEnterEvents": [],
       "entryConditionId": "",
       "entryRedirectId": ""
