@@ -7,6 +7,7 @@ public class Sword : WeaponBase
     [SerializeField] SwordHitBox hitBox;
     [SerializeField] SpriteRenderer model;
     [SerializeField] GameObject effect;
+
     public SpriteRenderer Model => model;
 
     float damage;
@@ -21,7 +22,6 @@ public class Sword : WeaponBase
         {
             hitBox.enabled = true;
             hitBox.OnHit += OnHit;
-
             hitBox.SetHitboxActive(false);
         }
 
@@ -47,7 +47,10 @@ public class Sword : WeaponBase
     internal override void Attack()
     {
         if (hitBox != null)
+        {
             hitBox.SetHitboxActive(true);
+            canConsumeSword = true; //칼을 휘두를 때 소모 가능
+        }
     }
 
     public void EndAttack()
@@ -60,13 +63,10 @@ public class Sword : WeaponBase
 
     void OnHit(GameObject target)
     {
-        if (!gameObject.activeSelf) //gameObject 가 SetActive false 된 상태에서 Coroutine null 오류 때문에 추가
-            return;
-
         IDamageable damageable = target.GetComponent<IDamageable>();
         EnemyBullet bullet = target.GetComponent<EnemyBullet>();
 
-        //적의 총알일 경우
+        //적의 총알이거나 damageable 이 null 일 경우 return
         if (bullet == null && damageable == null)
             return;
 
@@ -75,10 +75,10 @@ public class Sword : WeaponBase
         //damageable 일 경우 damage 전달
         damageable?.TakeDamage(damage);
 
-        //임시 이펙트 처리
-        effect.SetActive(false);
-        effect.SetActive(true);
-        Invoke("HideEffect", 0.4f);
+        ////임시 이펙트 처리
+        //effect.SetActive(false);
+        //effect.SetActive(true);
+        //Invoke("HideEffect", 0.4f);
 
         //칼은 한 번 휘두를 때 한 번만 소모 됩니다
         if (canConsumeSword)

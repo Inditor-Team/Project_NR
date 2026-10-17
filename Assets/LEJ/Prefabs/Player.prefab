@@ -49,6 +49,9 @@ MonoBehaviour:
   hitBox: {fileID: 2693489210869067455}
   model: {fileID: 6491340747748547709}
   effect: {fileID: 3454971394518095051}
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &2669214311529317012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,7 +594,7 @@ MonoBehaviour:
   firePoint: {fileID: 532657774382844844}
   model: {fileID: 7563049229175620897}
   bulletPrefab: {fileID: 613181277529649084, guid: d5b85d434ad23da4c8d97f3e1cc6be87, type: 3}
-  reflectBulletPrefab: {fileID: 613181277529649084, guid: c4d727757ecea794f89b972415649a29, type: 3}
+  reflectBulletPrefab: {fileID: 613181277529649084, guid: d5b85d434ad23da4c8d97f3e1cc6be87, type: 3}
   hitLayer:
     serializedVersion: 2
     m_Bits: 320
@@ -887,6 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0286a819589da2940bc851c5f1c13c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlitzProtocol
+  playerStat: {fileID: 4833552546129074219}
   player: {fileID: 6152121639868676899}
   playerModel: {fileID: 5711610164856498049}
   swordAttacker: {fileID: 8732962472253125796}

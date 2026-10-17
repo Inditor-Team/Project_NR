@@ -60,9 +60,6 @@ public class SwordHitBox : MonoBehaviour, IDamageable
 
         Debug.Log($"{collision} 이 swordHitBox 에 감지 됨");
 
-        if (!hitTargets.Add(collision.gameObject))
-            return;
-
         OnHit?.Invoke(collision.gameObject);
     }
 
