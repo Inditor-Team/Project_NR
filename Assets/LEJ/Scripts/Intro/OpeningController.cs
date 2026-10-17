@@ -173,17 +173,10 @@ public class OpeningController : MonoBehaviour
 
     public void FinishOpening()
     {
-        SoundManager.Instance.PlaySFX(Sound_SFX.Robot_Laugh);
-
         isFinished = true;
         isCommand = false;
 
-        StartCoroutine(ChangeScene()); // 약간 대기 후 씬 이동
-    }
-    
-    public IEnumerator ChangeScene()
-    {
-        yield return new WaitForSecondsRealtime(1f); //1초로 살짝 수정했습니다!
-        SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
+        blackScreen.GetComponent<Animator>().enabled = false;
+        SceneController.Instance.ChangeScene(SceneController.Scene.HowTo);
     }
 }

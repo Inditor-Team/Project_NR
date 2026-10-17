@@ -89,9 +89,10 @@ public class SoundManager : MonoBehaviour
     {
         InitializeAudioSources();
         InitDictionary();
+        SetBGMVolumeByPlayerPrefs();
     }
 
-    private void Start()
+    private void SetBGMVolumeByPlayerPrefs()
     {
         //PlayerPrefs 에 볼륨 설정이 저장된 적 있다면 해당 값으로 설정
         if (PlayerPrefs.HasKey(Prefs_BGMVolume))
@@ -129,7 +130,7 @@ public class SoundManager : MonoBehaviour
             bgmSource = gameObject.AddComponent<AudioSource>();
             bgmSource.loop = true;
             bgmSource.playOnAwake = false;
-            bgmSource.volume = bgmVolume;
+            bgmSource.volume = 0f;
         }
         
         if (sfxSources.Count == 0)
@@ -359,7 +360,7 @@ public class SoundManager : MonoBehaviour
         {
             float startVolume = bgmSource.volume;
             float time = 0;
-            
+
             while (time < fadeTime / 2)
             {
                 bgmSource.volume = Mathf.Lerp(startVolume, 0, time / (fadeTime / 2));

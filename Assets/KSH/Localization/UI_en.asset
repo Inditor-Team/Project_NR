@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 41528647680
-    m_Localized: Setting
+    m_Localized: Exit
     m_Metadata:
       m_Items: []
   - m_Id: 623479939072
@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2973472972800
-    m_Localized: Start the game?
+    m_Localized: Start a new game?
     m_Metadata:
       m_Items: []
   - m_Id: 3174879256576
@@ -83,7 +83,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6582109528064
-    m_Localized: Game Start
+    m_Localized: New Game
     m_Metadata:
       m_Items: []
   - m_Id: 6716448890880
@@ -140,6 +140,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1475265461805056
     m_Localized: Return to Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6895263716069376
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6895332020310016
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6895683393933312
+    m_Localized: Setting
     m_Metadata:
       m_Items: []
   references:

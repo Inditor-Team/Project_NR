@@ -911,6 +911,80 @@
       "onEnterEvents": [],
       "entryConditionId": "",
       "entryRedirectId": ""
-    }
+    },
+{
+  "id": "howto_npc_1",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_HOWTO_NPC_1",
+  "nextId": "howto_npc_2",
+  "options": [],
+  "phase": "howto",
+  "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "howto_npc_2",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_HOWTO_NPC_2",
+  "nextId": "howto_npc_3",
+  "options": [],
+  "phase": "howto",
+  "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "howto_npc_3",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_HOWTO_NPC_3",
+  "nextId": "howto_npc_4",
+  "options": [],
+  "phase": "howto",
+  "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "howto_npc_4",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_HOWTO_NPC_4",
+  "nextId": "howto_npc_5",
+  "options": [],
+  "phase": "howto",
+  "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "howto_npc_5",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_HOWTO_NPC_5",
+  "nextId": "howto_npc_6",
+  "options": [],
+  "phase": "howto",
+  "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "howto_npc_6",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_HOWTO_NPC_6",
+  "nextId": "",
+  "options": [],
+  "phase": "howto",
+        "onEnterEvents": [
+        "NPC_ACTION:end_howto"
+      ],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+}
   ]
 }

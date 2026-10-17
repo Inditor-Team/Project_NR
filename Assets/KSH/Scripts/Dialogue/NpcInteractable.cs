@@ -8,7 +8,8 @@ public enum DialogueID
     intro_npc_1,
     end_npc_1,
     store2_npc_0,
-    buy_goggle_1
+    buy_goggle_1,
+    howto_npc_1
 }
 
 public class NpcInteractable : MonoBehaviour, IInteractable
@@ -26,7 +27,7 @@ public class NpcInteractable : MonoBehaviour, IInteractable
             Debug.Log("이미 말풍선 창이 켜져 있습니다.");
             return;
         }
-        
+
         DialogueManager.Instance.StartDialogue(startDialogueId.ToString());
     }
 }

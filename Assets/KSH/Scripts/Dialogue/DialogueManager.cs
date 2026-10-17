@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(string dialogueId)
     {
         if (bubbleController == null) FindBubbleController();
-        
+
         bubbleController.ShowWindow();
         bubbleController.StartDialogueById(dialogueId);
     }
