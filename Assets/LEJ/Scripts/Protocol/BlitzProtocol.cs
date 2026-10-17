@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BlitzProtocol : ProtocolBase
 {
+    [SerializeField] PlayerStat playerStat;
     [SerializeField] GameObject player;
     [SerializeField] SpriteRenderer playerModel;
     [SerializeField] SwordAttacker swordAttacker;
@@ -61,6 +62,8 @@ public class BlitzProtocol : ProtocolBase
     Coroutine protocolRoutine;
     IEnumerator ProtocolTime()
     {
+        playerStat.IsInvincible = true; //enemy 에 직접적으로 닿기 때문에 무적 상태로 전환
+
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, detectRadius, enemyLayer);
 
         foreach (Collider2D enemy in enemies)
@@ -98,6 +101,8 @@ public class BlitzProtocol : ProtocolBase
 
     internal override void EndProtocol()
     {
+        playerStat.IsInvincible = false; //무적 상태 해제
+
         colorTime = 0f;
         killCount = 0;
         protocolRoutine = null;
