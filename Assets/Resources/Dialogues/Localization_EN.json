@@ -39,6 +39,8 @@
     {"key": "DLG_STORE_NPC_7", "value": "You feel like you've done\nsomething terribly wrong."},
     {"key": "DLG_STORE_NPC_8", "value": "“...”"},
     {"key": "DLG_STORE_NPC_9", "value": "The terminal\nshut down."},
+    {"key": "DLG_BUY_GOGGLE_1", "value":  "“Wanna buy THAT goggles?“"},
+    {"key": "DLG_BUY_GOGGLE_2", "value":  "“Come back when you've got 99,900 credits :)“"},
 
     {"key": "TEMP_COMMENT_3", "value": "Shop dialogue option text below"},
     {"key": "OPT_STORE_NPC_2_1", "value": "Yes"},

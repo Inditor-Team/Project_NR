@@ -43,6 +43,11 @@ public class EnemyShooter : MonoBehaviour
         this.damage = damage;
     }
 
+    public void SetFireCount(int newFireCount)
+    {
+        fireCount = newFireCount;
+    }
+    
     public void SetInterval(float fireInterval, float shootTimeInterval)
     {
         this.fireInterval = fireInterval;

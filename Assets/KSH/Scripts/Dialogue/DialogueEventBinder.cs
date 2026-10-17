@@ -32,7 +32,7 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
         storeHackFlag = false;
         attemptHack = false;
     }
-    
+
     private void OnDestroy()
     {
         SaveSlotManager.Instance.Unregister(this);
@@ -43,7 +43,6 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
         DialogueEventDispatcher.RegisterEvent("HEAL", HandleHeal);
         DialogueEventDispatcher.RegisterEvent("ADD_MAX_HP", HandleAddMaxHp);
         DialogueEventDispatcher.RegisterEvent("ADD_CREDIT", HandleAddCredit);
-        DialogueEventDispatcher.RegisterEvent("GIVE_RANDOM_ITEM", HandleGiveRandomItem);
         DialogueEventDispatcher.RegisterEvent("SET_FLAG", HandleSetFlag);
         DialogueEventDispatcher.RegisterEvent("OPEN_UI", HandleOpenUI);
         DialogueEventDispatcher.RegisterEvent("BUY_ITEM", HandleBuyItem);
@@ -115,7 +114,10 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     {
         Debug.Log("체력 회복 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
+        {
             GameManager.Instance.AddLife(resultInt);
+            PlayerFloatingText.instance.ShowFloatingText(resultInt, TextEffect.Heal);
+        }
         else
             Debug.LogError("체력 회복 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
@@ -124,7 +126,10 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     {
         Debug.Log("최대 체력 증가 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
+        {
             GameManager.Instance.AddMaxLife(resultInt);
+            PlayerFloatingText.instance.ShowFloatingText(resultInt, TextEffect.AddMaxHp);
+        }
         else
             Debug.LogError("최대 체력 증가, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
@@ -133,16 +138,14 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     {
         Debug.Log("크레딧 변경 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
+        {
             InventoryManager.Instance.AddCredit(resultInt);
+            PlayerFloatingText.instance.ShowFloatingText(resultInt, TextEffect.AddCredit);
+        }
         else
             Debug.LogError("크레딧 조건 체크 실패, args[0]가 숫자가 아님 args[0]" + args[0]);
     }
 
-    private void HandleGiveRandomItem(string[] args)
-    {
-        Debug.Log("랜덤 아이템 지급" + " / Pool : " + args[0] + " / Count : " + args[1]);
-    }
-    
     private void HandleBuyItem(string[] args)
     {
         if (!TryParseSlot(args, out int slot)) return;
@@ -223,6 +226,7 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
             {
                 playerStat.IncreaseStat(PlayerStat.Stat.BulletDamage, 4f); // 데미지 4배
                 playerStat.IncreaseStat(PlayerStat.Stat.BulletFireRate, 3f); // 발사 속도 3배 저하
+                PlayerFloatingText.instance.ShowFloatingText(0, TextEffect.ChangeStat);
                 // TODO: 능력치 변화 관련, UI 표기?
             }
         }
