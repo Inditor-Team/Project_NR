@@ -617,6 +617,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 3484783691510989688, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3579866606024006346, guid: 0817821482e040449bdec5aed07819e5, type: 3}
       propertyPath: sword
       value: 
@@ -920,7 +924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4719,7 +4723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
       propertyPath: m_LocalPosition.z

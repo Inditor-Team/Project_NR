@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 4950555114633175593, guid: 2bd9d40d1aec330489b4a7e03aef6baa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -581,11 +581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_LocalPosition.z
@@ -836,11 +836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2933940108423948379, guid: 9dd224eb8fb551b45af8073263faa122, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3593,7 +3593,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 851864586445947629}
   m_HandleRect: {fileID: 0}
@@ -6245,7 +6245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7434,7 +7434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -30385,7 +30385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -32756,7 +32756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -38051,7 +38051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

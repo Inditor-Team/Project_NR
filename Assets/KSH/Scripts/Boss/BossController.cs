@@ -78,6 +78,7 @@ public partial class BossController : MonoBehaviour, IDamageable
     private bool isPhaseTwo = false;
     private bool isFire = false;
     private bool isMovingDuringInterval = false; // 총 발사 간격 중 이동인지
+    private int shootFireCount = 10; // 발사 횟수
     
     // 지뢰 관련
     private float landMineWaitTime = 3f; // 터지기 전 대기 시간
@@ -124,6 +125,8 @@ public partial class BossController : MonoBehaviour, IDamageable
             GameManager.Instance.OnPauseGame += Pause;
             target = GameManager.Instance.Player.gameObject.transform;
         }
+
+        enemyShooter.SetFireCount(shootFireCount);
         enemyShooter.SetDamage(damage);
         enemyShooter.OnReloadStart += OnReloadStart;
         enemyShooter.OnShootIntervalStart += OnShootIntervalStart;
@@ -214,7 +217,7 @@ public partial class BossController : MonoBehaviour, IDamageable
         
         // 이속, 지뢰 설치 위치, 사격 속도 변경
         defaultSpeed *= 1.5f; // 본래 0.6, 1.5배시 0.9
-        enemyShooter.SetInterval(0.3f, 1.5f); // 기존: 0.5, 2
+        enemyShooter.SetInterval(0.2f, 1f); // 기존: 0.5, 2
         minRadius = 1f; // 테스트 필요
         maxRadius = 3f;
     }
