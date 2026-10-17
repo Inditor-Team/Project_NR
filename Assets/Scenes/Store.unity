@@ -8089,14 +8089,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditUI
       objectReference: {fileID: 0}
-    - target: {fileID: 5615281226751295245, guid: 6a038425da66df54c8175a1a0352e259, type: 3}
-      propertyPath: m_fontSize
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615281226751295245, guid: 6a038425da66df54c8175a1a0352e259, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 64
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
