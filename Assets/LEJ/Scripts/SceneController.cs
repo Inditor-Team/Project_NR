@@ -24,17 +24,21 @@ public class SceneController : MonoBehaviour, ISaveable
 
     private void Start()
     {
-        StartBGM();
-
         if (SaveSlotManager.Instance != null)
             SaveSlotManager.Instance.Register(this);
 
-        //SkipOpening PlayerPrefs 가 설정된 적 있다면
-        if (PlayerPrefs.GetInt(SkipOpeningKey, -1) > -1)
-            skipOpeningBttn.SetActive(true);
-        else
-            skipOpeningBttn.SetActive(false);
+        StartCoroutine(WaitToStartBGM());
+    }
 
+    /// <summary>
+    /// 게임 실행 시 Fade 적용이 안 된 채 실행 돼서 임의 조절
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator WaitToStartBGM()
+    {
+        SoundManager.Instance.bgmVolume = 0f;
+        yield return new WaitForSeconds(0.5f);
+        StartBGM();
     }
 
     private void OnDestroy()
@@ -47,7 +51,7 @@ public class SceneController : MonoBehaviour, ISaveable
     [SerializeField] GameObject skipOpeningBttn;
 
     // TODO: 스테이지별 숫자 적기
-    public enum Scene { None, Opening, Lobby, Map, 
+    public enum Scene { None, Opening, HowTo, Lobby, Map, 
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
         EventA, EventB, ShopA, ShopB,
@@ -129,7 +133,7 @@ public class SceneController : MonoBehaviour, ISaveable
                 SoundManager.Instance.PlayBGM(Sound_BGM.Intro, true, 3); //인트로 BGM 추가
                 break;
             case Scene.Lobby:
-                SoundManager.Instance.PlayBGM(Sound_BGM.Lobby);
+                SoundManager.Instance.PlayBGM(Sound_BGM.Lobby, true, 3); //로비 BGM 페이드 추가
                 break;
             case Scene.Map:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Map);

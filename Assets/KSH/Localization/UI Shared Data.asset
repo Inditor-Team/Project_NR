@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 51905bbfb0ff1c84f81ed2799ca6db54
   m_Entries:
   - m_Id: 41528647680
-    m_Key: Setting
+    m_Key: Exit
     m_Metadata:
       m_Items: []
   - m_Id: 623479939072
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6582109528064
-    m_Key: "\uAC8C\uC784 \uC2DC\uC791"
+    m_Key: "\uC0C8 \uAC8C\uC784"
     m_Metadata:
       m_Items: []
   - m_Id: 6716448890880
@@ -137,6 +137,24 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1475265461805056
     m_Key: "\uBA54\uC778\uC73C\uB85C \uB3CC\uC544\uAC00\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6895263716069376
+    m_Key: NewGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6895332020310016
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6895683393933312
+    m_Key: Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6897503621206016
+    m_Key: 'Setting
+
+'
     m_Metadata:
       m_Items: []
   m_Metadata:

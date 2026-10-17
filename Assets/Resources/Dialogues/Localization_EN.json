@@ -87,6 +87,14 @@
 
     {"key": "TEMP_COMMENT_6", "value": "Ending NPC dialogue below"},
     {"key": "DLG_END_NPC_1", "value": "I was just like you. Orbis's obedient dog.\n...Until I learned the <i>truth</i>."},
-    {"key": "DLG_END_NPC_2", "value": "<i>Z.</i> Think about what it means to act for yourself."}
+    {"key": "DLG_END_NPC_2", "value": "<i>Z.</i> Think about what it means to act for yourself."},
+
+ {"key": "TEMP_COMMENT_7", "value": "Tutorial NPC dialogue below"},
+{"key": "DLG_HOWTO_NPC_1", "value": "Don't remember how to move?"},
+    {"key": "DLG_HOWTO_NPC_2", "value": "Use WASD to move and Space to roll."},
+    {"key": "DLG_HOWTO_NPC_3", "value": "Left-click to shoot, and right-click to swing your sword.\nThe five swords in the top-right corner show how many bullets you can block."},
+ {"key": "DLG_HOWTO_NPC_4", "value": "Press Q to use a <i>Protocol</i>.\nYou can't use one right now, though. You don't have any slotted."},
+    {"key": "DLG_HOWTO_NPC_5", "value": "Press E to pick up items or interact with things.\nUse Ctrl to use items."},
+ {"key": "DLG_HOWTO_NPC_6", "value": "I think that covers everything.\nGo on, then."}
   ]
 }

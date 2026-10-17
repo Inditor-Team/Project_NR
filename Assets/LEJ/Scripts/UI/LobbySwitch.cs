@@ -1,16 +1,15 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LobbySwitch : MonoBehaviour, IInteractable
 {
-    enum SwitchType { None, GameStart, HowTo }
+    enum SwitchType { None, NewGame, HowTo, Continue, Setting, Exit }
     [SerializeField] SwitchType switchType;
     [SerializeField] SceneController.Scene nextSceneName = SceneController.Scene.Map;
     [SerializeField] GameObject startAlert;
     [SerializeField] GameObject uiCanvas;
+    [SerializeField] SavePanelController savePanelController;
+    [SerializeField] SettingPanelController settingPanelController;
+    [SerializeField] MessagePanelController messagePanelController;
 
     public void CloseUI()
     {
@@ -24,14 +23,14 @@ public class LobbySwitch : MonoBehaviour, IInteractable
 
     void HowTo()
     {
-        uiCanvas.SetActive(!uiCanvas.activeSelf);
+        SceneController.Instance.ChangeScene(SceneController.Scene.HowTo);
     }
 
     public void OnInteract()
     {
         switch (switchType)
         {
-            case SwitchType.GameStart:
+            case SwitchType.NewGame:
                 if (uiCanvas.activeSelf)
                 {
                     uiCanvas.SetActive(false); // 튜토리얼 UI 켜져있으면 종료
@@ -43,7 +42,18 @@ public class LobbySwitch : MonoBehaviour, IInteractable
                 SoundManager.Instance.PlaySFX(Sound_SFX.UIOpen);
                 break;
             case SwitchType.HowTo:
-                HowTo();
+                string msg = LocalizationManager.Instance.CurLang == Language.KO ?
+                    "게임 방법을 다시 알려줘?" : "Need me to show you how to play again ?";
+                messagePanelController.SetMessagePanel(msg, HowTo);
+                break;
+            case SwitchType.Continue:
+                savePanelController.ShowForLoad();
+                break;
+            case SwitchType.Setting:
+                settingPanelController.ShowSettingPanel();
+                break;
+            case SwitchType.Exit:
+                settingPanelController.OnClickExitGame();
                 break;
         }
     }

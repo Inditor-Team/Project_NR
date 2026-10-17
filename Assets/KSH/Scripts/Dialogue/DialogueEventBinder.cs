@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueEventBinder : MonoBehaviour, ISaveable
 {
     private OpeningController openingCon;
+    private HowToController howToController;
     private HashSet<string> flags = new();
     private int resultInt; // 값 변환에 사용 
     private static Store store;
@@ -107,6 +108,14 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
         if (args[0].Equals("end_intro"))
         {
             openingCon.FinishOpening();
+        }
+
+        if (args[0].Equals("end_howto"))
+        {
+            if (howToController == null)
+                howToController = FindFirstObjectByType<HowToController>();
+
+            howToController.FinishHowto();
         }
     }
     

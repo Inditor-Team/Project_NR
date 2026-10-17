@@ -129,8 +129,8 @@ public class UserEnemyController : EnemyBaseController, IPoolObjectBase
         Vector2 finalDir = (seekForce * seekWeight + avoidForce * avoidWeight).normalized; // 가중치 적용
 
         // 테스트용
-        seekForceDebug = seekForce;
-        avoidForceDebug = avoidForce;
+        //seekForceDebug = seekForce;
+        //avoidForceDebug = avoidForce;
             
         // 자연스럽게 이동하는 방향으로 설정
         currentTrackDir = Vector2.Lerp(currentTrackDir, finalDir, 10f * Time.fixedDeltaTime).normalized;
