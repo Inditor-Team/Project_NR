@@ -13,10 +13,30 @@ MonoBehaviour:
   m_Name: BlankBullet
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   Id: 6
-  Name: "\uACF5\uD3EC\uD0C4"
+  Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 250012880896
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  Description:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 363221340160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Sprite: {fileID: 21300000, guid: 5d55d4607cfd64745a69e3010c543fc4, type: 3}
   Price: 3
   weight: 5
   Type: 5
   Amount: 5
   SubAmount: 0
+  references:
+    version: 2
+    RefIds: []

@@ -13,10 +13,30 @@ MonoBehaviour:
   m_Name: RepairKit
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   Id: 3
-  Name: "\uC815\uBE44 \uD0A4\uD2B8"
+  Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 1383678726144
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  Description:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 1466759499776
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Sprite: {fileID: 21300000, guid: 2026aa13757d90a4783d430d4baa0c95, type: 3}
   Price: 3
   weight: 10
   Type: 2
   Amount: 15
   SubAmount: 0
+  references:
+    version: 2
+    RefIds: []

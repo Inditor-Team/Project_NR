@@ -5559,7 +5559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869e9a409142a0e45a8d3fda73efe8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EXPManager
-  levelCardProvider: {fileID: 0}
+  levelCardProvider: {fileID: 44010780}
 --- !u!4 &1663662930
 Transform:
   m_ObjectHideFlags: 0
@@ -6413,6 +6413,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7309039991191032894, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
     - {fileID: 1792360665858483208, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
+    - {fileID: -5280497312918878590, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3358f48f557b1df47978821d849f7f36, type: 3}

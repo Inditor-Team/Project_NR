@@ -47,7 +47,7 @@ public class Exit : MonoBehaviour
         if (isAppear)
         {
             GameObject playerObj = GameManager.Instance.Player;
-            //��������
+            
             playerObj.transform.position = Vector3.Lerp(playerObj.transform.position, transform.position, Time.deltaTime * 10f);
 
 
