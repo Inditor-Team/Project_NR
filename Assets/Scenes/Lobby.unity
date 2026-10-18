@@ -10182,7 +10182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbySwitch
   switchType: 1
-  nextSceneName: 4
+  nextSceneName: 3
   startAlert: {fileID: 1156338838}
   uiCanvas: {fileID: 424957799}
   savePanelController: {fileID: 5866548532270633005}
@@ -11195,9 +11195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:51905bbfb0ff1c84f81ed2799ca6db54
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 41528647680
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -27383,6 +27383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
   itemSprite: {fileID: 23234382123367378}
+  descriptionUI: {fileID: 0}
+  text_itemName: {fileID: 0}
+  text_description: {fileID: 0}
 --- !u!224 &4175660748594145570
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33237,6 +33240,8 @@ MonoBehaviour:
   - {fileID: 4511499005603551941}
   - {fileID: 592968881453917136}
   - {fileID: 909132754029505065}
+  descriptionUI: {fileID: 0}
+  descriptionText: {fileID: 0}
 --- !u!114 &5613474078813652330
 MonoBehaviour:
   m_ObjectHideFlags: 0

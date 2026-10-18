@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public enum ItemId
 {
@@ -26,7 +27,8 @@ public enum ItemType
 public class ItemSO : ScriptableObject
 {
     public ItemId Id;
-    public string Name;
+    public LocalizedString Name;
+    public LocalizedString Description;
     public Sprite Sprite;
     public int Price;
     public int weight;

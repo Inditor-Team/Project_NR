@@ -51,11 +51,11 @@ public class SceneController : MonoBehaviour, ISaveable
     [SerializeField] GameObject skipOpeningBttn;
 
     // TODO: 스테이지별 숫자 적기
-    public enum Scene { None, Opening, HowTo, Lobby, Map, 
+    public enum Scene { None, Opening, Lobby, Map, 
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
         EventA, EventB, ShopA, ShopB,
-        Boss, Ending,
+        Boss, Ending, HowTo,
         Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;

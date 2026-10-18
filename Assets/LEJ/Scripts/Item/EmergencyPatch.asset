@@ -13,10 +13,30 @@ MonoBehaviour:
   m_Name: EmergencyPatch
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   Id: 2
-  Name: "\uC751\uAE09 \uD328\uCE58"
+  Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 1074508189696
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  Description:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 1175335063552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Sprite: {fileID: 21300000, guid: ac2664babadb3094a900634b8c475cdc, type: 3}
   Price: 2
   weight: 30
   Type: 2
   Amount: 1
   SubAmount: 0
+  references:
+    version: 2
+    RefIds: []

@@ -233,6 +233,17 @@ Transform:
   - {fileID: 2036686120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &147284797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 141936593123666749, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+  m_PrefabInstance: {fileID: 1901806447}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e56e55934e96c844bade0f5ef40dccba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MessagePanelController
 --- !u!1001 &271478040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -409,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 5891878054769326592, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
       propertyPath: msgController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 147284797}
     - target: {fileID: 6186366815901790919, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -494,6 +505,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7309039991191032894, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
     - {fileID: 1792360665858483208, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
+    - {fileID: -5280497312918878590, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
@@ -1356,7 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869e9a409142a0e45a8d3fda73efe8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EXPManager
-  levelCardProvider: {fileID: 0}
+  levelCardProvider: {fileID: 1859488427}
 --- !u!4 &1663662930
 Transform:
   m_ObjectHideFlags: 0

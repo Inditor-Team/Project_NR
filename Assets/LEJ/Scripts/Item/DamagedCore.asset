@@ -13,10 +13,30 @@ MonoBehaviour:
   m_Name: DamagedCore
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   Id: 5
-  Name: "\uC190\uC0C1\uB41C \uCF54\uC5B4"
+  Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 684102373376
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  Description:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c6aef2a8174b8840bd388af7ee57fd2
+    m_TableEntryReference:
+      m_KeyId: 928915509248
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Sprite: {fileID: 21300000, guid: d591d849e5694564485b13cc98025f9a, type: 3}
   Price: 5
   weight: 2
   Type: 4
   Amount: 1
   SubAmount: 1
+  references:
+    version: 2
+    RefIds: []
