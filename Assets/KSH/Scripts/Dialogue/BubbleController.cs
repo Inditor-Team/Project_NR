@@ -306,7 +306,10 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
         if (shopOptionSlots.TryGetValue(key, out int optSlot))
         {
             return TryGetShopItem(optSlot, out ItemSO item)
-                ? loc.GetFormat("OPT_STORE_ITEM_LABEL", item.Name, item.Price)
+                ? loc.GetFormat(
+                    "OPT_STORE_ITEM_LABEL",
+                    item.Name.GetLocalizedString(),
+                    item.Price)
                 : loc.Get("OPT_STORE_ITEM_SOLD_OUT");
         }
 
@@ -314,8 +317,10 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
         if (shopConfirmSlots.TryGetValue(key, out int cfmSlot))
         {
             return TryGetShopItem(cfmSlot, out ItemSO item)
-                ? loc.GetFormat(key, item.Name)
-                : loc.Get("OPT_STORE_ITEM_SOLD_OUT");
+                 ? loc.GetFormat(
+                     key,
+                     item.Name.GetLocalizedString())
+                 : loc.Get("OPT_STORE_ITEM_SOLD_OUT");
         }
 
         return loc.Get(key);

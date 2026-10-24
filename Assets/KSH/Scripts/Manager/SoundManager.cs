@@ -116,7 +116,7 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)] public float bgmVolume = 1f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
     
-    private int maxSfxSources = 10; // 동시에 재생 가능한 효과음 수
+    private int maxSfxSources = 32; // 동시에 재생 가능한 효과음 수
     private bool isFading = false; // 페이드 효과 진행 여부
 
     public string Prefs_BGMVolume = "BGM_Volume";
