@@ -36,7 +36,6 @@ public class SceneController : MonoBehaviour, ISaveable
     /// <returns></returns>
     IEnumerator WaitToStartBGM()
     {
-        SoundManager.Instance.bgmVolume = 0f;
         yield return new WaitForSeconds(0.5f);
         StartBGM();
     }
@@ -63,7 +62,9 @@ public class SceneController : MonoBehaviour, ISaveable
 
     public static bool IsStageScene(Scene scene)
     {
-        return scene >= Scene.NormalA && scene < Scene.Count;
+        if (scene == Scene.HowTo) return false;
+
+        return (scene >= Scene.NormalA && scene < Scene.Count);
     }
 
     public void ChangeScene(Scene sceneName)
@@ -130,6 +131,7 @@ public class SceneController : MonoBehaviour, ISaveable
         switch (curScene)
         {
             case Scene.Opening:
+            case Scene.HowTo:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Intro, true, 3); //인트로 BGM 추가
                 break;
             case Scene.Lobby:
@@ -138,7 +140,18 @@ public class SceneController : MonoBehaviour, ISaveable
             case Scene.Map:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Map);
                 break;
-            case Scene.NormalA:
+            case Scene.Boss:
+                SoundManager.Instance.PlayBGM(Sound_BGM.Boss);
+                break;
+            case Scene.ShopA:
+            case Scene.ShopB:
+                SoundManager.Instance.PlayBGM(Sound_BGM.Store);
+                break;
+            case Scene.EventA:
+            case Scene.EventB:
+                SoundManager.Instance.PlayBGM(Sound_BGM.Event);
+                break;
+            default:
                 SoundManager.Instance.PlayBGM(Sound_BGM.Stage1);
                 break;
         }
