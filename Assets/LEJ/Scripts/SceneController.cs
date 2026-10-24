@@ -92,6 +92,7 @@ public class SceneController : MonoBehaviour, ISaveable
         }
 
         changeSceneRoutine = StartCoroutine(ChangeSceneWithFadeIn(sceneName));
+        GameTime.SetTimeScale(1f); // 혹시 모를 시간 초기화
     }
 
     Coroutine changeSceneRoutine;

@@ -50,9 +50,7 @@ public enum Sound_SFX
 
     ProtocolGlass,
     Robot_Hurted,
-
-
-    Count,
+    Count
 }
 
 [Serializable]
@@ -130,7 +128,7 @@ public class SoundManager : MonoBehaviour
             bgmSource = gameObject.AddComponent<AudioSource>();
             bgmSource.loop = true;
             bgmSource.playOnAwake = false;
-            bgmSource.volume = 0f;
+            bgmSource.volume = bgmVolume;
         }
         
         if (sfxSources.Count == 0)
@@ -152,7 +150,6 @@ public class SoundManager : MonoBehaviour
             playerMoveSource.playOnAwake = false;
             playerMoveSource.volume = sfxVolume;
         }
-
     }
     
     private void InitDictionary() // Dictionary 초기화
