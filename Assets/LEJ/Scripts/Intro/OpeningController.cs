@@ -173,6 +173,16 @@ public class OpeningController : MonoBehaviour
 
     public void FinishOpening()
     {
+        ShowNextCommand();
+
+        StartCoroutine(FinishOpeningTime());
+    }
+
+    IEnumerator FinishOpeningTime()
+    {
+        Debug.Log("Opening Finished");
+        yield return new WaitForSecondsRealtime(1f);
+
         isFinished = true;
         isCommand = false;
 

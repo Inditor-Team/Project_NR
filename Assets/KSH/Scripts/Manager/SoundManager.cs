@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum Sound_BGM //인트로 추가 
 {
-    None, Intro, Lobby, Map, Stage1,Ending, Count 
+    None, Intro, Lobby, Map, Stage1, Store, Event, Ending, Boss, Count 
 }
 
 public enum Sound_SFX
