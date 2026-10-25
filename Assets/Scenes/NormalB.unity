@@ -712,6 +712,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3183048505134878788, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
+      propertyPath: enemySpawn
+      value: 
+      objectReference: {fileID: 146042513}
+    - target: {fileID: 3183048505134878788, guid: 3358f48f557b1df47978821d849f7f36, type: 3}
       propertyPath: curSectorSO
       value: 
       objectReference: {fileID: 11400000, guid: 0c7f9bc4b72bbea45a800aa0a8af3eba, type: 2}

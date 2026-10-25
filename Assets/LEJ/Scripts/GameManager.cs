@@ -18,7 +18,6 @@ public static class GameTime
 
     public static void SetTimeScale(float timeScale)
     {
-        Debug.Log($"NewWorldTimeScale : {timeScale}");
         if (timeScale > 0f) beforeWorldTimeScale = timeScale;
         worldTimeScale = timeScale;
     }

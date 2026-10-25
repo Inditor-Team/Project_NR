@@ -96,7 +96,6 @@ public class MineEnemyController : EnemyBaseController
     private void ChangeStat(MineStat newStat)
     {
         // Exit 처리 필요하면 나중에 추가
-        Debug.Log($"새 상태 : {newStat}");
         currentStat = newStat;
         switch (currentStat)
         {
@@ -148,7 +147,6 @@ public class MineEnemyController : EnemyBaseController
             stuckTimer -= Time.fixedDeltaTime * GameTime.WorldTimeScale;
             if (stuckTimer <= 0f) // 방향 재계산
             {
-                Debug.Log("벽 막힘으로 인한 재계산");
                 fleeRecalcTimer = fleeRecalcInterval; 
                 stuckTimer = stuckThreshold;
                 

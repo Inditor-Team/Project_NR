@@ -33,12 +33,12 @@ public class HowToController : MonoBehaviour
 
     public void FinishHowto()
     {
-        StartCoroutine(ChangeScene()); // ¾à°£ ´ë±â ÈÄ ¾À ÀÌµ¿
+        StartCoroutine(ChangeScene()); // ï¿½à°£ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
     public IEnumerator ChangeScene()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         blackScreen.GetComponent<Animator>().enabled = true;
         blackScreen.SetActive(true);

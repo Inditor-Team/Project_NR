@@ -59,6 +59,7 @@ public class SceneController : MonoBehaviour, ISaveable
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;
     public event UnityAction<Scene> OnSceneChanged;
+    private Scene pendingClearedSector = Scene.None;
 
     public static bool IsStageScene(Scene scene)
     {
@@ -166,14 +167,31 @@ public class SceneController : MonoBehaviour, ISaveable
         GameManager.Instance.FindPlayer();
     }
     
-    // 세이브 관련
+    // 로드한 섹터가 이미 클리어된 상태라면, 그 섹터 이름을 예약하고 실제 처리는 SectorManager에서
+    // 예약된 섹터가 현재 씬과 같으면 true
+    public bool ConsumePendingClearedSector(Scene scene)
+    {
+        bool isCleared = pendingClearedSector != Scene.None && pendingClearedSector == scene;
+        pendingClearedSector = Scene.None;
+        return isCleared;
+    }
+ 
     public void SaveDataTo(SaveDataStruct data)
     {
         data.sectorName = curScene;
     }
-
+ 
     public void LoadDataFrom(SaveDataStruct data)
     {
+        // 저장된 섹터가 클리어 상태였는지 확인 후 예약
+        pendingClearedSector = Scene.None;
+        if (data.clearedSector != null
+            && data.clearedSector.TryGetValue(data.sectorName, out bool cleared)
+            && cleared)
+        {
+            pendingClearedSector = data.sectorName;
+        }
+ 
         ChangeScene(data.sectorName); // 씬 전환
     }
 }
