@@ -306,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 7521904096920651821, guid: 12ef21cad9ac43349ac7b1a5d2bac3e6, type: 3}
       propertyPath: msgController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1498318296}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11738,6 +11738,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91083082b06221f46b55b8dbceaf2208, type: 3}
+--- !u!114 &1498318296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 141936593123666749, guid: 0817821482e040449bdec5aed07819e5, type: 3}
+  m_PrefabInstance: {fileID: 1748404554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e56e55934e96c844bade0f5ef40dccba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MessagePanelController
 --- !u!1001 &1504438066
 PrefabInstance:
   m_ObjectHideFlags: 0

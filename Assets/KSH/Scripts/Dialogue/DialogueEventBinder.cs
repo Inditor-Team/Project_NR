@@ -85,7 +85,6 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     
     private void HandleNPC(string[] args)
     {
-        Debug.Log("HandleNPC : " + args[0]);
         if (openingCon == null)
         {
             openingCon = FindFirstObjectByType<OpeningController>();
@@ -121,7 +120,6 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
     
     private void HandleHeal(string[] args)
     {
-        Debug.Log("체력 회복 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
         {
             GameManager.Instance.AddLife(resultInt);
@@ -133,7 +131,6 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
 
     private void HandleAddMaxHp(string[] args)
     {
-        Debug.Log("최대 체력 증가 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
         {
             GameManager.Instance.AddMaxLife(resultInt);
@@ -145,7 +142,6 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
 
     private void HandleAddCredit(string[] args)
     {
-        Debug.Log("크레딧 변경 : " + args[0]);
         if (int.TryParse(args[0], out resultInt))
         {
             InventoryManager.Instance.AddCredit(resultInt);

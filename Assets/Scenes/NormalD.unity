@@ -894,6 +894,7 @@ MonoBehaviour:
   user_prefab: {fileID: 0}
   enemyHealthBar: {fileID: 0}
   enemyHealthSlider: {fileID: 0}
+  enemySpawn: {fileID: 1410497161}
 --- !u!1001 &472953990
 PrefabInstance:
   m_ObjectHideFlags: 0

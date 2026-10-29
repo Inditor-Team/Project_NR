@@ -289,7 +289,6 @@ public class PlayerController : MonoBehaviour
 
     public void Pause(bool isPause)
     {
-        Debug.Log($"Is Player Pause {isPause}");
         isPaused = isPause;
         bool activeControl = !isPause; //일시정지라면 active false
 

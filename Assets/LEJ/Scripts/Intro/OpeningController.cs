@@ -181,7 +181,7 @@ public class OpeningController : MonoBehaviour
     IEnumerator FinishOpeningTime()
     {
         Debug.Log("Opening Finished");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         isFinished = true;
         isCommand = false;

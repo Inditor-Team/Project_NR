@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -28,14 +29,39 @@ public class SectorManager : MonoBehaviour
 
     [SerializeField] private GameObject enemyHealthBar;
     [SerializeField] private Slider enemyHealthSlider;
+    [SerializeField] private GameObject enemySpawn; // 세이브 로드용
     private int remainingCount = -1; //맵에 남은 적
-
+    
     private void Start()
     {
         remainingCount = curSectorSO.EnemyData.Length;
         GameManager.Instance.RegisterSectorManagerEvent(SceneController.Instance.curScene);
 
         InventoryManager.Instance.SetCardStatOnSectorStart();
+        ApplyClearedStateOnLoad();
+    }
+    
+    // 클리어된 섹터를 로드한 경우
+    private void ApplyClearedStateOnLoad()
+    {
+        SceneController.Scene curScene = SceneController.Instance.curScene;
+ 
+        // 예약 확인 (확인과 동시에 예약은 지워짐)
+        if (!SceneController.Instance.ConsumePendingClearedSector(curScene))
+            return;
+        
+        if (curScene == SceneController.Scene.Boss) return; // 보스 제외
+        if (enemySpawn == null) return;
+ 
+        enemySpawn.SetActive(false);
+        StartCoroutine(SectorClearNextFrame());
+    }
+    
+    private IEnumerator SectorClearNextFrame()
+    {
+        // 한 프레임 대기
+        yield return null;
+        SectorClear();
     }
 
     public void RegisterCurSector(SectorSO curSectorSO)
@@ -43,6 +69,7 @@ public class SectorManager : MonoBehaviour
         this.curSectorSO = curSectorSO;
         Debug.Log($"SectorManager 의 curSector 가 {curSectorSO.Scene} 으로 변경");
     }
+    
     public void SpawnEnemy()
     {
         if (curSectorSO == null)
