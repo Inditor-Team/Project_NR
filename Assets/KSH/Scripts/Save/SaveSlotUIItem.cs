@@ -12,12 +12,15 @@ public class SaveSlotUIItem : MonoBehaviour
     public event Action isSaveSuccess;
     
     public int SlotIndex { get; private set; }
+    public SaveSlotState State { get; private set; }
     
     public void SetData(SaveSlotInfo info)
     {
         SlotIndex = info.slotIndex;
+        State = info.state;
         saveInfoText.text = info.saveInfo;
         timeText.text = info.saveDateAndTime;
+        slotButton.interactable = CanInteract(); // 클릭 불가하면 버튼 비활성화
     }
     
     private void Awake()
@@ -25,8 +28,23 @@ public class SaveSlotUIItem : MonoBehaviour
         slotButton.onClick.AddListener(HandleClick);
     }
     
+    private bool CanInteract()
+    {
+        switch (SaveSlotManager.Instance.CurrentMode)
+        {
+            case SaveLoadMode.Save:
+                return true;
+            case SaveLoadMode.Load:
+                return State == SaveSlotState.Valid; // 로드는 정상 세이브만 로드 가능
+            default:
+                return false;
+        }
+    }
+    
     private void HandleClick()
     {
+        if (!CanInteract()) return;
+
         bool isSaveMode = SaveSlotManager.Instance.CurrentMode == SaveLoadMode.Save;
         string msg;
 
@@ -37,7 +55,7 @@ public class SaveSlotUIItem : MonoBehaviour
             msg = LocalizationManager.Instance.CurLang == Language.KO ? 
                 $"슬롯 {SlotIndex + 1}을(를) 로드하시겠습니까?" : $"Load to slot {SlotIndex + 1} ?";
         
-        UIManager.Instance.SetMsgPanel(msg,  () =>
+        UIManager.Instance.SetMsgPanel(msg, () =>
         {
             bool success = SaveSlotManager.Instance.OnSlotClicked(SlotIndex);
             if (!success) // 세이브 혹은 로드 실패
