@@ -51,6 +51,7 @@ public class WriteText : MonoBehaviour
         for (int i = 1; i <= characterCount; i++)
         {
             text.maxVisibleCharacters = i;
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
             yield return new WaitForSeconds(interval);
         }
 
