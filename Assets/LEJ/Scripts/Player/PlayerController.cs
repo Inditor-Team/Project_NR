@@ -260,8 +260,7 @@ public class PlayerController : MonoBehaviour
         animator.RollAnim(true);
         animator.DoFlip = true;
 
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Player_Roll);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Roll);
 
         rollTimer = stat.StatDic[PlayerStat.Stat.RollDuration];
         curState = PlayerState.Roll;
@@ -333,11 +332,8 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Robot_Laugh);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Dead);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Robot_Laugh);
 
         curState = PlayerState.Die;
         animator.DieAnim();

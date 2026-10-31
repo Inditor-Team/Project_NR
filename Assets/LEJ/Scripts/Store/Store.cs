@@ -34,15 +34,14 @@ public class Store : MonoBehaviour
 
     private void Start()
     {
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.StoreNPCSound); //ÄÄÇ»ÅÍ °¡µ¿ È¿°úÀ½
+        SoundManager.Instance.PlaySFX(Sound_SFX.StoreNPCSound); //ï¿½ï¿½Ç»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½
 
         GenerateItems();
     }
     
     public int SlotCount => shopItems != null ? shopItems.Length : 0;
 
-    // ½½·Ô¿¡ ÆÇ¸Å ÁßÀÎ ¾ÆÀÌÅÛÀÌ ÀÖÀ¸¸é true
+    // ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ true
     public bool TryGetItem(int index, out ItemSO item)
     {
         item = null;
@@ -53,7 +52,7 @@ public class Store : MonoBehaviour
         return true;
     }
 
-    // ±¸¸Å µîÀ¸·Î ºñ¾ú°Å³ª, ½½·Ô ¹üÀ§¸¦ ¹þ¾î³­ °æ¿ì true
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å³ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³­ ï¿½ï¿½ï¿½ true
     public bool IsSoldOut(int index)
     {
         return !IsValidIndex(index);
@@ -61,7 +60,7 @@ public class Store : MonoBehaviour
 
 
     /// <summary>
-    /// Áßº¹µÇÁö ¾Ê´Â ¾ÆÀÌÅÛÀ» ¹«ÀÛÀ§·Î »Ì½À´Ï´Ù.
+    /// ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì½ï¿½ï¿½Ï´ï¿½.
     /// </summary>
     public void GenerateItems()
     {
@@ -81,7 +80,7 @@ public class Store : MonoBehaviour
     }
 
     /// <summary>
-    /// ¼±ÅÃÇÑ ¾ÆÀÌÅÛÀ» ±¸¸ÅÇÕ´Ï´Ù
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
     /// </summary>
     /// <param name="index"></param>
     public bool BuyItem(int index)
@@ -95,7 +94,7 @@ public class Store : MonoBehaviour
     }
 
     /// <summary>
-    /// ±¸¸ÅÇÑ ¾ÆÀÌÅÛÀ» ·¹ÀÏ À§¿¡ »ý¼ºÇÕ´Ï´Ù.
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
     /// </summary>
     public void SpawnItem(ItemSO item)
     {
@@ -105,7 +104,7 @@ public class Store : MonoBehaviour
     }
 
     /// <summary>
-    /// »ý¼ºµÈ ¾ÆÀÌÅÛÀ» ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿½ÃÅµ´Ï´Ù.
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½Åµï¿½Ï´ï¿½.
     /// </summary>
     private IEnumerator MoveItem(Transform item)
     {
@@ -132,7 +131,7 @@ public class Store : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇØÅ·À» ½ÃµµÇÕ´Ï´Ù.
+    /// ï¿½ï¿½Å·ï¿½ï¿½ ï¿½Ãµï¿½ï¿½Õ´Ï´ï¿½.
     /// </summary>
     public void TryHack(bool isSuccess)
     {
