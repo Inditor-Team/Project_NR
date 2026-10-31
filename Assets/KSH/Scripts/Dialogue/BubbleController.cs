@@ -74,19 +74,13 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
         currentEntry = entry;
         inputText = ResolveText(entry.text);
         HideAllOptions();
-        
-        // 클릭 인디케이터 활성화
-        var clickIndicatorColor = clickIndicator.color;
-        clickIndicatorColor.a = 1;
-        clickIndicator.color = clickIndicatorColor;
-        
-        // 이전 타이핑 코루틴 중단
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
-        
-        // 새 타이핑 코루틴 시작
+
+        StopClickIndicator();
+        SetIndicatorAlpha(0); // 클릭인디테이터, 타이핑 중에는 숨기기
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+
+        SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
         typingCoroutine = StartCoroutine(TypingEffectCoroutine(inputText));
     }
     
@@ -95,9 +89,9 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
     {
         textWidth.UpdateWidth();
         if (currentEntry.options != null && currentEntry.options.Length > 0)
-            ShowOptions(currentEntry.options); // 클릭 인디케이터 대신 선택지 표시
+            ShowOptions(currentEntry.options);
         else
-            clickCoroutine = StartCoroutine(ClickIndicatorCoroutine());
+            StartClickIndicator();
     }
 
     // 대화창 클릭 시, 옵션 없는 경우만 실행
@@ -210,7 +204,6 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
             bubbleText.text = strText.ToString();
             textWidth.UpdateWidth();
             yield return new WaitForSeconds(0.05f);
-            // TODO: 타이핑 효과음 추가
         }
         
         typingCoroutine = null;
@@ -233,29 +226,49 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
     //대화창 클릭 시 호출 함수
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!chatWindowObject.activeSelf) // 실제론 대화창이 off 상태인데 호출되는 상황 방지
+        if (!chatWindowObject.activeSelf)
             return;
-        
+
         if (typingCoroutine != null) // 전체 출력
         {
             StopCoroutine(typingCoroutine);
             typingCoroutine = null;
-            if (bubbleText != null) bubbleText.text = inputText;
-            if (clickIndicator != null) clickCoroutine = StartCoroutine(ClickIndicatorCoroutine());
-            OnTypingComplete();
+            bubbleText.text = inputText;
+            OnTypingComplete(); // 인디케이터 시작은 여기서만 담당
         }
         else
         {
-            if (clickCoroutine != null)
-            {
-                StopCoroutine(clickCoroutine);
-                clickCoroutine = null;
-            }
+            StopClickIndicator();
 
             if (currentEntry.options == null || currentEntry.options.Length == 0)
-                OnAdvanceClicked();   // 옵션 없는 노드만 클릭으로 진행
+                OnAdvanceClicked();
         }
     }
+    
+    # region 클릭 인디케이터 관련
+    private void StartClickIndicator()
+    {
+        StopClickIndicator();
+        clickCoroutine = StartCoroutine(ClickIndicatorCoroutine());
+    }
+
+    private void StopClickIndicator()
+    {
+        if (clickCoroutine != null)
+        {
+            StopCoroutine(clickCoroutine);
+            clickCoroutine = null;
+        }
+    }
+
+    private void SetIndicatorAlpha(float a)
+    {
+        var c = clickIndicator.color;
+        c.a = a;
+        clickIndicator.color = c;
+    }
+    
+    # endregion
 
     #region 상점 관련
 

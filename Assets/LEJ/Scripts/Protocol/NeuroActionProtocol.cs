@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ºü¸£°Ô ¿òÁ÷¿© ¿ùµå ½Ã°£À» ´À¸®°Ô º¸ÀÌ°Ô ÇÏ´Â ÇÁ·ÎÅäÄÝ
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 public class NeuroActionProtocol : ProtocolBase
 {
     [SerializeField] SpriteRenderer playerModel;
 
-    [Header("ÀÓ½Ã ´É·ÂÄ¡")]
+    [Header("ï¿½Ó½ï¿½ ï¿½É·ï¿½Ä¡")]
     [SerializeField] private float newTimeScale = 0.05f;
     float duration;
 
-    //ÇÁ·ÎÅäÄÝ ¹ßµ¿ ½Ã ½ºÆåÆ®·³ ÀÌÆåÆ®
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     private SpriteRenderer curSprite;
     private SpriteRenderer[] spectrumPool;
 
-    [Header("ÀÜ»ó ÀÌÆåÆ®")]
+    [Header("ï¿½Ü»ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField] private int spectrumPoolSize = 30;
-    [SerializeField] private float spectrumFadeDuration = 3f; //ÀÜ»ó ÆäÀÌµå ¾Æ¿ô ½Ã°£
-    [SerializeField] private float spectrumInterval = 0.5f; //ÀÜ»ó »ý¼º °£°Ý
+    [SerializeField] private float spectrumFadeDuration = 3f; //ï¿½Ü»ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½ ï¿½Ã°ï¿½
+    [SerializeField] private float spectrumInterval = 0.5f; //ï¿½Ü»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private int index = 0;
 
     private Coroutine[] fadeCoroutines;
@@ -29,7 +29,7 @@ public class NeuroActionProtocol : ProtocolBase
     {
         InitEffect();
 
-        GameManager.Instance.OnProtocolChanged += InitEffect; //µð¹ö±ë¿ë
+        GameManager.Instance.OnProtocolChanged += InitEffect; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     private void OnDestroy()
@@ -47,8 +47,7 @@ public class NeuroActionProtocol : ProtocolBase
     internal override void DoProtocol()
     {
         isActive = true;
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Player_NeuroAction);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_NeuroAction);
 
         if (protocolRoutine == null)
             protocolRoutine = StartCoroutine(ProtocolTime());
@@ -143,7 +142,7 @@ public class NeuroActionProtocol : ProtocolBase
     }
 
     /// <summary>
-    /// ½ºÆåÆ®·³ ÀÜ»ó¿¡ ´ëÇØ ÆäÀÌµå ¾Æ¿ô È¿°ú¸¦ Àû¿ëÇÕ´Ï´Ù
+    /// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ü»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
     /// </summary>
     /// <param name="spectrum"></param>
     /// <param name="duration"></param>

@@ -260,9 +260,7 @@ public partial class BossController : MonoBehaviour, IDamageable
                 anim.SetTrigger("switchPhase");
                 anim.SetBool("isPhaseTwo", true);
                 isPhaseTwo = true;
-                // TODO: 페이즈 전환 효과음
-                if (SoundManager.Instance != null)
-                    SoundManager.Instance.PlaySFX(Sound_SFX.Boss_Transition);
+                SoundManager.Instance.PlaySFX(Sound_SFX.Boss_Transition);
                 break;
             case BossStat.Heal:
                 anim.SetBool("isMove", false); // 정지

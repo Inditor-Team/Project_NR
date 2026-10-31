@@ -1,13 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SaveSlotState // 슬롯 상태
+{
+    Empty, // 파일 없음
+    Valid, // 정상 세이브
+    Corrupted // 파일은 있으나 파싱 실패
+}
+
 // 슬롯 리스트 ui에 표시
 public class SaveSlotInfo
 {
     public int slotIndex;
     public string saveInfo; // 스테이지, 체력 정보만
     public string saveDateAndTime;
-    public bool isEmpty;
+    public SaveSlotState state;
 }
 
 // 슬롯 접근 상태 (세이브 버튼으로 들어왔는지, 로드 버튼으로 들어왔는지)
@@ -137,15 +144,11 @@ public class SaveSlotManager : MonoBehaviour
 
         for (int i = 0; i < MaxSlotCount; i++)
         {
-            bool isEmpty = IsSlotEmpty(i);
-            SaveSlotInfo info = new SaveSlotInfo
-            {
-                slotIndex = i,
-                isEmpty = isEmpty
-            };
+            SaveSlotInfo info = new SaveSlotInfo { slotIndex = i };
 
-            if (isEmpty) // 빈 슬롯
+            if (IsSlotEmpty(i)) // 빈 슬롯
             {
+                info.state = SaveSlotState.Empty;
                 info.saveInfo = "Empty Slot";
                 info.saveDateAndTime = "";
             }
@@ -154,21 +157,21 @@ public class SaveSlotManager : MonoBehaviour
                 string path = FileIOSystem.GetSlotFilePath(i);
                 SaveDataStruct data = SaveDataManager.Instance.PeekDataFromFile(path);
 
-                if (data == null)
+                if (data == null) // 파일은 있는데 파싱 실패 (손상된 세이브)
                 {
-                    // 파일은 있는데 파싱 실패 (손상된 세이브)
+                    info.state = SaveSlotState.Corrupted;
                     info.saveInfo = "Corrupted Save";
                     info.saveDateAndTime = "";
                 }
                 else
                 {
-                    float hp = data.statDic.GetValueOrDefault(PlayerStat.Stat.Life, 0f); // Life 값이 null이면 0 반환
+                    info.state = SaveSlotState.Valid;
+                    float hp = data.statDic.GetValueOrDefault(PlayerStat.Stat.Life, 0f);
                     // TODO: 스테이지 번호로 변경하기
-                    info.saveInfo = $"Stage {data.sectorName.ToString()} (HP: {hp})"; 
+                    info.saveInfo = $"Stage {data.sectorName.ToString()} (HP: {hp})";
                     info.saveDateAndTime = FileIOSystem.GetLastWriteTime(path).ToString("yyyy.MM.dd.HH:mm");
                 }
             }
-
             saveList.Add(info);
         }
 

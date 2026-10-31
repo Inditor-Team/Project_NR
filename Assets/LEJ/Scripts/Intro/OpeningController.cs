@@ -84,9 +84,6 @@ public class OpeningController : MonoBehaviour
     {
         commandIndex++;
 
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
-
         if (commandIndex < commands.Length)
         {
             if(LocalizationManager.Instance.CurLang == Language.KO)
@@ -109,17 +106,13 @@ public class OpeningController : MonoBehaviour
     public void MoveNPCToWidnow()
     {
         StartCoroutine(MoveNPC(windowPoint.position));
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.ComputerSoundA);
+        SoundManager.Instance.PlaySFX(Sound_SFX.ComputerSoundA);
     }
 
     public void MoveNPCToPlayer()
     {
         StartCoroutine(MoveNPC(whisperPoint.position));
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.ComputerSoundB);
+        SoundManager.Instance.PlaySFX(Sound_SFX.ComputerSoundB);
     }
 
     private IEnumerator MoveNPC(Vector3 target)
