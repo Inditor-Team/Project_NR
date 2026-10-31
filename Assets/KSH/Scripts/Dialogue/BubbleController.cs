@@ -80,6 +80,7 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
 
         if (typingCoroutine != null) StopCoroutine(typingCoroutine);
 
+        SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
         typingCoroutine = StartCoroutine(TypingEffectCoroutine(inputText));
     }
     
@@ -202,7 +203,6 @@ public class BubbleController : MonoBehaviour, IPointerClickHandler
             strText.Append(text[i]);
             bubbleText.text = strText.ToString();
             textWidth.UpdateWidth();
-            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
             yield return new WaitForSeconds(0.05f);
         }
         

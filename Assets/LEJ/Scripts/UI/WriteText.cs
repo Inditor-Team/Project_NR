@@ -47,11 +47,11 @@ public class WriteText : MonoBehaviour
 
         int characterCount = text.textInfo.characterCount;
         text.maxVisibleCharacters = 0;
+        SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
 
         for (int i = 1; i <= characterCount; i++)
         {
             text.maxVisibleCharacters = i;
-            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
             yield return new WaitForSeconds(interval);
         }
 
