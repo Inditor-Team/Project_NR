@@ -32,6 +32,20 @@ public enum SaveLoadMode
 public class SaveSlotManager : MonoBehaviour
 {
     public static SaveSlotManager Instance { get; private set; }
+    
+    // 세이브 기능 지원 여부
+    public static bool IsSaveSupported
+    {
+        get
+        {
+#if UNITY_WEBGL
+            return false;
+#else
+            return true;
+#endif
+        }
+    }
+
 
     // 세이브 데이터는 하나에서 관리해야 하니 싱글톤 적용
     private void Awake()
@@ -84,6 +98,7 @@ public class SaveSlotManager : MonoBehaviour
     // 특정 슬롯에 현재 게임 데이터(상태) 저장
     public bool SaveToSlot(int slotIndex)
     {
+        if (!IsSaveSupported) return false; // 세이브 미지원
         if (!IsValidSlotIndex(slotIndex)) return false; // 슬롯 번호가 0~4를 벗어남, out of index
         
         SaveDataStruct data = new SaveDataStruct

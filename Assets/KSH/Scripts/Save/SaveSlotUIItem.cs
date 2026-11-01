@@ -26,6 +26,7 @@ public class SaveSlotUIItem : MonoBehaviour
     private void Awake()
     {
         slotButton.onClick.AddListener(HandleClick);
+        slotButton.interactable = SaveSlotManager.IsSaveSupported; // 세이브 미지원
     }
     
     private bool CanInteract()
@@ -33,7 +34,7 @@ public class SaveSlotUIItem : MonoBehaviour
         switch (SaveSlotManager.Instance.CurrentMode)
         {
             case SaveLoadMode.Save:
-                return true;
+                return SaveSlotManager.IsSaveSupported;
             case SaveLoadMode.Load:
                 return State == SaveSlotState.Valid; // 로드는 정상 세이브만 로드 가능
             default:
