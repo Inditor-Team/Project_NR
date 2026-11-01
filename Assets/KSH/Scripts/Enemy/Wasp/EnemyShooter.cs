@@ -92,6 +92,7 @@ public class EnemyShooter : MonoBehaviour
             {
                 yield return WaitWhilePaused(); // 혹시 모르는 일시 정지 체크
                 Shoot(gunTransform[j%2]);
+                SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
                 yield return WaitForSecondsPausable(fireInterval);
             }
             OnShootIntervalStart?.Invoke();

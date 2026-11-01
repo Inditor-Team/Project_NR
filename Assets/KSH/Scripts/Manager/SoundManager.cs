@@ -50,6 +50,20 @@ public enum Sound_SFX
 
     ProtocolGlass,
     Robot_Hurted,
+
+    GateOpen,
+    Phase,
+    SwooshLow,
+    BladerProtocol,
+    BlitzProtocol,
+    BossDie,
+    BossMove,
+    BossAttacked,
+    WaspNotice,
+    DeathScreen,
+
+    Player_GunShootB,
+
     Count
 }
 
@@ -252,6 +266,7 @@ public class SoundManager : MonoBehaviour
         sfxSource.clip = clip;
         sfxSource.volume = sfxVolume;
         sfxSource.Play();
+        Debug.Log($"SoundManager: {clip.name}(volume:{sfxVolume})을 Play");
         
         return sfxSource;
     }

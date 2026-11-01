@@ -995,8 +995,68 @@
       "onEnterEvents": [
         "NPC_ACTION:end_howto"
       ],
-      "entryConditionId": "",
-      "entryRedirectId": ""
-    }
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "ending_npc_0",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_ENDING_NPC_0",
+  "nextId": "ending_npc_1",
+  "options": [],
+  "phase": "ending",
+        "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "ending_npc_1",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_ENDING_NPC_1",
+  "nextId": "ending_npc_2",
+  "options": [],
+  "phase": "ending",
+        "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "ending_npc_2",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_ENDING_NPC_2",
+  "nextId": "ending_npc_3",
+  "options": [],
+  "phase": "ending",
+        "onEnterEvents": [],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "ending_npc_3",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "DLG_ENDING_NPC_3",
+  "nextId": "ending_npc_4",
+  "options": [],
+  "phase": "ending",
+        "onEnterEvents": ["NPC_ACTION:end_ending"],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+},
+{
+  "id": "ending_npc_4",
+  "npcId": "introNPC",
+  "name": "NAME_INTRO_NPC",
+  "text": "",
+  "nextId": "",
+  "options": [],
+  "phase": "ending",
+        "onEnterEvents": ["NPC_ACTION:end_ending"],
+  "entryConditionId": "",
+  "entryRedirectId": ""
+}
   ]
 }

@@ -53,6 +53,7 @@ public class PlayerInventory : MonoBehaviour, IItemHolder
         if (itemObject.MyItem.Type == ItemType.GetCredit)
         {
             InventoryManager.Instance.AddCredit((int)itemObject.MyItem.Amount);
+            SoundManager.Instance.PlaySFX(Sound_SFX.UISelect_Normal);
             return;
         }
 

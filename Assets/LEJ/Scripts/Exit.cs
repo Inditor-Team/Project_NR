@@ -15,10 +15,9 @@ public class Exit : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        //�̺�Ʈ ���� ��� �ٷ� ���� �� �ְ� ���Ա��� �����ϴ�
         if (isEventScene)
             isAppear = true;
-        else //���� ���� ��� SectorClear �ÿ� ����� �巯���� ���� ���� �� �ְ� �˴ϴ�
+        else
             SectorManager.Instance.OnSectorClear += Appear;
 
         myModel.SetActive(isAppear);
@@ -33,6 +32,7 @@ public class Exit : MonoBehaviour
 
     void Appear(SceneController.Scene type)
     {
+        SoundManager.Instance.PlaySFX(Sound_SFX.GateOpen);
         isAppear = true;
         myModel.SetActive(isAppear);
         anim.enabled = isAppear;

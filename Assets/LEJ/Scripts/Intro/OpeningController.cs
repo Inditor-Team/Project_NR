@@ -91,6 +91,8 @@ public class OpeningController : MonoBehaviour
             else
                 writeText.Play(commandsEN[commandIndex]);
 
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
+
             return;
         }
         else

@@ -46,11 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   bgmClips:
   - type: 1
-    clip: {fileID: 8300000, guid: 03fd77da873bbbc44bc3faf8ada7ba04, type: 3}
+    clip: {fileID: 8300000, guid: fd8150ae1a8e3ba47a5f1d9fdb14e585, type: 3}
   - type: 2
-    clip: {fileID: 8300000, guid: f9e63b6d46777614e88bde6ca2889c4b, type: 3}
+    clip: {fileID: 8300000, guid: 03fd77da873bbbc44bc3faf8ada7ba04, type: 3}
   - type: 3
+    clip: {fileID: 8300000, guid: f9e63b6d46777614e88bde6ca2889c4b, type: 3}
+  - type: 4
     clip: {fileID: 8300000, guid: 27b87059a8178d24cbc8abb371d4879f, type: 3}
+  - type: 5
+    clip: {fileID: 8300000, guid: abfd44697c3369c4681dffad54ef548f, type: 3}
+  - type: 8
+    clip: {fileID: 8300000, guid: 037d4caa7c21a4141b1fe7309362a93c, type: 3}
+  - type: 6
+    clip: {fileID: 8300000, guid: 642d0dd165296ae4fb0e19851e454550, type: 3}
   sfxClips:
   - type: 1
     clip: {fileID: 8300000, guid: 3f72a9a94acc93c44b464684438f4e1d, type: 3}
@@ -71,7 +79,7 @@ MonoBehaviour:
   - type: 9
     clip: {fileID: 8300000, guid: 696acbbb30ea4604faaf08d0f1c49e3b, type: 3}
   - type: 10
-    clip: {fileID: 8300000, guid: 9e0648e86fff68648bc847920655feb1, type: 3}
+    clip: {fileID: 8300000, guid: 696acbbb30ea4604faaf08d0f1c49e3b, type: 3}
   - type: 11
     clip: {fileID: 8300000, guid: 8d7f8ec2eea576e4a843f0ab739fbbc9, type: 3}
   - type: 12
@@ -91,15 +99,15 @@ MonoBehaviour:
   - type: 24
     clip: {fileID: 8300000, guid: 25758d18e1c6bfe43bced61d502dec85, type: 3}
   - type: 25
-    clip: {fileID: 8300000, guid: 30570564fe1f0cc4594b354b267e94fd, type: 3}
+    clip: {fileID: 8300000, guid: 25758d18e1c6bfe43bced61d502dec85, type: 3}
   - type: 26
-    clip: {fileID: 8300000, guid: c4fb66be174d39143b7332a75eebf04b, type: 3}
+    clip: {fileID: 8300000, guid: 30570564fe1f0cc4594b354b267e94fd, type: 3}
   - type: 27
-    clip: {fileID: 8300000, guid: 4f64671600de46d41901976b796a9c47, type: 3}
+    clip: {fileID: 8300000, guid: c4fb66be174d39143b7332a75eebf04b, type: 3}
   - type: 28
-    clip: {fileID: 8300000, guid: a7294247e5beb024b9abf9b38dbe297e, type: 3}
+    clip: {fileID: 8300000, guid: 4f64671600de46d41901976b796a9c47, type: 3}
   - type: 29
-    clip: {fileID: 8300000, guid: 6c5d06302cf6da242ad90d398daee3bd, type: 3}
+    clip: {fileID: 8300000, guid: 89e398fb5cbf7bc44a6df78ebdb5a036, type: 3}
   - type: 18
     clip: {fileID: 8300000, guid: b23dd5fe25085944784aba431754bf90, type: 3}
   - type: 15
@@ -114,7 +122,29 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 78f4ba3e2afa1084a87c3140da0024d1, type: 3}
   - type: 30
     clip: {fileID: 8300000, guid: 6c5d06302cf6da242ad90d398daee3bd, type: 3}
-  bgmVolume: 0.2
+  - type: 31
+    clip: {fileID: 8300000, guid: 9e0648e86fff68648bc847920655feb1, type: 3}
+  - type: 32
+    clip: {fileID: 8300000, guid: b85bb21d156b763468e990740c542e73, type: 3}
+  - type: 33
+    clip: {fileID: 8300000, guid: c72e6e15fe6485a47a72f2f5919fc2c3, type: 3}
+  - type: 34
+    clip: {fileID: 8300000, guid: 0b5c6a3ef0f68524fbaa51d71df1ff41, type: 3}
+  - type: 35
+    clip: {fileID: 8300000, guid: f3475a489217c524080162447df313fc, type: 3}
+  - type: 36
+    clip: {fileID: 8300000, guid: 7c9c4570c408bcb4f95db0d1949d578b, type: 3}
+  - type: 37
+    clip: {fileID: 8300000, guid: 7c4f4cd49072b0a42b8296cc59c5d36c, type: 3}
+  - type: 38
+    clip: {fileID: 8300000, guid: 619bd72f29725cb49a7c707fdbe0502a, type: 3}
+  - type: 39
+    clip: {fileID: 8300000, guid: 1a0ea6e95a60eb140982b214df3063ce, type: 3}
+  - type: 40
+    clip: {fileID: 8300000, guid: 548ddcec3a6cad448938949d05fc09dd, type: 3}
+  - type: 41
+    clip: {fileID: 8300000, guid: 39dd02558b3a4964ab542dbd9be95b04, type: 3}
+  bgmVolume: 1
   sfxVolume: 1
   Prefs_BGMVolume: BGM_Volume
   Prefs_SFXVolume: SFX_Volume

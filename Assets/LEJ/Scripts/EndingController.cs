@@ -1,16 +1,20 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class EndingScene : MonoBehaviour
+public class EndingController : MonoBehaviour
 {
     [SerializeField] private WriteText writeText;
     [SerializeField] private TMP_Text dialogueText;
 
+    [Header("NPC")]
+    [SerializeField] private Transform npc;
+    [SerializeField] private NpcInteractable npcInteractable;
+    [SerializeField] private Transform middleBoss;
+
     [Header("Ending")]
     [SerializeField] private float returnDelay = 2f;
-    [SerializeField] private string lobbySceneName = "Lobby";
 
     private readonly string[] dialogues =
     {
@@ -27,17 +31,34 @@ public class EndingScene : MonoBehaviour
     private int dialogueIndex = -1;
     private bool isFinished;
 
+    bool lateStart = false;
+    bool isWriteTextFinished = false;
+    private void LateStart()
+    {
+        if (lateStart) return;
+
+        npc.gameObject.SetActive(false);
+        OnClick();
+    
+        lateStart = true;
+    }
+
     private void Update()
     {
+        LateStart();
+
         if (isFinished)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isWriteTextFinished)
             OnClick();
     }
 
     private void OnClick()
     {
+        if (isWriteTextFinished)
+            return;
+
         if (writeText.IsTyping)
         {
             writeText.Skip();
@@ -48,6 +69,7 @@ public class EndingScene : MonoBehaviour
 
         if (dialogueIndex < dialogues.Length)
         {
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
             if (LocalizationManager.Instance.CurLang == Language.KO)   
                 writeText.Play(dialogues[dialogueIndex]);
             else
@@ -55,16 +77,35 @@ public class EndingScene : MonoBehaviour
             return;
         }
 
-        StartCoroutine(FinishEnding());
+        writeText.gameObject.SetActive(false);
+        middleBoss.gameObject.SetActive(false);
+
+        SoundManager.Instance.PlaySFX(Sound_SFX.BossAttacked);
+        isWriteTextFinished = true;
+
+        Invoke("StoreNPCStart", 2f);
     }
 
-    private IEnumerator FinishEnding()
+    void StoreNPCStart()
+    {
+        SoundManager.Instance.PlaySFX(Sound_SFX.Robot_Laugh);
+        //상인 대사 시작
+        npc.gameObject.SetActive(true);
+        npcInteractable.OnInteract();
+    }
+
+    public void FinishEnding()
+    {
+        StartCoroutine(FinishEndingTime());
+    }
+
+    private IEnumerator FinishEndingTime()
     {
         isFinished = true;
 
         yield return new WaitForSecondsRealtime(returnDelay);
 
-        SceneController.Instance.ChangeScene(SceneController.Scene.Lobby);
+        SceneController.Instance.ChangeScene(SceneController.Scene.Credit);
     }
 
 }

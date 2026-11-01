@@ -96,6 +96,12 @@
     {"key": "DLG_HOWTO_NPC_4", "value": "Press Q to use a <i>Protocol</i>.\nYou can't use one right now, though. You don't have any slotted."},
     {"key": "DLG_HOWTO_NPC_5", "value": "Press E to pick up items or interact with things.\nUse Ctrl to use items."},
     {"key": "DLG_HOWTO_NPC_6", "value": "I think that covers everything.\nGo on, then."},
-    {"key": "DLG_HOWTO_NPC_7", "value": ""}
+    {"key": "DLG_HOWTO_NPC_7", "value": ""},
+    
+    {"key": "TEMP_COMMENT_8", "value": "Below is the ending NPC dialogue."},
+    {"key": "DLG_ENDING_NPC_0", "value": "Quiet down. Where's the fun in knowing too much too soon?"},
+    {"key": "DLG_ENDING_NPC_1", "value": "I'll make you a special offer.\nI'll give you these red goggles. You can pay me back later."},
+    {"key": "DLG_ENDING_NPC_2", "value": "...Why, you ask? I see a seed of potential in you.\nThe power to bring someone at the very top crashing down."},
+    {"key": "DLG_ENDING_NPC_3", "value": "Either get scrapped here, or keep moving forward.\nThose are your only two choices, Z."}
   ]
 }

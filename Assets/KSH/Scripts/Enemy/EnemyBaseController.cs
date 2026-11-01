@@ -213,6 +213,8 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
                 detectEffect.transform.position = gameObject.transform.position;
                 detectEffect.SetActive(false);
 
+                SoundManager.Instance.PlaySFX(Sound_SFX.WaspNotice);
+
                 if (!IsCurrentlyDetecting()) return; // 자식에게 위임
 
                 if (!healthUI.activeSelf) healthUI.SetActive(true);
