@@ -67,7 +67,7 @@ public class ShakeText : MonoBehaviour
 
             Vector3 offset = new Vector3(x, y, 0f) * intensity;
 
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 4; j++) // TODO: out of index error
             {
                 destinationVertices[vertexIndex + j] =
                     sourceVertices[vertexIndex + j] + offset;

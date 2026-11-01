@@ -38,10 +38,7 @@ public class EnemyPlacer : MonoBehaviour
         if (enemyLandMine == null) return;
 
         enemyLandMine.transform.position = position;
-        
-        // 나중에 설치 효과음 추가
-        // if (SoundManager.Instance != null)
-        // SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Attack);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Mine_Install); //설치
     }
 
     // 보스 지뢰 소환, 보스 위치부터 목표 지점으로 낙하

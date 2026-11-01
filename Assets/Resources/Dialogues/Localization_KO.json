@@ -39,8 +39,8 @@
     {"key": "DLG_STORE_NPC_7", "value": "무언가 큰 잘못을\n한 느낌이다."},
     {"key": "DLG_STORE_NPC_8", "value": "“...”"},
     {"key": "DLG_STORE_NPC_9", "value": "단말기의\n전원이 꺼졌다."},
-    {"key": "DLG_BUY_GOGGLE_1", "value":  "“고글을 구매하고 싶니?“"},
-    {"key": "DLG_BUY_GOGGLE_2", "value":  "“99,900 크레딧을 구해와~!“"},
+    {"key": "DLG_BUY_GOGGLE_1", "value":  "“고글을 구매하고 싶니?”"},
+    {"key": "DLG_BUY_GOGGLE_2", "value":  "“99,900 크레딧을 구해와~!”"},
     
     {"key": "TEMP_COMMENT_3", "value": "아래로 상점 대화 옵션 텍스트 입니다"},
     {"key": "OPT_STORE_NPC_2_1", "value": "예"},
@@ -89,19 +89,19 @@
     {"key": "DLG_END_NPC_1", "value": "나도 너와 같았어. 오르비스의 명령에 따르는 개였지.\n...<i>진실</i>을 알기 전까지는."},
     {"key": "DLG_END_NPC_2", "value": "<i>Z.</i> 너 자신을 위해 움직인다는 게 무엇인지 생각해 봐."},
 
- {"key": "TEMP_COMMENT_7", "value": "아래로 튜토리얼 NPC 대사입니다"},
-{"key": "DLG_HOWTO_NPC_1", "value": "어떻게 움직이는지 기억 안 나?"},
-    {"key": "DLG_HOWTO_NPC_2", "value": "WASD로 몸을 움직여 봐. Space로 구르고"},
-    {"key": "DLG_HOWTO_NPC_3", "value": "왼쪽 클릭으로 총을 쏘고, 오른쪽 클릭으로 칼을 휘둘러.\n오른쪽 위 칼 5개가 총알을 막을 수 있는 횟수야."},
- {"key": "DLG_HOWTO_NPC_4", "value": "Q로 <i>프로토콜</i>을 쓸 수 있어. \n지금은 삽입된 게 없어서 안 돼"},
-    {"key": "DLG_HOWTO_NPC_5", "value": "E로 아이템을 먹거나 상호작용 할 수 있어.\n아이템은 Ctrl로 쓰고"},
- {"key": "DLG_HOWTO_NPC_6", "value": "이쯤이면 될 거 같은데? 가 봐."},
+    {"key": "TEMP_COMMENT_7", "value": "아래로 튜토리얼 NPC 대사입니다"},
+    {"key": "DLG_HOWTO_NPC_1", "value": "“어떻게 움직이는지 기억 안 나?”"},
+    {"key": "DLG_HOWTO_NPC_2", "value": "“WASD로 몸을 움직여 봐. Space로 구르고”"},
+    {"key": "DLG_HOWTO_NPC_3", "value": "““왼쪽 클릭으로 총을 쏘고, 오른쪽 클릭으로 칼을 휘둘러.\n오른쪽 위 칼 5개가 총알을 막을 수 있는 횟수야.”"},
+    {"key": "DLG_HOWTO_NPC_4", "value": "“Q로 <i>프로토콜</i>을 쓸 수 있어. \n지금은 삽입된 게 없어서 안 돼”"},
+    {"key": "DLG_HOWTO_NPC_5", "value": "“E로 아이템을 먹거나 상호작용 할 수 있어.\n아이템은 Ctrl로 쓰고”"},
+    {"key": "DLG_HOWTO_NPC_6", "value": "“이쯤이면 될 거 같은데? 가 봐.”"},
+    {"key": "DLG_HOWTO_NPC_7", "value": ""},
 
- {"key": "TEMP_COMMENT_8", "value": "아래로 엔딩 NPC 대사입니다"},
-{"key": "DLG_ENDING_NPC_0", "value": "시끄럽네. 지금 너무 많이 알면 재미없지"},
-{"key": "DLG_ENDING_NPC_1", "value": "널 위해 특별한 제안을 할게.\n빨간 고글을 줄 테니 대금은 천천히 갚아"},
-{"key": "DLG_ENDING_NPC_2", "value": "..왜냐고? 너에게선 씨앗이 보여.\n꼭대기의 누군가를 끌어내릴 힘."},
-{"key": "DLG_ENDING_NPC_3", "value": "이대로 폐기 되거나, 계속 나아가거나.\n네겐 둘 밖에 없어. Z"}
-
+    {"key": "TEMP_COMMENT_8", "value": "아래로 엔딩 NPC 대사입니다"},
+    {"key": "DLG_ENDING_NPC_0", "value": "“시끄럽네. 지금 너무 많이 알면 재미없지”"},
+    {"key": "DLG_ENDING_NPC_1", "value": "“널 위해 특별한 제안을 할게.\n빨간 고글을 줄 테니 대금은 천천히 갚아”"},
+    {"key": "DLG_ENDING_NPC_2", "value": "“..왜냐고? 너에게선 씨앗이 보여.\n꼭대기의 누군가를 끌어내릴 힘.”"},
+    {"key": "DLG_ENDING_NPC_3", "value": "“이대로 폐기 되거나, 계속 나아가거나.\n네겐 둘 밖에 없어. Z”"}
   ]
 }

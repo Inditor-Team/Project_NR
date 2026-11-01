@@ -33,6 +33,7 @@ public class HowToController : MonoBehaviour
 
     public void FinishHowto()
     {
+        DialogueManager.Instance.EndDialogue();
         StartCoroutine(ChangeScene()); // �ణ ��� �� �� �̵�
     }
 

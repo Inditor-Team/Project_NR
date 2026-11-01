@@ -260,8 +260,7 @@ public class PlayerController : MonoBehaviour
         animator.RollAnim(true);
         animator.DoFlip = true;
 
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Player_Roll);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Roll);
 
         rollTimer = stat.StatDic[PlayerStat.Stat.RollDuration];
         curState = PlayerState.Roll;
