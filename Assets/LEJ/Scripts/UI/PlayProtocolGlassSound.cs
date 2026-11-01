@@ -1,13 +1,12 @@
 using UnityEngine;
 
 /// <summary>
-/// ¾Ö´Ï¸ÞÀÌ¼Ç »ó¿¡¼­ È£Ãâ µË´Ï´Ù
+/// ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ó¿¡¼ï¿½ È£ï¿½ï¿½ ï¿½Ë´Ï´ï¿½
 /// </summary>
 public class PlayProtocolGlassSound : MonoBehaviour
 {
     public void Play()
     {
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.ProtocolGlass);
+        SoundManager.Instance.PlaySFX(Sound_SFX.ProtocolGlass);
     }    
 }

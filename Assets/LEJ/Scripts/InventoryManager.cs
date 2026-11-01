@@ -46,7 +46,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     //���� ���� ��ȭ
     [SerializeField] private int curCredit;
     public int CurCredit => curCredit;
-    public event UnityAction OnCreditChanged;
+    public event UnityAction<int> OnCreditChanged;
 
     /*[Header("Item Save")]
     [SerializeField] private ItemSO[] itemDatabase;*/
@@ -81,13 +81,13 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public void AddCredit(int addAmount)
     {
         curCredit += addAmount;
-        OnCreditChanged?.Invoke();
+        OnCreditChanged?.Invoke(addAmount);
     }
     
     public void SetCredit(int newAmount)
     {
         curCredit = newAmount;
-        OnCreditChanged?.Invoke();
+        OnCreditChanged?.Invoke(0);
     }
 
     #endregion

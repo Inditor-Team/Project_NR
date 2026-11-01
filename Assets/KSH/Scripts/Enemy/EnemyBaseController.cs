@@ -225,6 +225,7 @@ public abstract class EnemyBaseController : MonoBehaviour, IDamageable
         healthUI.SetActive(false);
         collider.isTrigger = true; // 충돌 무시
         anim.SetTrigger("isDead");
+        detectEffect.SetActive(false);
         SoundManager.Instance.PlaySFX(Sound_SFX.Enemy_Dead);
     }
 

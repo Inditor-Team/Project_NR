@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 623479939072
-    m_Localized: Stop the Game
+    m_Localized: Exit Game
     m_Metadata:
       m_Items: []
   - m_Id: 2439265443840
@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5314142068736
-    m_Localized: "Quickly eliminates nearby enemies \nwhen activated."
+    m_Localized: "Quickly eliminates nearby \nenemies on activation."
     m_Metadata:
       m_Items: []
   - m_Id: 5230293737472

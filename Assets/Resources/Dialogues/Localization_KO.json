@@ -89,13 +89,13 @@
     {"key": "DLG_END_NPC_1", "value": "나도 너와 같았어. 오르비스의 명령에 따르는 개였지.\n...<i>진실</i>을 알기 전까지는."},
     {"key": "DLG_END_NPC_2", "value": "<i>Z.</i> 너 자신을 위해 움직인다는 게 무엇인지 생각해 봐."},
 
- {"key": "TEMP_COMMENT_7", "value": "아래로 튜토리얼 NPC 대사입니다"},
-{"key": "DLG_HOWTO_NPC_1", "value": "어떻게 움직이는지 기억 안 나?"},
-    {"key": "DLG_HOWTO_NPC_2", "value": "WASD로 몸을 움직여 봐. Space로 구르고"},
-    {"key": "DLG_HOWTO_NPC_3", "value": "왼쪽 클릭으로 총을 쏘고, 오른쪽 클릭으로 칼을 휘둘러.\n오른쪽 위 칼 5개가 총알을 막을 수 있는 횟수야."},
- {"key": "DLG_HOWTO_NPC_4", "value": "Q로 <i>프로토콜</i>을 쓸 수 있어. \n지금은 삽입된 게 없어서 안 돼"},
-    {"key": "DLG_HOWTO_NPC_5", "value": "E로 아이템을 먹거나 상호작용 할 수 있어.\n아이템은 Ctrl로 쓰고"},
- {"key": "DLG_HOWTO_NPC_6", "value": "이쯤이면 될 거 같은데? 가 봐."}
-
+    {"key": "TEMP_COMMENT_7", "value": "아래로 튜토리얼 NPC 대사입니다"},
+    {"key": "DLG_HOWTO_NPC_1", "value": "“어떻게 움직이는지 기억 안 나?”"},
+    {"key": "DLG_HOWTO_NPC_2", "value": "“WASD로 몸을 움직여 봐. Space로 구르고”"},
+    {"key": "DLG_HOWTO_NPC_3", "value": "“왼쪽 클릭으로 총을 쏘고, 오른쪽 클릭으로 칼을 휘둘러.\n오른쪽 위 칼 5개가 총알을 막을 수 있는 횟수야.”"},
+    {"key": "DLG_HOWTO_NPC_4", "value": "“Q로 <i>프로토콜</i>을 쓸 수 있어. \n지금은 삽입된 게 없어서 안 돼”"},
+    {"key": "DLG_HOWTO_NPC_5", "value": "“E로 아이템을 먹거나 상호작용 할 수 있어.\n아이템은 Ctrl로 쓰고”"},
+    {"key": "DLG_HOWTO_NPC_6", "value": "“이쯤이면 될 거 같은데? 가 봐.”"},
+    {"key": "DLG_HOWTO_NPC_7", "value": ""}
   ]
 }

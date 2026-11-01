@@ -109,9 +109,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
     public void EarnLife(float amount)
     {
         AddStat(Stat.Life, amount);
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.HP_UpA);
+        SoundManager.Instance.PlaySFX(Sound_SFX.HP_UpA);
 
         //시각적 효과
         model.DOColor(Color.green, 0.2f).OnComplete(() =>
@@ -148,9 +146,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
 
         //additional damage 는 보통의 경우 0, 오버클럭 획득 시 +1
         AddStat(Stat.Life, -(damage + statDic[Stat.AdditionalDamage]));
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.Player_Hit);
+        SoundManager.Instance.PlaySFX(Sound_SFX.Player_Hit);
     }
 
     private void SetStat(Stat type, float value)
@@ -185,9 +181,7 @@ public class PlayerStat : MonoBehaviour, IDamageable
         statDic[type] *= value;
 
         OnUpdateStat?.Invoke(type, value);
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.HP_UpB); //스탯 업에 대한 사운드
+        SoundManager.Instance.PlaySFX(Sound_SFX.HP_UpB); //스탯 업에 대한 사운드
     }
 
     /// <summary>
