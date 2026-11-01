@@ -25,20 +25,32 @@ public class GunShooter : MonoBehaviour
             return;
 
         gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
-        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
         lastFireTime = Time.time;
 
         OnShoot?.Invoke();
+        PlayGunShootSFX();
     }
 
     public void ForceAttack()
     {
         gun.TryAttack(stat.StatDic[PlayerStat.Stat.BulletSpeed], stat.StatDic[PlayerStat.Stat.BulletDamage]);
-        SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
+        PlayGunShootSFX();
     }
 
     public void ActiveGun(bool isActive)
     {
         gun.gameObject.SetActive(isActive);
+    }
+
+
+    int randValue;
+    void PlayGunShootSFX()
+    {
+        randValue = Random.Range(0, 2);
+
+        if (randValue == 0)
+            SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShoot);
+        else
+            SoundManager.Instance.PlaySFX(Sound_SFX.Player_GunShootB);
     }
 }

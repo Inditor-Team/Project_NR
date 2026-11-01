@@ -250,6 +250,7 @@ public partial class BossController : MonoBehaviour, IDamageable
             case BossStat.PhaseTwoMove:
                 anim.SetBool("isFire", false);
                 anim.SetBool("isMove", true);
+                SoundManager.Instance.PlaySFX(Sound_SFX.BossMove);
                 break;
             case BossStat.PhaseOneFire:
             case BossStat.PhaseTwoFire:
@@ -261,8 +262,7 @@ public partial class BossController : MonoBehaviour, IDamageable
                 anim.SetBool("isPhaseTwo", true);
                 isPhaseTwo = true;
                 // TODO: 페이즈 전환 효과음
-                if (SoundManager.Instance != null)
-                    SoundManager.Instance.PlaySFX(Sound_SFX.Boss_Transition);
+                SoundManager.Instance.PlaySFX(Sound_SFX.Boss_Transition);
                 break;
             case BossStat.Heal:
                 anim.SetBool("isMove", false); // 정지
@@ -271,6 +271,7 @@ public partial class BossController : MonoBehaviour, IDamageable
                 isHealed = true;
                 healStartHealth = health; // 현재 체력 저장
                 healTimer = 0f;
+                SoundManager.Instance.PlaySFX(Sound_SFX.Phase);
                 break;
             case BossStat.Dead:
                 SetDead();

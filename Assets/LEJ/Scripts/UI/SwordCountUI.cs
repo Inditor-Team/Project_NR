@@ -23,7 +23,7 @@ public class SwordCountUI : MonoBehaviour
 
     void OnSwordLifeChanged()
     {
-        if (swordIcons.Length <= index)
+        if (swordIcons.Length <= index || swordIcons.Length == 0) //index ¿À·ù
             return;
 
         swordIcons[sword.SwordLife].gameObject.SetActive(false);

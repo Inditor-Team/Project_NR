@@ -84,15 +84,14 @@ public class OpeningController : MonoBehaviour
     {
         commandIndex++;
 
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
-
         if (commandIndex < commands.Length)
         {
             if(LocalizationManager.Instance.CurLang == Language.KO)
                 writeText.Play(commands[commandIndex]);
             else
                 writeText.Play(commandsEN[commandIndex]);
+
+            SoundManager.Instance.PlaySFX(Sound_SFX.UIText);
 
             return;
         }

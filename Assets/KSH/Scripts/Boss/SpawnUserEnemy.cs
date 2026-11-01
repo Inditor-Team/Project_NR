@@ -28,6 +28,8 @@ public class SpawnUserEnemy : MonoBehaviour
 
     public void SpwanUser()
     {
+        SoundManager.Instance.PlaySFX(Sound_SFX.Phase);
+
         LandUserAttack();
     }
     

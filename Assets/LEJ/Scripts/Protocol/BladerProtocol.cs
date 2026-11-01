@@ -30,7 +30,9 @@ public class BladerProtocol : ProtocolBase
     {
         isActive = true;
         Debug.Log("Player: Blader Protocol! ");
-        
+
+        SoundManager.Instance.PlaySFX(Sound_SFX.BladerProtocol);
+
         if (protocolRoutine == null)
             protocolRoutine = StartCoroutine(ProtocolTime());
     }

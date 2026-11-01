@@ -56,6 +56,8 @@ public class BlitzProtocol : ProtocolBase
         if (protocolRoutine != null)
             return;
 
+        SoundManager.Instance.PlaySFX(Sound_SFX.BlitzProtocol);
+
         protocolRoutine = StartCoroutine(ProtocolTime());
     }
 

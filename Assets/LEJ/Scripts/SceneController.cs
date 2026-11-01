@@ -54,7 +54,7 @@ public class SceneController : MonoBehaviour, ISaveable
         NormalA, NormalB, NormalC, NormalD,
         HardA, HardB, 
         EventA, EventB, ShopA, ShopB,
-        Boss, Ending, HowTo,
+        Boss, Ending, HowTo, Credit,
         Count }
     public Scene prevScene = Scene.None;
     public Scene curScene = Scene.None;

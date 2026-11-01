@@ -6,6 +6,7 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
 {
     private OpeningController openingCon;
     private HowToController howToController;
+    private EndingController endingController;
     private HashSet<string> flags = new();
     private int resultInt; // 값 변환에 사용 
     private static Store store;
@@ -115,6 +116,14 @@ public class DialogueEventBinder : MonoBehaviour, ISaveable
                 howToController = FindFirstObjectByType<HowToController>();
 
             howToController.FinishHowto();
+        }
+
+        if (args[0].Equals("end_ending"))
+        {
+            if (endingController == null)
+                endingController = FindFirstObjectByType<EndingController>();
+
+            endingController.FinishEnding();
         }
     }
     
