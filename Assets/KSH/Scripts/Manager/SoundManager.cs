@@ -106,11 +106,24 @@ public class SoundManager : MonoBehaviour
 
     private void SetBGMVolumeByPlayerPrefs()
     {
-        //PlayerPrefs 에 볼륨 설정이 저장된 적 있다면 해당 값으로 설정
+        //PlayerPrefs 에 볼륨 설정이 저장된 적 있다면 해당 값으로 설정, 없으면 1 설정
         if (PlayerPrefs.HasKey(Prefs_BGMVolume))
             SetBGMVolume(PlayerPrefs.GetFloat(Prefs_BGMVolume));
+        else
+        {
+            PlayerPrefs.SetFloat(Prefs_BGMVolume, 1f);
+            SetBGMVolume(1f);
+        }
+
         if (PlayerPrefs.HasKey(Prefs_SFXVolume))
             SetSFXVolume(PlayerPrefs.GetFloat(Prefs_SFXVolume));
+        else
+        {
+            PlayerPrefs.SetFloat(Prefs_SFXVolume, 1f);
+            SetSFXVolume(1f);
+        }
+
+        PlayerPrefs.Save();
     }
 
     [Header("Audio Clips")]
