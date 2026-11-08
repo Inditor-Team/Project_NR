@@ -12,8 +12,8 @@ public class PlayerHealthBar : MonoBehaviour
         stat = GameManager.Instance.Player.GetComponent<PlayerController>().Stat;
         stat.OnUpdateStat += OnUpdateStat;
 
-        //¼½ÅÍ Á¾·á ÈÄ ÀúÀå µÈ »ý¸í °ªÀ¸·Î ¼³Á¤
-        OnUpdateStat(PlayerStat.Stat.Life, GameManager.Instance.Life);
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        OnUpdateStat(PlayerStat.Stat.Life, StatDataManager.Instance.GetStat(PlayerStat.Stat.Life));
     }
 
     private void OnDestroy()
@@ -24,7 +24,7 @@ public class PlayerHealthBar : MonoBehaviour
     bool doOnceAtUpdate = false;
     private void Update()
     {
-        if (!doOnceAtUpdate) //Start »çÀÌÅ¬ Å¸ÀÌ¹Ö ¾ù³ª°¡¼­ update ¿¡¼­ ÇÑ ¹ø ½ÇÇà
+        if (!doOnceAtUpdate) //Start ï¿½ï¿½ï¿½ï¿½Å¬ Å¸ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             SetHealthBarSize();
             UpdateHealthBar();
@@ -41,7 +41,7 @@ public class PlayerHealthBar : MonoBehaviour
     void UpdateHealthBar()
     {
         slider.value = stat.StatDic[PlayerStat.Stat.Life];
-        Debug.Log($"PlayerHealthBarUI: ÇÃ·¹ÀÌ¾î Ã¼·ÂÀº {stat.StatDic[PlayerStat.Stat.Life]} slider.value ´Â {slider.value}");
+        Debug.Log($"PlayerHealthBarUI: ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ {stat.StatDic[PlayerStat.Stat.Life]} slider.value ï¿½ï¿½ {slider.value}");
     }
 
     float increaseAmount = 50f;
@@ -49,10 +49,10 @@ public class PlayerHealthBar : MonoBehaviour
     float defaultSliderOutlineSize = 250;
     public void SetHealthBarSize()
     {
-        //±âº» Ã¼·Â 5 ±âÁØ ÃÖ´ëÃ¼·Â º¯µ¿·® value
+        //ï¿½âº» Ã¼ï¿½ï¿½ 5 ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ value
         int value = (int)stat.StatDic[PlayerStat.Stat.MaxLife] - 5;
 
-        // ½½¶óÀÌ´õ UI »çÀÌÁî ¹× maxValue Á¶Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ maxValue ï¿½ï¿½ï¿½ï¿½
         var sliderSize = slider.GetComponent<RectTransform>();
         sliderSize.sizeDelta = new Vector2(defaultSliderSize + (increaseAmount * value), sliderSize.sizeDelta.y);
 
@@ -61,6 +61,6 @@ public class PlayerHealthBar : MonoBehaviour
 
         slider.maxValue = stat.StatDic[PlayerStat.Stat.MaxLife];
 
-        Debug.Log($"ÇöÀç ÃÖ´ë Ã¼·Â {(int)stat.StatDic[PlayerStat.Stat.MaxLife]} ¹× slider maxValue ´Â {slider.maxValue}");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ {(int)stat.StatDic[PlayerStat.Stat.MaxLife]} ï¿½ï¿½ slider maxValue ï¿½ï¿½ {slider.maxValue}");
     }
 }

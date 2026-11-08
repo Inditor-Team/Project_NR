@@ -65,7 +65,7 @@ public class SceneController : MonoBehaviour, ISaveable
     {
         if (scene == Scene.HowTo) return false;
 
-        return (scene >= Scene.NormalA && scene < Scene.Count);
+        return scene >= Scene.NormalA && scene <= Scene.Boss; // Credit, Count도 제외
     }
 
     public void ChangeScene(Scene sceneName)
@@ -73,11 +73,14 @@ public class SceneController : MonoBehaviour, ISaveable
         if (changeSceneRoutine != null)
             return;
 
-        //입장 전 상태를 저장
+        // 이전 씬의 스탯 확정 또는 복귀 (curScene 이 바뀌기 전에 호출)
+        StatDataManager.Instance.OnLeaveScene();
+
+        // 입장 전 상태를 저장
         if (IsStageScene(sceneName) && !IsStageScene(curScene))
         {
-            GameManager.Instance.BeginStage();
             InventoryManager.Instance.CaptureStageEntryState();
+            StatDataManager.Instance.CaptureStageEntryState();
 
             if (StageSaveSnapshotProxy.Instance != null)
                 StageSaveSnapshotProxy.Instance.CaptureStageEntryState();
@@ -86,7 +89,7 @@ public class SceneController : MonoBehaviour, ISaveable
         if (curScene != Scene.None)
             prevScene = curScene;
 
-        //로비에 처음 들어오는 거라면 스킵 가능하게 PlayerPrefs 설정
+        // 로비에 처음 들어오는 거라면 스킵 가능하게 PlayerPrefs 설정
         if (sceneName == Scene.Lobby && PlayerPrefs.GetInt(SkipOpeningKey, -1) < 0)
         {
             PlayerPrefs.SetInt(SkipOpeningKey, 0);

@@ -36,8 +36,7 @@ public class SectorManager : MonoBehaviour
     {
         remainingCount = curSectorSO.EnemyData.Length;
         GameManager.Instance.RegisterSectorManagerEvent(SceneController.Instance.curScene);
-
-        InventoryManager.Instance.SetCardStatOnSectorStart();
+        
         ApplyClearedStateOnLoad();
     }
     
@@ -132,6 +131,7 @@ public class SectorManager : MonoBehaviour
     public void ClearMiddleBoss()
     {
         Debug.Log("Boss Clear!");
+        // GameManager.Instance.OnSectorClear(SceneController.Scene.Boss);
         SceneController.Instance.ChangeScene(SceneController.Scene.Ending);
         GameManager.Instance.UnRegisterSectorManagerEvent();
     }

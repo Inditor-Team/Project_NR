@@ -279,7 +279,6 @@ public class SoundManager : MonoBehaviour
         sfxSource.clip = clip;
         sfxSource.volume = sfxVolume;
         sfxSource.Play();
-        Debug.Log($"SoundManager: {clip.name}(volume:{sfxVolume})을 Play");
         
         return sfxSource;
     }
